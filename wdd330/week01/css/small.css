@@ -40,12 +40,12 @@ main p {
   font-size: 2rem;
 }
 
-main img #menuImage {
+#menuImage {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 }
 
-main img #formGif {
+#formGif {
   width: 100%;
   max-width: 276px;
 }
