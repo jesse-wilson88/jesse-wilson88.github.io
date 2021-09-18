@@ -1,3 +1,8 @@
+// Gets the current year
+let thedate = new Date();
+let theyear = thedate.getFullYear();
+document.querySelector("#currentyear").textContent = theyear;
+
 function showCongratulations() {
   document.getElementById("result_display").innerHTML =
     "<p>Congratulations, you did it!</p><p>You got the page to update!</p>";
