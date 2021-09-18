@@ -5,12 +5,8 @@ document.querySelector("#currentyear").textContent = theyear;
 
 const assignments = [
   {
-    label: "Week1 notes",
-    url: "week1/index.html",
-  },
-  {
-    label: "Week2 notes",
-    url: "week2/index.html",
+    label: "Week 01: ",
+    url: "week01/",
   },
 ];
 
@@ -23,9 +19,10 @@ assignments.forEach((assignment) => {
   let li = document.createElement("li");
   let a = document.createElement("a");
 
-  a.setAttribute = ("href", url);
+  li.setAttribute("href", url);
+  a.setAttribute("href", url);
 
-  a.innerHTML = url;
+  a.innerHTML = "Notes & Code";
   li.innerHTML = label;
 
   li.append(a);

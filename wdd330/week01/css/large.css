@@ -7,6 +7,9 @@
   /*----------- NAVIGATION --------------*/
 
   /*----------- MAIN --------------*/
+  textarea {
+    width: 800px;
+  }
 
   /*----------- FOOTER --------------*/
 } /* end of media query */

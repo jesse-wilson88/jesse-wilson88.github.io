@@ -8,12 +8,11 @@
 /*----------- BODY --------------*/
 body {
   font-size: 16px;
-  padding: 0 2%;
   font-family: "Philosopher", sans-serif;
 }
 
 /*----------- HEADER --------------*/
-header {
+#headerWrapper {
   background-color: darkslategrey;
 }
 
@@ -31,6 +30,10 @@ header h1 {
 /*----------- NAVIGATION --------------*/
 
 /*----------- MAIN --------------*/
+main {
+  padding: 0 2%;
+}
+
 main h2 {
   font-size: 1.2rem;
   margin: 2%;
@@ -55,12 +58,20 @@ li {
 }
 
 textarea {
-  width: 800px;
+  width: 100%;
   height: 250px;
   background-color: lightyellow;
 }
 
 /*----------- FOOTER --------------*/
+#footerWrapper {
+  background-color: darkslategrey;
+}
+
+footer {
+  padding: 5px;
+  font-size: 25px;
+}
 
 /*----- Clearfix: Force an Element not to collapse -----*/
 .clearfix:after {
