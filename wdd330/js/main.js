@@ -19,7 +19,6 @@ assignments.forEach((assignment) => {
   let li = document.createElement("li");
   let a = document.createElement("a");
 
-  li.setAttribute("href", url);
   a.setAttribute("href", url);
 
   a.innerHTML = "Notes & Code";
