@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Check the weather to decide whether to go or not."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Preston: Weather To Go Or Not</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/style.js"></script>
+    <script defer src="js/banner.js"></script>
+    <script defer src="js/lazyload.js"></script>
+    <script defer src="js/weatherapi.js"></script>
+    <script defer src="js/townevents.js"></script>
+    <script defer src="js/fivedayforecast.js"></script>
+  </head>
+
+  <body>
+    <div id="asideWrapper">
+      <aside id="banner">
+        Saturday = Preston Pancakes in the Park! 9:00 a.m. Saturday at the city
+        park pavilion.
+      </aside>
+    </div>
+
+    <!-- HEADER HERE -->
+    <div id="headerWrapper">
+      <header class="clearfix">
+        <a href="index.html">
+          <img src="images/logo.png" alt="Weather To Go Or Not logo"
+        /></a>
+        <div class="headings">
+          <h1>Weather To Go Or Not</h1>
+          <h2>Decide whether to go or not.</h2>
+        </div>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE -->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="preston.html">Preston</a></li>
+          <li><a href="sodasprings.html">Soda Springs</a></li>
+          <li><a href="fishhaven.html">Fish Haven</a></li>
+          <li><a href="stormcenter.html">Storm Center</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <div>
+        <h1 id="cityid">Preston</h1>
+        <section>
+          <div class="heroparent">
+            <picture>
+              <source
+                media="(max-width: 500px)"
+                srcset="images/preston500.jpg"
+              />
+              <source
+                media="(max-width: 800px)"
+                srcset="images/preston800.jpg"
+              />
+              <img src="images/preston1100.jpg" alt="Preston, Idaho" />
+            </picture>
+            <div class="herochild">
+              <h2>Current Temperature</h2>
+              <ul>
+                <li>Currently: <span id="currently"></span></li>
+                <li>Temperature: <span id="current-temp"></span>&deg;F</li>
+                <li>Wind Chill: <span id="windchill"></span></li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind Speed: <span id="windspeed"></span> mph</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="forecastWrapper">
+        <h2>Five Day Forecast</h2>
+        <div class="forecastBox"></div>
+      </div>
+      <div class="eventWrapper">
+        <h2>Town Events</h2>
+        <section class="eventBox"></section>
+      </div>
+      <div class="articleWrapper">
+        <h2>Article Title</h2>
+        <section class="article">
+          <div>
+            <img
+              class="top"
+              src="images/prestonarticle.jpg"
+              alt="Looking down at the ground covered with clouds from the mountain top"
+              width="500"
+              height="333"
+            />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+              saepe perspiciatis vero placeat nulla soluta delectus eos porro
+              aut, veritatis quidem voluptatum, ducimus nam repudiandae deserunt
+              nesciunt. Quasi inventore exercitationem recusandae. Voluptatibus
+              ipsum quasi voluptate sint quaerat distinctio fugit dolores. Ea
+              inventore, iure dolore enim quibusdam dolores eum totam molestias
+              quis facere cum culpa a sint ab aliquam perspiciatis eveniet
+              distinctio veniam id repudiandae, nesciunt consequatur numquam
+              beatae maxime. Voluptas reiciendis quod minima ipsum libero
+              ducimus, delectus quibusdam iusto dolores dicta nisi quaerat aut
+              totam omnis rerum sunt eaque vitae voluptatem nemo! Quos magnam
+              asperiores voluptas nisi. At, recusandae unde?
+            </p>
+          </div>
+          <img
+            class="bottom"
+            src="images/prestonarticle.jpg"
+            alt="Looking down at the ground covered with clouds from the mountain top"
+            width="500"
+            height="333"
+          />
+        </section>
+      </div>
+
+      <div class="contactus2Wrapper">
+        <h2>Contact Us</h2>
+        <section class="contactus">
+          <div>
+            <h3>Address:</h3>
+            <p>
+              Town of Preston
+              <br />
+              123 Main Street
+              <br />
+              Preston, ID 83263
+            </p>
+          </div>
+          <div>
+            <h3>Phone:</h3>
+            <p>+1 (208) 555-1234</p>
+            <br />
+            <h3>Email:</h3>
+            <p>contact@prestonidaho.com</p>
+          </div>
+          <iframe
+            class="localmap"
+            title="Google map of Preson, Idaho"
+            src="https://maps.google.com/maps?q=preston,%20id&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+          >
+          </iframe>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <div id="footerWrapper">
+      <footer><span id="currentDate"></span></footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({ google: { families: ["Lato"] } });
+    </script>
+  </body>
+</html>

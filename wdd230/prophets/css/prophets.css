@@ -1,0 +1,46 @@
+body {
+  font-size: 16px;
+  font-family: Lato;
+}
+
+h1,
+h2,
+p,
+footer {
+  text-align: center;
+}
+
+h2,
+p {
+  margin: 5px;
+  padding: 0;
+}
+
+h1,
+h2 {
+  color: rgb(77, 77, 150);
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+section {
+  border: 1px solid #000;
+  background-color: rgb(185, 185, 204);
+  margin: 2%;
+  padding: 10px;
+  box-shadow: 10px 10px 10px grey;
+}
+
+section:hover {
+  box-shadow: 10px 10px 10px black;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}

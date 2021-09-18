@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://myweb.lethbridgecollege.ab.ca/~s0442112/yacit.html -->
+<html hola_ext_inject="disabled"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>YaCIT</title>
+		<link rel="stylesheet" type="text/css" href="./YaCIT_files/yacit.css">
+	<style type="text/css"></style></head>
+	<body>
+		<table>
+			<tbody><tr>
+				<td colspan="2">
+					<div id="die1" class="highlight dice unlockdie" onclick="lockdie(1)"></div>
+
+					<div id="die2" class="highlight dice unlockdie" onclick="lockdie(2)"></div>
+
+					<div id="die3" class="highlight dice unlockdie" onclick="lockdie(3)"></div>
+
+					<div id="die4" class="highlight dice unlockdie" onclick="lockdie(4)"></div>
+
+					<div id="die5" class="highlight dice unlockdie" onclick="lockdie(5)"></div>
+				</td>
+				<td rowspan="12">
+					<div id="instructions" class="instructions">Instructions
+						<div class="left"><br>
+						On each turn, roll the dice up to 3 times to get the highest scoring combiniation for one of the six categories.<br><br />
+						Click on the dice to keep them and then click on Roll.<br /><br />
+						After you finish rolling, you must select a score or a zero in one of the categories. The game will end when all categories are filled in.<br><br>
+						The score will be added up as you select your score and a bonus of 35 points will be added if your score is greater than 62.<br><br>
+						You may choose the color of your dice at any time during the game.<br><br>
+						Have fun and enjoy.
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>	
+				<td class="left">
+					<div id="line1" class="highlight unlockline" onclick="lockline(1)">Ones:</div>
+				</td>
+				<td>
+					<div id="score1" class="unset">0</div>
+				</td>
+			</tr>
+			<tr>	
+				<td class="left">
+					<div id="line2" class="highlight unlockline" onclick="lockline(2)">Twos:</div>
+				</td>
+				<td>
+					<div id="score2" class="unset">0</div>
+				</td>
+			</tr>
+			<tr>	
+				<td class="left">
+					<div id="line3" class="highlight unlockline" onclick="lockline(3)">Threes:</div>
+				</td>
+				<td>
+					<div id="score3" class="unset">0</div>
+				</td>
+			</tr>
+			<tr>	
+				<td class="left">
+					<div id="line4" class="highlight unlockline" onclick="lockline(4)">Fours:</div>
+				</td>
+				<td>
+					<div id="score4" class="unset">0</div>
+				</td>
+			</tr>
+			<tr>	
+				<td class="left">
+					<div id="line5" class="highlight unlockline" onclick="lockline(5)">Fives:</div>
+				</td>
+				<td>
+					<div id="score5" class="unset">0</div>
+				</td>
+			</tr>
+			<tr>	
+				<td class="left">
+					<div id="line6" class="highlight unlockline" onclick="lockline(6)">Sixes:</div>
+				</td>
+				<td>
+					<div id="score6" class="unset">0</div>
+				</td>
+			</tr>
+			<tr>	
+				<td class="left">
+					<div>Bonus if total score is 63 or over:</div>
+				</td>
+				<td>
+					<div id="bonus">0</div>
+				</td>
+			</tr>
+			<tr>	
+				<td class="left">
+					<div>Total:</div>
+				</td>
+				<td>
+					<div id="total">0</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="rolltext" class="highlight roll" onclick="rolldice()">Roll</div>
+				</td>
+				<td>
+					<div id="gameon" class="unhighlight gameon" onclick="newgame()">3</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="flash">Choose the color of your dice</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="defaultdie" class="highlight dice" onclick="defaultdie()"></div>
+					<div id="greendie" class="highlight dice" onclick="greendie()"></div>
+					<div id="reddie" class="highlight dice" onclick="reddie()"></div>
+					<div id="amethystdie" class="highlight dice" onclick="amethystdie()"></div>
+					<div id="blackdie" class="highlight dice" onclick="blackdie()"></div>
+				</td>
+			</tr>
+		</tbody></table>
+		<script type="text/javascript">
+			
+			var rolls = 3; /* 3 rolls per turn  */
+			var turns = 6; /* 6 turns per game  */
+			var color = 0; /* Default die color */
+			
+/* Dice color choices */
+			function defaultdie()  { color = 0; }
+			
+			function greendie()    { color = 1; }
+			
+			function reddie()      { color = 2; }
+			
+			function amethystdie() { color = 3; }
+			
+			function blackdie()    { color = 4; }
+			
+/* Rolling of the die */
+			function rolldice() {
+				if (document.getElementById("score1").className == "set") 	{var ones   = document.getElementById("score1").innerHTML;}
+				if (document.getElementById("score1").className == "unset") {var ones   = 0;}
+				if (document.getElementById("score2").className == "set")	{var twos   = document.getElementById("score2").innerHTML;}
+				if (document.getElementById("score2").className == "unset") {var twos   = 0;}
+				if (document.getElementById("score3").className == "set") 	{var threes = document.getElementById("score3").innerHTML;}
+				if (document.getElementById("score3").className == "unset") {var threes = 0;}
+				if (document.getElementById("score4").className == "set") 	{var fours  = document.getElementById("score4").innerHTML;}
+				if (document.getElementById("score4").className == "unset") {var fours  = 0;}
+				if (document.getElementById("score5").className == "set")	{var fives  = document.getElementById("score5").innerHTML;}
+				if (document.getElementById("score5").className == "unset") {var fives  = 0;}
+				if (document.getElementById("score6").className == "set") 	{var sixs   = document.getElementById("score6").innerHTML;}
+				if (document.getElementById("score6").className == "unset") {var sixs   = 0;}
+								
+				var temp = document.getElementById("rolltext").innerHTML;
+
+				if (rolls != 0 && temp != "Game Over") {
+					rolls--;
+
+					document.getElementById("gameon").innerHTML = rolls;
+					document.getElementById("rolltext").className = "highlight roll";
+
+/* Random number from 1 = 6 is picked and if the dice is tilted or not */
+					for (i = 1; i <=5; i++) {
+						var dice = "die" + i;
+						var hold = document.getElementById(dice).className;
+						var rand = Math.floor((Math.random()*6)+1); /* Random number of dice */
+						var tilt = Math.floor((Math.random()*2)+1); /* Tilts dice */
+
+/* If the dice is locked continue to next dice */
+						if (hold == "highlight dice lockdie") {
+							rand = document.getElementById(dice).innerHTML;
+						}
+
+						document.getElementById(dice).innerHTML=rand;
+							
+/* This section checks to see if the dice are locked or not */
+						if (hold == "highlight dice unlockdie") {
+							document.getElementById(dice).style.backgroundImage='url(images/dice' + color + rand + tilt + '.png)';
+						}
+						
+/* Adds the dice values */
+						var verify = document.getElementById("score" + rand).className;
+						if (rand == 1 && verify == "unset") {
+							ones = ones + 1;
+						}
+						if (rand == 2 && verify == "unset") {
+							twos = twos + 2;
+						}
+						if (rand == 3 && verify == "unset") {
+							threes = threes + 3;
+						}
+						if (rand == 4 && verify == "unset") {
+							fours = fours + 4;
+						}
+						if (rand == 5 && verify == "unset") {
+							fives = fives + 5;
+						}
+						if (rand == 6 && verify == "unset") {
+							sixs = sixs  + 6;
+						}
+					}
+				}
+
+/* Puts the dice value in the dice score box */
+				for (var j = 1; j < 7; j++) {
+					var div = "score" + j;
+					var divify = document.getElementById(div).className;
+
+					if (divify == "unset") {document.getElementById("score1").innerHTML = ones;}
+					if (divify == "unset") {document.getElementById("score2").innerHTML = twos;}
+					if (divify == "unset") {document.getElementById("score3").innerHTML = threes;}
+					if (divify == "unset") {document.getElementById("score4").innerHTML = fours;}
+					if (divify == "unset") {document.getElementById("score5").innerHTML = fives;}
+					if (divify == "unset") {document.getElementById("score6").innerHTML = sixs;}
+				}
+				
+				if (rolls == 0 && temp != "Game Over") {
+					rolls = 0;
+					document.getElementById("rolltext").innerHTML = "Select Score";
+					document.getElementById("rolltext").className = "unhighlight select";
+				}
+			}
+			
+/* Locks or unlocks the dice so the dice can or cannot be rolled */
+			function lockdie(num) {
+				if (document.getElementById("die1").innerHTML != "") {
+					var temp = "die" + num;
+					var dice = document.getElementById(temp).className;
+
+					if (dice == "highlight dice unlockdie") {
+						document.getElementById(temp).className = "highlight dice lockdie";
+					}
+
+					if (dice == "highlight dice lockdie") {
+						document.getElementById(temp).className = "highlight dice unlockdie";
+					}
+				}
+			}
+			
+/* This locks in the score */
+			function lockline(num) {
+				if (document.getElementById("die1").innerHTML != "") {
+					var templine = "line" + num;
+					var tempscore = "score" + num;
+					var line = document.getElementById(tempscore).className;
+
+					if (line == "unset"); {
+						document.getElementById(templine).className = "highlight lockline";
+						document.getElementById(tempscore).className = "set";
+						
+					}
+
+					document.getElementById(templine).style.pointerEvents = "none";
+					
+					scoredie();
+
+					document.getElementById("rolltext").className = "unhighlight roll";
+				}
+			}
+			
+/* Total the scores up after a score has been locked */
+			function scoredie() {
+				var sum   = 0;
+				var total = 0;
+				var bonus = 0;
+				for (i = 1; i <= 6; i++) {
+					var score = "score" + i;
+					var addscore = document.getElementById(score).className;
+					if (addscore == "set") {
+						var die = document.getElementById(score).innerHTML;
+						die = die * 1;
+						sum = sum + die;
+						document.getElementById("total").innerHTML = sum;
+					}
+
+					var subtotal = document.getElementById("total").innerHTML;
+
+/* Checks to see if player gets the bonus added their score */
+					if (subtotal >= 63) {
+						document.getElementById("bonus").innerHTML = 35;
+						bonus = 35;
+						total = sum + bonus;
+						document.getElementById("total").innerHTML = total;
+					}					
+				}
+				turns--; /* Counts down till three turns have been taken */
+
+/* If turns = 0 then the game is over */
+				if (turns <= 0) {
+					document.getElementById("rolltext").innerHTML = "Game Over";
+					document.getElementById("rolltext").className = "unhighlight gameover";
+					document.getElementById("gameon").innerHTML = "Play Again";
+					document.getElementById("gameon").className = "highlight newgame";
+					
+/* Clears the number behind the dice */
+					for (i = 1; i <= 5; i++) {
+						var dice = "die" + i;
+						
+						document.getElementById(dice).innerHTML = "";
+					}
+				}
+				else {
+					rollagain();
+				}
+			}
+			
+			function rollagain () {
+/* Resets die to default */
+				document.getElementById("rolltext").innerHTML = "Roll";
+				document.getElementById("rolltext").className = "highlight roll";
+				for (var i = 1; i <= 5; i++) {
+                    var diereset = "die" + i;
+                    document.getElementById(diereset).style.background = "";
+                    document.getElementById(diereset).innerHTML = "";
+                    document.getElementById(diereset).className = "highlight dice unlockdie";
+                }
+				zerolines() ;
+			}
+/* Zeros scores not set */
+			function zerolines() {
+				for (i = 1; i <= 6; i++) {
+					var temp = "score" + i;
+					var zero = document.getElementById(temp).className;
+					if (zero == "unset") document.getElementById(temp).innerHTML = "0";
+				}
+/* Sets rolltext box to Roll */
+				rolls = 3;
+
+				document.getElementById("gameon").innerHTML = rolls;
+			}
+						
+/* Sets rolltext box to Roll and resets values */
+			function newgame() {
+				var temp = document.getElementById("gameon").innerHTML;
+					if (temp == "Play Again") {
+						rolls = 3;
+						turns = 6;
+
+						document.getElementById("gameon").innerHTML = "3";
+						document.getElementById("gameon").className = "unhighlight gameon";
+
+						for (i = 1; i <= 6; i++) {
+							var score = "score" + i;
+							var line = "line" + i;
+							var resetline = "lockline(" + i + ")";
+							document.getElementById(line).className = "highlight unlockline";
+							document.getElementById(score).className = "unset";
+							document.getElementById(line).style.pointerEvents = "auto";
+						}
+
+						document.getElementById("bonus").innerHTML = "0";
+						document.getElementById("total").innerHTML = "0";
+
+						rollagain();
+						zerolines();
+					}
+					if (turns <= 0) {
+						document.getElementById("rolltext").innerHTML = "Roll";
+						document.getElementById("rolltext").className = "highlight roll";
+					}
+				}
+		</script>
+	
+</body></html>

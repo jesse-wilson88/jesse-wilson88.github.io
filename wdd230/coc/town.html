@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="My final project for WDD 230: Web Frontend Development I at Brigham Young University - Idaho."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Town: Cardston | Chamber of Commerce</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/style.js"></script>
+    <script defer src="js/townevents.js"></script>
+    <script defer src="js/currentdate.js"></script>
+  </head>
+  <body>
+    <!-- HEADER HERE -->
+    <div id="headerWrapper">
+      <header class="clearfix">
+        <a href="index.html">
+          <img src="images/coclogo.png" alt="Cardston Chamber of Commerce"
+        /></a>
+        <div class="headings">
+          <h1>Cardston Chamber Of Commerce</h1>
+          <h2>Where businesses unite.</h2>
+        </div>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE -->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="town.html">Cardston</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <div>
+        <picture>
+          <source media="(max-width: 500px)" srcset="images/cardston500.jpg" />
+          <source media="(max-width: 800px)" srcset="images/cardston800.jpg" />
+          <img
+            src="images/cardston1100.jpg"
+            alt="Cardston, Alberta"
+            loading="lazy"
+          />
+        </picture>
+      </div>
+      <h1>Cardston Demographics</h1>
+      <div class="demographics">
+        <div>
+          <ul>
+            <li>Population (1901): 639</li>
+            <li>Population (2020): 3,676</li>
+            <li>Elevation: 1,130 m</li>
+            <li>Avg Age: 41</li>
+            <li>Avg Household Income: $61,450</li>
+            <li>K - 9 Enrolled: 1,558</li>
+            <li>High School Enrollment: 547</li>
+          </ul>
+        </div>
+        <div>
+          <img src="images/downtown.jpg" alt="Downtown Cardston" />
+        </div>
+      </div>
+      <h1>Local Events</h1>
+      <div class="eventsWrapper">
+        <div class="events"></div>
+      </div>
+      <h1>Old Town Cardston</h1>
+      <div class="oldtownWrapper">
+        <div class="oldtownBox">
+          <div class="box">
+            <img
+              src="images/oldmainstreet.jpg"
+              alt="Cardston Main Street"
+              loading="lazy"
+            />
+            <p>Main Street 1930</p>
+          </div>
+        </div>
+        <div class="oldtownBox">
+          <div class="box">
+            <img
+              src="images/cardstonalbertatabernacle.jpg"
+              alt="Cardston Alberta Tabernacle 1927"
+              loading="lazy"
+            />
+            <p>Cardston Alberta Tabernacle 1927</p>
+          </div>
+        </div>
+        <div class="oldtownBox">
+          <div class="box">
+            <img
+              src="images/oldcardston1.jpg"
+              alt="Daines Street, Cardston, Canada"
+              loading="lazy"
+            />
+            <p>Daines Street, Cardston, Canada</p>
+          </div>
+        </div>
+      </div>
+      <div class="moreimages">
+        <h2>More Images</h2>
+        <p>
+          <a
+            href="http://www.prairie-towns.com/cardston-images.html"
+            target="_blank"
+            >Prairie Towns</a
+          >
+        </p>
+        <p>
+          <a
+            href="http://peel.library.ualberta.ca/search/?search=page&pageNumber=2&qid=postcards%7Ctitle%3A%28Cardston%29%7C%7Cscore&index=postcards&locale=en&digstatus=&"
+            target="_blank"
+            >University of Alberta</a
+          >
+        </p>
+      </div>
+      <div>
+        <h1>Cardston History</h1>
+        <div class="history">
+          <p>
+            The town of Cardston was the first of what would become several
+            Mormon settlements in Southern Alberta, Canada. Its colonizer,
+            Charles O. Card, came seeking refuge from prosecution in the U.S.
+            due to his practice of plural marriage. On President John Taylor's
+            advice, he went...
+            <a
+              href="https://history.churchofjesuschrist.org/place/cardston-alberta-canada?lang=eng"
+              target="_blank"
+              >Read More</a
+            >
+          </p>
+        </div>
+        <div>
+          <h1>The First Modern Temple</h1>
+          <div class="history historyend">
+            <p>
+              The construction of the Alberta (now Cardston) Temple inaugurated
+              an effort led by Joseph F. Smith to build temples closer to Church
+              members who lived far from the four operating temples in Utah.
+              Completed during the presidency of Heber J. Grant, the building
+              program...
+              <a
+                href="https://history.churchofjesuschrist.org/article/cardston-temple-history?lang=eng"
+                target="_blank"
+                >Read More</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <div id="footerWrapper">
+      <footer><span id="currentDate"></span></footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({ google: { families: ["Cormorant Infant"] } });
+    </script>
+  </body>
+</html>

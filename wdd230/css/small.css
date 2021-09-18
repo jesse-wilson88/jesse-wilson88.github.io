@@ -1,0 +1,61 @@
+body {
+  font-size: 16px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+header {
+  font-family: "Merriweather", serif;
+}
+
+header,
+main,
+footer {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+header,
+footer {
+  color: rgb(0, 0, 0);
+  padding: 0.25em;
+  background-color: rgb(161, 176, 200);
+  text-align: center;
+}
+
+header img {
+  width: 150px;
+  height: auto;
+}
+
+header h1 {
+  margin: 0.8rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  border-width: 1px;
+  color: rgb(5, 5, 5);
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+a {
+  color: rgb(0, 0, 0);
+}
+
+a:hover {
+  color: blue;
+  font-weight: bold;
+}
+
+.lastmod {
+  color: rgb(11, 43, 95);
+  font-weight: bold;
+}
+
+footer p {
+  margin: 0.3rem;
+}

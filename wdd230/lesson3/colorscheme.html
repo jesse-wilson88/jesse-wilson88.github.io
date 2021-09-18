@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="This is the beginning of my weather site"
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Color Scheme: Weather To Go Or Not</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,100;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- HEADER HERE -->
+    <header class="clearfix">
+      <img src="images/logo.png" alt="Weather logo" />
+      <h1>Weather To Go Or Not</h1>
+      <h2>Color Scheme</h2>
+    </header>
+
+    <!-- NAVIGATION HERE -->
+    <nav class="clearfix">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="targetaudience.html">Target Audience</a></li>
+        <li class="active"><a href="colorscheme.html">Color Scheme</a></li>
+        <li><a href="typography.html">Typography</a></li>
+      </ul>
+    </nav>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <h1>Color Scheme</h1>
+      <p>
+        After searching through some of the color schemes, this one stood out to
+        me more than the others. I thought it would look realy good.
+        <br /><br />
+        <img src="images/colorscheme.png" alt="Site color scheme" />
+        <br /><br />
+        Body font-color: <span>#293241</span><br />
+        Header backgound-color: <span>#E0FBFC</span><br />
+        Navagation backgound-color: <span>#3D5A80</span><br />
+        Navagation font-color: <span>#E0FBFC</span><br />
+        Navagation hover backgound-color: <span>#98C1D9</span><br />
+        Navagation hover font-color: <span>#293241</span><br />
+        Navagation active backgound-color: <span>#EE6C4D</span><br />
+        Navagation active font-color: <span>#293241</span><br />
+        Footer backgound-color: <span>#293241</span><br />
+        Footer font-color: <span>#E0FBFC</span><br />
+      </p>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <footer>
+      &copy; <span id="currentyear"></span> &bull; Jesse Wilson &bull;
+      123-555-6789
+    </footer>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

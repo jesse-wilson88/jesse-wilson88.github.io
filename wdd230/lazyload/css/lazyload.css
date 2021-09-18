@@ -1,0 +1,20 @@
+div#wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* blur placeholder */
+img[data-src] {
+  filter: blur(0.5rem);
+}
+
+/* blur image */
+img {
+  filter: blur(0rem);
+  transition: filter 0.5s;
+}
+
+h1 {
+  text-align: center;
+}

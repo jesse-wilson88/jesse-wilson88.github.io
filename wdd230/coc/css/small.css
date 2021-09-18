@@ -1,0 +1,722 @@
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*----------- BODY --------------*/
+body {
+  color: #2c3531;
+  font-size: 16px;
+  font-family: "Cormorant Infant", sans-serif;
+}
+
+h1,
+h2 {
+  font-style: italic;
+}
+
+#warningWrapper {
+  background-color: red;
+  color: #000;
+}
+
+#warningWapper p {
+  margin: 0;
+  padding: 0;
+}
+
+#warningWrapper h2 {
+  padding-top: 2%;
+  padding-left: 2%;
+  margin: 0 2%;
+  font-size: 1.2rem;
+}
+
+#weatherWarning {
+  display: block;
+}
+
+aside {
+  display: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 4%;
+}
+
+#close {
+  float: right;
+  background-color: red;
+  font-weight: bold;
+  border: none;
+  padding-top: 4%;
+  padding-right: 4%;
+}
+
+/*----------- HEADER --------------*/
+#headerWrapper {
+  background-color: #116466;
+  padding: 1% 2%;
+}
+
+#headerWrapper img {
+  box-shadow: 0 5px 15px #2c3531;
+}
+
+.headings {
+  padding-left: 80px;
+}
+
+header img {
+  float: left;
+  width: 80px;
+}
+
+header h1 {
+  font-size: 1rem;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+header h2 {
+  font-size: 0.8rem;
+}
+
+header {
+  color: #ffcb9a;
+}
+
+header h1,
+header h2 {
+  font-style: italic;
+  padding-left: 5px;
+  margin: 0;
+}
+
+/*----------- NAVIGATION --------------*/
+div#navWrapper {
+  background-color: #2c3531;
+}
+
+/* The button is the Hamburger Button */
+nav button {
+  margin: 0.2rem 2%;
+  background-color: transparent;
+  border: 2px;
+  font-size: 1.6rem;
+  color: #d1e8e2;
+}
+
+nav ul {
+  font-weight: bold;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* For hiding the Hamburger Button */
+nav ul.hide {
+  display: none;
+}
+
+nav ul li a {
+  display: block;
+  color: #d1e8e2;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+nav ul li.active a {
+  background-color: #d1e8e2;
+  font-weight: bold;
+  color: #000;
+}
+
+nav ul li a:hover {
+  background-color: #d9b08c;
+  color: #2c3531;
+}
+
+/*----------- MAIN --------------*/
+main img {
+  width: 100%;
+}
+
+main h1 {
+  margin: 1% 0 0 2%;
+  font-size: 1.7rem;
+}
+
+main h2 {
+  margin: 2% 2% 0 2%;
+  font-size: 1.5rem;
+}
+
+.heroparent {
+  padding: 0;
+}
+
+.heroparent2 {
+  position: relative;
+}
+
+.herochild1 {
+  background-color: #d9b08c;
+  color: #000;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px;
+}
+
+section div p {
+  margin: 0 2%;
+}
+
+.herochild1 h2,
+.herochild1 p {
+  margin: 0;
+  color: #2c3531;
+}
+
+.herochild2 {
+  position: absolute;
+  bottom: 110px;
+  right: 12px;
+  font-size: 1.8rem;
+  font-style: italic;
+  padding: 7px;
+}
+
+.herochild2 button {
+  opacity: 0.7;
+  background-color: #d9b08c;
+}
+
+.businessAds,
+.businessDirectory,
+.forecastBox,
+.boardofdirectors,
+.events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.businessAds section,
+.businessDirectory section,
+.directorBox,
+.forecast {
+  margin: 0 2% 2% 2%;
+  border: 1px solid #000;
+  padding: 2%;
+}
+
+.businessAds section,
+.businessDirectory section {
+  background-color: #d9b08c;
+}
+
+.businessAds section h2,
+.businessAds section p,
+.businessDirectory section p,
+.businessDirectory section a,
+.urlLink {
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.businessDirectory.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.businessDirectory.list img {
+  display: none;
+}
+
+.businessAds,
+.forecastWrapper {
+  margin: 0 2%;
+}
+
+.forecastWrapper {
+  display: block;
+  margin: 0 2%;
+}
+
+.forecastWrapper div {
+  width: 100%;
+  padding: 0;
+}
+
+.forecastWrapper h3 {
+  background-color: #2c3531;
+  color: #d1e8e2;
+}
+
+.forecastWrapper h3,
+.forecastWrapper h4 {
+  font-size: 2rem;
+  padding: 10px 0;
+}
+
+.forecastWrapper h3,
+.forecastWrapper h4 {
+  margin: 0;
+  text-align: center;
+}
+
+.forecastWrapper img {
+  width: 50%;
+  margin: 0 auto;
+}
+
+div.forecastBox {
+  text-align: center;
+}
+
+section.forecast {
+  background-color: #d1e8e2;
+  padding: 0;
+}
+
+h1.center {
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+.contactus,
+.contactinfo {
+  max-width: 25rem;
+  border: 1px solid #2c3531;
+}
+
+.contactus {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.join,
+.contactus,
+.contactinfo {
+  margin: 0 auto;
+}
+
+.join {
+  max-width: 25rem;
+}
+
+.join {
+  padding: 0;
+}
+
+.contactus,
+.directorBox {
+  background-color: #d9b08c;
+}
+
+.contact div h3 {
+  text-decoration: underline;
+}
+
+.contactus h3,
+.contactus h4 {
+  padding: 2% 0;
+  margin: 0 2%;
+}
+
+.directorBox figcaption {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.localmap {
+  width: 100%;
+  border: 1px solid #2c3531;
+}
+
+.thankyou p {
+  font-size: 1.5rem;
+  margin: 0 4%;
+  padding-top: 2%;
+  height: 500px;
+}
+
+.businessAds img,
+.businessBox img,
+.directorBox img,
+.demographics img {
+  box-shadow: 0 5px 15px #000;
+}
+
+.demographics {
+  border: 1px solid #000;
+  background-color: #d9b08c;
+  margin: 0 2%;
+}
+
+.demographics div {
+  margin: 0 2%;
+}
+
+.demographics h1 {
+  font-size: 1.5rem;
+  margin: 0 2%;
+}
+
+.demographics ul {
+  margin: 0 1%;
+}
+
+.demographics ul li {
+  font-size: 1.3rem;
+}
+
+.demographics img {
+  width: 100%;
+  margin: 2% 0;
+}
+
+.history {
+  font-size: 1.2rem;
+  background-color: #d9b08c;
+  padding: 2% 0;
+  margin: 0 2% 0;
+  border: 1px solid #000;
+}
+
+.history p {
+  margin: 0 2%;
+}
+
+.oldtownWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  border-left: 1px solid #000;
+  padding: 2% 0;
+  margin: 0 2%;
+  background-color: #d9b08c;
+}
+
+.oldtownBox {
+  padding: 2%;
+}
+
+.box p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 5px 15px #000;
+}
+
+.oldtown img {
+  width: 100%;
+}
+
+.box {
+  border: 1px solid #000;
+  background-color: #d1e8e2;
+}
+
+.moreimages {
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  background-color: #d1e8e2;
+  margin: 0 2%;
+  padding: 1% 2% 1%;
+}
+
+.moreimages h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0 2%;
+}
+
+.moreimages p {
+  margin: 0 2%;
+  font-size: 1rem;
+}
+
+.moreimages a:visited {
+  color: #2c3531;
+}
+
+.eventsWrapper {
+  padding: 0;
+  margin: 0 2% 2%;
+}
+
+.eventBox {
+  border: 1px solid #000;
+  background-color: #d9b08c;
+}
+
+.eventBox h2,
+.eventBox p {
+  margin: 2% 0;
+  padding: 0 2%;
+}
+
+.eventBox h2 {
+  font-size: 1.3rem;
+}
+
+.eventBox p {
+  font-size: 1.2rem;
+}
+
+.attributionWrapper h1 {
+  font-size: 2.3rem;
+  margin: 0 2%;
+}
+
+.attributionBox {
+  margin: 0 2%;
+  border: 1px solid #000;
+  background-color: #d9b08c;
+  padding: 2%;
+}
+
+.attributionWrapper a {
+  font-weight: bold;
+  color: #2c3531;
+}
+
+.attributionWrapper a:hover {
+  font-size: 18px;
+}
+
+.attributionWrapper a:visited {
+  color: #116466;
+}
+
+.attributionBox p {
+  margin: 0 1%;
+}
+
+/*------- GRID & LIST ICONS -------*/
+.container {
+  position: relative;
+  bottom: 37px;
+}
+
+.icon {
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  right: -10px;
+  display: flex;
+}
+
+.list,
+.grid {
+  width: 35px;
+  position: relative;
+  cursor: pointer;
+  margin: 0 10px 0 0;
+}
+
+.list span {
+  width: 30px;
+  height: 5px;
+  background: #2c3531;
+  position: absolute;
+  top: 5px;
+  left: 3px;
+}
+
+.list span:nth-child(2) {
+  top: 15px;
+}
+
+.list span:nth-child(3) {
+  top: 25px;
+}
+
+.grid span {
+  width: 10px;
+  height: 10px;
+  background: #2c3531;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+.grid span:nth-child(2) {
+  top: 20px;
+}
+
+.grid span:nth-child(3) {
+  left: 20px;
+}
+
+.grid span:nth-child(4) {
+  top: 20px;
+  left: 20px;
+}
+
+/*------------ TABLE --------------*/
+table {
+  margin-top: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5rem;
+}
+
+table,
+th,
+td {
+  border: 3px solid #2c3531;
+  border-collapse: collapse;
+}
+
+th {
+  width: 74px;
+  font-weight: bold;
+}
+
+th,
+td {
+  text-align: center;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
+}
+
+.benefits {
+  width: 150px;
+}
+
+.benefits,
+.non-profit,
+.bronze,
+.silver,
+.gold {
+  background-color: #d9b08c;
+}
+
+td {
+  height: 3rem;
+}
+
+/*------------ FORM ---------------*/
+form {
+  margin: 0 auto;
+}
+
+form fieldset {
+  border: 1px solid #2c3531;
+  padding: 0.5rem 2%;
+  background-color: #d9b08c;
+  margin: 0 0 5px 0;
+}
+
+form legend {
+  font-size: 1.5rem;
+  color: #2c3531;
+  margin: 0 1rem;
+  padding: 0 0.5rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid #116466;
+  box-shadow: 0 0 20px #116466;
+  margin: 0;
+}
+
+form label.top,
+form div {
+  display: block;
+  font-size: 1.5rem;
+  padding: 20px 0 1px 0;
+}
+
+label.top input {
+  width: 100%;
+}
+
+textarea {
+  font-size: 1.5rem;
+  display: block;
+  color: #293241;
+  width: 100%;
+  height: 200px;
+}
+
+input.submitBtn {
+  border: none;
+  background-color: #293241;
+  color: #d1e8e2;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  width: 96%;
+  max-width: 20rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+form label.top input:required {
+  border-left: red solid 6px;
+  border-right: red solid 6px;
+}
+
+form label.top input:required:valid {
+  border-left: green solid 6px;
+  border-right: green solid 6px;
+}
+
+form label.sbs {
+  display: block;
+  padding: 0.75rem;
+  color: #293241;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+/*----------- FOOTER --------------*/
+#footerWrapper {
+  background-color: #2c3531;
+  margin: 1% 0 0 0;
+}
+
+footer {
+  color: #d1e8e2;
+  padding: 0.5rem 2%;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+
+footer a {
+  color: #ffcb9a;
+}
+
+.lastmod,
+#lastVisited {
+  color: #ffcb9a;
+  font-weight: bold;
+}
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

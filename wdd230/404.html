@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Check the weather to decide whether to go or not."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Page not found</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- STYLE SHEETS -->
+    <link href="/lesson11/css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="/lesson11/css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="/lesson11/css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="/lesson11/css/large.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- HEADER HERE -->
+    <div id="headerWrapper">
+      <header class="clearfix">
+        <a href="/lesson11/">
+          <img src="/lesson11/images/logo.png" alt="Weather logo"
+        /></a>
+        <div class="headings">
+          <h1>Weather To Go Or Not</h1>
+          <h2>Decide whether to go or not.</h2>
+        </div>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE -->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="/lesson11/">Home</a></li>
+          <li><a href="/lesson11/preston.html">Preston</a></li>
+          <li><a href="/lesson11/sodasprings.html">Soda Springs</a></li>
+          <li><a href="/lesson11/fishhaven.html">Fish Haven</a></li>
+          <li><a href="/lesson11/stormcenter.html">Storm Center</a></li>
+          <li><a href="/lesson11/gallery.html">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <div>
+        <h1>Oh snap!</h1>
+        <p class="lost">
+          I think we are lost. I knew we should have turned right at 145.65.2.37
+          a few hops back.
+        </p>
+        <section>
+          <div>
+            <picture>
+              <source
+                media="(max-width: 500px)"
+                srcset="/images/404error500.jpg"
+              />
+              <source
+                media="(max-width: 800px)"
+                srcset="/images/404error800.jpg"
+              />
+              <img src="/images/404error1100.jpg" alt="Page Not Found" />
+            </picture>
+          </div>
+        </section>
+        <p class="lost">
+          Luckily, it will not take much to get back on track. Just click on the
+          navigation bar above and you will be on your way.
+        </p>
+      </div>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({ google: { families: ["Lato"] } });
+    </script>
+  </body>
+</html>

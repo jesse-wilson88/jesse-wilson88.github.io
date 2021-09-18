@@ -1,0 +1,31 @@
+/* 35em is also 560px when basefont is 16px */
+@media only screen and (min-width: 35rem) {
+  nav button {
+    display: none;
+  }
+
+  nav ul {
+    margin-left: 2%;
+  }
+
+  nav ul.hide {
+    display: block;
+  }
+
+  nav ul li {
+    float: left;
+  }
+
+  nav ul li a {
+    border: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 1rem;
+  }
+
+  /*----- Clearfix: Force an Element not to collapse -----*/
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+} /*end medium*/

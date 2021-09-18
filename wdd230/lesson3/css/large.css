@@ -1,0 +1,35 @@
+/* 64em is also 1028px (if basefont is 16px) */
+@media only screen and (min-width: 64rem) {
+  header,
+  nav,
+  main,
+  footer {
+    max-width: 64rem;
+    margin: auto;
+  }
+
+  /*----------- BODY --------------*/
+
+  /*----------- HEADER --------------*/
+
+  /*----------- NAVIGATION --------------*/
+
+  /*----------- MAIN --------------*/
+  main div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    font-size: 1.5rem;
+  }
+
+  main p.persona {
+    width: auto;
+    height: auto;
+    align-items: center;
+  }
+
+  main {
+    font-size: 1.5rem;
+  }
+  /*----------- FOOTER --------------*/
+} /* end of media query */

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Check the weather to decide whether to go or not."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Preston: Weather To Go Or Not</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,100;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="headerWrapper">
+      <!-- HEADER HERE -->
+      <header class="clearfix">
+        <img src="images/logo.png" alt="Weather logo" />
+        <div class="headings">
+          <h1>Weather To Go Or Not</h1>
+          <h2>Decide whether to go or not.</h2>
+        </div>
+      </header>
+    </div>
+
+    <div id="navWrapper">
+      <!-- NAVIGATION HERE -->
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="#">Home</a></li>
+          <li class="active"><a href="preston.html">Preston</a></li>
+          <li><a href="#">Soda Springs</a></li>
+          <li><a href="#">Fish Haven</a></li>
+          <li><a href="#">Storm Center</a></li>
+          <li><a href="#">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <h1>Preston</h1>
+      <div>Hero and weather summary will eventually go here.</div>
+      <div>Article and related image will go here soon.</div>
+      <div>Contact Us with an address and map will end up here.</div>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <div id="footerWrapper">
+      <footer><span id="currentDate"></span></footer>
+    </div>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

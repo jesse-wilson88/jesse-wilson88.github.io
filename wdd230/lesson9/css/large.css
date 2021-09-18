@@ -1,0 +1,134 @@
+/* 64em is also 1028px (if basefont is 16px) */
+@media only screen and (min-width: 64rem) {
+  header,
+  aside,
+  nav,
+  main,
+  footer {
+    max-width: 70rem;
+    margin: auto;
+  }
+
+  /*----------- BODY --------------*/
+
+  /*----------- HEADER --------------*/
+  header img {
+    width: 100px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header h2 {
+    font-size: 1.2rem;
+  }
+
+  .headings {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*----------- NAVIGATION --------------*/
+  nav ul li a {
+    padding: 1rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  /*----------- MAIN --------------*/
+  main,
+  section.forcast p {
+    font-size: 1.5rem;
+  }
+
+  .contactus,
+  .contactus2 {
+    font-size: 1.6rem;
+  }
+
+  .contactus p,
+  .contactus2 p {
+    font-size: 1.4rem;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .localmap {
+    width: 100%;
+    height: 300px;
+  }
+
+  .homearticleimage {
+    max-width: 450px;
+  }
+
+  /*------------ Form ---------------*/
+  form {
+    max-width: 30rem;
+  }
+
+  form legend {
+    font-size: 2.5rem;
+  }
+
+  form label.top,
+  form div {
+    font-size: 2rem;
+  }
+
+  form label.top input,
+  form label.top select {
+    max-width: 30rem;
+    font-size: 1.6rem;
+  }
+
+  form label.sbs {
+    font-size: 2rem;
+  }
+
+  /*----- Alternating Articles ------*/
+  .card {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+
+  .card h3 {
+    font-size: 0.8rem;
+  }
+
+  section {
+    display: block;
+  }
+
+  .towninfo {
+    width: 100%;
+  }
+
+  /*----------- Gallery --------------*/
+  .weatherWrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .shadow:hover {
+    box-shadow: 0 0 50px #222;
+  }
+
+  /*----------- FOOTER --------------*/
+  div#footerWrapper {
+    height: 80px;
+  }
+
+  footer {
+    padding: 0;
+    font-size: 2rem;
+  }
+
+  footer p {
+    font-size: 1.2rem;
+  }
+} /* end of media query */

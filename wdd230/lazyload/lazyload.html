@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazy Load</title>
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/lazyload.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Lazy Loading Images</h1>
+      <picture>
+        <img
+          src="images/placeholder.jpg"
+          data-src="images/image1.jpg"
+          width="300"
+          height="400"
+          alt="Starry night"
+        />
+      </picture>
+      <picture>
+        <img
+          src="images/placeholder.jpg"
+          data-src="images/image2.jpg"
+          width="300"
+          height="400"
+          alt="Grazing cattle"
+        />
+      </picture>
+      <picture>
+        <img
+          src="images/placeholder.jpg"
+          data-src="images/image3.jpg"
+          width="300"
+          height="400"
+          alt="Robot"
+        />
+      </picture>
+      <picture>
+        <img
+          src="images/placeholder.jpg"
+          data-src="images/image4.jpg"
+          width="300"
+          height="400"
+          alt="Lighthouse"
+        />
+      </picture>
+      <picture>
+        <img
+          src="images/placeholder.jpg"
+          data-src="images/image5.jpg"
+          width="300"
+          height="400"
+          alt="Apple soda"
+        />
+      </picture>
+      <picture>
+        <img
+          src="images/placeholder.jpg"
+          data-src="images/image6.jpg"
+          width="300"
+          height="400"
+          alt="Paper mice"
+        />
+      </picture>
+    </div>
+    <script src="js/lazyload.js"></script>
+  </body>
+</html>
+<div></div>

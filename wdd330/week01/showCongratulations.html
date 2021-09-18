@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+    <script>
+      // Argument 'theButtonClicked' does not seem to be needed that I can see.
+      function showCongratulations(theButtonClicked) {
+        document.getElementById("result_display").innerHTML =
+          "Congratulations, you did it! <p>You got the page to update!</p>";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Argument 'this' does not seem to be needed that I can see. -->
+    <button onclick="showCongratulations(this)">Click Me!</button>
+    <section id="result_display"></section>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+{
+  "businesses": [
+    {
+      "name": "Cardston Clinic",
+      "logo": "cardstonclinic",
+      "address": "34 2nd Ave West",
+      "town": "Cardston",
+      "province": "AB",
+      "postalcode": "T0K 0K0",
+      "phone": "+1 (403) 653-3331",
+      "email": "info@cardstonclinic.ca",
+      "url": "https://cardstonclinic.ca/"
+    },
+    {
+      "name": "Remington Carriage Museum",
+      "logo": "remingtomcarriagemuseum",
+      "address": "623 Main Street",
+      "town": "Cardston",
+      "province": "AB",
+      "postalcode": "T0K 0K0",
+      "phone": "+1 (403) 653-5139",
+      "email": "info@RemingtonCarriageMuseum.com",
+      "url": "https://remingtoncarriagemuseum.ca/"
+    },
+    {
+      "name": "The Pro Shop",
+      "logo": "theproshop",
+      "address": "343 Main Street",
+      "town": "Cardston",
+      "province": "AB",
+      "postalcode": "T0K 0K0",
+      "phone": "+1 (403) 653-2600",
+      "email": "ProShop@SourceForSports.ca",
+      "url": "https://www.sourceforsports.com/en-US/stores/117-Pro-Shop-Cardston-Source-For-Sports.aspx?crossculture=en-US"
+    },
+    {
+      "name": "Westwind School Division",
+      "logo": "wsd",
+      "address": "445 Main Street",
+      "town": "Cardston",
+      "province": "AB",
+      "postalcode": "T0K 0K0",
+      "phone": "+1 (403) 653-4991",
+      "email": "info@westwind.ab.ca",
+      "url": "https://www.westwind.ab.ca/"
+    },
+    {
+      "name": "Price & Comin LLP",
+      "logo": "priceandcomin",
+      "address": "348 Main Street",
+      "town": "Cardston",
+      "province": "AB",
+      "postalcode": "T0K 0K0",
+      "phone": "+1 (403) 388-1880",
+      "email": "info@pricecomin.ca",
+      "url": "https://pricecomin.ca/"
+    },
+    {
+      "name": "Carriage House Theatre",
+      "logo": "carriagehousetheatre",
+      "address": "353 Main Street",
+      "town": "Cardston",
+      "province": "AB",
+      "postalcode": "T0K 0K0",
+      "phone": "+1 (403) 653-1000",
+      "email": "info@carriagehousetheatre.com",
+      "url": "https://www.carriagehousetheatre.com/"
+    },
+    {
+      "name": "What's Pop'n Pop Shop",
+      "logo": "whatspopnpopshop",
+      "address": "355 1st Street East",
+      "town": "Cardston",
+      "province": "AB",
+      "postalcode": "T0K 0K0",
+      "phone": "+1 (403) 653-5555",
+      "email": "info@whatspopn.ca",
+      "url": "https://www.facebook.com/Whatspopn.popshop/"
+    },
+    {
+      "name": "Epic Youth Services",
+      "logo": "epicyouthservices",
+      "address": "405 Main Street",
+      "town": "Cardston",
+      "province": "AB",
+      "postalcode": "T0K 0K0",
+      "phone": "+1 (403) 659-0110",
+      "email": "jeremy@epic-youth.com",
+      "url": "http://www.epic-youth.com/"
+    }
+  ]
+}

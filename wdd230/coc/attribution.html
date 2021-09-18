@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="My final project for WDD 230: Web Frontend Development I at Brigham Young University - Idaho."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Attributes: Cardston | Chamber of Commerce</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/style.js"></script>
+    <script defer src="js/currentdate.js"></script>
+  </head>
+  <body>
+    <!-- HEADER HERE -->
+    <div id="headerWrapper">
+      <header class="clearfix">
+        <a href="index.html">
+          <img src="images/coclogo.png" alt="Cardston Chamber of Commerce"
+        /></a>
+        <div class="headings">
+          <h1>Cardston Chamber Of Commerce</h1>
+          <h2>Where businesses unite.</h2>
+        </div>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE -->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="town.html">Cardston</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <div>
+        <picture>
+          <source
+            media="(max-width: 500px)"
+            srcset="images/chiefmountain500.jpg"
+          />
+          <source
+            media="(max-width: 800px)"
+            srcset="images/chiefmountain800.jpg"
+          />
+          <img
+            src="images/chiefmountain1100.jpg"
+            alt="Chief Mountain"
+            loading="lazy"
+          />
+        </picture>
+      </div>
+      <div class="attributionWrapper">
+        <h1>Site Attributions</h1>
+        <h2>Local Businesses</h2>
+        <div class="attributionBox">
+          <div>
+            <p>
+              <a href="https://cardstonclinic.ca/" target="_blank"
+                >Cardston Clinic</a
+              >
+            </p>
+            <p>
+              <a href="https://www.carriagehousetheatre.com/" target="_blank"
+                >Carriage House Theatre</a
+              >
+            </p>
+            <p>
+              <a href="https://epic-youth.com/" target="_blank"
+                >Epic Youth Services</a
+              >
+            </p>
+            <p>
+              <a href="https://pricecomin.ca/" target="_blank"
+                >Price & Comin LLP</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://www.sourceforsports.com/en-US/stores/117-Pro-Shop-Cardston-Source-For-Sports.aspx?crossculture=en-US"
+                target="_blank"
+                >The Pro Shop</a
+              >
+            </p>
+            <p>
+              <a href="https://remingtoncarriagemuseum.ca/" target="_blank"
+                >Remington Carriage Museum</a
+              >
+            </p>
+            <p>
+              <a href="https://www.westwind.ab.ca/" target="_blank"
+                >Westwind School Division</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://www.facebook.com/Whatspopn.popshop/"
+                target="_blank"
+                >What's Pop's Pop Shop</a
+              >
+            </p>
+          </div>
+        </div>
+        <h2>Additional Links</h2>
+        <div class="attributionBox">
+          <p>
+            <a
+              href="https://www.flickr.com/photos/160950421@N07/31181698378"
+              target="_blank"
+              >Downtown</a
+            >
+            Cardston Image
+          </p>
+          <p>
+            <a
+              href="https://digitallibrary.uleth.ca/digital/collection/cardston/id/316"
+              target="_blank"
+              >Cardston Alberta Tabernacle</a
+            >
+            Image
+          </p>
+          <p>
+            Cardston
+            <a
+              href="https://canadaehx.com/2019/01/06/the-founding-of-cardston/"
+              target="_blank"
+              >Daines Street</a
+            >
+            Image
+          </p>
+          <p>
+            <a
+              href="https://www.todocanada.ca/12-things-to-do-in-cardston/"
+              target="_blank"
+              >Chief Mountain</a
+            >
+            Image
+          </p>
+          <p>
+            <a
+              href="https://regionaldashboard.alberta.ca/region/cardston/#/"
+              target="_blank"
+              >Cardston Demographics</a
+            >
+            Data
+          </p>
+          <p>
+            Cardston Local
+            <a
+              href="https://www.cardston.ca/calendar?search_request=calendar_item&month=08&year=2021&event_id=148904&day=7#grid"
+              target="_blank"
+              >events</a
+            >
+          </p>
+          <p>
+            <a
+              href="https://history.churchofjesuschrist.org/place/cardston-alberta-canada?lang=eng"
+              target="_blank"
+            >
+              Cardston History</a
+            >
+            Story
+          </p>
+          <p></p>
+          <p>
+            <a
+              href="https://history.churchofjesuschrist.org/article/cardston-temple-history?lang=eng"
+              target="_blank"
+              >The First Modern Temple</a
+            >
+            Story
+          </p>
+        </div>
+        <h2>Historical images of Cardston</h2>
+        <div class="attributionBox">
+          <div>
+            <p>
+              <a
+                href="http://www.prairie-towns.com/cardston-images.html"
+                target="_blank"
+                >Prairie Towns</a
+              >
+            </p>
+            <p>
+              <a
+                href="http://peel.library.ualberta.ca/search/?search=page&pageNumber=2&qid=postcards%7Ctitle%3A%28Cardston%29%7C%7Cscore&index=postcards&locale=en&digstatus=&"
+                target="_blank"
+                >University of Alberta</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <div id="footerWrapper">
+      <footer><span id="currentDate"></span></footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({ google: { families: ["Cormorant Infant"] } });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+/* 35em is also 560px (if basefont is 16px) */
+@media only screen and (min-width: 35rem) {
+  table {
+    min-width: 500px;
+  }
+
+  thead tr:first-child {
+    font-size: 2.6rem;
+  }
+
+  thead tr:nth-child(2) {
+    font-size: 1.8rem;
+  }
+
+  tbody tr {
+    height: 60px;
+  }
+
+  #table tbody tr {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,23 @@
+@media only screen and (min-width: 32.5em) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  header,
+  footer {
+    border-radius: 25px;
+  }
+
+  header img {
+    box-shadow: 0 0 rgb(141, 140, 155);
+    float: right;
+    width: 150px;
+    height: auto;
+    margin-right: 2%;
+    margin-top: 2%;
+  }
+} /* end of media query */

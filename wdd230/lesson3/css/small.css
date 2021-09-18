@@ -1,0 +1,133 @@
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*----------- BODY --------------*/
+body {
+  color: #293241;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
+
+/*----------- HEADER --------------*/
+header {
+  padding: 0.5rem 2%;
+  background-color: #e0fbfc;
+}
+header img {
+  float: left;
+  margin-right: 10px;
+  width: 50px;
+}
+header h1 {
+  font-size: 1.3rem;
+  padding: 0 2%;
+  margin: 0;
+}
+header h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/*----------- NAVIGATION --------------*/
+nav {
+  background-color: #3d5a80;
+}
+nav ul {
+  font-weight: bold;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  display: block;
+  color: #e0fbfc;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+nav ul li a:hover {
+  background-color: #98c1d9;
+  color: #293241;
+}
+nav ul li.active a {
+  background-color: #ee6c4d;
+  color: #000;
+}
+/*----------- MAIN --------------*/
+main div {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  padding: 0 2%;
+  min-height: 10rem;
+  font-size: 1rem;
+  grid-area: main;
+}
+
+main a {
+  width: 50%;
+  height: auto;
+}
+
+main p {
+  font-size: 1.2rem;
+  padding: 0 2%;
+  line-height: 1.8rem;
+}
+
+main p img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+section {
+  border: 0.2rem black solid;
+  padding: 7px;
+}
+
+section img {
+  float: left;
+  border: 0.2rem black solid;
+  border-radius: 15%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+section p {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 75%;
+}
+
+/*----------- FOOTER --------------*/
+footer {
+  background-color: #293241;
+  color: #e0fbfc;
+  padding: 0.5rem 2%;
+  text-align: center;
+}
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -1,0 +1,134 @@
+/* 64em is also 1028px (if basefont is 16px) */
+@media only screen and (min-width: 64rem) {
+  /*----------- BODY --------------*/
+  #warningWrapper h2 {
+    padding-top: 2%;
+    padding-left: 0;
+    font-size: 1.5rem;
+  }
+
+  aside {
+    padding: 2%;
+  }
+
+  .businessAds section h2 {
+    font-size: 1.5rem;
+  }
+
+  #close {
+    padding-top: 2%;
+    padding-right: 2%;
+  }
+
+  .businessDirectory section a {
+    font-size: 1.5rem;
+  }
+
+  /*----------- HEADER --------------*/
+  #headerWrapper {
+    padding: 0.5%;
+  }
+
+  .headings {
+    padding-left: 160px;
+  }
+
+  header img {
+    width: 15%;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    padding-top: 0;
+  }
+
+  header h2 {
+    font-size: 1.8rem;
+  }
+
+  /*----------- NAVIGATION --------------*/
+  nav ul li a {
+    width: 120px;
+    font-size: 1.3rem;
+  }
+
+  /*----------- MAIN --------------*/
+  .herochild1 {
+    top: 25px;
+    right: 25px;
+  }
+
+  .herochild1 h2 {
+    font-size: 3rem;
+  }
+
+  .herochild1 p {
+    font-size: 1.9rem;
+  }
+
+  section div p {
+    font-size: 1.8rem;
+  }
+
+  main h1 {
+    font-size: 2.3rem;
+  }
+
+  main h2 {
+    font-size: 3rem;
+  }
+
+  .demographics h1 {
+    font-size: 2rem;
+  }
+
+  .demographics ul li {
+    font-size: 1.7rem;
+  }
+
+  .oldtownWrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .moreimages h2 {
+    padding: 0;
+  }
+
+  .moreimages p {
+    margin: 0;
+  }
+
+  .attributionWrapper h1 {
+    font-size: 3rem;
+  }
+
+  .attributionWrapper h2 {
+    font-size: 2.5rem;
+  }
+
+  .attributionBox p {
+    font-size: 1.5rem;
+  }
+
+  .attributionWrapper a:hover {
+    font-size: 26px;
+  }
+
+  /*--------- DIRECTORY -------------*/
+  .businessBox:hover {
+    box-shadow: 0 0 15px #000;
+  }
+
+  /*------------ FORM ---------------*/
+
+  /*----------- FOOTER --------------*/
+  footer {
+    font-size: 2rem;
+  }
+
+  footer p {
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 10px 0 0 0;
+  }
+} /* end of media query */

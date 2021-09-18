@@ -1,0 +1,482 @@
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*----------- BODY --------------*/
+body {
+  color: #293241;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
+
+#asideWrapper {
+  background-color: #ee6c4d;
+}
+
+aside {
+  display: none;
+  background-color: #ee6c4d;
+  color: #000;
+  font-weight: bold;
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+
+/*----------- HEADER --------------*/
+div#headerWrapper {
+  background-color: #e0fbfc;
+}
+
+.headings {
+  padding-top: 2px;
+}
+
+header {
+  padding: 0.5rem 2%;
+}
+
+header img {
+  float: left;
+  margin-right: 10px;
+  width: 60px;
+}
+
+header h1 {
+  font-size: 1.3rem;
+}
+
+header h2 {
+  font-size: 1rem;
+}
+
+header h1,
+header h2 {
+  font-style: italic;
+  font-weight: 400;
+  padding: 0 2%;
+  margin: 0;
+}
+
+/*----------- NAVIGATION --------------*/
+div#navWrapper {
+  background-color: #3d5a80;
+}
+
+/* The button is the Hamburger Button */
+nav button {
+  margin: 0.2rem 2%;
+  background-color: transparent;
+  border: 2px;
+  font-size: 1.6rem;
+  color: #e0fbfc;
+}
+
+nav ul {
+  font-weight: bold;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* For hiding the Hamburger Button */
+nav ul.hide {
+  display: none;
+}
+
+nav ul li a {
+  display: block;
+  color: #e0fbfc;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+nav ul li.active a {
+  background-color: #ee6c4d;
+  color: #000;
+}
+
+nav ul li a:hover {
+  background-color: #98c1d9;
+  color: #293241;
+}
+
+/*----------- MAIN --------------*/
+.indexhero {
+  width: 100%;
+}
+
+h1 {
+  text-align: left;
+  font-weight: bold;
+}
+
+h2 {
+  margin: 0;
+}
+
+h1,
+div.forecastWrapper h2,
+div.eventWrapper h2,
+div.articleWrapper h2,
+div.contactus2Wrapper h2 {
+  margin: 2% 2% 0 2%;
+  font-style: italic;
+}
+
+.heroparent {
+  padding: 0;
+}
+
+.herochild {
+  background: radial-gradient(#e0fbfc, #ee6c4d);
+  color: #000;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px;
+}
+
+.herochild ul {
+  margin: 0;
+}
+
+main a {
+  text-decoration: none;
+  width: 50%;
+  height: auto;
+}
+
+main p {
+  font-size: 1.2rem;
+  margin: 5px 0;
+  padding: 0 5px;
+  line-height: 1.8rem;
+}
+
+.forecastWrapper {
+  display: block;
+}
+
+.forecastWrapper div {
+  width: 100%;
+  padding: 0;
+}
+
+.forecastWrapper h3 {
+  background-color: #3d5a80;
+  color: #e0fbfc;
+}
+
+.forecastWrapper h3,
+.forecastWrapper h4 {
+  font-size: 2rem;
+  padding: 10px 0;
+}
+
+.forecastWrapper h3,
+.forecastWrapper h4 {
+  margin: 0;
+  text-align: center;
+}
+
+.forecastWrapper img {
+  width: 50%;
+  margin: 0 auto;
+}
+
+div.forecastBox {
+  text-align: center;
+}
+
+section.forecast {
+  background-color: #98c1d9;
+}
+
+.eventBox div ul {
+  font-family: "Lato";
+  font-size: 1.2rem;
+  padding: 0 2%;
+  margin: 5px 0;
+}
+
+.eventBox div ul li {
+  list-style-type: none;
+  padding: 0;
+}
+
+div.iconBox1,
+div.iconBox2,
+div.iconBox3,
+div.iconBox4,
+div.iconBox5 {
+  border: none;
+}
+
+section div img {
+  display: grid;
+  width: 100%;
+  height: auto;
+}
+
+.top {
+  display: none;
+}
+
+.bottom {
+  display: block;
+  width: 100%;
+}
+
+.contactus img {
+  width: 100%;
+  height: auto;
+  float: right;
+}
+
+.contactus2Wrapper h2 {
+  margin: 2%;
+  font-style: italic;
+}
+
+.contactus,
+.contactus2 {
+  font-size: 1rem;
+  display: grid;
+}
+
+.contactus div,
+.contactus2 div {
+  margin: 5px 0;
+  padding: 0 5px;
+}
+
+.contactus h3,
+.contactus2 h3 {
+  margin: 5px 0;
+}
+
+.contactus p,
+.contactus2 p {
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1.3rem;
+}
+
+.localmap {
+  /*display: none;*/
+  width: 100%;
+}
+
+.wireframes {
+  text-align: center;
+}
+
+/*----- Alternating Articles ------*/
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 2px solid #000;
+  background-color: #98c1d9;
+}
+
+section {
+  border: 2px solid #000;
+  margin: 0 2% 2%;
+  background-color: #e0fbfc;
+}
+
+div,
+.card h2,
+.card h3,
+.card p,
+.card div {
+  margin: 0;
+  padding: 0;
+}
+
+div.heroWrapper {
+  padding: 0;
+}
+
+div.card {
+  margin: 2%;
+  padding: 10px 0;
+}
+
+.card h2,
+.card h3,
+.card p {
+  text-align: center;
+}
+
+.card h2,
+.card h3 {
+  padding: 5px 0 0 0;
+}
+
+.card h2 {
+  font-size: 1.3rem;
+}
+
+.card h3 {
+  font-size: 0.8rem;
+}
+
+.card p {
+  font-size: 0.8rem;
+}
+
+.homearticleimage {
+  width: 100%;
+}
+
+/*----------- Form ---------------*/
+form {
+  margin: 2% auto;
+  max-width: 20rem;
+}
+
+form fieldset {
+  border: 1px solid #293241;
+  border-radius: 10px;
+  padding: 0.5rem 2%;
+}
+
+form legend {
+  font-size: 1.5rem;
+  color: #293241;
+  margin: 0 1rem;
+  padding: 0 0.5rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid #ee6c4d;
+  box-shadow: 0 0 20px #ee6c4d;
+  margin: 0;
+}
+
+form label.top,
+form div {
+  display: block;
+  font-size: 1.5rem;
+  padding: 20px 0 1px 0;
+  color: #293241;
+}
+
+form label.top input,
+form label.top select {
+  -webkit-appearance: none;
+  display: block;
+  font-size: 1rem;
+  border: 1px solid #3d5a80;
+  border-radius: 5px;
+  padding: 0.75rem;
+  color: #293241;
+  width: 100%;
+  max-width: 20rem;
+  background-color: #e0fbfc;
+}
+
+form label.sbs {
+  display: block;
+  padding: 0.75rem;
+  color: #293241;
+  width: 100%;
+  max-width: 30rem;
+}
+
+.sbs.stormseverity {
+  font-size: 1.5rem;
+  padding: 20px 0 1px 0;
+}
+
+#rating {
+  width: 100%;
+}
+
+textarea {
+  display: block;
+  background-color: #e0fbfc;
+  color: #293241;
+}
+
+form input.submitBtn {
+  border: none;
+  background-color: #293241;
+  color: #e0fbfc;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  margin: 0 0 2rem 2%;
+  width: 96%;
+  max-width: 20rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+form label.top input:required {
+  border-left: red solid 6px;
+}
+
+form label.top input:required:valid {
+  border-left: green solid 6px;
+}
+
+/*---------- Gallery --------------*/
+.weatherWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  margin: 1px 0;
+  padding: 0;
+  margin: 0;
+}
+
+.weatherWrapper img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  filter: blur(0);
+  transition: filter 0.5s;
+}
+
+/* blur placeholder */
+.weatherWrapper img[data-src] {
+  filter: blur(0.5rem);
+}
+
+/*----------- FOOTER --------------*/
+div#footerWrapper {
+  background-color: #293241;
+}
+
+footer {
+  color: #e0fbfc;
+  padding: 0.5rem 2%;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+p.lost {
+  margin: 2%;
+  padding: 0;
+}

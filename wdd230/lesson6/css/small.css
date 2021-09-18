@@ -1,0 +1,208 @@
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*----------- BODY --------------*/
+body {
+  color: #293241;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
+
+#asideWrapper {
+  background-color: #ee6c4d;
+}
+
+aside {
+  display: none;
+  background-color: #ee6c4d;
+  color: #000;
+  font-weight: bold;
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+
+/*----------- HEADER --------------*/
+div#headerWrapper {
+  background-color: #e0fbfc;
+}
+
+header {
+  padding: 0.5rem 2%;
+}
+
+header img {
+  float: left;
+  margin-right: 10px;
+  width: 60px;
+}
+
+header h1 {
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 400;
+  padding: 0 2%;
+  margin: 0;
+}
+
+header h2 {
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+  padding: 0 2%;
+  margin: 0;
+}
+
+/*----------- NAVIGATION --------------*/
+div#navWrapper {
+  background-color: #3d5a80;
+}
+
+/* The button is the Hamburger Button */
+nav button {
+  margin: 0.2rem 2%;
+  background-color: transparent;
+  border: 2px;
+  font-size: 1.6rem;
+  color: #e0fbfc;
+}
+
+nav ul {
+  font-weight: bold;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* For hiding the Hamburger Button */
+nav ul.hide {
+  display: none;
+}
+
+nav ul li a {
+  display: block;
+  color: #e0fbfc;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+nav ul li.active a {
+  background-color: #ee6c4d;
+  color: #000;
+}
+
+nav ul li a:hover {
+  background-color: #98c1d9;
+  color: #293241;
+}
+
+/*----------- MAIN --------------*/
+main h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+main div {
+  margin-top: 0.5rem;
+  padding: 1rem;
+}
+
+.broke {
+  max-width: 100%;
+}
+
+.heroparent {
+  padding: 0;
+}
+
+.herochild {
+  background: radial-gradient(#e0fbfc, #ee6c4d);
+  opacity: 0.7;
+  color: #000;
+  font-weight: bold;
+  margin: 0;
+  padding: 0 10px;
+  box-shadow: 0 0 30px #000;
+}
+
+main a {
+  width: 50%;
+  height: auto;
+}
+
+main p {
+  font-size: 1.2rem;
+  padding: 0 2%;
+  line-height: 1.8rem;
+}
+
+div.forcastWrapper {
+  display: none;
+}
+
+section div img {
+  display: grid;
+  width: 100%;
+  height: auto;
+}
+
+.top {
+  display: none;
+}
+
+.bottom {
+  display: block;
+}
+
+.contactus img {
+  width: 100%;
+  height: auto;
+  float: right;
+}
+
+.contactus {
+  font-size: 0.8rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.contactus h3 {
+  margin: 2% 0;
+}
+
+.contactus p {
+  font-size: 0.7rem;
+  margin: 0;
+}
+
+.localmap {
+  display: none;
+}
+
+/*----------- FOOTER --------------*/
+div#footerWrapper {
+  background-color: #293241;
+}
+
+footer {
+  color: #e0fbfc;
+  padding: 0.5rem 2%;
+  text-align: center;
+}
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

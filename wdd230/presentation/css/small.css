@@ -1,0 +1,188 @@
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*----------- BODY --------------*/
+header,
+nav,
+main,
+footer {
+  font-size: 16px;
+  margin: 0 2%;
+  padding: 0;
+}
+
+/*----------- HEADER --------------*/
+div#headerWrapper {
+  background-color: #e0fbfc;
+}
+
+header {
+  margin: 0 auto;
+  background-color: #e0fbfc;
+  padding: 15px;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  text-align: center;
+  margin: 0 2%;
+}
+
+/*----------- NAVIGATION --------------*/
+div#navWrapper {
+  background-color: #3d5a80;
+}
+
+nav button {
+  margin: 0.2rem 2%;
+  background-color: transparent;
+  border: 2px;
+  font-size: 1.6rem;
+  color: #e0fbfc;
+}
+
+nav ul {
+  list-style-type: none; /* Removes dot left of item */
+  padding: 0;
+}
+
+/* For hiding the Hamburger Button */
+nav ul.hide {
+  display: none;
+}
+
+nav ul li a {
+  display: block;
+  background-color: #3d5a80;
+  color: #e0fbfc;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+nav ul li.active a {
+  background-color: #ee6c4d;
+  color: #000;
+}
+
+nav ul li a:hover {
+  background-color: #98c1d9;
+  color: #293241;
+}
+
+/*----------- MAIN --------------*/
+main {
+  padding: 20px 0 20px 0;
+}
+
+div.imagesWrapper {
+  display: flex;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+}
+
+div.funWrapper {
+  display: flex;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+}
+
+main h1 {
+  font-size: 2rem;
+  margin: 0 2%;
+  padding: 0;
+}
+
+h2 {
+  margin: 0 2%;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 20px 0 0 0;
+}
+
+p {
+  margin: 0 2%;
+  padding: 0;
+}
+
+.list {
+  margin: 2%;
+}
+
+p,
+li {
+  font-size: 1.2rem;
+}
+
+img {
+  width: 600px;
+  height: 388px;
+  border: 0.1px solid #000;
+  background-color: red;
+  max-width: 100%;
+}
+figcaption {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.fill {
+  object-fit: fill;
+}
+
+.contain {
+  object-fit: contain;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.none {
+  object-fit: none;
+}
+
+.scale-down {
+  object-fit: scale-down;
+}
+
+.narrow {
+  width: 388px;
+  height: 600px;
+}
+
+.short {
+  width: 500px;
+  height: 500px;
+}
+
+.forfun {
+  width: 1920px;
+  height: 512px;
+}
+
+/*----------- FOOTER --------------*/
+div#footerWrapper {
+  background-color: #293241;
+}
+
+footer {
+  color: #e0fbfc;
+  padding: 0.5rem 2%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

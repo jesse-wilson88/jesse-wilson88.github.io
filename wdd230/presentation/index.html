@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SITE TITLE-->
+    <title>CSS The object-fit Property</title>
+
+    <!-- STYLE SHEETS-->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css">
+    <link rel="stylesheet" href="css/large.css">
+  
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/scripts.js"></script>
+  </head>
+
+  <!-- BODY HERE-->
+  <body>
+    <!-- HEADER HERE-->
+    <div id="headerWrapper">
+      <header>
+        <h1>CSS The object-fit Property</h1>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE-->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li class="active"><a href="index.html">Home</a></il>
+          <li><a href="fill.html">fill</a></il>
+          <li><a href="cover.html">cover</a></il>
+          <li><a href="none.html">none</a></il>
+          <li><a href="contain.html">contain</a></il>
+          <li><a href="scale-down.html">scale-down</a></il>
+          <li><a href="forfun.html">For Fun</a></il>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- MAIN HERE-->
+    <main>
+      <h1>object-fit Property</h1>
+      <p>
+        The object-fit property defines how elements respond to the height and width of the container box it is placed in. It is intended to be used with images, videos, and other embeddable media formats in conjunction with the object-position property which we will not be getting into at this time. When object-fit is used by itself, it lets us crop an inline image by giving us fine-grained control over how it stretches and squishes inside its box or container. An inline image is a graphic image that is inserted into a web page to add visual appeal, provide information or to represent a hyperlink. Inline images are usually in GIF, JPEG or PNG format.
+      </p>
+      <br>
+      <p>
+        There are five different values you can use with the object-fit property:
+      </p>
+      <ul class="list">
+        <li>fill</li>
+        <li>cover</li>
+        <li>none</li>
+        <li>contain</li>
+        <li>scale-down</li>
+      </ul>
+    </main>
+
+    <!-- FOOTER HERE-->
+    <div id="footerWrapper">
+      <footer>
+        &copy; 2021 &bull; Jesse Wilson
+      </footer>
+    </div>
+  </body>
+</html>

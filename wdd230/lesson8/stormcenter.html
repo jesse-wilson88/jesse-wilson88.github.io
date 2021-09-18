@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Check the weather to decide whether to go or not."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Preston: Weather To Go Or Not</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!--
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,100;1,400&display=swap"
+      rel="stylesheet"
+    />
+    -->
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/style.js"></script>
+    <script defer src="js/banner.js"></script>
+    <script deger src="js/lazyload.js"></script>
+  </head>
+
+  <body>
+    <div id="asideWrapper">
+      <aside id="banner">
+        Saturday = Preston Pancakes in the Park! 9:00 a.m. Saturday at the city
+        park pavilion.
+      </aside>
+    </div>
+
+    <!-- HEADER HERE -->
+    <div id="headerWrapper">
+      <header class="clearfix">
+        <img src="images/logo.png" alt="Weather logo" />
+        <div class="headings">
+          <h1>Weather To Go Or Not</h1>
+          <h2>Decide whether to go or not.</h2>
+        </div>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE -->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="#">Home</a></li>
+          <li><a href="preston.html">Preston</a></li>
+          <li><a href="#">Soda Springs</a></li>
+          <li><a href="#">Fish Haven</a></li>
+          <li class="active"><a href="stormcenter.html">Storm Center</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <h1>Storm Center</h1>
+      <form method="get" action="thanks.html">
+        <fieldset>
+          <legend>Applicant Information</legend>
+          <label class="top"
+            >Full Name:
+            <input
+              type="text"
+              name="fullName"
+              pattern="^(\w\w+)\s(\w+)$"
+              required
+            />
+          </label>
+          <label class="top"
+            >Email:
+            <input type="email" name="email" placeholder="userID@gmail.com" />
+          </label>
+          <label class="top"
+            >Phone Number:
+            <input
+              type="tel"
+              name="phone"
+              placeholder="###-###-####"
+              autocomplete="shipping postal-codep"
+              required
+            />
+          </label>
+          <label class="top"
+            >Zip Code:
+            <input
+              type="text"
+              name="zipcode"
+              pattern="(\d{5}([\-]\d{4})?)"
+              required
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Storm Information</legend>
+          <label class="top"
+            >Date:<input type="date" name="submitdate" />
+          </label>
+          <label class="top"
+            >Storm Type:<input name="storms" list="stormlist"
+          /></label>
+          <datalist id="stormlist">
+            <option value="Flash Flood">Flash Flood</option>
+            <option value="Hail">Hail</option>
+            <option value="Hurricane">Hurricane</option>
+            <option value="Thunderstrom">Thunderstrom</option>
+            <option value="Tornado">Tornado</option>
+          </datalist>
+          <label>
+            <label class="sbs stormseverity" for="rating"
+              >Rating: &nbsp;&nbsp;&nbsp;
+              <input
+                type="range"
+                id="rating"
+                value="5"
+                min="1"
+                max="10"
+                step="1"
+                list="tickmarks"
+                oninput="adjustRating(this.value)"
+                onchange="adjustRating(this.value)"
+              />
+              <span id="ratingvalue">5</span>
+            </label>
+
+            <datalist id="tickmarks">
+              <option value="0"></option>
+              <option value="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+              <option value="4"></option>
+              <option value="5"></option>
+              <option value="6"></option>
+              <option value="7"></option>
+              <option value="8"></option>
+              <option value="9"></option>
+              <option value="10"></option>
+            </datalist>
+            <label class="top"
+              >Region:
+              <select name="region">
+                <option value="">Select Region ...</option>
+                <option value="preston">Preston</option>
+                <option value="sodasprings">Soda Springs</option>
+                <option value="fishhaven">Fish Haven</option>
+              </select>
+            </label>
+            </fieldset>
+            <fieldset>
+            <legend>Additional Information</legend>
+            <div>Are you in danger?</div>
+            <label>
+              <label class="sbs"
+                ><input
+                  class="sbs"
+                  type="radio"
+                  name="indanger"
+                  value="maybe"
+                />
+                Maybe</label
+              >
+              <label class="sbs"
+                ><input type="radio" name="indanger" value="no" /> No</label
+              >
+              <label class="sbs"
+                ><input type="radio" name="indanger" value="yes" /> Yes</label
+              >
+            </label>
+            <div>Additional Comments:</div>
+            <label></label>
+            <!-- For placeholder to work in textarea, the open and close tag needs to be on the same line -->
+            <textarea name="comments" id="comments" cols="36" rows="10" placeholder="Comment..."></textarea>
+          </label>
+        </fieldset>
+        <input type="submit" value="Send" class="submitBtn" />
+      </form>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <div id="footerWrapper">
+      <footer><span id="currentDate"></span></footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({ google: { families: ["Lato"] } });
+    </script>
+  </body>
+</html>

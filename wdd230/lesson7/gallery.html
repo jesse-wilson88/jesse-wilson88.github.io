@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Check the weather to decide whether to go or not."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Preston: Weather To Go Or Not</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- Bookmark Icon -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/style.js"></script>
+    <script defer src="js/banner.js"></script>
+    <script defer src="js/lazyload.js"></script>
+    <script defer src="js/gallery.js"></script>
+  </head>
+
+  <body>
+    <div id="asideWrapper">
+      <aside id="banner">
+        Saturday = Preston Pancakes in the Park! 9:00 a.m. Saturday at the city
+        park pavilion.
+      </aside>
+    </div>
+
+    <!-- HEADER HERE -->
+    <div id="headerWrapper">
+      <header class="clearfix">
+        <img src="images/logo.png" alt="Weather logo" />
+        <div class="headings">
+          <h1>Weather To Go Or Not</h1>
+          <h2>Decide whether to go or not.</h2>
+        </div>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE -->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="#">Home</a></li>
+          <li><a href="preston.html">Preston</a></li>
+          <li><a href="#">Soda Springs</a></li>
+          <li><a href="#">Fish Haven</a></li>
+          <li><a href="#">Storm Center</a></li>
+          <li class="active"><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <h1>Weather Gallery</h1>
+      <div class="weatherWrapper">
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/lightningStorm1.jpg"
+            width="240"
+            height="148"
+            alt="Desert Storm"
+          />
+          <figcaption>Lightning Storm</figcaption>
+        </figure>
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/partlyCloudy.jpg"
+            width="240"
+            height="148"
+            alt="Covered Moon"
+          />
+          <figcaption>Covered Moon</figcaption>
+        </figure>
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/rain1.jpg"
+            width="240"
+            height="148"
+            alt="Rainbow Trail"
+          />
+          <figcaption>Rainbow Trail</figcaption>
+        </figure>
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/snow1.jpg"
+            width="240"
+            height="148"
+            alt="Cabin In The Snow"
+          />
+          <figcaption>Cabin In The Snow</figcaption>
+        </figure>
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/sunny1.jpg"
+            width="240"
+            height="148"
+            alt="Palms In The Sun"
+          />
+          <figcaption>Palms In The Sun</figcaption>
+        </figure>
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/lightningStorm2.jpg"
+            width="240"
+            height="148"
+            alt="In Coming Storm"
+          />
+          <figcaption>In Coming Storm</figcaption>
+        </figure>
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/rain2.jpg"
+            width="240"
+            height="148"
+            alt="Heavy Rain"
+          />
+          <figcaption>Heavy Rain</figcaption>
+        </figure>
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/snow2.jpg"
+            width="240"
+            height="148"
+            alt="Frosty's family"
+          />
+          <figcaption>Frosty's Family</figcaption>
+        </figure>
+        <figure class="shadow">
+          <img
+            src="images/weatherImages/placeholder.jpg"
+            data-src="images/weatherImages/sunny2.jpg"
+            width="240"
+            height="148"
+            alt="Perfect day"
+          />
+          <figcaption>Perfect Day</figcaption>
+        </figure>
+      </div>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <div id="footerWrapper">
+      <footer>
+        <span id="currentDate"></span>
+        <p>Last visited <span id="lastVisited"></span> days ago</p>
+      </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({ google: { families: ["Lato"] } });
+    </script>
+  </body>
+</html>

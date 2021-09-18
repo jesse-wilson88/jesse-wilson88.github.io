@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="My final project for WDD 230: Web Frontend Development I at Brigham Young University - Idaho."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Home: Cardston | Chamber of Commerce</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/style.js"></script>
+    <script defer src="js/currentdate.js"></script>
+    <script defer src="js/weatherinfo.js"></script>
+    <script defer src="js/businessads.js"></script>
+    <script defer src="js/townevents.js"></script>
+    <script defer src="js/threedayforecast.js"></script>
+  </head>
+  <body>
+    <div id="warningWrapper">
+      <div class="warning">
+        <button id="close" onclick="toggleMenu()">&#x2715;</button>
+        <h2>Warning:</h2>
+        <aside id="weatherWarning"></aside>
+      </div>
+    </div>
+
+    <!-- HEADER HERE -->
+    <div id="headerWrapper">
+      <header class="clearfix">
+        <a href="index.html">
+          <img src="images/coclogo.png" alt="Cardston Chamber of Commerce"
+        /></a>
+        <div class="headings">
+          <h1>Cardston Chamber Of Commerce</h1>
+          <h2>Where businesses unite.</h2>
+        </div>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE -->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="town.html">Cardston</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <section>
+        <div class="heroparent heroparent2">
+          <picture>
+            <source
+              media="(max-width: 500px)"
+              srcset="images/townofcardston500.jpg"
+            />
+            <source
+              media="(max-width: 800px)"
+              srcset="images/townofcardston800.jpg"
+            />
+            <img
+              src="images/townofcardston1100.jpg"
+              alt="Cardston, Alberta"
+              loading="lazy"
+            />
+          </picture>
+          <div class="herochild1">
+            <h2>Current Temp</h2>
+            <p>Temperature: <span id="current-temp"></span></p>
+            <p>Currently: <span id="description"></span></p>
+            <p>Humidity: <span id="humidity"></span></p>
+          </div>
+          <div class="herochild2">
+            <button onclick="window.location.href='join.html'">Join</button>
+          </div>
+        </div>
+        <div>
+          <h1>Site Purpose:</h1>
+          <p>
+            To give those that live in the local area and those that visit, one
+            place to check to see what businesses are in the area and to further
+            the interests of businesses.
+          </p>
+        </div>
+      </section>
+      <div id="businessWrapper">
+        <h1>Business Ads</h1>
+        <div class="businessAds"></div>
+      </div>
+      <h1>Weather forecast</h1>
+      <div class="forecastWrapper">
+        <div class="forecastBox"></div>
+      </div>
+      <h1>Local Events</h1>
+      <div class="eventsWrapper">
+        <div class="events"></div>
+      </div>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <div id="footerWrapper">
+      <footer>
+        <div>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div>
+          <a href="https://www.facebook.com/cardstonchamber" target="_blank"
+            ><img
+              src="images/facebook.png"
+              alt="Cardston chamber of commerce facebook page."
+          /></a>
+          <a
+            href="https://www.instagram.com/cardstonchamber/?fbclid=IwAR01SuSEaOuWaCYM4RgNermeXfbcddBrs0R30sCO_wq8Kt3cBMcNVs80lsg"
+            target="_blank"
+            ><img
+              src="images/instagram.png"
+              alt="Cardston chamber of commerce twitter page."
+          /></a>
+        </div>
+        <span id="currentDate"></span>
+      </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({ google: { families: ["Cormorant Infant"] } });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body,
+header,
+main,
+footer {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+nav {
+  background-color: #000;
+}
+
+.navigation {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.navigation li:first-child {
+  display: block;
+}
+
+.navigation li {
+  display: none;
+}
+
+.navigation a {
+  display: block;
+  color: #fff;
+  padding: 0.75rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navigation a:hover {
+  color: #000;
+  background-color: #fff;
+  font-weight: 700;
+}
+
+.responsive li {
+  display: block;
+}

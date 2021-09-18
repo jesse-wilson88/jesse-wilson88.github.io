@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SITE TITLE-->
+    <title>CSS The object-fit Property</title>
+
+    <!-- STYLE SHEETS-->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/small.css" />
+    <link rel="stylesheet" href="css/medium.css">
+    <link rel="stylesheet" href="css/large.css">
+  
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/scripts.js"></script>
+  </head>
+
+  <!-- BODY HERE-->
+  <body>
+    <!-- HEADER HERE-->
+    <div id="headerWrapper">
+      <header>
+        <h1>CSS The object-fit Property</h1>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE-->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="index.html">Home</a></il>
+          <li><a href="fill.html">fill</a></il>
+          <li><a href="cover.html">cover</a></il>
+          <li><a href="none.html">none</a></il>
+          <li><a href="contain.html">contain</a></il>
+          <li><a href="scale-down.html">scale-down</a></il>
+          <li class="active"><a href="forfun.html">For Fun</a></il>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- MAIN HERE-->
+    <main>
+      <h1>object-fit: cover</h1>
+      <div class="imagesWrapper">
+        <figure>
+          <figcaption>Cover</figcaption>
+          <img class="cover forfun" src="images/image7.jpg" alt="La Conciergerie">
+        </figure>
+      </div>
+      <div class="funWrapper">
+        <figure>
+          <figcaption>Fill</figcaption>
+          <img class="fill" src="images/image4.jpg" alt="My family">
+        </figure>
+        <figure>
+          <figcaption>Cover</figcaption>
+          <img class="cover" src="images/image4.jpg" alt="My family">
+        </figure>
+        <figure>
+          <figcaption>None</figcaption>
+          <img class="none" src="images/image4.jpg" alt="My family">
+        </figure>
+        <figure>
+          <figcaption>Contain</figcaption>
+          <img class="contain" src="images/image4.jpg" alt="My family">
+        </figure>
+        <figure>
+          <figcaption>Scale-down</figcaption>
+          <img class="scale-down" src="images/image4.jpg" alt="My family">
+        </figure>
+      </div>
+    </main>
+
+    <!-- FOOTER HERE-->
+    <div id="footerWrapper">
+      <footer>
+        &copy; 2021 &bull; Jesse Wilson
+      </footer>
+    </div>
+  </body>
+</html>

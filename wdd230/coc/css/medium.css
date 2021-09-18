@@ -1,0 +1,243 @@
+/* 35em is also 560px (if basefont is 16px) */
+@media only screen and (min-width: 35rem) {
+  /*----------- BODY --------------*/
+  aside {
+    font-size: 1.3rem;
+  }
+
+  .businessAds section h2 {
+    font-size: 1.3rem;
+  }
+
+  /*----------- HEADER --------------*/
+  header,
+  .warning,
+  aside,
+  nav,
+  main,
+  footer {
+    max-width: 60rem;
+    margin: auto;
+  }
+
+  .headings {
+    padding-left: 120px;
+  }
+
+  header img {
+    width: 110px;
+  }
+
+  header h1 {
+    font-size: 1.9rem;
+    padding-top: 0;
+  }
+
+  header h2 {
+    font-size: 1.2rem;
+  }
+
+  /*----------- NAVIGATION --------------*/
+  nav button {
+    display: none;
+  }
+
+  nav ul.hide {
+    display: block;
+  }
+
+  nav ul li {
+    float: left;
+  }
+
+  nav ul li a {
+    border: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 0.9rem;
+    width: 100px;
+  }
+
+  /*----------- MAIN --------------*/
+  div.heroWrapper {
+    margin: 0 2%;
+  }
+
+  .heroparent {
+    position: relative;
+  }
+
+  .herochild1 {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    opacity: 0.7;
+    box-shadow: 0 0 30px #000;
+  }
+
+  .herochild1 h2 {
+    font-size: 1.8rem;
+  }
+
+  .herochild1 p {
+    font-size: 1.2rem;
+  }
+
+  .herochild2 {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    opacity: 0.9;
+    font-size: 1.8rem;
+    font-style: italic;
+    padding: 7px;
+  }
+
+  main h1 {
+    font-size: 2rem;
+  }
+
+  main h2 {
+    font-size: 2.3rem;
+  }
+
+  section div p {
+    font-size: 1.5rem;
+  }
+
+  td:nth-child(1) {
+    width: 160px;
+  }
+
+  .contactus {
+    border-radius: 10px;
+  }
+
+  .contactus h3,
+  .contactus h4 {
+    padding: 2% 0;
+    margin: 0 2%;
+  }
+
+  .contactus h3 {
+    font-size: 1.5rem;
+  }
+
+  .contactus h4 {
+    font-size: 1.2rem;
+  }
+
+  .localmap {
+    height: 300px;
+  }
+
+  .demographics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  .demographics h1 {
+    font-size: 1.8rem;
+  }
+
+  .demographics ul li {
+    font-size: 1.6rem;
+  }
+
+  .moreimages h2 {
+    font-size: 1.5rem;
+  }
+
+  .moreimages p {
+    font-size: 1.2rem;
+  }
+
+  .attributionWrapper h1 {
+    font-size: 2.5rem;
+  }
+
+  .attributionWrapper h2 {
+    font-size: 2rem;
+    margin: 0 2%;
+  }
+
+  .attributionBox p {
+    font-size: 1.2rem;
+  }
+
+  .attributionWrapper a:hover {
+    font-size: 21px;
+  }
+
+  .businessDirectory.list div,
+  .businessDirectory.list p {
+    /* width: 95%; */
+    text-align: left;
+  }
+
+  .businessDirectory.list img {
+    display: block;
+  }
+
+  .businessDirectory section a {
+    font-size: 1.3rem;
+  }
+
+  .businessDirectory.list img {
+    float: right;
+    width: 286px;
+    height: auto;
+  }
+
+  /*------------ TABLE --------------*/
+  th {
+    width: 55px;
+    height: 3rem;
+  }
+
+  th:nth-child(2) {
+    width: 85px;
+  }
+
+  /*------------ Form ---------------*/
+  fieldset {
+    border-radius: 10px;
+  }
+
+  form {
+    max-width: 25rem;
+  }
+
+  form legend {
+    font-size: 2rem;
+  }
+
+  form label.top,
+  form div {
+    font-size: 1.8rem;
+  }
+
+  form label.top input {
+    max-width: 25rem;
+    font-size: 1.5rem;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  form label.sbs {
+    padding: 0.4rem 0;
+    font-size: 1.8rem;
+  }
+
+  textarea {
+    border-radius: 10px;
+  }
+
+  .comments {
+    height: 250px;
+  }
+
+  /*----------- FOOTER --------------*/
+  footer {
+    font-size: 1.4rem;
+  }
+} /* end of media query */

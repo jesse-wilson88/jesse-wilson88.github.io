@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "name": "Rock Painting Competition Drop Off",
+      "location": "Town Office",
+      "date": "1 Aug 2021",
+      "time": "10:00 am - 2:00 pm"
+    },
+    {
+      "name": "Town of Cardston Family Hawaiian Pool Party",
+      "location": "Town Pool",
+      "date": "2 Aug 2021",
+      "time": "6:00 pm"
+    },
+    {
+      "name": "Mini Pow Wow",
+      "location": "Lee Crest",
+      "date": "3 Aug 2021",
+      "time": "11:00 am"
+    },
+    {
+      "name": "Mini Pow Wow",
+      "location": "Chinook Lodge",
+      "date": "3 Aug 2021",
+      "time": "1:30 pm"
+    },
+    {
+      "name": "Family Dance - Lawless Murphy",
+      "location": "Lions Park",
+      "date": "6 Aug 2021",
+      "time": "8:00 pm - 12:00 am"
+    }
+  ]
+}

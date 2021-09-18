@@ -1,0 +1,30 @@
+@media only screen and (min-width: 560px) {
+  body {
+    font-size: 16px;
+  }
+
+  header,
+  footer {
+    border-radius: 25px;
+  }
+
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  main h2 {
+    border-radius: 25px;
+  }
+
+  section {
+    border-radius: 25px;
+  }
+
+  section:nth-child(2) {
+    display: block;
+  }
+
+  section:nth-child(3) {
+    grid-column: span 2;
+  }
+} /* end of media query */

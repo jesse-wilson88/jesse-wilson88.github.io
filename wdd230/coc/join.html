@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="My final project for WDD 230: Web Frontend Development I at Brigham Young University - Idaho."
+    />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Join: Cardston | Chamber of Commerce</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/style.js"></script>
+    <script defer src="js/currentdate.js"></script>
+  </head>
+  <body>
+    <!-- HEADER HERE -->
+    <div id="headerWrapper">
+      <header class="clearfix">
+        <a href="index.html">
+          <img src="images/coclogo.png" alt="Cardston Chamber of Commerce"
+        /></a>
+        <div class="headings">
+          <h1>Cardston Chamber Of Commerce</h1>
+          <h2>Where businesses unite.</h2>
+        </div>
+      </header>
+    </div>
+
+    <!-- NAVIGATION HERE -->
+    <div id="navWrapper">
+      <nav class="clearfix">
+        <button onclick="toggleMenu()">&#9776;</button>
+        <ul id="primaryNav" class="hide">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="town.html">Cardston</a></li>
+          <li class="active"><a href="join.html">Join</a></li>
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- CONTENT HERE -->
+    <main class="join">
+      <h1>Join Us</h1>
+      <div>
+        <table>
+          <tr>
+            <th class="benefits">Benefits</th>
+            <th class="non-profit">Non-Profit</th>
+            <th class="bronze">Bronze</th>
+            <th class="silver">Silver</th>
+            <th class="gold">Gold</th>
+          </tr>
+          <tr>
+            <td class="">Directory listings</td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+          </tr>
+          <tr>
+            <td>Business training</td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+          </tr>
+          <tr>
+            <td>Social media posts</td>
+            <td></td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+          </tr>
+          <tr>
+            <td>Luncheon tickets</td>
+            <td></td>
+            <td></td>
+            <td>&#10004;</td>
+            <td>&#10004;</td>
+          </tr>
+          <tr>
+            <td>Business advertisement</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>&#10004;</td>
+          </tr>
+        </table>
+      </div>
+      <form method="get" action="ty4joining.html">
+        <fieldset>
+          <legend>Applicant Information</legend>
+          <label class="top"
+            >First Name:
+            <input
+              type="text"
+              name="firstName"
+              pattern="[A-Za-z ]{1,32}"
+              required
+              autofocus
+            />
+          </label>
+          <label class="top"
+            >Last Name:
+            <input
+              type="text"
+              name="lastName"
+              pattern="[A-Za-z ]{1,32}"
+              required
+            />
+          </label>
+          <label class="top"
+            >Title:
+            <input type="text" name="title" />
+          </label>
+          <label class="top"
+            >Email:
+            <input
+              type="email"
+              name="email"
+              placeholder="userID@gmail.com"
+              required
+            />
+          </label>
+          <label class="top"
+            >Cell Phone:
+            <input type="tel" name="cellPhone" placeholder="###-###-####" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Business Information</legend>
+          <label class="top"
+            >Business Name:
+            <input type="text" name="businessName" required />
+          </label>
+          <label class="top"
+            >Address:
+            <input type="text" name="businessAddress" />
+          </label>
+          <label class="top"
+            >Website:
+            <input
+              type="url"
+              name="businessWeb"
+              placeholder="https://example.com"
+              size="20"
+            />
+          </label>
+          <label class="top"
+            >Description:
+            <input type="text" name="businessDesc" pattern="^(\w\w+)\s(\w+)$" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Membership Levels</legend>
+          <div>Options:</div>
+          <label class="sbs"
+            ><input
+              class="sbs"
+              type="radio"
+              name="mbrlevel"
+              value="non-prophit"
+              required
+            />
+            Non-Profit ($100)</label
+          >
+          <label class="sbs"
+            ><input type="radio" name="mbrlevel" value="bronze" required />
+            Bronze ($200)</label
+          >
+          <label class="sbs"
+            ><input type="radio" name="mbrlevel" value="silver" required />
+            Silver ($400)</label
+          >
+          <label class="sbs"
+            ><input type="radio" name="mbrlevel" value="gold" required /> Gold
+            ($1000)</label
+          >
+        </fieldset>
+        <input type="submit" value="Join Us" class="submitBtn" />
+      </form>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <div id="footerWrapper">
+      <footer><span id="currentDate"></span></footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({ google: { families: ["Cormorant Infant"] } });
+    </script>
+  </body>
+</html>

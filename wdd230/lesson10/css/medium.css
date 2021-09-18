@@ -1,0 +1,208 @@
+/* 35em is also 560px (if basefont is 16px) */
+@media only screen and (min-width: 35rem) {
+  /*----------- BODY --------------*/
+
+  /*----------- HEADER --------------*/
+  header img {
+    width: 75px;
+  }
+
+  .headings {
+    padding-top: 5px;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  header h2 {
+    font-size: 1rem;
+  }
+
+  /*----------- NAVIGATION --------------*/
+  nav button {
+    display: none;
+  }
+
+  nav ul.hide {
+    display: block;
+  }
+
+  nav ul li {
+    float: left;
+  }
+
+  nav ul li a {
+    border: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 0.9rem;
+  }
+
+  /*----------- MAIN --------------*/
+  body main div h1 {
+    font-size: 3rem;
+  }
+
+  main div h2,
+  section.article h2,
+  main h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  main p {
+    font-size: 1.6rem;
+  }
+
+  .heroparent {
+    position: relative;
+  }
+
+  .herochild {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    opacity: 0.7;
+    box-shadow: 0 0 30px #000;
+  }
+
+  div.forecastBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 0 2%;
+  }
+
+  section.forecast p {
+    font-size: 1.2rem;
+  }
+
+  .top {
+    display: block;
+  }
+
+  .bottom {
+    display: none;
+  }
+
+  section.article img.top {
+    float: right;
+    width: 264px;
+    height: auto;
+    margin: 25px 2% 5px 5px;
+  }
+
+  .contactus {
+    font-size: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .contactus2 {
+    font-size: 1.2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contactus p,
+  .contactus2 p {
+    font-size: 0.8rem;
+  }
+
+  .localmap {
+    display: block;
+    padding: 0;
+  }
+
+  .weatherWrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .forecast h3 {
+    font-size: 1rem;
+  }
+
+  .forecastWrapper h4 {
+    font-size: 1.5rem;
+  }
+
+  /*----- Alternating Articles ------*/
+  div.card section {
+    display: flex;
+    flex-direction: row;
+  }
+
+  div.card section:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  .towninfo {
+    width: 300px;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+
+  .card h3 {
+    font-size: 0.8rem;
+  }
+
+  .homearticleimage {
+    float: right;
+    max-width: 350px;
+    margin: 2%;
+  }
+
+  .contactinfo {
+    height: 150px;
+  }
+
+  .localmap {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /*------------ Form ---------------*/
+  form {
+    max-width: 25rem;
+  }
+
+  form legend {
+    font-size: 2rem;
+  }
+
+  form label.top,
+  form div {
+    font-size: 1.8rem;
+  }
+
+  form label.top input,
+  form label.top select {
+    max-width: 25rem;
+    font-size: 1.2rem;
+  }
+
+  form label.sbs {
+    padding: 0.4rem 0;
+    font-size: 1.8rem;
+  }
+
+  .sbs.stormseverity {
+    font-size: 1.7rem;
+  }
+
+  .comments {
+    max-width: 25rem;
+    height: 250px;
+  }
+
+  /*----------- FOOTER --------------*/
+  footer {
+    padding: 1rem 2%;
+    font-size: 1.5rem;
+  }
+
+  footer p {
+    font-size: 1rem;
+  }
+} /* end of media query */
