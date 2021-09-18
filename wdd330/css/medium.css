@@ -8,7 +8,7 @@
   }
 
   header img {
-    width: 150px;
+    width: 120px;
   }
 
   /*----------- NAVIGATION --------------*/
@@ -24,4 +24,7 @@
   }
 
   /*----------- FOOTER --------------*/
+  footer {
+    font-size: 21px;
+  }
 } /* end of media query */
