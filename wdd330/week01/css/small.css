@@ -53,6 +53,13 @@ main p {
 li {
   font-size: 01.1rem;
 }
+
+textarea {
+  width: 800px;
+  height: 250px;
+  background-color: lightyellow;
+}
+
 /*----------- FOOTER --------------*/
 
 /*----- Clearfix: Force an Element not to collapse -----*/

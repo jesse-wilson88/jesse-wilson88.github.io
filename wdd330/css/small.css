@@ -16,9 +16,9 @@ body {
   background-color: darkslategrey;
 }
 
-header {
+/* header {
   background-color: darkslategrey;
-}
+} */
 
 header img {
   margin: 2%;
@@ -43,7 +43,14 @@ li {
   font-size: 01.1rem;
 }
 /*----------- FOOTER --------------*/
+#footerWrapper {
+  background-color: darkslategrey;
+}
 
+footer {
+  padding: 5px;
+  font-size: 25px;
+}
 /*----- Clearfix: Force an Element not to collapse -----*/
 .clearfix:after {
   content: "";
