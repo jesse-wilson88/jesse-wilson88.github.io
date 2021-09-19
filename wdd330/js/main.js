@@ -25,8 +25,8 @@ assignments.forEach((assignment) => {
 
   a.setAttribute("href", url);
 
-  a.innerHTML = "Notes & Code";
   li.innerHTML = label;
+  a.innerHTML = "Notes & Code";
 
   li.append(a);
   ul.append(li);
