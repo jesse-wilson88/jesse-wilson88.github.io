@@ -40,7 +40,7 @@ main h2 {
 }
 
 main p {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 #menuImage {
@@ -49,12 +49,12 @@ main p {
 }
 
 #formGif {
-  width: 100%;
+  width: 50%;
   max-width: 276px;
 }
 
 li {
-  font-size: 01.1rem;
+  font-size: 0.8rem;
 }
 
 textarea {
@@ -70,7 +70,7 @@ textarea {
 
 footer {
   padding: 5px;
-  font-size: 25px;
+  font-size: 11px;
 }
 
 /*----- Clearfix: Force an Element not to collapse -----*/

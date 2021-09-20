@@ -22,10 +22,20 @@
     font-size: 2rem;
     margin: 2%;
   }
-
-  li {
+  main p {
     font-size: 2rem;
   }
 
+  div p {
+    font-size: 1.2rem;
+  }
+
+  li {
+    font-size: 1rem;
+  }
+
   /*----------- FOOTER --------------*/
+  footer {
+    font-size: 20px;
+  }
 } /* end of media query */
