@@ -3,8 +3,24 @@
   /*----------- BODY --------------*/
 
   /*----------- HEADER --------------*/
+  header,
+  main,
+  footer {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  header,
+  footer {
+    border-radius: 25px;
+  }
+
   header img {
     width: 180px;
+  }
+
+  header h1 {
+    padding: 20px;
   }
 
   /*----------- NAVIGATION --------------*/
@@ -14,5 +30,6 @@
   /*----------- FOOTER --------------*/
   footer {
     font-size: 30px;
+    padding: 1px;
   }
 } /* end of media query */

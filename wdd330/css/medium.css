@@ -8,7 +8,8 @@
   }
 
   header img {
-    width: 120px;
+    width: 140px;
+    float: right;
   }
 
   /*----------- NAVIGATION --------------*/
@@ -26,5 +27,6 @@
   /*----------- FOOTER --------------*/
   footer {
     font-size: 21px;
+    padding: 0.5%;
   }
 } /* end of media query */

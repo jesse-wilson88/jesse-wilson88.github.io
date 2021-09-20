@@ -13,13 +13,16 @@ body {
 
 /*----------- HEADER --------------*/
 #headerWrapper {
-  background-color: darkslategrey;
+  background-color: #c1946a;
+}
+
+header {
+  text-align: center;
 }
 
 header img {
   margin: 2%;
-  float: right;
-  width: 85px;
+  width: 150px;
 }
 
 header h1 {
@@ -31,21 +34,25 @@ header h1 {
 
 /*----------- MAIN --------------*/
 main h2 {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin: 2%;
 }
 
 li {
-  font-size: 01.1rem;
+  font-size: 01.4rem;
 }
 /*----------- FOOTER --------------*/
 #footerWrapper {
-  background-color: darkslategrey;
+  background-color: #c1946a;
 }
 
 footer {
-  padding: 5px;
   font-size: 12px;
+}
+
+footer p {
+  margin: 0 2%;
+  padding: 10px 0;
 }
 
 /*----- Clearfix: Force an Element not to collapse -----*/
