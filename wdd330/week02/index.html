@@ -92,6 +92,62 @@
           let with your variables.
         </p>
       </div>
+      <div>
+        <h2>Converting Strings to Numbers</h2>
+        <p>
+          Strings can be converted to numbers:
+          <br /><br />
+          &emsp; <b>Number('23');</b> the number 23 would be returned.
+          <br /><br />
+          &emsp; <b>const answer = '5' * 1;</b> the number 5 would be returned.
+          <br /><br />
+          &emsp; <b>const answer = + '5';</b> 5 would be returned. If you used
+          <b>typeof</b> infront of the variable 'answer', the "number" would be
+          returned. <br /><br />
+          If you tried <b>Number('hello')</b> NaN would be returned.
+        </p>
+      </div>
+      <div>
+        <h2>Converting Numbers to Strings</h2>
+        <p>
+          Numbers can be converted to strings:
+          <br /><br />
+          &emsp; String(3); would result with the return of '3'.
+          <br /><br />
+          &emsp; 3 + '3'; would result with the return of '3'.
+          <br /><br />
+          You can even use the method toString() to convert numbers to strings:
+          <br /><br />
+          &emsp; 10..toString() would return '10'. The empty() writes the number
+          10 in binary base two.
+          <br /><br />
+          &emsp; 10..toString(2) would return '1010' because (2) writes the
+          number in binary base 10.
+          <br /><br />
+          &emsp; 28101.toString(36) would return 'lol' because after base 10
+          letters are used to represent the digits.
+        </p>
+      </div>
+      <div>
+        <h2>Parsing Numbers</h2>
+        <p>
+          Converts from binary , back to decimal:
+          <br /><br />
+          &emsp; parseInt('1010',2); returns 10
+          <br /><br />
+          &emsp; parseInt('omg',36); returns 31912
+          <br /><br />
+          &emsp; parseInt('23',10); returns 23
+          <br /><br />
+          &emsp; parseInt('211B Baker Street',10) returns 221 because the string
+          started with a number and the letters after will be ignored.
+          <br /><br />
+          &emsp; parseInt('2.4',10); returns 2 because everything after the
+          decimal will be removed.
+          <br /><br />
+          &emsp; parseFloat('2.9',10); returns 2.9
+        </p>
+      </div>
     </main>
 
     <!-- FOOTER HERE -->
