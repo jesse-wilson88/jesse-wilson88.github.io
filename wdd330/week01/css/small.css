@@ -70,7 +70,12 @@ textarea {
 
 footer {
   padding: 5px;
+  margin: 2% 0;
   font-size: 11px;
+}
+
+footer p {
+  margin: 2%;
 }
 
 /*----- Clearfix: Force an Element not to collapse -----*/

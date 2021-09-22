@@ -35,7 +35,7 @@
   </head>
   <body>
     <!-- HEADER HERE -->
-    <header>
+    <header id="headerWrapper">
       <h1>Week 2 Notes & Codes</h1>
     </header>
 
@@ -45,7 +45,7 @@
     <!-- CONTENT HERE -->
     <main>
       <div>
-        <h1>Notes from JavaScript: Novice to Ninja:</h1>
+        <h1>Notes from JavaScript: Novice to Ninja - Chapter 2:</h1>
         <h2>Variables</h2>
         <p>
           When you use const in front of a variable, it won't be assigned to
@@ -70,7 +70,7 @@
           const in front of it but it is possible to accomplish. If const is
           used with an array, the values within the array can be changed.
           <br /><br />
-          <b>const name = { value: 'Alexa'};</b> // This is an object.
+          &emsp; <b>const name = { value: 'Alexa'};</b> // This is an object.
           <br /><br />
           You can change the value within the array by typing the follow:
           <br /><br />
@@ -148,9 +148,52 @@
           &emsp; parseFloat('2.9',10); returns 2.9
         </p>
       </div>
+      <div>
+        <h2>Template Literals</h2>
+        <p>
+          Template literals use the backtick character,` , to deliminate the
+          string. It can be used when you need to show the single quote or
+          double quote in a sentence:
+          <br /><br />
+          &emsp; `She said, "It's Me!"`
+          <br /><br />
+          It can also be used in code:
+          <br /><br />
+          &emsp; const name = `Siri`; &emsp; `Hello ${ name }!`; &emsp; Which
+          would return `Hello Siri!`
+          <br /><br /><br />
+          &emsp; const age = 38; &emsp; `I will be ${ age + 1 } next year`;
+          &emsp; Which would return `I will be 40 next year`
+          <br /><br />
+          &emsp; Template literals can also contain line breaks:
+          <br /><br />
+          `This is the first line ...
+          <br /><br /><br />
+          ... and this is the last line`
+          <br /><br />
+          The result would look like this:
+          <br /><br />
+          `This is the first line ... \n\n\n... and this is the last line`
+          <br /><br />
+          Just a little note: This, \`, is also a backtick.
+        </p>
+      </div>
+      <hr />
+      <div>
+        <h1>Notes from JavaScript: Novice to Ninja - Chapter 3:</h1>
+        <h2>Title</h2>
+        <p>Paragraph</p>
+      </div>
     </main>
 
     <!-- FOOTER HERE -->
-    <footer></footer>
+    <footer id="footerWrapper">
+      <p>
+        &copy; <span id="currentyear"></span> | Jesse Wilson | Cardston, AB |
+        <a href="https://www.byui.edu/online" target="_blank"
+          >BYU-I Online Learning
+        </a>
+      </p>
+    </footer>
   </body>
 </html>
