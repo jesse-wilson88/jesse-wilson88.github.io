@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="infomation about site." />
+    <meta
+      name="description"
+      content="My notes and codes from this weeks reading assignment."
+    />
     <meta name="author" content="Jesse Wilson" />
 
     <!-- SITE TITLE -->
-    <title>Document</title>
+    <title>Weel 2 Notes & Codes</title>
 
     <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
       enlarging when a phone is turned sideways-->
@@ -32,13 +35,64 @@
   </head>
   <body>
     <!-- HEADER HERE -->
-    <header></header>
+    <header>
+      <h1>Week 2 Notes & Codes</h1>
+    </header>
 
     <!-- NAVIGATION HERE -->
     <nav></nav>
 
     <!-- CONTENT HERE -->
-    <main></main>
+    <main>
+      <div>
+        <h1>Notes from JavaScript: Novice to Ninja:</h1>
+        <h2>Variables</h2>
+        <p>
+          When you use const in front of a variable, it won't be assigned to
+          another variable of the same kind. When you use let in front of a
+          variable. it can be changed at any time. If you try to do it on
+          purpose or by accident, you will get an error, "<b
+            ><< TypeError: Assignment to constant variable</b
+          >". <br /><br />
+          While in the console, you can type <b>typeof</b> in front of the
+          variable to find out what type of variable is. <br /><br />
+          For example if the following was true:
+          <b>const firstName = "Jesse";</b> then it would come back with string.
+        </p>
+        <p>
+          You can declair more than one variable at a time.For example, you
+          could write a line of code as:
+          <br /><br />
+          &emsp; <b>let x = 3, y = 4, z = 5;</b>
+        </p>
+        <p>
+          Above it says you cannot change the value of the variable if you use
+          const in front of it but it is possible to accomplish. If const is
+          used with an array, the values within the array can be changed.
+          <br /><br />
+          <b>const name = { value: 'Alexa'};</b> // This is an object.
+          <br /><br />
+          You can change the value within the array by typing the follow:
+          <br /><br />
+          &emsp; <b>name.value = 'Siri';</b> // Change the value. <br /><br />
+          You cannot change the value by typing:
+          <b>const name = { value: 'Siri'};</b>
+          <br />
+          It would come back with the same error when you tried to change a
+          const variable, "<b><< TypeError: Assignment to constant variable.</b
+          >"
+        </p>
+        <p>
+          Using const and let to declare variables that are not inside of a
+          block '{ }' and can be accessed throughout the program would be
+          considered a Gobal Scope. If a variable is found inside of a block it
+          is considered a local scope. It can only affect anything inside the
+          function. If const or let are not used in a block it can be used
+          inside or outside a block. To prevent peoblems, always use const or
+          let with your variables.
+        </p>
+      </div>
+    </main>
 
     <!-- FOOTER HERE -->
     <footer></footer>
