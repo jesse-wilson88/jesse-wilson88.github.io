@@ -112,19 +112,19 @@
         <p>
           Numbers can be converted to strings:
           <br /><br />
-          &emsp; String(3); would result with the return of '3'.
+          &emsp; String(3); // would result with the return of '3'.
           <br /><br />
-          &emsp; 3 + '3'; would result with the return of '3'.
+          &emsp; 3 + '3'; // would result with the return of '3'.
           <br /><br />
           You can even use the method toString() to convert numbers to strings:
           <br /><br />
-          &emsp; 10..toString() would return '10'. The empty() writes the number
-          10 in binary base two.
+          &emsp; 10..toString(); // would return '10'. The empty() writes the
+          number 10 in binary base two.
           <br /><br />
-          &emsp; 10..toString(2) would return '1010' because (2) writes the
+          &emsp; 10..toString(2); // would return '1010' because (2) writes the
           number in binary base 10.
           <br /><br />
-          &emsp; 28101.toString(36) would return 'lol' because after base 10
+          &emsp; 28101.toString(36); // would return 'lol' because after base 10
           letters are used to represent the digits.
         </p>
       </div>
@@ -133,19 +133,19 @@
         <p>
           Converts from binary , back to decimal:
           <br /><br />
-          &emsp; parseInt('1010',2); returns 10
+          &emsp; parseInt('1010',2); // returns 10
           <br /><br />
-          &emsp; parseInt('omg',36); returns 31912
+          &emsp; parseInt('omg',36); // returns 31912
           <br /><br />
-          &emsp; parseInt('23',10); returns 23
+          &emsp; parseInt('23',10); // returns 23
           <br /><br />
-          &emsp; parseInt('211B Baker Street',10) returns 221 because the string
-          started with a number and the letters after will be ignored.
+          &emsp; parseInt('211B Baker Street',10)// returns 221 because the
+          string started with a number and the letters after will be ignored.
           <br /><br />
-          &emsp; parseInt('2.4',10); returns 2 because everything after the
+          &emsp; parseInt('2.4',10); // returns 2 because everything after the
           decimal will be removed.
           <br /><br />
-          &emsp; parseFloat('2.9',10); returns 2.9
+          &emsp; parseFloat('2.9',10); // returns 2.9
         </p>
       </div>
       <div>
@@ -159,13 +159,16 @@
           <br /><br />
           It can also be used in code:
           <br /><br />
-          &emsp; const name = `Siri`; &emsp; `Hello ${ name }!`; &emsp; Which
-          would return `Hello Siri!`
+          &emsp; const name = `Siri`;
+          <br />
+          &emsp; `Hello ${ name }!`; &emsp; // Which would return `Hello Siri!`
           <br /><br /><br />
-          &emsp; const age = 38; &emsp; `I will be ${ age + 1 } next year`;
-          &emsp; Which would return `I will be 40 next year`
+          &emsp; const age = 38;
+          <br />
+          &emsp; `I will be ${ age + 1 } next year`; // Which would return `I
+          will be 40 next year`
           <br /><br />
-          &emsp; Template literals can also contain line breaks:
+          Template literals can also contain line breaks:
           <br /><br />
           `This is the first line ...
           <br /><br /><br />
@@ -181,8 +184,108 @@
       <hr />
       <div>
         <h1>Notes from JavaScript: Novice to Ninja - Chapter 3:</h1>
-        <h2>Title</h2>
-        <p>Paragraph</p>
+        <h2>Arrays, Logic, & Loops</h2>
+        <p>
+          An array is an ordered list of values. An array can be created:
+          <br /><br />
+          &emsp; const heros = []; // This is an empty array
+          <br /><br />
+          &emsp; const heros = new Array(); // This is an array constructor
+          function
+          <br /><br />
+          &emsp; heros(0); // Returns undefined if there 0 in the array has no
+          value
+          <br /><br />
+          You can add values to an array or change a value or values by using
+          the following:
+          <br /><br />
+          &emsp; heros[0] = 'Superman';
+          <br />
+          &emsp; heros[1] = 'Wonder Woman';
+          <br />
+          &emsp; heros[2] = 'Flash';
+          <br /><br />
+          If you added heros[5] = 'Aquaman'; and skipped heros[3] & heros[4],
+          they would be undefined within the array until they are defined.
+          <br /><br />
+          You can also create array literals:
+          <br /><br />
+          &emsp; const avengers = ['Captain America', 'Iron Man', 'Thor',
+          'Hulk']
+          <br /><br />
+          You can also create arrays with different data types:
+          <br /><br />
+          &emsp; const mixedArray = [null, 1, [], 'two', true];
+          <br /><br />
+          You can delete a value from the array:
+          <br /><br />
+          &emsp; delete avengers[3]; // This would delete 'Hulk' from the array
+          and avengers[3] would not be undefined.
+          <br /><br />
+          If you typed avengers you would get:
+          <br /><br />
+          &emsp; ['Captain America', 'Iron Man', 'Thor', undefined]
+          <br /><br />
+          If you wanted to show one of the avengers names you would type:
+          <br /><br />
+          &emsp; avengers[2]; // This would return 'Thor'
+          <br /><br />
+          You can swap the values of two variables:
+          <br /><br />
+          &emsp; const temp = x; &emsp; x = y; &emsp; y = temp;
+          <br /><br />
+          Here are some of the things you can do with arrays. We will use the
+          following code to work with:
+          <br /><br />
+          &emsp; const avengers = ['Captain America', 'Iron Man', 'Thor',
+          'Hulk', 'Hawkeye', 'Black Widow'];
+          <br /><br />
+          You can see what then length of the array is:
+          <br /><br />
+          &emsp; avengers.length; // This returns 6 and if you subtrack 1 from
+          the length, it would give you the amount of values in the array.
+          <br /><br />
+          You can use the length to find out the last value in the array:
+          <br /><br />
+          &emsp; avengers[avengers.length - 1]; // This would return 'Black
+          Widow'
+          <br /><br />
+          You can change the length of the array by setting the length of it:
+          <br /><br />
+          &emsp; avengers.length = 8 // This would return ['Captain America',
+          'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow', undefined,
+          undefined]
+          <br /><br />
+          You can shorted the array but any elements beyond that length will be
+          removed.
+          <br /><br />
+          &emsp; avengers.length = 3; // This would return ['Captain America',
+          'Iron Man', 'Thor']
+          <br /><br />
+          You can remove the last item in an array, if the following code was
+          used:
+          <br /><br />
+          &emsp; avengers.pop(); // the array would now look like this ['Captain
+          America', 'Iron Man']
+          <br /><br />
+          If you wanted to remove the first item in the list (using the array
+          just mentioned):
+          <br /><br />
+          &emsp; avengers.shift(); // the array would look like this ['Iron
+          Man', 'Thor']
+          <br /><br />
+          If you wanted to add an item to the end of the list (using the array
+          just used):
+          <br /><br />
+          &emsp; avengers.push('Hulk'); // the array would look like this
+          ['Captain America', 'Iron Man', 'Thor', 'Hulk']
+          <br /><br />
+          If you wanted to add a new item to the beginning of an array (using
+          the above array):
+          <br /><br />
+          &emsp; avengers.unshift('Black Widow'); // the array would look like
+          this ['Black Widow, 'Captain America', 'Iron Man', 'Thor']
+        </p>
       </div>
     </main>
 
