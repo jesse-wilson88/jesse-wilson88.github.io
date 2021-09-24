@@ -282,6 +282,59 @@
           <br /><br />
           &emsp; <b>avengers.unshift('Black Widow');</b> // the array would look
           like this ['Black Widow, 'Captain America', 'Iron Man', 'Thor']
+          <br /><br />
+          It is possible to merge one or more arrays. It does not change the
+          array, it just creates a new one:
+          <br /><br />
+          &emsp; <b>avengers.concat(['Hulk','Hawkeye', 'Black Widow']);</b> //
+          would return <br /><br />
+          &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye',
+          'Black Widow']
+          <br /><br />
+          If you wanted to update the Avengers array you would use the
+          following:
+          <br /><br />
+          &emsp;
+          <b>avengers = avengers.concat(['Hulk','Hawkeye', 'Black Widow']);</b>
+          // would return <br /><br />
+          &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye',
+          'Black Widow']
+          <br /><br />
+          <b
+            >avengers = [ ...avengers, ...['Hulk','Hawkeye', 'Black Widow']
+            ];</b
+          >
+          // would return <br /><br />
+          &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye',
+          'Black Widow']
+          <br /><br />
+          <u>The Join() Method:</u> It seems like I have going over the join()
+          method before but it is not clear in my head. From what I am getting
+          from the book is that the join() method displays an array by
+          seperating each item with a comma. <br /><br />
+          &emsp; <b>avengers.join();</b> // would return <br /><br />
+          &emsp; 'Captain America, Iron Man, Thor, Hulk, Hawkeye, Black Widow'
+          <br /><br />
+          You can also choose a seperator other than a comma by placing it
+          inside the paraentheses:
+          <br /><br />
+          &emsp; <b>avengers.join(' & ');</b> // would return <br /><br />
+          &emsp; 'Captain America & Iron Man & Thor & Hulk & Hawkeye & Black
+          Widow'
+          <br /><br />
+          <u>Slicing:</u> This does not change the but it seems as if you have
+          certain values to be displayed. <br /><br />
+          &emsp; <b>avengers.slice(2,4);</b> // The return will be 3rd item up
+          to but not include the 5th item. <br /><br />
+          &emsp; Returns: ['Captain America', 'Iron Man', 'Thor', 'Hulk',
+          'Hawkeye', 'Black Widow']
+          <br /><br />
+          <u>Splicing:</u> This method removes items from the array and inserts
+          new items. <br /><br />
+          &emsp; <b>avengers.splice(3, 1, 'Scarlet Witch');</b> // This replaces
+          the 4th item 'Hulk' with 'Scarlet Witch' <br /><br />
+          &emsp; Returns: ['Captain America', 'Iron Man', 'Thor', 'Scarlet
+          Witch', 'Hawkeye', 'Black Widow']
         </p>
       </div>
     </main>
