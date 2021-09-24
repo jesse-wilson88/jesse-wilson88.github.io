@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="This is week 2 team activity." />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Week 1 Team Activity</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- STYLE SHEETS -->
+
+    <!-- JAVASCRIPTS-->
+    <script>
+      function getNumber() {
+        const number = document.getElementById("number").value;
+        document.getElementById("result").innerHTML = number
+      }
+
+      function sumNumber() {
+        const number = document.getElementById("number").value;
+        if (!isNaN(number)){
+          let sum = 0;
+          for (let i = 1; i <= number; i++) {
+            sum += i;
+          }
+          document.getElementById("result").innerHTML = sum;
+        }else{
+          document.getElementById("result").innerHTML = "";
+        }
+      }
+    
+      // Function
+      // function addNumber() {
+      //   const number = parseInt(document.getElementById("number").value);
+      //   const number2 = parseInt(document.getElementById("number2").value);
+      //   let sum = number + number2;
+      //   document.getElementById("result").innerHTML = sum;
+      // }
+
+      // Arrow function - inline callbacks
+      const addNumber = () => {
+        const number = parseInt(document.getElementById("number").value);
+        const number2 = parseInt(document.getElementById("number2").value);
+        let sum = number + number2;
+        document.getElementById("result").innerHTML = sum;
+      }
+
+      // Function expression
+      const subtractNumber = function() {
+        let [number, number2] = readInNumbers();
+        let sum = number - number2;
+        document.getElementById("result").innerHTML = sum;
+      }
+
+      // Callback function
+      const multiplyNumber = (callback) => {
+        let [number, number2] = readInNumbers();
+        product = callback(number, number2);
+        document.getElementById("result").innerHTML = product;
+      }
+
+      const multiply = (a, b) => {
+        return a * b;
+      }
+
+      // Get values entered
+      const readInNumbers = () => {
+        const number = parseInt(document.getElementById("number").value);
+        const number2 = parseInt(document.getElementById("number2").value);
+
+        return [number, number2];
+      }
+
+    </script>
+
+  </head>
+  <body>
+    <!-- HEADER HERE -->
+    <header>
+      <h1>Week 2: Team Activity</h1>
+    </header>
+
+    <!-- NAVIGATION HERE -->
+    <nav></nav>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <input type="text" id="number"></input>
+      <button onclick="getNumber()">Display</button>
+      <button onclick="sumNumber()">Add</button>
+
+      <input type="text" id="number2"></input>
+      <button onclick="addNumber()">+</button>
+      <button onclick="subtractNumber()">-</button>
+      <button onclick="multiplyNumber(multiply)">*</button>
+
+      <div id="result"></div>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <footer></footer>
+  </body>
+</html>
