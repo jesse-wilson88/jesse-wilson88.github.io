@@ -326,15 +326,223 @@
           certain values to be displayed. <br /><br />
           &emsp; <b>avengers.slice(2,4);</b> // The return will be 3rd item up
           to but not include the 5th item. <br /><br />
-          &emsp; Returns: ['Captain America', 'Iron Man', 'Thor', 'Hulk',
-          'Hawkeye', 'Black Widow']
+          &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye',
+          'Black Widow']
           <br /><br />
           <u>Splicing:</u> This method removes items from the array and inserts
           new items. <br /><br />
           &emsp; <b>avengers.splice(3, 1, 'Scarlet Witch');</b> // This replaces
           the 4th item 'Hulk' with 'Scarlet Witch' <br /><br />
-          &emsp; Returns: ['Captain America', 'Iron Man', 'Thor', 'Scarlet
-          Witch', 'Hawkeye', 'Black Widow']
+          &emsp; ['Captain America', 'Iron Man', 'Thor', 'Scarlet Witch',
+          'Hawkeye', 'Black Widow']
+          <br /><br />
+          You can remove an item using splice:
+          <br /><br />
+          &emsp; <b>avengers.splice(2,1);</b> // will remove the item at index 2
+          (3rd item - 'Thor') <br /><br />
+          &emsp; ['Captain America', 'Iron Man', 'Scarlet Witch', 'Quicksilver',
+          'Hawkeye', 'Black Widow'] <br /><br />
+          You can reverce the order of the array:
+          <br /><br />
+          &emsp; <b>avengers.reverse();</b> // would return <br /><br />
+          &emsp; ['Black Widow', 'Hawkeye', 'Quicksilver', 'Scarlet Witch',
+          'Iron Man', 'Captain America'] <br /><br />
+          You can also sort arrays:
+          <br /><br />
+          &emsp; <b>avengers.sort();</b> // would return <br /><br />
+          &emsp; ['Black Widow', 'Captain America', 'Hawkeye', 'Iron Man',
+          'Quicksilver', 'Scarlet Witch']
+          <br /><br />
+          &emsp; <b>[5, 9, 10].sort();</b> // returns [10, 5, 9]. It goes by the
+          first digit <br /><br />
+          Using indexof method to if the array contains a particular value:
+          <br /><br />
+          &emsp; <b>avengers.indexof('Iron Man');</b> // returns 3 <br /><br />
+          &emsp; <b>avengers.indexof('Thor');</b> // returns -1 because Thor is
+          no longer in the array <br /><br />
+          You can also verify if a value is within an array:
+          <br /><br />
+          &emsp; <b>avengers.includes('Iron Man'</b> // returns true
+          <br /><br />
+          &emsp; <b>avengers.includes('Thor'</b> // returns false <br /><br />
+          You can also look for an item searching from an element within the
+          array
+          <br /><br />
+          &emsp; <b>avengers.includes('Black Widow', 1);</b> // returns false
+          because it will start the search from the second elemet in the array
+          <br /><br />
+          You can have an array of arrays. This is known as a multidimensional
+          array:
+          <br /><br />
+          &emsp; <b>const coordinates = [[1,3],[4,2]];</b> <br /><br />
+          &emsp; <b>coordinates[0][0];</b> // The first value (1) of the first
+          array <br /><br />
+          &emsp; <b>coordinates[1][0];</b> // The first value (4) of the second
+          array <br /><br />
+          &emsp; <b>coordinates[0][1];</b> // The second value (3) of the first
+          array <br /><br />
+          &emsp; <b>coordinates[1][1];</b> // The second value (2) of the second
+          array <br /><br />
+          Nested array and flattened array:
+          <br /><br />
+          &emsp; <b>const summer = ['Jun', 'Jul', 'Aug'];</b>
+          <br />
+          &emsp; <b>const winter = ['Dec', 'Jan', 'Feb'];</b>
+          <br />
+          &emsp; <b>const nested = [ summer, winter ];</b> <br /><br />
+          &emsp; Returns: [ [ 'Jun', 'Jul', 'Aug' ], [ 'Dec', 'Jan', 'Feb' ] ]
+          <br /><br />
+          &emsp; <b>const flat = [...summer, ...winter];</b> <br /><br />
+          &emsp; Returns: [ 'Jun', 'Jul', 'Aug', 'Dec', 'Jan', 'Feb' ]
+          <br /><br />
+          <u>Sets:</u> Set is a data structure that represents a collection of
+          unique values. This will not allow duplicate values. It is also useful
+          to keep track of data without having to worry about duplicate values.
+          <br /><br />
+          &emsp; <b>const list = new Set();</b>
+          <br />
+          &emsp; <b>list.add(1);</b> // returns Set { 1 }
+          <br />
+          &emsp; <b>list.add(2).add(3).add(4);</b> // returns Set { 1, 2, 3, 4 }
+          <br /><br />
+          &emsp; <b>const numbers = new Set([1,2,3]);</b> //returns Set { 1, 2,
+          3 } if you use <b>console.log(number)</b> <br /><br />
+          If you try to add the same value to a Set in one line of code it will
+          not add duplicate values. You can also make the values letters or
+          words:
+          <br /><br />
+          &emsp; <b>const moreNumbers = new Set([7,7,7,7,7,8,8,8,9,9]);</b>
+          <br /><br />
+          &emsp; Returns: Set {7,8,9} when moreNumbers is displayed
+          <br /><br />
+          &emsp; <b>const letters = new Set('hello');</b> // returns Set { 'h',
+          'e', 'l', 'o' } <br /><br />
+          &emsp;
+          <b
+            >const words = new
+            Set().add('the').add('quick').add('brown').add('fox');</b
+          >
+          <br /><br />
+          &emsp; Returns: Set { 'the', 'quick', 'brown', 'fox' }
+          <br /><br />
+          If you add two arrays to a Set, each array is different.
+          <br /><br />
+          &emsp; <b>const arrays = new Set().add([1]).add([1]);</b> // would
+          return Set { [ 1 ], [ 1 ] } <br /><br />
+          You could validate this by the following:
+          <br /><br />
+          &emsp; <b>[1] === [1];</b> // would return false <br /><br />
+          Type coercion is not used when values are added to a set, so the
+          string "2" will be added as a new entry, even if the number 2 is
+          already an element of the set:
+          <br /><br />
+          &emsp; <b>const mixedTypes = new Set().add(2).add('2');</b> // would
+          return Set { 2, '2' } <br /><br />
+          The number of values in a set can be found using the size() method:
+          <br /><br />
+          &emsp;
+          <b
+            >const jla = Set().add('Superman').add('Batman').add('Wonder
+            Woman');</b
+          >
+          <br /><br />
+          To see the Set type jla and it hit enter which would return:
+          <br /><br />
+          &emsp; Set { 'Superman', 'Batman', 'Wonder Woman' }
+          <br /><br />
+          To check the size:
+          <br /><br />
+          &emsp; <b>jla.size();</b> // would return 3 You can also check to see
+          if a value is in a set. The has() method that sets use is a very
+          efficient operation and much faster than using the includes() or
+          indexOf() methods to check if a value is in an array. <br /><br />
+          &emsp; <b>jla.has('Superman');</b> // would return true <br /><br />
+          &emsp; <b>jla.has('Green Lantern');</b> // would return false
+          <br /><br />
+          You can remove values from Sets as well:
+          <br /><br />
+          &emsp; <b>jla.delete('Superman');</b> // would return true
+          <br /><br />
+          &emsp; <b>jla.delete('Flash');</b> // would return false because it is
+          not in the Set <br /><br />
+          &emsp; <b>jla.clear();</b> // would clear the Set of all remaining
+          values <br /><br />
+          You can convert Sets to an array. First create a Set, then convert it
+          to an array: &emsp;
+          <b
+            >const shoppingSet = new
+            Set().add('Apples').add('Bananas').add('Beans');</b
+          >
+          <br />
+          &emsp; <b>const shoppingArray = [...shoppingSet]</b> <br /><br />
+          Or this way:
+          <br /><br />
+          &emsp; <b>const shoppingArray = Array.from(shoppingSet);</b>
+          <br /><br />
+          You can also pass an array to a new Set():
+          <br /><br />
+          &emsp; Array:
+          <b>const duplicate = [3, 1, 4, 1, 5, 9, 2, 6 ,5,3,5,9];</b> // This
+          woud return: <br /><br />
+          &emsp; [ 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 9 ]
+          <br /><br />
+          &emsp; <b>const nonDuplicate = [...new Set(repeatedArray)];</b> //
+          This woud return: <br /><br />
+          &emsp; [ 3, 1, 4, 5, 9, 2, 6 ] because there are no duplicates in a
+          Set.
+          <br /><br />
+          <u>Creating Maps:</u> An empty map object can be created using the new
+          operator and Map() constructor: <br /><br />
+          &emsp; <b>const romanNumerals = new Map();</b>
+          You can use the set method with maps.
+          <br /><br />
+          &emsp; <b>romanNumerals.set(1,'I');</b> // returns map { 1 => 'I' }
+          <br /><br />
+          You can add multiple items to Maps:
+          <br /><br />
+          &emsp;
+          <b>romanNumerals.set(2,'II').set(3,'III').set(4,'IV').set(5,'V');</b>
+          // which returns &emsp; Map { 1 => 'I', 2 => 'II', 3 => 'III', 4 =>
+          'IV', 5 => 'V' }
+          <br /><br />
+          You can look up a value in a Map by using the get() method:
+          <br /><br />
+          &emsp; <b>romanNumerals.get(4);</b> // would return 'VI' <br /><br />
+          You can also use the has() method the same way you would use it for
+          Set().
+          <br /><br />
+          &emsp; <b>romanNumerals.has(5);</b> // would return true <br /><br />
+          &emsp; <b>romanNumerals.has(10);</b> // would return false
+          <br /><br />
+          You can also create a map with multiple values by using a nested
+          array:
+          <br /><br />
+          &emsp;
+          <b
+            >const heroes = new Map([ ['Clark Kent','Superman'], ['Bruce Wayne',
+            'Batman'] ]);</b
+          >
+          &emsp; <b>heros.size</b> would return 2 <br /><br />
+          You can also remove items from a map by using the delete() method:
+          <br /><br />
+          &emsp; <b>heroes.delete('Clark Kent');</b> // which the size would not
+          be 1 <br /><br />
+          You can also clear a map using the clear() method:
+          <br /><br />
+          &emsp; <b>heros.clear();</b> // which the size would not be 0
+          <br /><br />
+          It is possible to convert a Map to an array by using the spread
+          operator:
+          <br /><br />
+          &emsp; <b>[...romanNumerals]</b> // which would return [ [ 1, 'I' ], [
+          2, 'II' ], [ 3, 'III' ], [ 4, 'IV' ], [ 5, 'V' ] ] <br /><br />
+          Or by using the Array.from() method:
+          <br /><br />
+          &emsp; <b>Array.from(romanNumerals)</b> // which would return the same
+          as the above method. <br /><br />
+          If statements are really nice to use. I have used them in BASIC
+          language many years ago. Because of this I will not put an example of
+          he IF statement, ELSE statement, or ELSE IF.
         </p>
       </div>
     </main>
