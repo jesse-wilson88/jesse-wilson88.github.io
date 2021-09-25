@@ -522,7 +522,7 @@
             >const heroes = new Map([ ['Clark Kent','Superman'], ['Bruce Wayne',
             'Batman'] ]);</b
           >
-          &emsp; <b>heros.size</b> would return 2 <br /><br />
+          // <b>heros.size</b> would return 2 <br /><br />
           You can also remove items from a map by using the delete() method:
           <br /><br />
           &emsp; <b>heroes.delete('Clark Kent');</b> // which the size would not
@@ -542,7 +542,119 @@
           as the above method. <br /><br />
           If statements are really nice to use. I have used them in BASIC
           language many years ago. Because of this I will not put an example of
-          he IF statement, ELSE statement, or ELSE IF.
+          he IF statement, ELSE statement, or ELSE IF. But I will show examples
+          just because:
+          <br /><br />
+          &emsp;
+          <b
+          >if (condition) {</b
+            >
+          <br />
+          &emsp;&emsp; // code to run if condition is true</b
+          >
+          <br />
+          &emsp; <b>}</b> <br /><br />
+          &emsp;
+          <b>if (condition) {</b>
+          <br />
+          &emsp;&emsp; // code to run if condition is true
+          <br />
+          &emsp; <b>} else {</b>
+          <br />
+          &emsp;&emsp; // code to run if condition is false
+          <br />
+          &emsp; <b>}</b> <br /><br />
+          <b>
+          &emsp; if (number === 4) {
+          <br />
+          &emsp;&emsp; console.log('You rolled a four');
+          <br />
+          &emsp; } else if (number === 5) {
+          <br />
+          &emsp;&emsp; console.log('You rolled a five');
+          <br />
+          &emsp; } else if(number === 6){
+          <br />
+          &emsp;&emsp; console.log('You rolled a six');
+          <br />
+          &emsp; } else {
+          <br />
+          &emsp;&emsp; console.log('You rolled a number less than four');
+          <br />
+          &emsp; }
+          <br /><br />
+          Switches are pretty cool but I still like the IF Statement. The book says it is easier to follow when there are lots of conditions to test. It does make sense and it would be less code in my opinion.
+          <br><br>
+          <b>switch (number) {
+          <br />
+          &emsp;  case 4:
+          <br />
+          &emsp;&emsp;  console.log('You rolled a four');
+          <br />
+          &emsp;&emsp;  break;
+          <br />
+          &emsp;  case 5:
+          <br />
+          &emsp;&emsp;  console.log('You rolled a five');
+          <br />
+          &emsp;&emsp;  break;
+          <br />
+          &emsp;  case 6:
+          <br />
+          &emsp;&emsp;  console.log('You rolled a six');
+          <br />
+          &emsp;&emsp;  break;
+          <br />
+          &emsp;  default:
+          <br />
+          &emsp;&emsp; console.log('You rolled a number less than four');
+          <br />
+          &emsp;&emsp; break;
+          }</b>
+          Now we get into some of the fun stuff. I personally like the FOR Loop more than the others, but I understand some of the others are better for certain situations.
+          <br><br>
+          <u> While Loops:</u>
+          <br><br>
+          &emsp; <b>while (condition) {</b>
+          <br>
+          &emsp;&emsp; // do something
+          <br>
+          &emsp; <b>}</b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <b>
+            &emsp; let bottles = 10;<br><br>
+            &emsp; while (bottles > 0){<br>
+            &emsp;&emsp; console.log(`There were ${bottles} green bottles, hanging on<br>
+            &emsp;&emsp; a wall. And if one green bottle should accidentally fall,<br>
+            &emsp;&emsp; there'd be ${bottles-1} green bottles hanging on the wall`);<br>
+            &emsp; bottles--;<br>
+            &emsp; }
+          </b>
+          <br><br>
+          A better way of writing this code would be as follows. Zero is always FALSE.
+          <br><br>
+          <b>let bottles = 11;<br><br>
+            &emsp; while (--bottles){<br>
+            &emsp;&emsp; console.log(`There were ${bottles} green bottles, hanging on<br>
+            &emsp;&emsp; a wall. And if one green bottle should accidentally fall,<br>
+            &emsp;&emsp; there'd be ${bottles-1} green bottles hanging on the wall`);<br>
+            &emsp; }</b>
+          <br><br>
+          <u>Infinite Loops:</u>
+          <br><br>
+          <b>let n = 1<br>
+            &emsp; while(n>0) {<br>
+            &emsp;&emsp; console.log('Hello');<br>
+            &emsp;&emsp; n++;<br>
+            &emsp; }</b>
+          <br><br>
+          <u>do ... while Loops</u>
+          <br><br>
+          &emsp; <b>do {<br>
+          &emsp;&emsp; do something<br>
+          &emsp; } while(condition)</b><br>
         </p>
       </div>
     </main>
