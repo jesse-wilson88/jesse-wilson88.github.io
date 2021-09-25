@@ -624,14 +624,22 @@
           ---------------------------------------------------------
           <br><br>
           <b>
-            &emsp; let bottles = 10;<br><br>
-            &emsp; while (bottles > 0){<br>
-            &emsp;&emsp; console.log(`There were ${bottles} green bottles, hanging on<br>
-            &emsp;&emsp; a wall. And if one green bottle should accidentally fall,<br>
-            &emsp;&emsp; there'd be ${bottles-1} green bottles hanging on the wall`);<br>
-            &emsp; bottles--;<br>
+            &emsp; let bottles = 10;
+            <br><br>
+            &emsp; while (bottles > 0){
+              <br>
+            &emsp;&emsp; console.log(`There were ${bottles} green bottles, hanging on
+            <br>
+            &emsp;&emsp; a wall. And if one green bottle should accidentally fall,
+            <br>
+            &emsp;&emsp; there'd be ${bottles-1} green bottles hanging on the wall`);
+            <br><br>
+            &emsp;&emsp; bottles--;
+            <br>
             &emsp; }
           </b>
+          <br><br>
+          ---------------------------------------------------------
           <br><br>
           A better way of writing this code would be as follows. Zero is always FALSE.
           <br><br>
@@ -640,21 +648,196 @@
             &emsp;&emsp; console.log(`There were ${bottles} green bottles, hanging on<br>
             &emsp;&emsp; a wall. And if one green bottle should accidentally fall,<br>
             &emsp;&emsp; there'd be ${bottles-1} green bottles hanging on the wall`);<br>
-            &emsp; }</b>
+            &emsp; }
+          </b>
+          <br><br>
+          ---------------------------------------------------------
           <br><br>
           <u>Infinite Loops:</u>
           <br><br>
           <b>let n = 1<br>
             &emsp; while(n>0) {<br>
-            &emsp;&emsp; console.log('Hello');<br>
+            &emsp;&emsp; console.log('Hello');<br><br>
             &emsp;&emsp; n++;<br>
-            &emsp; }</b>
+            &emsp; }
+          </b>
+          <br><br>
+          ---------------------------------------------------------
           <br><br>
           <u>do ... while Loops</u>
           <br><br>
           &emsp; <b>do {<br>
           &emsp;&emsp; do something<br>
-          &emsp; } while(condition)</b><br>
+          &emsp; } while(condition)</b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <b>&emsp; let bottles = 10;<br><br>
+          &emsp; do {<br>
+          &emsp; &emsp; console.log(`There were ${bottles} green bottles, hanging on<br>
+          &emsp; &emsp; a wall. And if one green bottle should accidentally fall,<br>
+          &emsp; &emsp; there'd be ${bottles-1} green bottles hanging on the wall`);<br><br>
+          &emsp; &emsp; bottles--;<br>
+          &emsp; } while (bottles > 0)</b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <u>for Loops:</u>
+          <br><br>
+          &emsp; <b>for (initialization ; condition ; after) { do something }</b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          &emsp; <b>for (let bottles = 10 ; bottles > 0 ; bottles--) {<br>
+          &emsp;&emsp; console.log(`There were ${bottles} green bottles, hanging on<br>
+          &emsp;&emsp; a wall. And if one green bottle should accidentally fall,<br>
+          &emsp;&emsp; there'd be ${bottles-1} green bottles hanging on the wall`);<br>
+          &emsp; }</b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          This for Loop could be done with out each part.
+          <br><br>
+          &emsp; <b>let bottles = 10;</b> // bottles is initialized here instead
+          <br><br>
+          &emsp;<b>for ( ; bottles > 0 ; ) {</b> // empty initialization and increment
+          <br>
+          &emsp;&emsp; <b>console.log(`There were ${bottles} green bottles, hanging on
+          <br>
+          &emsp;&emsp; a wall. And if one green bottle should accidentally fall,
+          <br>
+          &emsp;&emsp; there'd be ${bottles-1} green bottles hanging on the wall`);</b>
+          <br><br>
+          &emsp;&emsp; <b>bottles--;</b> // increment moved into code block
+          <br>
+          &emsp; <b>}</b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <u>Nested for Loops</u>
+          <br><br>
+          <b>
+            &emsp; for(let i=1 ; i<13 ; i++){
+            <br>
+            &emsp;&emsp; for(let j=1 ; j<13 ; j++){
+            <br>
+            &emsp;&emsp;&emsp; console.log(`${j} multiplied by ${i} is ${i*j}`);
+            <br>
+            &emsp; }
+          </b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <u>Loops over Arrays:</u>
+          <br><br>
+          &emsp; <b>for(let i=0, max=avengers.length; i < max; i++) { console.log(avengers[i] ); }</b>
+          <br><br>
+          &emsp; Returns:<br>
+          &emsp;&emsp; 'Black Widow'<br>
+          &emsp;&emsp; 'Captain America'<br>
+          &emsp;&emsp; 'Hawkeye'<br>
+          &emsp;&emsp; 'Iron Man'<br>
+          &emsp;&emsp; 'Quicksilver'<br>
+          &emsp;&emsp; 'Scarlet Witch'
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          ES6 improved the iterator function for arrays called a for-of loop.
+          <br><br>
+          <b>
+            &emsp; for(const [key,value] of RomanNumerals.entries()) {<br>
+            &emsp;&emsp; console.log(`${key} in Roman numerals is ${value}`);<br>
+            &emsp; }
+          </b>
+          <br><br>
+          &emsp; Returns:<br>
+          &emsp;&emsp; 'Black Widow'<br>
+          &emsp;&emsp; 'Captain America'<br>
+          &emsp;&emsp; 'Hawkeye'<br>
+          &emsp;&emsp; 'Iron Man'<br>
+          &emsp;&emsp; 'Quicksilver'<br>
+          &emsp;&emsp; 'Scarlet Witch'
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <u>Looping Over Sets:</u>
+          <br><br>
+          The loop will iterate over each value in the same order they were added to the set.
+          <br><br>
+          &emsp; <b>const letters = new Set('hello');</b>
+          <br><br>
+          <b>
+            &emsp; for(const letter of letters) {<br>
+            &emsp;&emsp; console.log(letter);<br>
+            &emsp;}
+            <br><br>
+            &emsp; Returns:<br>
+            &emsp;&emsp; h<br>
+            &emsp;&emsp; e<br>
+            &emsp;&emsp; l<br>
+            &emsp;&emsp; o
+          </b>
+          <br><br>
+          <u>Looping Over Maps</u>
+          <br><br>
+          The loop will iterate over each key-value pair in the same order as they were added to the map.
+          <br><br>
+          <b>
+            &emsp;const romanNumerals = new Map();<br>
+            &emsp;&emsp; romanNumerals.set(1,'I').set(2,'II').set(3,'III').set(4,'IV').set(5,'V');
+          </b>
+          <br><br>
+          &emsp; As demonstrated earlier the return would be:
+          <br><br>
+          &emsp; Map { 1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV', 5 => 'V' }
+          <br><br>
+          &emsp; Every map object has a keys() method lets us iterate over each key with the
+          following for-of loop:
+          <br><br>
+          <b>
+            &emsp; for(const key of romanNumerals.keys()) {<br>
+              &emsp;&emsp; console.log(key);
+          </b>
+          }
+          <br><br>
+          &emsp; Returns:<br>
+          &emsp;&emsp; 1<br>
+          &emsp;&emsp; 2<br>
+          &emsp;&emsp; 3<br>
+          &emsp;&emsp; 4<br>
+          &emsp;&emsp; 5
+          <br><br>
+          &emsp; There is also a values() method that lets us iterate over the values in a similar
+          126 JavaScript: Novice to Ninja, 2nd Edition
+          way:
+          <br><br>
+          <b>
+            &emsp; for(const value of romanNumerals.values()) {<br>
+            &emsp;&emsp; console.log(values);
+          </b>
+          }
+          <br><br>
+          &emsp; Returns:<br>
+          &emsp;&emsp; I<br>
+          &emsp;&emsp; II<br>
+          &emsp;&emsp; III<br>
+          &emsp;&emsp; IV<br>
+          &emsp;&emsp; V
+          <br><br>
+          If you wanted to access both the key and value, you canuse the enteries() method:
+          <br><br>
+          <b>
+          &emsp; for(const [key,value] of RomanNumerals.entries()) { <br>
+            &emsp;&emsp; console.log(`${key} in Roman numerals is ${value}`); <br>
+            &emsp; }
+          <br><br>
+          &emsp; Returns:<br>
+          &emsp;&emsp; 1 in Roman numerals is I<br>
+          &emsp;&emsp; 2 in Roman numerals is II<br>
+          &emsp;&emsp; 3 in Roman numerals is III<br>
+          &emsp;&emsp; 4 in Roman numerals is IV<br>
+          &emsp;&emsp; 5 in Roman numerals is V<br>
+          </b>
         </p>
       </div>
     </main>
@@ -662,7 +845,7 @@
     <!-- FOOTER HERE -->
     <footer id="footerWrapper">
       <p>
-        &copy; <span id="currentyear"></span> | Jesse Wilson | Cardston, AB |
+        &copy;2021 | Jesse Wilson | Cardston, AB |
         <a href="https://www.byui.edu/online" target="_blank"
           >BYU-I Online Learning
         </a>
