@@ -252,44 +252,54 @@
           <br /><br />
           You can use the length to find out the last value in the array:
           <br /><br />
-          &emsp; <b>avengers[avengers.length - 1];</b> // This would return
-          'Black Widow' <br /><br />
+          &emsp; <b>avengers[avengers.length - 1];</b> // returns 
+          <br>
+          &emsp;'Black Widow' <br /><br />
           You can change the length of the array by setting the length of it:
           <br /><br />
-          &emsp; <b>avengers.length = 8;</b> // This would return ['Captain
+          &emsp; <b>avengers.length = 8;</b> // returns
+          <br>
+          &emsp; ['Captain
           America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow',
           undefined, undefined] <br /><br />
           You can shorted the array but any elements beyond that length will be
           removed.
           <br /><br />
-          &emsp; <b>avengers.length = 3;</b> // This would return ['Captain
+          &emsp; <b>avengers.length = 3;</b> // returns 
+          <br>
+          &emsp; ['Captain
           America', 'Iron Man', 'Thor'] <br /><br />
           You can remove the last item in an array, if the following code was
           used:
           <br /><br />
-          &emsp; <b>avengers.pop();</b> // the array would now look like this
-          ['Captain America', 'Iron Man'] <br /><br />
+          &emsp; <b>avengers.pop();</b> // the array would return 
+          <br>
+          &emsp; ['Captain America', 'Iron Man'] <br /><br />
           If you wanted to remove the first item in the list (using the array
           just mentioned):
           <br /><br />
-          &emsp; <b>avengers.shift();</b> // the array would look like this
-          ['Iron Man', 'Thor'] <br /><br />
+          &emsp; <b>avengers.shift();</b> // the array would return 
+          <br>
+          &emsp; ['Iron Man', 'Thor'] <br /><br />
           If you wanted to add an item to the end of the list (using the array
           just used):
           <br /><br />
-          &emsp; <b>avengers.push('Hulk');</b> // the array would look like this
-          ['Captain America', 'Iron Man', 'Thor', 'Hulk'] <br /><br />
+          &emsp; <b>avengers.push('Hulk');</b> // returns 
+          <br>
+          &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk'] <br /><br />
           If you wanted to add a new item to the beginning of an array (using
           the above array):
           <br /><br />
-          &emsp; <b>avengers.unshift('Black Widow');</b> // the array would look
-          like this ['Black Widow, 'Captain America', 'Iron Man', 'Thor']
+          &emsp; <b>avengers.unshift('Black Widow');</b> // the array would return
+          <br>
+          &emsp; ['Black Widow, 'Captain America', 'Iron Man', 'Thor']
           <br /><br />
           It is possible to merge one or more arrays. It does not change the
           array, it just creates a new one:
           <br /><br />
           &emsp; <b>avengers.concat(['Hulk','Hawkeye', 'Black Widow']);</b> //
-          would return <br /><br />
+          would return
+          <br />
           &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye',
           'Black Widow']
           <br /><br />
@@ -298,7 +308,7 @@
           <br /><br />
           &emsp;
           <b>avengers = avengers.concat(['Hulk','Hawkeye', 'Black Widow']);</b>
-          // would return <br /><br />
+          // would return <br />
           &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye',
           'Black Widow']
           <br /><br />
@@ -306,7 +316,7 @@
             >avengers = [ ...avengers, ...['Hulk','Hawkeye', 'Black Widow']
             ];</b
           >
-          // would return <br /><br />
+          // would return <br />
           &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye',
           'Black Widow']
           <br /><br />
@@ -314,44 +324,49 @@
           method before but it is not clear in my head. From what I am getting
           from the book is that the join() method displays an array by
           seperating each item with a comma. <br /><br />
-          &emsp; <b>avengers.join();</b> // would return <br /><br />
+          &emsp; <b>avengers.join();</b> // would return <br />
           &emsp; 'Captain America, Iron Man, Thor, Hulk, Hawkeye, Black Widow'
           <br /><br />
           You can also choose a seperator other than a comma by placing it
           inside the paraentheses:
           <br /><br />
-          &emsp; <b>avengers.join(' & ');</b> // would return <br /><br />
+          &emsp; <b>avengers.join(' & ');</b> // would return <br />
           &emsp; 'Captain America & Iron Man & Thor & Hulk & Hawkeye & Black
           Widow'
           <br /><br />
           <u>Slicing:</u> This does not change the but it seems as if you have
           certain values to be displayed. <br /><br />
           &emsp; <b>avengers.slice(2,4);</b> // The return will be 3rd item up
-          to but not include the 5th item. <br /><br />
+          to but not include the 5th item.
+          <br />
           &emsp; ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye',
           'Black Widow']
           <br /><br />
           <u>Splicing:</u> This method removes items from the array and inserts
-          new items. <br /><br />
+          new items.
+          <br />
           &emsp; <b>avengers.splice(3, 1, 'Scarlet Witch');</b> // This replaces
-          the 4th item 'Hulk' with 'Scarlet Witch' <br /><br />
+          the 4th item 'Hulk' with 'Scarlet Witch'
+          <br />
           &emsp; ['Captain America', 'Iron Man', 'Thor', 'Scarlet Witch',
           'Hawkeye', 'Black Widow']
           <br /><br />
           You can remove an item using splice:
           <br /><br />
           &emsp; <b>avengers.splice(2,1);</b> // will remove the item at index 2
-          (3rd item - 'Thor') <br /><br />
+          (3rd item - 'Thor')
+          <br />
           &emsp; ['Captain America', 'Iron Man', 'Scarlet Witch', 'Quicksilver',
           'Hawkeye', 'Black Widow'] <br /><br />
           You can reverce the order of the array:
-          <br /><br />
+          <br />
           &emsp; <b>avengers.reverse();</b> // would return <br /><br />
           &emsp; ['Black Widow', 'Hawkeye', 'Quicksilver', 'Scarlet Witch',
           'Iron Man', 'Captain America'] <br /><br />
           You can also sort arrays:
           <br /><br />
-          &emsp; <b>avengers.sort();</b> // would return <br /><br />
+          &emsp; <b>avengers.sort();</b> // would return
+          <br />
           &emsp; ['Black Widow', 'Captain America', 'Hawkeye', 'Iron Man',
           'Quicksilver', 'Scarlet Witch']
           <br /><br />
@@ -394,7 +409,8 @@
           &emsp; <b>const nested = [ summer, winter ];</b> <br /><br />
           &emsp; Returns: [ [ 'Jun', 'Jul', 'Aug' ], [ 'Dec', 'Jan', 'Feb' ] ]
           <br /><br />
-          &emsp; <b>const flat = [...summer, ...winter];</b> <br /><br />
+          &emsp; <b>const flat = [...summer, ...winter];</b> // returns
+          <br />
           &emsp; Returns: [ 'Jun', 'Jul', 'Aug', 'Dec', 'Jan', 'Feb' ]
           <br /><br />
           <u>Sets:</u> Set is a data structure that represents a collection of
@@ -555,9 +571,11 @@
           &emsp;&emsp; // code to run if condition is true</b
           >
           <br />
-          &emsp; <b>}</b> <br /><br />
-          &emsp;
-          <b>if (condition) {</b>
+          &emsp; <b>}</b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          &emsp; <b>if (condition) {</b>
           <br />
           &emsp;&emsp; // code to run if condition is true
           <br />
@@ -565,7 +583,10 @@
           <br />
           &emsp;&emsp; // code to run if condition is false
           <br />
-          &emsp; <b>}</b> <br /><br />
+          &emsp; <b>}</b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
           <b>
           &emsp; if (number === 4) {
           <br />
@@ -992,6 +1013,7 @@
           </b>
           <br><br>
           &emsp; <b>mean(2,8,13,11,4,2);</b> //This would return
+          <br>
           &emsp; 6.666666666666667
           <br><br>
           <u>Default Parameters:</u>
