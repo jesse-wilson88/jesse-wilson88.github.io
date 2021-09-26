@@ -53,7 +53,7 @@
           another variable of the same kind. When you use let in front of a
           variable. it can be changed at any time. If you try to do it on
           purpose or by accident, you will get an error, "<b
-            ><< TypeError: Assignment to constant variable</b
+            >&lt;&lt; TypeError: Assignment to constant variable</b
           >". <br /><br />
           While in the console, you can type <b>typeof</b> in front of the
           variable to find out what type of variable is. <br /><br />
@@ -80,7 +80,7 @@
           <b>const name = { value: 'Siri'};</b>
           <br />
           It would come back with the same error when you tried to change a
-          const variable, "<b><< TypeError: Assignment to constant variable.</b
+          const variable, "<b>&lt;&lt; TypeError: Assignment to constant variable.</b
           >"
         </p>
         <p>
@@ -719,9 +719,9 @@
           <u>Nested for Loops</u>
           <br><br>
           <b>
-            &emsp; for(let i=1 ; i<13 ; i++){
+            &emsp; for(let i=1 ; i&lt;13 ; i++){
             <br>
-            &emsp;&emsp; for(let j=1 ; j<13 ; j++){
+            &emsp;&emsp; for(let j=1 ; j&lt;13 ; j++){
             <br>
             &emsp;&emsp;&emsp; console.log(`${j} multiplied by ${i} is ${i*j}`);
             <br>
@@ -732,7 +732,7 @@
           <br><br>
           <u>Loops over Arrays:</u>
           <br><br>
-          &emsp; <b>for(let i=0, max=avengers.length; i < max; i++) { console.log(avengers[i] ); }</b>
+          &emsp; <b>for(let i=0, max=avengers.length; i &lt; max; i++) { console.log(avengers[i] ); }</b>
           <br><br>
           &emsp; Returns:<br>
           &emsp;&emsp; 'Black Widow'<br>
@@ -771,14 +771,13 @@
           <b>
             &emsp; for(const letter of letters) {<br>
             &emsp;&emsp; console.log(letter);<br>
-            &emsp;}
+            &emsp;}</b>
             <br><br>
             &emsp; Returns:<br>
             &emsp;&emsp; h<br>
             &emsp;&emsp; e<br>
             &emsp;&emsp; l<br>
             &emsp;&emsp; o
-          </b>
           <br><br>
           <u>Looping Over Maps</u>
           <br><br>
@@ -840,12 +839,496 @@
           &emsp;&emsp; 4 in Roman numerals is IV<br>
           &emsp;&emsp; 5 in Roman numerals is V<br>
         </p>
+        <hr>
         <!-- Notes from Chapter 4 -->
       <div>
         <h1>Notes from JavaScript: Novice to Ninja - Chapter 4:</h1>
         <h2>Functions:</h2>
         <p>
-
+          There are different types of functions we will be going over in this chapter. These functions are function declarations, function expressions, Function() constructors, and the new arrow synax. Below I will show some examples of each from the book.
+          <br><br>
+          <u>Function Declarations:</u>
+          <br><br>
+          In the function declaration, the name of the function is hello followed by paraentheses. Inside the paraentheses is where arguments can go which are variables that are being passed into the function. This is then followed by a block which contains the code for that funciton. This is also know as a named function. Notice that the functino expressions ends with a semicolon at the end of the block of code. One if the main reasons functions are used is to make it so you do not have to repeat the same code over and over throughout your program/code. If you want to fix or change part of that code, you just need to go to that function. This is known as the DRY principle, which stands for Don't Repeat Yourself. Here is a Function Declaration example:
+          <br><br>
+          <b>
+            &emsp; function hello() {<br>
+            &emsp;&emsp; console.log('Hello World!');<br>
+            &emsp;}
+          </b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <u>Function Expressions:</u>
+          <br><br>
+          Function expressions is another way of defining a function literal. Here an anonymous function is assigned to the vaiable boodbye:
+          <br><br>
+          <b>
+            &emsp; const goodbye = function() {<br>
+            &emsp;&emsp; console.log('Goodbye World!');<br>
+            &emsp;};
+          </b>
+          <br><br>
+          We can even create a named function expression indead if we wanted. The function name is goodbye and it is being assigned to the variable goodbye.
+          <br><br>
+          <b>
+            &emsp; const goodbye = function bye() {<br>
+            &emsp;&emsp; console.log('Goodbye World!');<br>
+            &emsp; };
+          </b>
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <u>Function() Constructors:</u>
+          <br><br>
+          With this function, the body is entered as a string. These type of functions are not recommended to decalre functions. It can cause numerous problems with placing the function body inside a string. The reason why is because this type of function is also created in the global scope. One should always decalare a function using function literals, function declarations, or function expressions. Here is an example of a function() constructor:
+          <br><br>
+          &emsp; <b>const hi = new Function('console.log("Hi World!");');</b>
+          <br><br>
+          To run the code within a function is called invoking a function. The way this is done is by entering the name of the function or the variable. There is no examples of a function that is attached to a variable but if you were to invoke/call a function without the paraentheses, this is what would be returned:
+          <br><br>
+          &emsp; <b>goodbye;</b><br>
+          &emsp; [Function: goodbye]
+          <br><br>
+          <u>Return values:</u>
+          <br><br>
+          A function can be invoked and have something returned which allows you to use that in another part of the code. If nothing is returned then everything that happens inside the block of code in a function, stays in the function. Here is an example of using a function to return a value of somekine:
+          <br><br>
+          &emsp; <b>function howdy(){<br>
+          &emsp;&emsp; return 'Howdy World!';<br>
+          &emsp; } </b>
+          <br><br>
+          You can even assign a varuable to a function that will do the same and can be easily used throughout the code if desired. Here is an example:
+          <br><br>
+          const message = howdy(); // If used in a string, it would return 'Howdy World!'
+          <br><br>
+          Parameters and arguments are often used interchangeably to represent values that are sent to a function to be used by it and maybe even returned to where the function was invoked/called from. Here is an example:
+          <br><br>
+          <u>Parameters:</u>
+          <br><br>
+          &emsp; <b>function square(x) {
+          &emsp;&emsp; return x * x;
+          &emsp; }</b>
+          <br><br>
+          This is how the parameter would be sent to the function and what the result would be:
+          <br><br>
+          &emsp; <b>square(4, 5);</b> // would ruturn 20.25
+          <br><br>
+          You can also use many parameters:
+          <br><br>
+          &emsp; <b>function mean(a, b, c) {<br>
+          &emsp;&emsp; return (a + b + c) / 3;<br>
+          &emsp; }</b>
+          <br><br>
+          This is what it would look like being called and what would be returned.
+          <br><br>
+          &emsp; <b>mean(1, 3, 6);</b><br>
+          &emsp; 3.3333333333333335
+          <br><br>
+          If you try to use less parameters than the function requires you will get a return of NaN.
+          <br><br>
+          &emsp; <b>mean(1, 2);</b><br>
+          &emsp; NaN
+          <br><br>          
+          If you try to send more than the function requires, it will only go up to the amount of parameters it needs. The rest will be ignored.
+          <br><br>
+          &emsp; <b>mean(1, 2, 3, 4, 5):</b> // will only find the mean of 1, 2, and 3.<br>
+          &emsp; 2
+          <br><br>
+          <u>Arguments:</u>
+          <br><br>
+          &emsp; <b>arguments('hello', NaN);</b>
+          &emsp; { '0': 'hello', '1': NaN }
+          <br><br>
+          Or another example would be:
+          <br><br>
+          &emsp; <b>arguments(1,2,3,4,5);</b>
+          &emsp; { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }
+          <br><br>
+          Note: From <a href="https://developer.mozilla.org/en-US/docs/Glossary/Parameter">MDN Web Docs</a>, I looked up the differences between parameters and arguments, this is what I found:
+          <ul>
+            <li>Function parameters are the names listed in the function's definition.</li>
+            <li>Function arguments are the real values passed to the function.</li>
+            <li>Parameters are initialized to the values of the arguments supplied.</li>
+          </ul>
+          </p>
+          <p>
+          <u>Rest Operator:</u>
+          <br><br>
+          In the book, it talks about the arguments not being an array. It has a length property that can be read from and each element written using index notation. The ES6 has introduced a better solution called the rest operator. The following function will have access to an array of all arguments entered:
+          <br><br>
+          <b>
+            &emsp; function rest(...args){<br>
+            &emsp;&emsp; return args;<br>
+            &emsp; }
+          </b>
+          <br><br>
+          You can use the for-of loop in the rest operator:
+          <br><br>
+          <b>
+            &emsp; function rest(...args){<br>
+            &emsp;&emsp; for(arg of args){<br>
+            &emsp;&emsp;&emsp; console.log(arg);<br>
+            &emsp;&emsp; }<br>
+            &emsp; }</b>
+          <br><br>
+          &emsp;<b>rest(2, 4, 6, 8);</b> // which would return
+          <br>
+          &emsp; 2<br>
+          &emsp; 3<br>
+          &emsp; 6<br>
+          &emsp; 8
+          <br><br>
+          Improved Mean Function using the rest parameter with a for-of loop. Here is an example:
+          <br><br>
+          <b>
+            &emsp;function mean(...values) {<br>
+            &emsp;&emsp; let total = 0;<br>
+            &emsp;&emsp; for(const value of values) {<br>
+            &emsp;&emsp;&emsp; total += value;<br>
+            &emsp;&emsp; }<br>
+            &emsp;&emsp; return total/values.length;<br>
+            &emsp; }
+          </b>
+          <br><br>
+          &emsp; <b>mean(2,8,13,11,4,2);</b> //This would return
+          &emsp; 6.666666666666667
+          <br><br>
+          <u>Default Parameters:</u>
+          <br><br>
+          ES6 hs introduced a way of having a default parameter for a function if one is not provided. In the book, it says it is the same as '<b>name = name || "World";</b>' Here is an example:
+          <br><br>
+          &emsp; <b>Function hello(name = 'world') {<br>
+          &emsp;&emsp; console.log(`Hello ${name});<br>
+          &emsp; }</b>
+          <br><br>
+          Here is how it would look if you did not provide an argument:
+          <br><br>
+          &emsp; <b>hello();</b> // It would return<br>
+          &emsp; 'Hello World'
+          <br><br>
+          This is what it would look like if you provided an argument:
+          <br><br>
+          &emsp; <b>hello('Universe');</b> // It would return<br>
+          &emsp; 'Hello Universe'
+          <br><br>
+          You can even have a parameter/argument and a default parameter. Here is an example:
+          <br><br>
+          <b>
+            &emsp; function discount(price, amount=10) {<br>
+            &emsp;&emsp; return price*(100-amount)/100;<br>
+            &emsp; }
+          </b>
+          <br><br>
+          For this example, here are a ways you could send parameters/arguments:
+          <br><br>
+          &emsp; <b>discount(20);</b> // standard discount of 10%<br>
+          &emsp; 18
+          <br><br>
+          &emsp; <b>discount(15, 20);</b> // discount of 20%<br>
+          &emsp; 12
+          <br><br>
+          <u>Arror Functions:</u>
+          <br><br>
+          Last week some of my classmates said that they like the arrow funciton more than the others.
+          <br><br>
+          An arrow function can be identified by the arrow symbol. It looks different than the other functions. Because this function is anonymous, you need to assign them to a variable. There are some advantages using an arrow function over the others:
+          <ul>
+            <li>They are much less verbose than normal function declarations.</li>
+            <li>Single parameters don’t need putting into parentheses.</li>
+            <li>The body of the function doesn’t need placing inside a block if it’s only one line.</li>
+            <li>The return keyword isn’t required if the return statement is the only statement in the body of the function.</li>
+            <li>They don’t bind their own value of this to the function (we’ll see why this is a particularly useful property when we cover objects later in the book).</li>
+          </ul>
+        </p>
+        <p>
+          Here are some examples of functions from earlier but being created with an arrow function:
+          <br><br>
+          <b>const square = x => x*x;</b>
+          <br><br>
+          <b>const add = (x,y) => x + y;</b>
+          <br><br>
+          <b>const hello = () => alert('Hello World!');</b>
+          <br><br>
+          When you create an arrow function that has more code, the benefits are lost. It is a perfect candidate for short and anonymous functions. With that said, this is what it would look like this:
+          <br><br>
+          <b>
+            &emsp; const tax = (salary) => {<br>
+            &emsp;&emsp; const taxable = salary - 8000;<br>
+            &emsp;&emsp; const lowerRate = 0.25 * taxable;<br>
+            &emsp;&emsp; taxable = taxable - 20000;<br>
+            &emsp;&emsp; const higherRate = 0.4 * taxable;<br><br>
+            &emsp;&emsp; return lowerRate + higherRate;<br>
+            &emsp; }
+          </b>
+          <br><br>
+          <u>Function Hoisting & Variable Hoisting</u>
+          <br><br>
+          This does not make a lot of sense to me. From what I have been taught in the past, you should always declare your variables before it gets to the function. But since I don't really understand what this section is saying, I will have to do some more research on this and maybe ask my classmates. I can also look through it more at <a href="https://www.sitepoint.com/javascript-hoisting/">sitepoint</a>'s website.
+          <br><br>
+          I just looked at the link I just shared. I am sorta lost because how it is discribed in the book seems different than the website. From the site it says, "... function declarations are also hoisted. However, functions that are assigned to variables are not hoisted. For example, the following code will work as expected due to function declaration hoisting."
+          <br><br>
+          Here is the example of one that is hoisted:
+          <br><br>
+          &emsp; <b>foo();
+          <br><br>          
+          &emsp; function foo() {<br>
+          &emsp;&emsp; alert('Hello!');<br>
+          &emsp; }
+          </b>
+          <br><br>
+          This example would not work because the variable declaration for foo was hoisted before the functioncall:
+          <br><br>
+          &emsp; <b>foo();
+          <br><br>
+            &emsp; function foo() {<br>
+            &emsp;&emsp; alert("hello!");<br>
+            &emsp; }
+          </b>
+          <br><br>
+          <u>Callbacks:</u>
+          <br><br>
+          This is a basic example of a function called sing():
+          <br><br>
+          <b>
+            &emsp; function sing(song) {<br>
+              &emsp;&emsp; console.log(`I'm singing along to ${song}`);<br>
+              &emsp; }
+          </b>
+          <br><br>
+          &emsp; <b>sing('Let It Go')</b> // would return
+          <br>
+          &emsp; 'I'm singing along to Let It Go'
+          <br><br>
+          We can make the wing() function more flexible by adding a callback parameter:
+          <br><br>
+          <b>
+            &emsp;function sing(song,callback) {<br>
+            &emsp;&emsp; console.log(`I'm singing along to ${song}.`);<br>
+            &emsp;&emsp; callback();<br>
+            &emsp; }
+          </b>
+          <br><br>
+          Now we can create another function called dance() that can be used as the callback:
+          <br><br>
+          <b>
+            &emsp; function dance() {<br>
+              &emsp;&emsp; console.log("I'm moving my body to the groove.");<br>
+              &emsp; } </b>
+              <br><br>
+              &emsp; <b>sing('Let It Go',dance);</b>  // would return<br>
+              &emsp;'I'm singing along to Let It Go.'<br>
+              &emsp; 'I'm moving my body to the groove.'
+          <br><br>
+          <u>Sorting Arrays With A Callback:</u>
+          <br><br>
+          Remember from earlier when we stried to sort numbers, it sorted them by the first number in each element:
+          <br><br>
+          &emsp;<b>[1,3,12,5,23,18,7].sort();</b> // returns <br>  
+          &emsp;[1, 12, 18, 23, 3, 5, 7]
+          <br><br>
+          This function will be used at a callback function to sort numbers:
+          <br><br>
+          <b>
+            &emsp; function numerically(a,b){<br>
+            &emsp;&emsp; return a-b;<br>
+            &emsp; }
+          </b>
+          <br><br>
+          With the following function, and the callback function we can sort the numbers correctly:
+          <br><br>
+          &emsp; <b>[1,3,12,5,23,18,7].sort(numerically);</b> // returns <br>
+          &emsp; [1, 3, 5, 7, 12, 18, 23]
+        <br><br>
+        If an array includes some very large and negative numbers, you may get an overflow error. This would be because a - b becomes smaller than the smallest number JavaScript can deal with. IF that is the case, this function can be used as a callback function:
+        <br><br>
+        <b>
+          &emsp; function numerically (a,b) {<br>
+          &emsp;&emsp; if (a &lt; b) {<br>
+          &emsp;&emsp;&emsp; return -1;<br>
+          &emsp;&emsp; } else if (a> b) {<br>
+          &emsp;&emsp;&emsp; return 1;<br>
+          &emsp;&emsp; } else {<br>
+          &emsp;&emsp;&emsp; return 0;<br>
+          &emsp;&emsp; }<br>
+          &emsp; }
+        </b>
+        <br><br>
+        <u>Array Iterators:</u>
+        <br><br>
+        Arrays have a number of methods that can utilize callbacks to make them more flexable. Arrow functions are frequently used to declare the callbacks in these examples.
+        <br><br>
+        <u>forEach()</u>
+        <br><br>
+        We say in chapter 3 that FOR Loops can be used to go through each value.
+        <br><br>
+        <b>const colors = ['Red', 'Green', 'Blue']</b>
+        <br><br>
+        <b>
+          &emsp; for(let i = 0, max = colors.length ; i &lt; max ; i++ ) {<br>
+          &emsp;&emsp; console.log(`Color at position ${i} is ${colors[i]}`);<br>
+          &emsp; }</b>
+          <br><br>
+          Another way we can create a loop is by using the forEach() method:
+          <br><br>
+          &emsp; <b>colors.forEach( (color,index) => console.log(`Color at position ${index} is ${color}`) );</b><br><br>
+          Both of these would return the following:
+          <br><br>
+          &emsp; 'Color at position 0 is Red'<br>
+          &emsp; 'Color at position 1 is Green'<br>
+          &emsp; 'Color at position 2 is Blue'
+          <br><br>
+          <u>map()</u>
+          <br><br>
+          Here are some examples of the map() method that can be used as a callback function:
+          <br><br>
+          &emsp; <b>[1,2,3].map( square )</b> // returns [1, 4, 9]
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          This example will double all the numbers in the array:
+          <br><br>
+          &emsp; <b>[1,2,3].map( x => 2 * x);</b> // returns [2,4,6]
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          This example takes each item in the array and places them in uppercase inside paragraph HTML tags:
+          <br><br>
+          &emsp; <b>['red','green','blue'].map( color => &lt;p&gt;${color.toUpperCase()}&lt/p&gt; );</b> // returns 
+          <br>
+          &emsp; ['&lt;p&gt;RED&lt/p&gt;', '&lt;p&gt;GREEN&lt/p&gt;', '&lt;p&gt;BLUE&lt/p&gt;']
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          This callback can take two more parameters. The second parameter refers to the indes number in the array and the third refers to the array itself. This example shows all three:
+          <br><br>
+          <span id="tooLong"><b>&emsp;[ 'red','green','blue'].map( (color, index, array) => `Element ${index} is ${color}. There are ${array.length} items in total.` );
+          </b> // returns</span>
+          <br><br>
+          <span b id="tooLong">&emsp; [ 'Element 0 is red. There are 3 items in total.', 'Element 1 is green. There are 3 items in total.', 'Element 2 is blue. There are 3 items in total.' ]</span>
+          <br><br>
+          <u>Reduce()</u>
+          <br><br>
+          The reduce() method is another method that iterates over each vlaue in an array, but this time is cumulatively combines each result to return a single value. The following examples shows how to sum an array of numbers. The value of acc starts at 1 (first item in the array) and then keeps track of the accumulated total.
+          <br><br>
+          &emsp;<b>[1,2,3,4,5].reduce( (acc,val) => prev + val );</b> // returns 15
+          <br><br>
+          The reduce() method also takes a second parameter after the callback, which is the initial value of the accumulator, acc. This example start at 10, instead of 1:
+          <br><br>
+          &emsp;<b>[1,2,3,4,5].reduce( (acc,val) => acc + val,10);</b> // '&lt;---- second parameter of 10 here and returns 25
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          &emsp; <b>const sentence = 'The quick brown fox jumped over the lazy dog'</b>
+          <br>
+          &emsp; 'The quick brown fox jumped over the lazy dog'
+          <br><br>
+          When you use the split() method you get this as a return:
+          <br><br>
+          &emsp; ['The', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'lazy', 'dog']
+          <br><br>
+          Now we can use the reduce() function to calculate the total number of letters in the sentence:
+          <br><br>
+          &emsp; <b>const total = words.reduce( (acc,word) => acc + word.length,0 );</b> // returns 36
+          <br><br>
+          And now we can figure out the average word length:
+          <br><br>
+          &emsp; <b>const average = total/words.length</b> // returns 4
+          <br><br>
+          ---------------------------------------------------------
+          <br><br>
+          <u>Filter()</u>
+          <br><br>
+          We can create a new array that only contains items from the original array that return true by using the filter() method. For example we can filter just the even numbers using the following code:
+          <br><br>
+          &emsp; <b>const numbers = [ 2, 7, 6, 5, 11, 23, 12 ];</b>
+          <br><br>
+          &emsp; <b>numbers.filter(x => x%2 === 0 );</b> // this returns true if the number is even 
+          <br>
+          &emsp; [ 2, 6, 12 ]
+          <br><br>
+          This next example provides a useful way of finding all the truthly values from an array:
+          <br><br>
+          &emsp; <b>const array = [ 0, 1, '0', false, true, 'hello' ];</b>
+          <br>
+          &emsp; <b>array.filter(Boolean);</b> // returns [ 1, '0', true, 'hello' ]
+          <br><br>
+          And if you wanted to find falsy values you can do so with this code:
+          <br><br>
+          &emsp; <b>array.filter(x => !x);</b> // [ 0, false ]
+          <br><br>
+          Some of the other methods I will have to look into that were mentioned in the book are:
+          <ul>
+            <li>reduceRight()</li>
+            <li>every()</li>
+            <li>find()</li>
+            <li>some()</li>
+          </ul>
+      </p>
+      <p>
+        <u>Chaining Iterators Together</u>
+        <br><br>
+        We can combine various iterator functions together to create some powerful tranformations of data stored in arrays. I is achieved by a process called chaining methods together. It works because iterator functions returns an array. Iterator functions are chained to the end and will be applied to a new array.
+        <br><br>
+        In this example we will chain a map() method and the reduce() method on to the end to add the results together:
+        <br><br>
+        &emsp;<b>[1,2,3].map( x => x*x ).reduce((acc,x) => acc + x );</b> // returns 14
+        <br><br>
+        Another more complex example could be used to take an array of orders, apply a sales tax to them using map() and then use reduce() to find the total:
+        <br><br>
+        &emsp;<span id="tooLong"><b>const sales = [ 100, 230, 55]; totalAfterTaxSales = sales.map( (amount) => amount * 1.15 ).reduce( (acc,val) => acc + val );</b> // returns 442.75</span>
+        <br><br>
+        <u>Improving the mean() Function</u>
+        Once again we are shown a better way to do the mean() function from chapter 2. The mean() function can be improved by using the reduce() method to add up all the values provided:
+        <br><br>
+        <b>
+          &emsp; function mean(array) {<br>
+          &emsp;&emsp; const total = array.reduce((a, b) => a + b);<br>
+          &emsp;&emsp; return total/array.length;<br>
+          &emsp; }
+        </b>
+        <br><br>
+        And they even had another improment to the mean() function by adding a callback function.
+        <br><br>
+        <b>
+          &emsp; function mean(array,callback) {<br>
+            &emsp;&emsp; if (callback) {<br>
+            &emsp;&emsp;&emsp; array.map( callback );<br>
+            &emsp;&emsp; }<br>
+            &emsp;&emsp; const total = array.reduce((a, b) => a + b);<br><br>
+            &emsp;&emsp; return total/array.length;<br>
+          &emsp; }
+        </b>
+        <br><br>
+        This code is similar to our previous mean() function, except in the following if block where we check to see if a callback has been provided. If it has, then the callback is applied to each value before being added to the total; otherwise, the total is calculated using just the values from the array given as the first argument:
+        <br><br>
+        Here are three examples using the mean() function with the reduce() method, map() method, and callback function:
+        <br><br>
+        &emsp; <b>mean([2,5,7,11,4]);</b> // this should just calculate the mean <br> 
+        &emsp; 58
+        <br><br>
+        &emsp; <b>mean([2,5,7,11,4],x => 2*x);</b><br>
+        &emsp; 11.6
+        <br><br>
+        &emsp; <b>mean([2,5,7,11,4],square);</b>
+        <br>
+        &emsp; 43
+      </p>
+        <hr>
+        <h1>Questions:</h1>
+        <p>
+          A question I have it about invoking a function. I understand that when you invoke a function, you need to use the name of the function and paraentheses. But how do you invoke a function that is a varable? Do you still type the variable name and paraentheses? In the book it does say, "... either by name or by reference to the variable it is assigned to." There is just not an example showing this so I can verify what I am reading.
+          <br><br>
+          In the Improved Mean Function, I do not understand what it means when it says, "We can use a rest parameter to improve our mean() function...". Maybe it is because of the '...values' array as the argument.
+          <br><br>
+          I don't 100% understand <b>Function Hoisting</b> and <b>Variable Hoisting</b>. I read some more about it from <a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting">MDN Web Docs</a> and from what I am understanding:
+          <br><br>
+          var a = 1; // is declared
+          b = 1; // is not declared but is initialized
+          <br><br>
+          Not sure if I am correct.
+          <br><br>
+          There are a lot of these I am not sure I would ever use. Depends on the amount of exposure I get working with HTML in the future.
         </p>
       </div>
     </main>

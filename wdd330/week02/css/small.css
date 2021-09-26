@@ -37,6 +37,10 @@ main p {
   font-size: 1rem;
 }
 
+#tooLong {
+  font-size: 0.9rem;
+}
+
 /*----------- FOOTER --------------*/
 #footerWrapper {
   background-color: darkslategrey;
