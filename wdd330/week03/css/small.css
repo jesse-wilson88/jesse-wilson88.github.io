@@ -33,6 +33,10 @@ header h1 {
 /*----------- NAVIGATION --------------*/
 
 /*----------- MAIN --------------*/
+main {
+  padding: 0 2%;
+}
+
 main h2 {
   font-size: 1.6rem;
   margin: 2%;
@@ -40,6 +44,13 @@ main h2 {
 
 li {
   font-size: 01.4rem;
+}
+
+#code {
+  margin: 0 2%;
+  background-color: rgb(236, 236, 236);
+  border-style: solid;
+  padding: 10px;
 }
 /*----------- FOOTER --------------*/
 #footerWrapper {

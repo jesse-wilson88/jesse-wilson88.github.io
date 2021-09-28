@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="infomation about site." />
+    <meta
+      name="description"
+      content="My notes and codes from this weeks reading assignment."
+    />
     <meta name="author" content="Jesse Wilson" />
 
     <!-- SITE TITLE -->
@@ -32,8 +35,8 @@
   </head>
   <body>
     <!-- HEADER HERE -->
-    <header>
-      <h1>Week 2 Notes & Codes</h1>
+    <header id="headerWrapper">
+      <h1>Week 3 Notes & Codes</h1>
     </header>
 
     <!-- NAVIGATION HERE -->
@@ -42,12 +45,73 @@
     <!-- CONTENT HERE -->
     <main>
       <div>
-        <h1>Notes from JavaScript: Novice to Ninja - Chapter 5:</h1>
-        <p></p>
+        <h1>
+          Notes from
+          <a href="https://javascript.info/object-methods"
+            >Object methods, "this":</a
+          >
+        </h1>
+        <h2>Method examples:</h2>
+        <p>
+          Object are usually created to represent entities of the real world.
+          <div id="code">
+            &emsp; let user = {<br>
+            &emsp;&emsp; name: "John",<br>
+            &emsp;&emsp; age: 30,
+            };
+          </div>
+          <br>
+          The first example that is used with the object user is as follows:
+          <div id="code">
+            &emsp; let user = {<br>
+            &emsp;&emsp; name: "John",<br>
+            &emsp;&emsp; age: 30<br>
+            &emsp; };<br>
+            <br>
+            &emsp; user.sayHi = function() {<br>
+            &emsp;&emsp; alert("Hello!");<br>
+            &emsp; };<br>
+            <br>
+            &emsp; user.sayHi(); // Hello!
+          </div>
+          <br>
+          If there is only one object, you can use 'user'. If there are more than one object, you should to use 'this' instead or you will get an error.
+          <br>
+          <div id="code">
+            &emsp; let user = {<br>
+            &emsp;&emsp; name: "John",<br>
+            &emsp;&emsp; age: 30,<br>
+            <br>
+            &emsp;&emsp; sayHi() {<br>
+            &emsp;&emsp; alert( user.name ); // leads to an error<br>
+            &emsp;&emsp; alert( this.name ); // will not give you an error<br>
+            &emsp;&emsp; }<br>
+            <br>
+            &emsp; };<br>
+            <br>
+            &emsp;let admin = user;<br><br>
+            &emsp;user = null; // overwrite to make things obvious<br><br>
+            &emsp;admin.sayHi(); // TypeError: Cannot read property 'name' of null<br>
+          </div>
+          <br><br>
+
+        </p>
+      </div>
+      <hr />
+      <div>
+        <h1>Questions:</h1>
+        <p>Comments:</p>
       </div>
     </main>
 
     <!-- FOOTER HERE -->
-    <footer></footer>
+    <footer id="footerWrapper">
+      <p>
+        &copy;2021 | Jesse Wilson | Cardston, AB |
+        <a href="https://www.byui.edu/online" target="_blank"
+          >BYU-I Online Learning
+        </a>
+      </p>
+    </footer>
   </body>
 </html>

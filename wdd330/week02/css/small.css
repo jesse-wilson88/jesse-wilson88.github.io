@@ -13,7 +13,16 @@ body {
 
 /*----------- HEADER --------------*/
 #headerWrapper {
-  background-color: darkslategrey;
+  background-color: #c1946a;
+}
+
+header {
+  text-align: center;
+}
+
+header img {
+  margin: 2%;
+  width: 150px;
 }
 
 header h1 {
@@ -29,31 +38,32 @@ main {
 }
 
 main h2 {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin: 2%;
 }
 
-main p {
-  font-size: 1rem;
+li {
+  font-size: 01.4rem;
 }
 
-#tooLong {
-  font-size: 0.9rem;
+#code {
+  margin: 0 2%;
+  background-color: rgb(236, 236, 236);
+  border-style: solid;
+  padding: 10px;
 }
-
 /*----------- FOOTER --------------*/
 #footerWrapper {
-  background-color: darkslategrey;
+  background-color: #c1946a;
 }
 
 footer {
-  padding: 5px;
-  margin: 2% 0;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 footer p {
-  margin: 2%;
+  margin: 0 2%;
+  padding: 10px 0;
 }
 
 /*----- Clearfix: Force an Element not to collapse -----*/

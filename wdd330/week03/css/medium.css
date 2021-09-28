@@ -3,13 +3,12 @@
   /*----------- BODY --------------*/
 
   /*----------- HEADER --------------*/
-  header h1 {
-    font-size: 3rem;
+  #headerWrapper {
+    background-color: darkslategrey;
   }
 
-  header img {
-    width: 140px;
-    float: right;
+  header h1 {
+    font-size: 3rem;
   }
 
   /*----------- NAVIGATION --------------*/
@@ -19,14 +18,16 @@
     font-size: 2rem;
     margin: 2%;
   }
-
-  li {
+  main p {
     font-size: 2rem;
+  }
+
+  div p {
+    font-size: 1.2rem;
   }
 
   /*----------- FOOTER --------------*/
   footer {
-    font-size: 21px;
-    padding: 0.5%;
+    font-size: 20px;
   }
 } /* end of media query */
