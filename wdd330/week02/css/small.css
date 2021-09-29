@@ -16,10 +16,6 @@ body {
   background-color: #c1946a;
 }
 
-header {
-  text-align: center;
-}
-
 header img {
   margin: 2%;
   width: 150px;
@@ -44,13 +40,6 @@ main h2 {
 
 li {
   font-size: 01.4rem;
-}
-
-#code {
-  margin: 0 2%;
-  background-color: rgb(236, 236, 236);
-  border-style: solid;
-  padding: 10px;
 }
 /*----------- FOOTER --------------*/
 #footerWrapper {

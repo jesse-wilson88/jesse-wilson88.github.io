@@ -56,20 +56,20 @@
           Object are usually created to represent entities of the real world.
           <div id="code">
             &emsp; let user = {<br>
-            &emsp;&emsp; name: "John",<br>
-            &emsp;&emsp; age: 30,
-            };
+            &emsp; &emsp; name: "John",<br>
+            &emsp; &emsp; age: 30,<br>
+            &emsp; };
           </div>
           <br>
           The first example that is used with the object user is as follows:
           <div id="code">
             &emsp; let user = {<br>
-            &emsp;&emsp; name: "John",<br>
-            &emsp;&emsp; age: 30<br>
+            &emsp; &emsp; name: "John",<br>
+            &emsp; &emsp; age: 30<br>
             &emsp; };<br>
             <br>
             &emsp; user.sayHi = function() {<br>
-            &emsp;&emsp; alert("Hello!");<br>
+            &emsp; &emsp; alert("Hello!");<br>
             &emsp; };<br>
             <br>
             &emsp; user.sayHi(); // Hello!
@@ -79,22 +79,94 @@
           <br>
           <div id="code">
             &emsp; let user = {<br>
-            &emsp;&emsp; name: "John",<br>
-            &emsp;&emsp; age: 30,<br>
+            &emsp; &emsp; name: "John",<br>
+            &emsp; &emsp; age: 30,<br>
             <br>
-            &emsp;&emsp; sayHi() {<br>
-            &emsp;&emsp; alert( user.name ); // leads to an error<br>
-            &emsp;&emsp; alert( this.name ); // will not give you an error<br>
-            &emsp;&emsp; }<br>
+            &emsp; &emsp; sayHi() {<br>
+            &emsp; &emsp; alert( user.name ); // leads to an error<br>
+            &emsp; &emsp; }<br>
             <br>
             &emsp; };<br>
             <br>
-            &emsp;let admin = user;<br><br>
-            &emsp;user = null; // overwrite to make things obvious<br><br>
+            &emsp; let admin = user;<br><br>
+            &emsp; user = null; // overwrite to make things obvious<br><br>
             &emsp;admin.sayHi(); // TypeError: Cannot read property 'name' of null<br>
           </div>
+          If you were to replace <b>user.name</b> with <b>this.name</b> it would work just fine.
           <br><br>
-
+          I do no really understand this next example. It says the value of this is evaluated during the run-time and depends on the context. It also says the same function is assigned to two different objects and had different "this" in the calls. I do not understand how this works yet.
+          <div id="code">
+            &emsp; let user = { name: "John" };<br>
+            &emsp; let admin = { name: "Admin" };<br>
+            <br>
+            &emsp; function sayHi() {<br>
+              &emsp; &emsp; alert( this.name );<br>
+              &emsp; }<br>
+              <br>
+              &emsp; // use the same function in two objects<br>
+              &emsp; user.f = sayHi;<br>
+              &emsp; admin.f = sayHi;<br>
+              <br>
+              &emsp; // these calls have different this<br>
+              &emsp; // "this" inside the function is the object "before the dot"<br>
+              &emsp; user.f(); // John  (this == user)<br>
+              &emsp; admin.f(); // Admin  (this == admin)<br>
+              <br>
+              &emsp; admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
+          </div>
+          <br><br>
+          This next example is interesting. the object is user and and at the end user.sayHi() is called. In the sayHi() function this is used instead of user. I wonder if it is because this.firstName is more like an argument so it does not matter what is passed to it. It is cool seeing the arror function used in it.
+          <div id="code">
+            &emsp; let user = {<br>
+            &emsp; &emsp; firstName: "Ilya",<br>
+            &emsp; &emsp; sayHi() {<br>
+            &emsp; &emsp; &emsp; let arrow = () => alert(this.firstName);<br>
+            &emsp; &emsp; &emsp;  arrow();<br>
+            &emsp; &emsp; }<br>
+            &emsp; };<br>
+            <br>
+            &emsp; user.sayHi(); // Ilya
+          </div>
+          <br>
+          I like this next example. I like seeing how the functions are called. I just wonder if how you could have the output something like 5 - 6 = -1 instead of just the numbers.
+          <div id="code">
+            &emsp; let calculator = {<br>
+              &emsp; &emsp; sum() {<br>
+                &emsp; &emsp; &emsp; return this.a + this.b;<br>
+                &emsp; &emsp; },<br>
+                <br>
+                &emsp; &emsp; mul() {<br>
+                  &emsp; &emsp; &emsp; return this.a * this.b;<br>
+                  &emsp; &emsp; },<br>
+                  <br>
+                  &emsp; &emsp; div() {<br>
+                    &emsp; &emsp; &emsp; return this.a / this.b;<br>
+                    &emsp; &emsp; },<br>
+                    <br>
+                    &emsp; &emsp; sub() {<br>
+                      &emsp; &emsp; &emsp; return this.a - this.b;<br>
+                      &emsp; &emsp; },<br>
+                      <br>
+                      &emsp; &emsp; read() {<br>
+                        &emsp; &emsp; &emsp; this.a = +prompt('a?', 0);<br>
+                        &emsp; &emsp; &emsp; this.b = +prompt('b?', 0);<br>
+                        &emsp; &emsp; &emsp; }<br>
+                        &emsp; &emsp; };<br>
+                        <br>
+                        &emsp; calculator.read();<br>
+                        &emsp; alert( calculator.sum() );<br>
+                        &emsp; alert( calculator.mul() );<br>
+                        &emsp; alert( calculator.div() );<br>
+                        &emsp; alert( calculator.sub() );
+          </div>
+          I am not 100% sure how this works but after really looking at the calculator variable. At first I thought it only had the sum) function inside it. After looking at it in the website, I realized calculator is an array, so it makes a little more sense. I hope I get a better understanding of what I am doing with these objects.
+        </p>
+      </div>
+      <div>
+        <h1>Notes from JavaScript: Novice to Ninja - Chapter 5:</h1>
+        <h2>Objects</h2>
+        <p>
+          I don't really understand Objects yet. They look like functions to me other than how it is called.
         </p>
       </div>
       <hr />

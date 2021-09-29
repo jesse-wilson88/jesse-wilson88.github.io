@@ -11,6 +11,10 @@
     font-size: 3rem;
   }
 
+  header img {
+    width: 150px;
+  }
+
   /*----------- NAVIGATION --------------*/
 
   /*----------- MAIN --------------*/
@@ -24,6 +28,10 @@
 
   div p {
     font-size: 1.2rem;
+  }
+
+  li {
+    font-size: 1rem;
   }
 
   /*----------- FOOTER --------------*/
