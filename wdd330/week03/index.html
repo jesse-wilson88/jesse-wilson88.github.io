@@ -100,19 +100,19 @@
             &emsp; let admin = { name: "Admin" };<br>
             <br>
             &emsp; function sayHi() {<br>
-              &emsp; &emsp; alert( this.name );<br>
-              &emsp; }<br>
-              <br>
-              &emsp; // use the same function in two objects<br>
-              &emsp; user.f = sayHi;<br>
-              &emsp; admin.f = sayHi;<br>
-              <br>
-              &emsp; // these calls have different this<br>
-              &emsp; // "this" inside the function is the object "before the dot"<br>
-              &emsp; user.f(); // John  (this == user)<br>
-              &emsp; admin.f(); // Admin  (this == admin)<br>
-              <br>
-              &emsp; admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
+            &emsp; &emsp; alert( this.name );<br>
+            &emsp; }<br>
+            <br>
+            &emsp; // use the same function in two objects<br>
+            &emsp; user.f = sayHi;<br>
+            &emsp; admin.f = sayHi;<br>
+            <br>
+            &emsp; // these calls have different this<br>
+            &emsp; // "this" inside the function is the object "before the dot"<br>
+            &emsp; user.f(); // John  (this == user)<br>
+            &emsp; admin.f(); // Admin  (this == admin)<br>
+            <br>
+            &emsp; admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
           </div>
           <br><br>
           This next example is interesting. the object is user and and at the end user.sayHi() is called. In the sayHi() function this is used instead of user. I wonder if it is because this.firstName is more like an argument so it does not matter what is passed to it. It is cool seeing the arror function used in it.
@@ -131,34 +131,53 @@
           I like this next example. I like seeing how the functions are called. I just wonder if how you could have the output something like 5 - 6 = -1 instead of just the numbers.
           <div id="code">
             &emsp; let calculator = {<br>
-              &emsp; &emsp; sum() {<br>
-                &emsp; &emsp; &emsp; return this.a + this.b;<br>
-                &emsp; &emsp; },<br>
-                <br>
-                &emsp; &emsp; mul() {<br>
-                  &emsp; &emsp; &emsp; return this.a * this.b;<br>
-                  &emsp; &emsp; },<br>
-                  <br>
-                  &emsp; &emsp; div() {<br>
-                    &emsp; &emsp; &emsp; return this.a / this.b;<br>
-                    &emsp; &emsp; },<br>
-                    <br>
-                    &emsp; &emsp; sub() {<br>
-                      &emsp; &emsp; &emsp; return this.a - this.b;<br>
-                      &emsp; &emsp; },<br>
-                      <br>
-                      &emsp; &emsp; read() {<br>
-                        &emsp; &emsp; &emsp; this.a = +prompt('a?', 0);<br>
-                        &emsp; &emsp; &emsp; this.b = +prompt('b?', 0);<br>
-                        &emsp; &emsp; &emsp; }<br>
-                        &emsp; &emsp; };<br>
-                        <br>
-                        &emsp; calculator.read();<br>
-                        &emsp; alert( calculator.sum() );<br>
-                        &emsp; alert( calculator.mul() );<br>
-                        &emsp; alert( calculator.div() );<br>
-                        &emsp; alert( calculator.sub() );
+            &emsp; &emsp; sum() {<br>
+            &emsp; &emsp; &emsp; console.log(`${this.a} + ${this.b} = `);<br>
+            &emsp; &emsp; &emsp; return this.a + this.b;<br>
+            &emsp; &emsp; },<br>
+            <br>
+            &emsp; &emsp; mul() {<br>
+            &emsp; &emsp; &emsp; console.log(`${this.a} * ${this.b} = `);<br>
+            &emsp; &emsp; &emsp; return this.a * this.b;<br>
+            &emsp; &emsp; },<br>
+            <br>
+            &emsp; &emsp; div() {<br>
+            &emsp; &emsp; &emsp; console.log(`${this.a} / ${this.b} = `);<br>
+            &emsp; &emsp; &emsp; return this.a / this.b;<br>
+            &emsp; &emsp; },<br>
+            <br>
+            &emsp; &emsp; sub() {<br>
+            &emsp; &emsp; &emsp; console.log(`${this.a} - ${this.b} = `);<br>
+            &emsp; &emsp; &emsp; return this.a - this.b;<br>
+            &emsp; &emsp; },<br>
+            <br>
+            &emsp; &emsp; read() {<br>
+            &emsp; &emsp; &emsp; this.a = +prompt('a?', 0);<br>
+            &emsp; &emsp; &emsp; this.b = +prompt('b?', 0);<br>
+            &emsp; &emsp; &emsp; }<br>
+            &emsp; &emsp; };<br>
+            <br>
+            &emsp; calculator.read();<br>
+            &emsp; console.log( `${calculator.sum()` );<br>
+            &emsp; console.log( `${calculator.mul()` );<br>
+            &emsp; console.log( `${calculator.div()` );<br>
+            &emsp; console.log( `${calculator.sub()` );<br>
+            <br>
+            &emsp; 5 + 5 = <br>
+            &emsp; 10<br>
+            &emsp; 5 * 5 = <br>
+            &emsp; 25<br>
+            &emsp; 5 / 5 = <br>
+            &emsp; 1<br>
+            &emsp; 5 - 5 = <br>
+            &emsp; 0<br>
           </div>
+          With the help of a Chris Blunt ,a classmate from last semester. We were able to talk through this and figured out how to add text and show the value. Now I just have to figure how to have an output look this below. Maybe it can by updating a div using JavaScript.<br>
+          &emsp; 10 + 5 = 15<br>
+          &emsp; 10 * 5 = 50<br>
+          &emsp; 10 / 5 = 2<br>
+          &emsp; 10 - 5 = 5<br>
+          <br><br>
           I am not 100% sure how this works but after really looking at the calculator variable. At first I thought it only had the sum) function inside it. After looking at it in the website, I realized calculator is an array, so it makes a little more sense. I hope I get a better understanding of what I am doing with these objects.
         </p>
       </div>
@@ -166,13 +185,75 @@
         <h1>Notes from JavaScript: Novice to Ninja - Chapter 5:</h1>
         <h2>Objects</h2>
         <p>
-          I don't really understand Objects yet. They look like functions to me other than how it is called.
+          I don't really understand Objects yet. They look like functions to me other than how it is called. I am not sure if I am doing this correctly but this is what I can do to this point. Maybe I will as I go through my reading assignment.
+          <div id="code">
+            &emsp; const spiderman = { };<br><br>
+            &emsp; spiderman.name = "Spider-Man";<br>
+            &emsp; spiderman.realName = "Peter Parker";<br>
+            <br>
+            &emsp; console.log(spiderman);<br>
+            <br>
+            &emsp; returns:<br>
+            <br>
+            &emsp; {<br>
+            &emsp; &emsp; name:"Spider-Man",<br>
+            &emsp; &emsp; realName:"Peter Parker"<br>
+            &emsp; }
+          </div>
+          <br>
+          Here are some examples of creating objects:
+          <div id="code">
+            const spiderman = { } // an empty object assigned to the varible spiderman
+            <br><br>
+            const spiderman = new Object( ); // This is also creating an empty object
+          </div>
+          <br>
+          I talked with Chris Blunt from another class to see if he could  help me understand a little better about objects and how to get an element back from an object (if that is the correct way to say it.) 
+          <div id="code">
+            &emsp; const spiderman = {<br>
+            &emsp; &emsp; name: "Spider-Man",<br>
+            &emsp; &emsp; realName: "Peter Parker"<br>
+            &emsp; };<br>
+            <br>
+            &emsp; const ironman = {<br>
+            &emsp; &emsp; name: "Iron-Man",<br>
+            &emsp; &emsp; realName: "Tony Stark"<br>
+            &emsp; };<br>
+            <br>
+            &emsp; function reveal() {<br>
+            &emsp; &emsp; return this.realName;<br>
+            &emsp; }<br>
+            <br>
+            &emsp; &emsp; spiderman.f = reveal;<br>
+            &emsp; &emsp; ironman.f = reveal;<br>
+            <br>
+            &emsp; document.getElementById('test').innerHTML = ironman.f();
+          </div>
+          <br>
+          Or try it with an array. I am still not understanding 100% but it did help a little bit. I will look at these again. Here is the other way we did the above. This was done by replacing a div with an ID in the HTML file.
+          <div id="code">
+            &emsp; const superhero = [<br>
+            &emsp; &emsp; {name: "Spider-Man",<br>
+            &emsp; &emsp; realName: "Peter Parker"},<br>
+            <br>
+            &emsp; &emsp; {name: "Iron-Man",<br>
+            &emsp; &emsp; realName: "Tony Stark"}<br>
+            &emsp; ]<br>
+            <br>
+            &emsp; document.getElementById('test').innerHTML = superhero[1].name; //This will return 'Iron Man'. Change 1 to 0 and it would return 'Spider-Man'
+          </div>
+          <br>
         </p>
       </div>
       <hr />
       <div>
         <h1>Questions:</h1>
-        <p>Comments:</p>
+        <p>Comments:
+          <br><br>
+          This is where I start getting lost. I don't really understand how to use the Objects. I can add elements (if that is what it is called) to an object, but I don't fully understand how to call them yet. I learn more hands one than reading from a book for the short period of time we are on each chapter.
+          <br><br>
+          So from the code I added with the superhero variabl. When I typed <b>spiderman.f = reveal;</b>. Does that make <b>spiderman.f</b> a function now and it looks like this: <b>spiderman.f()</b>?
+        </p>
       </div>
     </main>
 
