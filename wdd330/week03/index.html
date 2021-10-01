@@ -200,93 +200,221 @@
           In the book it says, An <b>Object</b> in JavaScript is a self-contained set of related values and functions. They act as a collection of named properties that map to any JavaScript value such as strings, numbers, booleans, arrays and functions. If a property’s value is a function, it is known as a method. It also says that it is like a database of values. Here are a couple of examples of objects:
           <br>
           <div id="code">
-            &emsp; const spiderman = { };<br><br>
-            &emsp; spiderman.name = "Spider-Man";<br>
-            &emsp; spiderman.realName = "Peter Parker";<br>
-            <br>
-            &emsp; console.log(spiderman);<br>
-            <br>
-            &emsp; returns:<br>
-            <br>
-            &emsp; {<br>
-            &emsp; &emsp; name:"Spider-Man",<br>
-            &emsp; &emsp; realName:"Peter Parker"<br>
-            &emsp; }
+            <b>
+              &emsp; const spiderman = { };<br><br>
+              &emsp; spiderman.name = "Spider-Man";<br>
+              &emsp; spiderman.realName = "Peter Parker";<br>
+              <br>
+              &emsp; console.log(spiderman);<br>
+              <br>
+              &emsp; returns:<br>
+              <br>
+              &emsp; {<br>
+              &emsp; &emsp; name:"Spider-Man",<br>
+              &emsp; &emsp; realName:"Peter Parker"<br>
+              &emsp; }
+            </b>
           </div>
           <br>
-Here are a few examples how you can create object:
+          Here are a few examples how you can create object:
           <br>
           <div id="code">
-            &emsp; const superman = {<br>
-            &emsp; &emsp; name: 'Superman',<br>
-            &emsp; &emsp; 'real name': 'Clark Kent',<br>
-            &emsp; &emsp; height: 75,<br>
-            &emsp; &emsp; weight: 235,<br>
-            &emsp; &emsp; hero: true,<br>
-            &emsp; &emsp; villain: false,<br>
-            &emsp; &emsp; allies: ['Batman','Supergirl','Superboy'],<br>
-            &emsp; &emsp; fly() {<br>
-            &emsp; &emsp; &emsp; return 'Up, up and away!';<br>
-            &emsp; &emsp; }<br>
-            &emsp; };<br>
+            <b>
+              &emsp; const superman = {<br>
+                &emsp; &emsp; name: 'Superman',<br>
+                &emsp; &emsp; 'real name': 'Clark Kent',<br>
+                &emsp; &emsp; height: 75,<br>
+                &emsp; &emsp; weight: 235,<br>
+                &emsp; &emsp; hero: true,<br>
+                &emsp; &emsp; villain: false,<br>
+                &emsp; &emsp; allies: ['Batman','Supergirl','Superboy'],<br>
+                &emsp; &emsp; fly() {<br>
+                &emsp; &emsp; &emsp; return 'Up, up and away!';<br>
+                &emsp; &emsp; }<br>
+                &emsp; };<br>
+            </b>
           </div>
           <br>
           Here are some examples of creating objects:
           <div id="code">
-            &emsp; const spiderman = { } // an empty object assigned to the varible spiderman
+            &emsp; <b>const spiderman = { };</b> // an empty object assigned to the varible spiderman
             <br><br>
-            &emsp; const spiderman = new Object( ); // This is also creating an empty object
+            &emsp; <b>const spiderman = new Object( );</b> // This is also creating an empty object
             <br><br>
-            &emsp; const ironMan = { name, realName }; // the short ES6 way
+            &emsp; <b>const ironMan = { name, realName };</b> // the short ES6 way
           </div>
           <br>
           I talked with Chris Blunt from another class to see if he could  help me understand a little better about objects and how to get an element back from an object (if that is the correct way to say it.) 
           <div id="code">
-            &emsp; const spiderman = {<br>
-            &emsp; &emsp; name: "Spider-Man",<br>
-            &emsp; &emsp; realName: "Peter Parker"<br>
-            &emsp; };<br>
+            <b>
+              &emsp; const spiderman = {<br>
+              &emsp; &emsp; name: "Spider-Man",<br>
+              &emsp; &emsp; realName: "Peter Parker"<br>
+              &emsp; };<br>
+              <br>
+              &emsp; const ironman = {<br>
+              &emsp; &emsp; name: "Iron Man",<br>
+              &emsp; &emsp; realName: "Tony Stark"<br>
+              &emsp; };<br>
+              <br>
+              &emsp; function reveal() {<br>
+              &emsp; &emsp; return this.realName;<br>
+              &emsp; }<br>
+              <br>
+              &emsp; &emsp; spiderman.f = reveal;<br>
+              &emsp; &emsp; ironman.f = reveal;<br>
+            </b>
             <br>
-            &emsp; const ironman = {<br>
-            &emsp; &emsp; name: "Iron Man",<br>
-            &emsp; &emsp; realName: "Tony Stark"<br>
-            &emsp; };<br>
+            &emsp; <b>document.getElementById('test').innerHTML = ironman.f();</b><br>
             <br>
-            &emsp; function reveal() {<br>
-            &emsp; &emsp; return this.realName;<br>
-            &emsp; }<br>
+            &emsp; <b>console.log(spiderman.f());</b> // returns Spider-Man<br>
             <br>
-            &emsp; &emsp; spiderman.f = reveal;<br>
-            &emsp; &emsp; ironman.f = reveal;<br>
-            <br>
-            &emsp; document.getElementById('test').innerHTML = ironman.f();<br>
-            <br>
-            &emsp; console.log(spiderman.f()); // returns Spider-Man<br>
-            <br>
-            &emsp; console.log(ironman.f()); // returns Iron Man
+            &emsp; <b>console.log(ironman.f());</b> // returns Iron Man
           </div>
           <br>
           Or try it with an array. I am still not understanding 100% but it did help a little bit. I will look at these again. Here is the other way we did the above. This was done by replacing a div with an ID in the HTML file.
           <div id="code">
+           <b>
             &emsp; const superhero = [<br>
             &emsp; &emsp; {name: "Spider-Man",<br>
             &emsp; &emsp; realName: "Peter Parker"},<br>
             <br>
             &emsp; &emsp; {name: "Iron Man",<br>
             &emsp; &emsp; realName: "Tony Stark"}<br>
-            &emsp; ]<br>
+            &emsp; ]
+           </b>
+            <br><br>
+            &emsp; <b>document.getElementById('test').innerHTML = superhero[1].name;</b> //This will return 'Iron Man'. Change 1 to 0 and it would return 'Spider-Man'<br>
             <br>
-            &emsp; document.getElementById('test').innerHTML = superhero[1].name; //This will return 'Iron Man'. Change 1 to 0 and it would return 'Spider-Man'<br>
+            &emsp; <b>console.log(superhero[0].name);</b> // returns Spider-Man<br>
             <br>
-            &emsp; console.log(superhero[0].name); // returns Spider-Man<br>
-            <br>
-            &emsp; console.log(superhero[1].name) // returns Iron Man;
+            &emsp; <b>console.log(superhero[1].name);</b> // returns Iron Man;
           </div>
           <br>
           One of the nice things about objects is that you can check to see if a property or method exsist.
           <div id="code">
-            Code from page 173           
+            <b>'city' in superman;</b> // returns false
+            <br><br>
+            <b>superman.city !== undefined;</b> // returns false
+            <br><br>
+            <b>superman.hasOwnProperty('city');</b> // returns false
+            <br><br>
+            <b>superman.hasOwnProperty('name');</b> // returns true 
           </div>
+          <br>
+          If there is a method in like there is in one of the examples above you can call it like this.
+          <div id="code">
+            superman.fly(); // returns 'Up, up and away!'
+          </div>
+          <br>
+          If you want to show all of the properties of the superman object from above, you would type:
+          <div id="code">
+            <b>
+              &emsp; for(const key in superman) {<br>
+                &emsp; &emsp; console.log(key + ": " + superman[key]);<br>
+                &emsp; }
+            </b>
+            <br><br>
+            &emsp; "name: Superman"<br>
+            &emsp; "real name: Clark Kent"<br>
+            &emsp; "height: 75"<br>
+            &emsp; "weight: 235"<br>
+            &emsp; "hero: true"<br>
+            &emsp; "villain: false"<br>
+            &emsp; "allies: Batman,Supergirl,Superboy"<br>
+            &emsp; "fly: function (){<br>
+            &emsp; &emsp; console.log(\"Up, up and away!\");<br>
+            &emsp; }"
+          </div>
+          <br>
+          You can add properties:
+          <div id="code">
+            &emsp; <b>supername.city = 'Metropolis';</b><br>
+            &emsp; 'Metropolis'
+          </div>
+          <br>
+          You can remove properties:
+          <div id="code">
+            &emsp; <b>delete superman.fly</b><br>
+            &emsp; true
+          </div>
+          <br>
+          You can change properties:
+          <div id="code">
+            &emsp; <b>superman['real name'] = 'Kal-El';</b><br>
+            &emsp; 'Kal-El'
+          </div>
+          <br>
+          You can even have nested objects which to me seems like it could be confusing. Maybe it won't if I get better at all this.
+          <div id="code">
+            <b>
+              &emsp; const jla = {<br>
+              &emsp; &emsp; superman: { realName: 'Clark Kent' },<br>
+              &emsp; &emsp; batman: { realName: 'Bruce Wayne' },<br>
+              &emsp; &emsp; wonderWoman: { realName: 'Diana Prince" },<br>
+              &emsp; &emsp; flash: { realName: 'Barry Allen' },<br>
+              &emsp; &emsp; aquaman: { realName: 'Arthur Curry' },<br>
+              &emsp; }</b>
+              <br><br>
+              &emsp; <b>jla.wonderWoman.realName</b><br>
+              &emsp; "Diana Prince"
+          </div>
+          <br>
+          There are other ways you can show each property names but I doubt I would ever use them. If you want to see it again look at page 178.
+          <br><br>
+          You can even pass objects as parameters to functions.
+          <div id="code">
+            <b>
+              &emsp; function greet({greeting,name,age}) {<br>
+              &emsp; &emsp; return `${greeting}! My name is ${name} and I am ${age}<br>
+              &emsp; &emsp; years old.`;<br>
+              &emsp; }
+            </b>
+          </div>
+          <br>
+          The order of the parameters does not matter. Here is an example:
+          <div id="code">
+            &emsp; <b>greet({ greeting: `What's up dude`, age: 10, name: `Bart`});</b><br>
+            &emsp; 'What\'s up dude! My name is Bart and I am 10 years old.'
+          </div>
+          <br>
+          You can also use defaults for some parameters:
+          <div id="code">
+            <b>
+              &emsp; function greet({greeting='Hello',name,age=18}) {<br>
+                &emsp; &emsp; return `${greeting}! My name is ${name} and I am ${age}<br>
+                &emsp; &emsp; years old.`;<br>
+                &emsp; }<br>
+              <br><br>
+              &emsp; greet({ name: 'Lisa', age: 8 });<br>
+            </b>
+            &emsp; 'Hello! My name is Lisa and I am 8 years old.'
+          </div>
+          <br>
+          This is pretty interesting. Since is it possible to reuse a function over and over again, for example square(), you can create what is called a namespace. I guess it has the potential of messing up things in a large program. To prevent this happening, we can place all our functions inside an object, thereby creating a namespace for them. In the example below, the namespace is myMaths, which is the name of the variable the object that contains the functions has been assigned to:
+          <div id="code">
+            <b>
+              &emsp; const myMaths = {<br>
+              &emsp; &emsp; square(x) {<br>
+              &emsp; &emsp; &emsp; return x * x;<br>
+              &emsp; &emsp; },<br>
+              &emsp; &emsp; mean(array,callback) {<br>
+              &emsp; &emsp; &emsp; if (callback) {<br>
+              &emsp; &emsp; &emsp; &emsp; array.map( callback );<br>
+              &emsp; &emsp; &emsp; }<br>
+              &emsp; &emsp; &emsp; const total = array.reduce((a, b) => a + b);<br><br>
+              &emsp; &emsp; &emsp; return total/array.length;<br>
+              &emsp; &emsp; }<br>
+              &emsp; };<br>
+              <br>
+              &emsp; myMaths.square(3)<br>
+            </b>
+            &emsp; 9
+            <br><br>
+            &emsp; <b>myStats.mean([1,2,3])</b><br>
+            &emsp; 2
+          </div>
+          Continue notes from page 196 - 214.
         </p>
       </div>
       <hr />
@@ -297,6 +425,19 @@ Here are a few examples how you can create object:
           This is where I start getting lost. I don't really understand how to use the Objects. I can add elements (if that is what it is called) to an object, but I don't fully understand how to call them yet. I learn more hands one than reading from a book for the short period of time we are on each chapter.
           <br><br>
           So from the code I added with the superhero variable. When I typed <b>spiderman.f = reveal;</b>. Does that make <b>spiderman.f</b> a function now and it looks like this: <b>spiderman.f()</b>?
+          <br><br>
+          How does the line of code know the numbers are between 1 & 6?
+          <div id="code">
+            <b>
+              &emsp; const dice = {<br>
+              &emsp; &emsp; sides: 6,<br>
+              &emsp; &emsp; roll() {<br>
+              &emsp; &emsp; &emsp; return Math.floor(this.sides * Math.random()) + 1;<br>
+              &emsp; &emsp; }<br>
+              &emsp; }
+            </b>
+          </div>
+          <br>
         </p>
       </div>
     </main>
