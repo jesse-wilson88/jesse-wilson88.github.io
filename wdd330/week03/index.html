@@ -45,6 +45,7 @@
     <!-- CONTENT HERE -->
     <main>
       <div>
+        <a href="index-START.html"><h2>Team Activity</h2></a>
         <h1>
           Notes from
           <a href="https://javascript.info/object-methods"
@@ -713,16 +714,75 @@
       <div>
         <h1>Notes from JavaScript: Novice to Ninja - Chapter 7:</h1>
         <h2>Events</h2>
+        <p>
+          Events is another part of DOM (Document Object Model). It provides a
+          link between the web page and the user interactions (clicking a link,
+          pressing a key, or moving a mouse) which can be detected by the
+          program and respond to. JavaScript uses event listeners to listen out
+          for any clicks on the page. Everytime page is clicked, a callback
+          function is called. This allows the program so do other things while
+          it waits for the click event (click from the mouse, press of a key, or
+          taps on the screen).
+        </p>
+        <pre>
+    <b>document.body.addEventListener("click", doSomething);</b>
+        </pre>
+        <p>
+          <u>Inline Event handler:</u> Inline attributes is the original way
+          events are dealt with in the browser but is not recommended found on
+          page 261.
+        </p>
+        <pre>
+    <b>&#60;p onclick="console.log('You Clicked Me!')">Click Me&#60;/p></b>
+        </pre>
+        <p>
+          The event listeners is the current standard to dealing with events.
+          method is called on a node object, the node to which the event
+          listener is being applied.
+        </p>
+        <pre>
+    <b>document.body.addEventListener('click',doSomething);</b>
+        </pre>
+        <p>
+          The addEventListener() method can also be called without a node, in
+          which case it is applied to the global object, usually the whole
+          browser window. In this example. we are adding a click event listener
+          to the whole page. This is because addEventListener() method is called
+          witout a node referenced after it.
+        </p>
+        <pre>
+    <b>addEventListener('click', () => alert('You Clicked!'));</b>
+        </pre>
+        <p>
+          Another way of doing the same thing is by creating/declaring a
+          function and reference it in the event listenr.
+        </p>
+        <pre>
+    <b>function doSomething() {
+      alert('You Clicked!');
+    }
+    
+    addEventListener('click',doSomething);</b>
+        </pre>
+        <p>
+          Because of time restraints to get homework done and things around the
+          house, I don't have time to figure out a way to get these events to
+          work in a smaller area. I can add a link to check out these examples.
+          To get these working like I would like I can go back to the book (p.
+          262 - 280).
+        </p>
+        <a href="eventexamples/" target="_blank">Event Object Examples</a><br />
+        <p></p>
       </div>
       <hr />
       <div>
         <h2>Questions:</h2>
         <p>
-          Comments: This is where I start getting lost. I don't really
-          understand how to use the Objects. I can add elements (if that is what
-          it is called) to an object, but I don't fully understand how to call
-          them yet. I learn more hands one than reading from a book for the
-          short period of time we are on each chapter.
+          Comments: Understanding Objects is where I start getting lost. I don't
+          really understand how to use the Objects. I can add elements (if that
+          is what it is called) to an object, but I don't fully understand how
+          to call them yet. I learn more hands one than reading from a book for
+          the short period of time we are on each chapter.
         </p>
         <p>
           So from the code I added with the superhero variable. When I typed
