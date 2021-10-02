@@ -54,392 +54,690 @@
         <h2>Method examples:</h2>
         <p>
           Object are usually created to represent entities of the real world.
-          <div id="code">
-            &emsp; let user = {<br>
-            &emsp; &emsp; name: "John",<br>
-            &emsp; &emsp; age: 30,<br>
-            &emsp; };
-          </div>
-          <br>
-          The first example that is used with the object user is as follows:
-          <div id="code">
-            &emsp; let user = {<br>
-            &emsp; &emsp; name: "John",<br>
-            &emsp; &emsp; age: 30<br>
-            &emsp; };<br>
-            <br>
-            &emsp; user.sayHi = function() {<br>
-            &emsp; &emsp; alert("Hello!");<br>
-            &emsp; };<br>
-            <br>
-            &emsp; user.sayHi(); // Hello!
-          </div>
-          <br>
-          If there is only one object, you can use 'user'. If there are more than one object, you should to use 'this' instead or you will get an error.
-          <br>
-          <div id="code">
-            &emsp; let user = {<br>
-            &emsp; &emsp; name: "John",<br>
-            &emsp; &emsp; age: 30,<br>
-            <br>
-            &emsp; &emsp; sayHi() {<br>
-            &emsp; &emsp; alert( user.name ); // leads to an error<br>
-            &emsp; &emsp; }<br>
-            <br>
-            &emsp; };<br>
-            <br>
-            &emsp; let admin = user;<br><br>
-            &emsp; user = null; // overwrite to make things obvious<br><br>
-            &emsp;admin.sayHi(); // TypeError: Cannot read property 'name' of null<br>
-          </div>
-          If you were to replace <b>user.name</b> with <b>this.name</b> it would work just fine.
-          <br><br>
-          I do no really understand this next example. It says the value of this is evaluated during the run-time and depends on the context. It also says the same function is assigned to two different objects and had different "this" in the calls. I do not understand how this works yet.
-          <div id="code">
-            &emsp; let user = { name: "John" };<br>
-            &emsp; let admin = { name: "Admin" };<br>
-            <br>
-            &emsp; function sayHi() {<br>
-            &emsp; &emsp; alert( this.name );<br>
-            &emsp; }<br>
-            <br>
-            &emsp; // use the same function in two objects<br>
-            &emsp; user.f = sayHi;<br>
-            &emsp; admin.f = sayHi;<br>
-            <br>
-            &emsp; // these calls have different this<br>
-            &emsp; // "this" inside the function is the object "before the dot"<br>
-            &emsp; user.f(); // John  (this == user)<br>
-            &emsp; admin.f(); // Admin  (this == admin)<br>
-            <br>
-            &emsp; admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
-          </div>
-          <br><br>
-          This next example is interesting. the object is user and and at the end user.sayHi() is called. In the sayHi() function this is used instead of user. I wonder if it is because this.firstName is more like an argument so it does not matter what is passed to it. It is cool seeing the arror function used in it.
-          <div id="code">
-            &emsp; let user = {<br>
-            &emsp; &emsp; firstName: "Ilya",<br>
-            &emsp; &emsp; sayHi() {<br>
-            &emsp; &emsp; &emsp; let arrow = () => alert(this.firstName);<br>
-            &emsp; &emsp; &emsp;  arrow();<br>
-            &emsp; &emsp; }<br>
-            &emsp; };<br>
-            <br>
-            &emsp; user.sayHi(); // Ilya
-          </div>
-          <br>
-          I like this next example. I like seeing how the functions are called. I just wonder if how you could have the output something like 5 - 6 = -1 instead of just the numbers.
-          <div id="code">
-            &emsp; let calculator = {<br>
-            &emsp; &emsp; sum() {<br>
-            &emsp; &emsp; &emsp; console.log(`${this.a} + ${this.b} = `);<br>
-            &emsp; &emsp; &emsp; return this.a + this.b;<br>
-            &emsp; &emsp; },<br>
-            <br>
-            &emsp; &emsp; mul() {<br>
-            &emsp; &emsp; &emsp; console.log(`${this.a} * ${this.b} = `);<br>
-            &emsp; &emsp; &emsp; return this.a * this.b;<br>
-            &emsp; &emsp; },<br>
-            <br>
-            &emsp; &emsp; div() {<br>
-            &emsp; &emsp; &emsp; console.log(`${this.a} / ${this.b} = `);<br>
-            &emsp; &emsp; &emsp; return this.a / this.b;<br>
-            &emsp; &emsp; },<br>
-            <br>
-            &emsp; &emsp; sub() {<br>
-            &emsp; &emsp; &emsp; console.log(`${this.a} - ${this.b} = `);<br>
-            &emsp; &emsp; &emsp; return this.a - this.b;<br>
-            &emsp; &emsp; },<br>
-            <br>
-            &emsp; &emsp; read() {<br>
-            &emsp; &emsp; &emsp; this.a = +prompt('a?', 0);<br>
-            &emsp; &emsp; &emsp; this.b = +prompt('b?', 0);<br>
-            &emsp; &emsp; &emsp; }<br>
-            &emsp; &emsp; };<br>
-            <br>
-            &emsp; calculator.read();<br>
-            &emsp; console.log( `${calculator.sum()` );<br>
-            &emsp; console.log( `${calculator.mul()` );<br>
-            &emsp; console.log( `${calculator.div()` );<br>
-            &emsp; console.log( `${calculator.sub()` );<br>
-            <br>
-            &emsp; 5 + 5 = <br>
-            &emsp; 10<br>
-            &emsp; 5 * 5 = <br>
-            &emsp; 25<br>
-            &emsp; 5 / 5 = <br>
-            &emsp; 1<br>
-            &emsp; 5 - 5 = <br>
-            &emsp; 0<br>
-          </div>
-          With the help of a Chris Blunt ,a classmate from last semester. We were able to talk through this and figured out how to add text and show the value. Now I just have to figure how to have an output look this below. Maybe it can by updating a div using JavaScript.<br>
-          &emsp; 10 + 5 = 15<br>
-          &emsp; 10 * 5 = 50<br>
-          &emsp; 10 / 5 = 2<br>
-          &emsp; 10 - 5 = 5<br>
-          <br><br>
-          I am not 100% sure how this works but after really looking at the calculator variable. At first I thought it only had the sum) function inside it. After looking at it in the website, I realized calculator is an array, so it makes a little more sense. I hope I get a better understanding of what I am doing with these objects.
         </p>
-      </div>
-      <div>
-        <h1>Notes from JavaScript: Novice to Ninja - Chapter 5:</h1>
-        <h2>Objects</h2>
+        <pre>
+    <b>let user = {
+      name: "John",
+      age: 30,
+    };</b>
+          </pre>
         <p>
-          I don't understand what an object or how it worked and I may still not completely understand but I think I am getting there. After talking to another classmate and getting an idea what they understood, I went back to reading the beginning of chapter 5 and I think I figured it out. We will see.
-          <br><br>
-          To hopefully help with the what an object is, here is what I found about Functions & Objects.
-          <br><br>
-          Here is a description of a funcition I found on the <a href="https://www.tutorialspoint.com/javascript/javascript_functions.htm">tutorials point</a> web site.
-          <br><br>
-          A <b>function</b> is a group of reusable code which can be called anywhere in your program. This eliminates the need of writing the same code again and again. It helps programmers in writing modular codes. Functions allow a programmer to divide a big program into a number of small and manageable functions.
-          <br><br>
-          Here is a what <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects">MDN Web Docs</a> says about objects.
-          <br><br>
-          In JavaScript, an <b>Object</b> is a standalone entity, with properties and type. Compare it with a cup, for example. A cup is an object, with properties. A cup has a color, a design, weight, a material it is made of, etc. The same way, JavaScript objects can have properties, which define their characteristics.
-          <br><br>
-          In the book it says, An <b>Object</b> in JavaScript is a self-contained set of related values and functions. They act as a collection of named properties that map to any JavaScript value such as strings, numbers, booleans, arrays and functions. If a property’s value is a function, it is known as a method. It also says that it is like a database of values. Here are a couple of examples of objects:
-          <br>
-          <div id="code">
-            <b>
-              &emsp; const spiderman = { };<br><br>
-              &emsp; spiderman.name = "Spider-Man";<br>
-              &emsp; spiderman.realName = "Peter Parker";<br>
-              <br>
-              &emsp; console.log(spiderman);<br>
-              <br>
-              &emsp; returns:<br>
-              <br>
-              &emsp; {<br>
-              &emsp; &emsp; name:"Spider-Man",<br>
-              &emsp; &emsp; realName:"Peter Parker"<br>
-              &emsp; }
-            </b>
-          </div>
-          <br>
-          Here are a few examples how you can create object:
-          <br>
-          <div id="code">
-            <b>
-              &emsp; const superman = {<br>
-                &emsp; &emsp; name: 'Superman',<br>
-                &emsp; &emsp; 'real name': 'Clark Kent',<br>
-                &emsp; &emsp; height: 75,<br>
-                &emsp; &emsp; weight: 235,<br>
-                &emsp; &emsp; hero: true,<br>
-                &emsp; &emsp; villain: false,<br>
-                &emsp; &emsp; allies: ['Batman','Supergirl','Superboy'],<br>
-                &emsp; &emsp; fly() {<br>
-                &emsp; &emsp; &emsp; return 'Up, up and away!';<br>
-                &emsp; &emsp; }<br>
-                &emsp; };<br>
-            </b>
-          </div>
-          <br>
-          Here are some examples of creating objects:
-          <div id="code">
-            &emsp; <b>const spiderman = { };</b> // an empty object assigned to the varible spiderman
-            <br><br>
-            &emsp; <b>const spiderman = new Object( );</b> // This is also creating an empty object
-            <br><br>
-            &emsp; <b>const ironMan = { name, realName };</b> // the short ES6 way
-          </div>
-          <br>
-          I talked with Chris Blunt from another class to see if he could  help me understand a little better about objects and how to get an element back from an object (if that is the correct way to say it.) 
-          <div id="code">
-            <b>
-              &emsp; const spiderman = {<br>
-              &emsp; &emsp; name: "Spider-Man",<br>
-              &emsp; &emsp; realName: "Peter Parker"<br>
-              &emsp; };<br>
-              <br>
-              &emsp; const ironman = {<br>
-              &emsp; &emsp; name: "Iron Man",<br>
-              &emsp; &emsp; realName: "Tony Stark"<br>
-              &emsp; };<br>
-              <br>
-              &emsp; function reveal() {<br>
-              &emsp; &emsp; return this.realName;<br>
-              &emsp; }<br>
-              <br>
-              &emsp; &emsp; spiderman.f = reveal;<br>
-              &emsp; &emsp; ironman.f = reveal;<br>
-            </b>
-            <br>
-            &emsp; <b>document.getElementById('test').innerHTML = ironman.f();</b><br>
-            <br>
-            &emsp; <b>console.log(spiderman.f());</b> // returns Spider-Man<br>
-            <br>
-            &emsp; <b>console.log(ironman.f());</b> // returns Iron Man
-          </div>
-          <br>
-          Or try it with an array. I am still not understanding 100% but it did help a little bit. I will look at these again. Here is the other way we did the above. This was done by replacing a div with an ID in the HTML file.
-          <div id="code">
-           <b>
-            &emsp; const superhero = [<br>
-            &emsp; &emsp; {name: "Spider-Man",<br>
-            &emsp; &emsp; realName: "Peter Parker"},<br>
-            <br>
-            &emsp; &emsp; {name: "Iron Man",<br>
-            &emsp; &emsp; realName: "Tony Stark"}<br>
-            &emsp; ]
-           </b>
-            <br><br>
-            &emsp; <b>document.getElementById('test').innerHTML = superhero[1].name;</b> //This will return 'Iron Man'. Change 1 to 0 and it would return 'Spider-Man'<br>
-            <br>
-            &emsp; <b>console.log(superhero[0].name);</b> // returns Spider-Man<br>
-            <br>
-            &emsp; <b>console.log(superhero[1].name);</b> // returns Iron Man;
-          </div>
-          <br>
-          One of the nice things about objects is that you can check to see if a property or method exsist.
-          <div id="code">
-            <b>'city' in superman;</b> // returns false
-            <br><br>
-            <b>superman.city !== undefined;</b> // returns false
-            <br><br>
-            <b>superman.hasOwnProperty('city');</b> // returns false
-            <br><br>
-            <b>superman.hasOwnProperty('name');</b> // returns true 
-          </div>
-          <br>
-          If there is a method in like there is in one of the examples above you can call it like this.
-          <div id="code">
-            superman.fly(); // returns 'Up, up and away!'
-          </div>
-          <br>
-          If you want to show all of the properties of the superman object from above, you would type:
-          <div id="code">
-            <b>
-              &emsp; for(const key in superman) {<br>
-                &emsp; &emsp; console.log(key + ": " + superman[key]);<br>
-                &emsp; }
-            </b>
-            <br><br>
-            &emsp; "name: Superman"<br>
-            &emsp; "real name: Clark Kent"<br>
-            &emsp; "height: 75"<br>
-            &emsp; "weight: 235"<br>
-            &emsp; "hero: true"<br>
-            &emsp; "villain: false"<br>
-            &emsp; "allies: Batman,Supergirl,Superboy"<br>
-            &emsp; "fly: function (){<br>
-            &emsp; &emsp; console.log(\"Up, up and away!\");<br>
-            &emsp; }"
-          </div>
-          <br>
-          You can add properties:
-          <div id="code">
-            &emsp; <b>supername.city = 'Metropolis';</b><br>
-            &emsp; 'Metropolis'
-          </div>
-          <br>
-          You can remove properties:
-          <div id="code">
-            &emsp; <b>delete superman.fly</b><br>
-            &emsp; true
-          </div>
-          <br>
-          You can change properties:
-          <div id="code">
-            &emsp; <b>superman['real name'] = 'Kal-El';</b><br>
-            &emsp; 'Kal-El'
-          </div>
-          <br>
-          You can even have nested objects which to me seems like it could be confusing. Maybe it won't if I get better at all this.
-          <div id="code">
-            <b>
-              &emsp; const jla = {<br>
-              &emsp; &emsp; superman: { realName: 'Clark Kent' },<br>
-              &emsp; &emsp; batman: { realName: 'Bruce Wayne' },<br>
-              &emsp; &emsp; wonderWoman: { realName: 'Diana Prince" },<br>
-              &emsp; &emsp; flash: { realName: 'Barry Allen' },<br>
-              &emsp; &emsp; aquaman: { realName: 'Arthur Curry' },<br>
-              &emsp; }</b>
-              <br><br>
-              &emsp; <b>jla.wonderWoman.realName</b><br>
-              &emsp; "Diana Prince"
-          </div>
-          <br>
-          There are other ways you can show each property names but I doubt I would ever use them. If you want to see it again look at page 178.
-          <br><br>
-          You can even pass objects as parameters to functions.
-          <div id="code">
-            <b>
-              &emsp; function greet({greeting,name,age}) {<br>
-              &emsp; &emsp; return `${greeting}! My name is ${name} and I am ${age}<br>
-              &emsp; &emsp; years old.`;<br>
-              &emsp; }
-            </b>
-          </div>
-          <br>
-          The order of the parameters does not matter. Here is an example:
-          <div id="code">
-            &emsp; <b>greet({ greeting: `What's up dude`, age: 10, name: `Bart`});</b><br>
-            &emsp; 'What\'s up dude! My name is Bart and I am 10 years old.'
-          </div>
-          <br>
-          You can also use defaults for some parameters:
-          <div id="code">
-            <b>
-              &emsp; function greet({greeting='Hello',name,age=18}) {<br>
-                &emsp; &emsp; return `${greeting}! My name is ${name} and I am ${age}<br>
-                &emsp; &emsp; years old.`;<br>
-                &emsp; }<br>
-              <br><br>
-              &emsp; greet({ name: 'Lisa', age: 8 });<br>
-            </b>
-            &emsp; 'Hello! My name is Lisa and I am 8 years old.'
-          </div>
-          <br>
-          This is pretty interesting. Since is it possible to reuse a function over and over again, for example square(), you can create what is called a namespace. I guess it has the potential of messing up things in a large program. To prevent this happening, we can place all our functions inside an object, thereby creating a namespace for them. In the example below, the namespace is myMaths, which is the name of the variable the object that contains the functions has been assigned to:
-          <div id="code">
-            <b>
-              &emsp; const myMaths = {<br>
-              &emsp; &emsp; square(x) {<br>
-              &emsp; &emsp; &emsp; return x * x;<br>
-              &emsp; &emsp; },<br>
-              &emsp; &emsp; mean(array,callback) {<br>
-              &emsp; &emsp; &emsp; if (callback) {<br>
-              &emsp; &emsp; &emsp; &emsp; array.map( callback );<br>
-              &emsp; &emsp; &emsp; }<br>
-              &emsp; &emsp; &emsp; const total = array.reduce((a, b) => a + b);<br><br>
-              &emsp; &emsp; &emsp; return total/array.length;<br>
-              &emsp; &emsp; }<br>
-              &emsp; };<br>
-              <br>
-              &emsp; myMaths.square(3)<br>
-            </b>
-            &emsp; 9
-            <br><br>
-            &emsp; <b>myStats.mean([1,2,3])</b><br>
-            &emsp; 2
-          </div>
-          <br>
-          Continue notes from page 196 - 214.
+          The first example that is used with the object user is as follows:
+        </p>
+        <pre>
+    <b>let user = {
+      name: "John",
+      age: 30
+    };
+  
+    user.sayHi = function() {
+      alert("Hello!");
+    };
+  
+    user.sayHi();</b> // Hello!
+          </pre>
+        <p>
+          If there is only one object, you can use 'user'. If there are more
+          than one object, you should to use 'this' instead or you will get an
+          error.
+        </p>
+        <pre>
+    <b>let user = {
+      name: "John",
+      age: 30,
+      sayHi() {
+        alert( user.name );</b> // leads to an error
+      <b>}
+
+    };
+    
+    let admin = user;
+
+    user = null;</b> // overwrite to make things obvious
+    <b>admin.sayHi();</b> // TypeError: Cannot read property 'name' of null
+          </pre>
+        If you were to replace <b>user.name</b> with <b>this.name</b> it would
+        work just fine.
+        <p>
+          I do no really understand this next example. It says the value of this
+          is evaluated during the run-time and depends on the context. It also
+          says the same function is assigned to two different objects and had
+          different "this" in the calls. I do not understand how this works yet.
+        </p>
+        <pre>
+    <b>let user = { name: "John" };
+    let admin = { name: "Admin" };
+  
+    function sayHi() {
+      alert( this.name );
+    }</b>
+  
+    // use the same function in two objects
+    <b>user.f = sayHi;
+    admin.f = sayHi;</b>
+  
+    // these calls have different this
+    // "this" inside the function is the object "before the dot"
+    <b>user.f();</b> // John  (this == user)
+    <b>admin.f();</b> // Admin  (this == admin)
+  
+    <b>admin['f']()</b>; // Admin (dot or square ackets access the method – doesn't matter)
+          </pre>
+        <p>
+          This next example is interesting. the object is user and and at the
+          end user.sayHi() is called. In the sayHi() function this is used
+          instead of user. I wonder if it is because this.firstName is more like
+          an argument so it does not matter what is passed to it. It is cool
+          seeing the arror function used in it.
+        </p>
+        <pre>
+    <b>let user = {
+      firstName: "Ilya",
+      sayHi() {
+        let arrow = () => alert(this.firstName);
+        arrow();
+      }
+    };
+  
+    user.sayHi();</b> // Ilya
+          </pre>
+        <p>
+          I like this next example. I like seeing how the functions are called.
+          I just wonder if how you could have the output something like 5 - 6 =
+          -1 instead of just the numbers.
+        </p>
+        <pre>
+    <b>let calculator = {
+      sum() {
+        console.log(`${this.a} + ${this.b} = `);
+        return this.a + this.b;
+      },
+  
+      mul() {
+        console.log(`${this.a} * ${this.b} = `);
+        return this.a * this.b;
+      },
+  
+      pre() {
+        console.log(`${this.a} / ${this.b} = `);
+        return this.a / this.b;
+      },
+  
+      sub() {
+        console.log(`${this.a} - ${this.b} = `);
+        return this.a - this.b;
+      },
+  
+      read() {
+        this.a = +prompt('a?', 0);
+        this.b = +prompt('b?', 0);
+      }
+    };
+    
+    calculator.read();
+    console.log( `${calculator.sum()` );
+    console.log( `${calculator.mul()` );
+    console.log( `${calculator.pre()` );
+    console.log( `${calculator.sub()` );</b>
+    
+    5 + 5 = 
+    10
+    5 * 5 = 
+    25
+    5 / 5 = 
+    1
+    5 - 5 = 
+    0
+          </pre>
+        <p>
+          With the help of a Chris Blunt ,a classmate from last semester. We
+          were able to talk through this and figured out how to add text and
+          show the value. Now I just have to figure how to have an output look
+          this below. Maybe it can by updating a pre using JavaScript. <br />
+          10 + 5 = 15 <br />
+          10 * 5 = 50 <br />
+          10 / 5 = 2 <br />
+          10 - 5 = 5 <br />
+          I am not 100% sure how this works but after really looking at the
+          calculator variable. At first I thought it only had the sum) function
+          inside it. After looking at it in the website, I realized calculator
+          is an array, so it makes a little more sense. I hope I get a better
+          understanding of what I am doing with these objects.
         </p>
       </div>
       <hr />
       <div>
-        <h1>Questions:</h1>
-        <p>Comments:
-          <br><br>
-          This is where I start getting lost. I don't really understand how to use the Objects. I can add elements (if that is what it is called) to an object, but I don't fully understand how to call them yet. I learn more hands one than reading from a book for the short period of time we are on each chapter.
-          <br><br>
-          So from the code I added with the superhero variable. When I typed <b>spiderman.f = reveal;</b>. Does that make <b>spiderman.f</b> a function now and it looks like this: <b>spiderman.f()</b>?
-          <br><br>
-          How does the line of code know the numbers are between 1 & 6?
-          <div id="code">
-            <b>
-              &emsp; const dice = {<br>
-              &emsp; &emsp; sides: 6,<br>
-              &emsp; &emsp; roll() {<br>
-              &emsp; &emsp; &emsp; return Math.floor(this.sides * Math.random()) + 1;<br>
-              &emsp; &emsp; }<br>
-              &emsp; }
-            </b>
-          </div>
-          <br>
+        <h1>Notes from JavaScript: Novice to Ninja - Chapter 5:</h1>
+        <h2>Objects</h2>
+        <p>
+          I don't understand what an object or how it worked and I may still not
+          completely understand but I think I am getting there. After talking to
+          another classmate and getting an idea what they understood, I went
+          back to reading the beginning of chapter 5 and I think I figured it
+          out. We will see. To hopefully help with the what an object is, here
+          is what I found about Functions & Objects. Here is a description of a
+          funcition I found on the
+          <a
+            href="https://www.tutorialspoint.com/javascript/javascript_functions.htm"
+            >tutorials point</a
+          >
+          web site. A <b>function</b> is a group of reusable code which can be
+          called anywhere in your program. This eliminates the need of writing
+          the same code again and again. It helps programmers in writing modular
+          codes. Functions allow a programmer to preide a big program into a
+          number of small and manageable functions. Here is a what
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
+            >MDN Web Docs</a
+          >
+          says about objects. In JavaScript, an <b>Object</b> is a standalone
+          entity, with properties and type. Compare it with a cup, for example.
+          A cup is an object, with properties. A cup has a color, a design,
+          weight, a material it is made of, etc. The same way, JavaScript
+          objects can have properties, which define their characteristics. In
+          the book it says, An <b>Object</b> in JavaScript is a self-contained
+          set of related values and functions. They act as a collection of named
+          properties that map to any JavaScript value such as strings, numbers,
+          booleans, arrays and functions. If a property’s value is a function,
+          it is known as a method. It also says that it is like a database of
+          values. Here are a couple of examples of objects:
         </p>
+        <pre>
+    <b>const spiderman = { };
+        spiderman.name = "Spider-Man";
+        spiderman.realName = "Peter Parker";
+      
+        console.log(spiderman);
+      
+        returns:
+      
+        {
+          name:"Spider-Man",
+          realName:"Peter Parker"
+        }</b>
+          </pre>
+        <p>Here are a few examples how you can create object:</p>
+        <pre>
+    <b>const superman = {
+            name: 'Superman',
+            'real name': 'Clark Kent',
+            height: 75,
+            weight: 235,
+            hero: true,
+            villain: false,
+            allies: ['Batman','Supergirl','Superboy'],
+            fly() {
+              return 'Up, up and away!';
+            }
+          };</b>
+          </pre>
+        <p>Here are some examples of creating objects:</p>
+        <pre>
+      <b>const spiderman = { };</b> // an empty object assigned to the varible spiderman
+    
+      <b>const spiderman = new Object( );</b> // This is also creating an empty object
+    
+      <b>const ironMan = { name, realName };</b> // the short ES6 way
+          </pre>
+        <p>
+          I talked with Chris Blunt from another class to see if he could help
+          me understand a little better about objects and how to get an element
+          back from an object (if that is the correct way to say it.)
+        </p>
+        <pre>
+      <b>const spiderman = {
+            name: "Spider-Man",
+            realName: "Peter Parker"
+          };
+        
+      const ironman = {
+        name: "Iron Man",
+        realName: "Tony Stark"
+      };
+    
+      function reveal() {
+        return this.realName;
+      }
+    
+        spiderman.f = reveal;
+        ironman.f = reveal;
+      </b>
+            
+      <b>document.getElementById('test').innerHTML = ironman.f();</b>
+    
+      <b>console.log(spiderman.f());</b> // returns Spider-Man
+    
+      <b>console.log(ironman.f());</b> // returns Iron Man
+          </pre>
+        <p>
+          Or try it with an array. I am still not understanding 100% but it did
+          help a little bit. I will look at these again. Here is the other way
+          we did the above. This was done by replacing a pre with an ID in the
+          HTML file.
+        </p>
+        <pre>
+      <b>const superhero = [
+          {name: "Spider-Man",
+          realName: "Peter Parker"},
+      
+          {name: "Iron Man",
+          realName: "Tony Stark"}
+        ]
+      </b>
+      <b>document.getElementById('test').innerHTML = superhero[1].name;</b> //This will return 'Iron Man'. Change 1 to 0 and it would return 'Spider-Man'
+    
+      <b>console.log(superhero[0].name);</b> // returns Spider-Man
+    
+      <b>console.log(superhero[1].name);</b> // returns Iron Man;
+          </pre>
+        <p>
+          One of the nice things about objects is that you can check to see if a
+          property or method exsist.
+        </p>
+        <pre>
+      <b>'city' in superman;</b> // returns false
+      
+      <b>superman.city !== undefined;</b> // returns false
+      
+      <b>superman.hasOwnProperty('city');</b> // returns false
+      
+      <b>superman.hasOwnProperty('name');</b> // returns true 
+          </pre>
+        <p>
+          If there is a method in like there is in one of the examples above you
+          can call it like this.
+        </p>
+        <pre>
+      <b>superman.fly();</b> // returns 'Up, up and away!'
+          </pre
+        >
+        <p>
+          If you want to show all of the properties of the superman object from
+          above, you would type:
+        </p>
+        <pre>
+      <b>for(const key in superman) {
+            console.log(key + ": " + superman[key]);
+          }
+      </b>
+      
+      "name: Superman"
+      "real name: Clark Kent"
+      "height: 75"
+      "weight: 235"
+      "hero: true"
+      "villain: false"
+      "allies: Batman,Supergirl,Superboy"
+      "fly: function (){
+        console.log(\"Up, up and away!\");
+      }"
+          </pre>
+        <p>You can add properties:</p>
+        <pre>
+      <b>supername.city = 'Metropolis';</b>
+      'Metropolis'
+          </pre>
+        <p>You can remove properties:</p>
+        <pre>
+      <b>delete superman.fly</b>
+      true
+          </pre>
+        <p>You can change properties:</p>
+        <pre>
+      <b>superman['real name'] = 'Kal-El';</b>
+      'Kal-El'
+          </pre>
+        <p>
+          You can even have nested objects which to me seems like it could be
+          confusing. Maybe it won't if I get better at all this.
+        </p>
+        <pre>
+      <b>const jla = {
+          superman: { realName: 'Clark Kent' },
+          batman: { realName: 'uce Wayne' },
+          wonderWoman: { realName: 'Diana Prince" },
+          flash: { realName: 'Barry Allen' },
+          aquaman: { realName: 'Arthur Curry' },
+        }</b>
+      
+        <b>jla.wonderWoman.realName</b>
+        "Diana Prince"
+          </pre>
+        <p>
+          There are other ways you can show each property names but I doubt I
+          would ever use them. If you want to see it again look at page 178.
+        </p>
+        <p>You can even pass objects as parameters to functions.</p>
+        <pre>
+      <b>function greet({greeting,name,age}) {
+          return `${greeting}! My name is ${name} and I am ${age}
+          years old.`
+      };</b>
+        </pre>
+        <p>The order of the parameters does not matter. Here is an example:</p>
+        <pre>
+      <b>greet({ greeting: `What's up dude`, age: 10, name: `Bart`});</b>
+      'What\'s up dude! My name is Bart and I am 10 years old.'
+        </pre>
+        <p>You can also use defaults for some parameters:</p>
+        <pre>
+      <b>function greet({greeting='Hello',name,age=18}) {
+        return `${greeting}! My name is ${name} and I am ${age}
+        years old.`;
+      }
+
+      greet({ name: 'Lisa', age: 8 });</b>
+      'Hello! My name is Lisa and I am 8 years old.'
+        </pre>
+        <p>
+          This is pretty interesting. Since is it possible to reuse a function
+          over and over again, for example square(), you can create what is
+          called a namespace. I guess it has the potential of messing up things
+          in a large program. To prevent this happening, we can place all our
+          functions inside an object, thereby creating a namespace for them. In
+          the example below, the namespace is myMaths, which is the name of the
+          variable the object that contains the functions has been assigned to:
+        </p>
+        <pre>
+      <b>const myMaths = {
+        square(x) {
+          return x * x;
+        },
+        mean(array,callback) {
+          if (callback) {
+            array.map( callback );
+          }
+          const total = array.reduce((a, b) => a + b);
+          return total/array.length;
+        }
+      };
+    
+      myMaths.square(3)</b>
+      9
+    
+      <b>myStats.mean([1,2,3])</b>
+      2
+        </pre>
+        <p><u>Creating Regular Expressions:</u></p>
+        <p>
+          There are two ways to create a regular expression.The first, and
+          preferred way, is to use the literal notation of writing the regular
+          expression between forward slashes that we’ve already seen:
+        </p>
+        <pre>
+      <b>const pattern = /[a-zA-Z]+ing$/;</b>
+        </pre>
+        <p>
+          Alternatively, you can create a new instance of the RegExp object
+          using the new operator and a constructor function:
+        </p>
+        <pre>
+      <b>const pattern = new RegExp('[a-zA-Z]+ing');</b>
+        </pre>
+      </div>
+      <hr />
+      <div>
+        <h1>Notes from JavaScript: Novice to Ninja - Chapter 6:</h1>
+        <h2>The Document Object Model</h2>
+        <p>
+          I enjoyed DOM in WDD230. I did not realize I actually did some of this
+          for my YaCIT page in college. It allows us to add and remove elements,
+          change the order, content and attributes of elements and even alter
+          how they are styled.
+        </p>
+        <p>This is done several ways:</p>
+        <p>Getting An Element ByIts ID</p>
+        <pre>
+      <b>const h1 = document.getElementById('title');</b>
+        </pre>
+        <p>Get Elements By Their Tag Name</p>
+        <pre>
+      <b>const listItems = document.getElementsByTagName('li');</b>
+        </pre>
+        <p>Get Elements By Their Class Name</p>
+        <pre>
+      <b>const heroes = document.getElementsByClassName('hero');</b>
+        </pre>
+        <p>
+          Another way this can be done is by using Query Selectors. With the
+          <b>document.querySelector()</b> method we can use CSS notation to find
+          the first element in the document that matches the CSS selector
+          provided as an argument. If there is not argument null will be
+          returned.
+        </p>
+        <p>
+          The following code can be used instead of document.getElementById();
+        </p>
+        <pre>
+      <b>document.querySelector('#bats');</b>
+      &#60;li class="vigilante hero" id="bats">Batman&#60;/li>
+        </pre>
+        <p>
+          The following code can used instead of
+          document.getElementsByClassName();
+        </p>
+        <pre>
+      <b>document.querySelectorAll('.hero');</b>
+      NodeList [&#60;li class="hero">, &#60;li id="bats">, &#60;li class="hero">]
+        </pre>
+        <p>You can get very percise to specify items on a page:</p>
+        <pre>
+      <b>const wonderWoman = document.querySelector('li:last-child');</b> // returns only the last list item in the
+      document
+
+      <b>const ul = document.querySelector('ul#roster');</b> // get a reference to the &#60;ul> element
+
+      <b>const batman = ul.querySelector('li#bats');</b> //finds an &#60;li> element with an id of 'bats':
+        </pre>
+        <p>
+          If you had an element with the ID of 'roster' you could use
+          <b>const heros = documentById('roster');</b> you could look to see all
+          the child nodes. The childNodes property is a list of all the nodes
+          that are children of the node concerned.
+        </p>
+        <pre>
+      <b>const heroes = document.getElementById('roster');</b>
+
+      heros.chileNodes
+      NodeList [#text " ", &#60;li class="hero">, #text " ", &#60;li id="bats">, #text " ", &#60;li class="hero">, #text " ", &#60;li class="hero">, #text " ", ...]
+        </pre>
+        <p>
+          The children property only returns any element nodes that are children
+          of that node.
+        </p>
+        <pre>
+      <b>heroes.children // this will only contain list items</b>
+      HTMLCollection [&#60;li class="hero">, &#60;li id="bats">, &#60;li class="hero">, &#60;li class="hero">] (4)
+
+      <b>heros.children.length</b>
+      3
+        </pre>
+        <p>
+          The firstChild property returns the first child of a node and
+          lastChild property returns the last child of a node.
+        </p>
+        <pre>
+      <b>heros.firstChild</b>
+      #text " "
+
+      <b>heros.lastChild</b>
+      #text " "
+        </pre>
+        <p><u>Finding the value of a Node:</u></p>
+        <pre>
+      <b>&#60;li class='hero'>Wonder Woman&#60;/li></b>
+
+      <b>const textNode = wonderWoman.firstChild;</b>
+      "Wonder Woman"
+
+      <b>textNode.nodeValue;</b>
+      "Wonder Woman"
+
+      <b>wonderWoman.textContent</b>
+      "Wonder Woman"
+        </pre>
+        <br /><u>Getting And Setting An Element's Attributes:</u>
+        <p>
+          I don't remember getting an element but I do remember setting an
+          element if it exsists.
+        </p>
+        <pre>
+      <b>wonderWoman.getAttribute('class');</b>
+      "hero"
+
+      <b>wonderWoman.getAttribute('src');</b>
+      null
+
+      <b>wonderWoman.setAttribute('class', 'villain');</b>
+      undefined
+
+      <b>wonderWoman.getAttribute('class');</b>
+      "villian"
+
+      <b>wonderWoman.setAttribute('id','amazon');</b>
+
+      <b>wonderWoman.getAttribute('id');</b>
+      'amazon'
+
+      <b>wonderWoman.id;</b> // legacy DOM allows access to attributes
+      'amazon'
+
+      <b>wonderWoman</b>
+      &#60;li class="villain" id="amazon">Wonder Woman&#60;/li>
+        </pre>
+        <p>
+          We can see use different methods (add(), remove(), toggle(),
+          contains()) to update a className:
+        </p>
+        <pre>
+      <b>wonderWoman.className;</b>
+      "villian"
+
+      <b>wonderWoman.className = 'hero'</b>
+      "hero"
+
+      <b>wonderWoman.classList.add('warrior');</b>
+
+      <b>wonderWoman.className;</b>
+      "hero warrior"
+
+      <b>wonderWoman.classList.remove('warrior');</b>
+
+      <b>wonderWoman.classList.toggle('hero');</b> // will remove the 'hero' class
+      false
+
+      <b>wonderWoman.classList.toggle('hero');</b> // will add the 'hero' class back
+      true 
+
+      <b>wonderWoman.classList.contains('hero');</b>
+      true
+
+      <b>wonderWoman.classList.contains('villain');</b>
+      false
+        </pre>
+        <br /><u>Creating Dynamic Markup</u><br />
+        <p>
+          I really enjoyed this part of WDD230 as well. You can create html
+          based on things that are set in JavaScript.
+        </p>
+        <pre>
+      <b>const flash = document.createElement('li');</b>
+
+      <b>const flashText = document.createTextNode('Flash');</b>
+
+      <b>flash.appendChild(flashText);</b>
+
+      <b>const flash = document.createElement('li');
+        flash.textContent = 'Flash';</b>
+        </pre>
+        <p>
+          There is a shorter way to create elements. This is the one I used in
+          WDD230.
+        </p>
+        <pre>
+        <b>const aquaman = createElement('li','Aquaman');</b>
+        </pre>
+        <p><u>Adding elements to a page:</u></p>
+        <pre>
+      <b>heroes.appendChild(flash);</b>
+
+      <b>heroes.insertBefore(aquaman,wonderWoman);</b>
+
+      <b>heroes.insertAfter(wonderWoman,robin);</b>
+
+      <b>heroes.appendChild(wonderWoman);</b> // if the wonderWoman element already exists, it will be removed and and added to at the end.
+        </pre>
+        <p>You can remove an element from or replace an element on a page:</p>
+        <pre>
+      <b>heroes.removeChild(aquaman);</b>
+      &#60;li>Aquaman&#60;/li>
+
+      <b>heros.replaceChild(newText,oldText);</b>
+        </pre>
+        <p>
+          Here is something I have not see before that I can remember. You can
+          update CSS from inside JavaScript.
+        </p>
+        <pre>
+      <b>const heroes = document.getElementById('roster');
+        const superman = heroes.children[0];
+        
+        superman.style.border = "red 2px solid";
+      </b>
+      "red 2px solid"
+
+      <b>superman.style.backgroundColor = 'blue';</b>
+      "blue"
+
+      <b>superman.style.display = 'none';</b>
+      "none"
+
+      <b>superman.style.display = 'block';</b>
+      "block"
+        </pre>
+        <p>
+          The above section is mentioned to be used with caution. It says it is
+          better to add a class and then go to the CSS stylesheet and add it.
+        </p>
+        <pre>
+      <u>HTML</u>
+      <b>superman.classList.add('highlighted');</b>
+
+      <u>CSS Stylesheet</u>
+      <b>.highlighted{
+          border: red 2px solid;
+        }</b>
+        </pre>
+      </div>
+      <hr />
+      <div>
+        <h1>Notes from JavaScript: Novice to Ninja - Chapter 7:</h1>
+        <h2>Title</h2>
+      </div>
+      <hr />
+      <div>
+        <h2>Questions:</h2>
+        <p>
+          Comments: This is where I start getting lost. I don't really
+          understand how to use the Objects. I can add elements (if that is what
+          it is called) to an object, but I don't fully understand how to call
+          them yet. I learn more hands one than reading from a book for the
+          short period of time we are on each chapter.
+        </p>
+        <p>
+          So from the code I added with the superhero variable. When I typed
+          <b>spiderman.f = reveal;</b>. Does that make <b>spiderman.f</b> a
+          function now and it looks like this: <b>spiderman.f()</b>?
+        </p>
+        <p>How does the line of code know the numbers are between 1 & 6?</p>
+        <pre>
+      <b>const dice = {
+        sides: 6,
+        roll() {
+          return Math.floor(this.sides * Math.random()) + 1;
+        }
+      }</b>
+        </pre>
       </div>
     </main>
 
