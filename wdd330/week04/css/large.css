@@ -1,0 +1,18 @@
+/* 64em is also 1028px (if basefont is 16px) */
+@media only screen and (min-width: 64rem) {
+  /*----------- BODY --------------*/
+
+  /*----------- HEADER --------------*/
+  header h1 {
+    padding: 20px 2%;
+  }
+
+  /*----------- NAVIGATION --------------*/
+
+  /*----------- MAIN --------------*/
+  textarea {
+    width: 800px;
+  }
+
+  /*----------- FOOTER --------------*/
+} /* end of media query */
