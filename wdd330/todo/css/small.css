@@ -29,6 +29,24 @@ main div {
   justify-content: center;
 }
 
+ul {
+  padding: 0;
+  margin: 5px 10px;
+}
+
+li {
+  font-size: 1.2rem;
+  border-style: solid;
+  background-color: lavender;
+  list-style: none;
+  margin: 5px 0 0 0;
+  padding: 5px 10px;
+}
+
+button {
+  float: right;
+}
+
 #listArea {
   width: 395px;
   height: 500px;
