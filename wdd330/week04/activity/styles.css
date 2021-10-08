@@ -1,0 +1,12 @@
+.board {
+  text-align: center;
+}
+
+.board td {
+  width: 200px;
+  border: solid 1px black;
+}
+
+.board tr {
+  height: 200px;
+}

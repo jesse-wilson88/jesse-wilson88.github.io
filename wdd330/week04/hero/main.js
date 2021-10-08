@@ -9,8 +9,6 @@ function makeHero(event) {
 
   hero.name = form.heroName.value; // create a name property based on the input field's value
 
-  // hero.name.addEventListener("blur", () => validateInline(), false);
-
   hero.realName = form.realName.value;
 
   hero.powers = [];
@@ -58,13 +56,14 @@ error.textContent = "! Your name is not allowed to start with X.";
 
 label.append(error);
 
-// hero.name.addEventListener("blur", () => validateInline(), false);
-form.addEventListener("keyup", validateInline, false);
+const input = document.querySelector("#heroName");
+
+input.addEventListener("keyup", validateInline, false);
 
 function validateInline() {
   const heroName = this.value.toUpperCase();
   if (heroName.startsWith("X")) {
-    error.style.display = "display";
+    error.style.display = "block";
   } else {
     error.style.display = "none";
   }
