@@ -16,12 +16,6 @@ body {
   background-color: darkslategrey;
 }
 
-header img {
-  margin: 2%;
-  float: right;
-  width: 95px;
-}
-
 header h1 {
   margin: 0;
   font-size: 2.3rem;
@@ -31,7 +25,6 @@ header h1 {
 
 /*----------- MAIN --------------*/
 main {
-  max-width: 70%;
   padding: 0 2%;
 }
 
@@ -43,16 +36,6 @@ main h2 {
 
 main p {
   font-size: 1rem;
-}
-
-#menuImage {
-  width: 100%;
-  max-width: 500px;
-}
-
-#formGif {
-  width: 50%;
-  max-width: 276px;
 }
 
 li {

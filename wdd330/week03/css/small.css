@@ -31,7 +31,6 @@ header h1 {
 
 /*----------- MAIN --------------*/
 main {
-  max-width: 70%;
   padding: 0 2%;
 }
 
@@ -45,16 +44,6 @@ main p {
   font-size: 1rem;
 }
 
-#menuImage {
-  width: 100%;
-  max-width: 500px;
-}
-
-#formGif {
-  width: 50%;
-  max-width: 276px;
-}
-
 li {
   font-size: 0.8rem;
 }
@@ -62,6 +51,7 @@ li {
 pre {
   background-color: rgb(236, 236, 236);
   border-style: solid;
+  word-wrap: break-word;
 }
 
 /*----------- FOOTER --------------*/

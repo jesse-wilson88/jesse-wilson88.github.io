@@ -64,7 +64,453 @@
       <div>
         <h1>Notes from JavaScript: Novice to Ninja - Chapter 12:</h1>
         <h2>Object-Oriented Programming (OOP)</h2>
-        <p>Paragraph</p>
+        <p>
+          Object-Oriented Programming is a style of programming that involves
+          the code into objects that have properties and methods. The objects
+          can be reused or modified easily when needed. There are three main
+          concepts in OOP:
+        </p>
+        <ul>
+          <li>
+            Encapsulation - The inner workings are kept hidden inside the object
+            and only the essential functionalities are exposed to the end user.
+          </li>
+          <li>
+            Polymorphism - The same process can be used for different objects
+            which allows various objects share the same method or override
+            shared methods with a more specific implementation.
+          </li>
+          <li>
+            Inheritance - Taking the features of one object then adding some new
+            features. This allows an object that already exsists and inherit all
+            its properties and methods. You can then improve its functionality
+            by adding new properties and methods.
+          </li>
+        </ul>
+        <p>
+          <u>Classes:</u> Some object-oriented languages like Java & Ruby are
+          class-based languages and are also know as prototype-based languages.
+          In the book it talked about building a prototype juicer and making all
+          other juciers from that prototype. I don't know if I am 100% correct,
+          but to me it would be like creating the basics of a car which would be
+          the prototype of all cars. Then taking that prototype to build other
+          cars but add more features like bells and whistles to make many
+          different cars. Defferences like more powerful engines, build in gps,
+          soft top, battery or gas engine, etc.
+        </p>
+        <u>Constructor Functions:</u>
+        <p>
+          Here is an example of an object as we learned in the objects chapter:
+        </p>
+        <pre>
+    const dice = {
+      sides: 6,
+      roll() {
+        return Math.floor(this.sides * Math.random() + 1)
+      }
+    }
+        </pre>
+        <p>
+          Here is that the same object but rewritten as a constructor function:
+        </p>
+        <pre>
+    const Dice = function(sides=6){
+      this.sides = sides;
+      this.roll = function() {
+        return Math.floor(this.sides * Math.random() + 1)
+      }
+    }
+        </pre>
+        <p>
+          I was curious how it knew the random number was to be between 1 & 6. I
+          am not sure if I missed it in that chapter seemed to answer my
+          question. The keyword <b>this</b> is used to represent the object that
+          will be returned by the constructor function. In a preveous chapter
+          the same dice example was shown. In the previous example, we use it to
+          set the sides property to the argument that is provided to the
+          constructor function, or 6, if no argument provided. It also adds a
+          method called roll(), which returns a random number from 1 up to the
+          number of sides the dice has. With constructor function above this is
+          how you would create an instance of the dice constructor:
+        </p>
+        <pre>
+    const redDice = new Dice();
+    &#60;&#60; Dice { sides: 6, roll: [Function] }
+
+    or
+
+    const redDice = new Dice; // You don't need the parentheses
+    &#60;&#60; Dice { sides: 6, roll: [Function] }
+        </pre>
+        <p>
+          If you any defauly arguments need to be provided, yo will need to have
+          the parentheses. This would be good if you wanted to have a six, four,
+          or twelve sided dice. This would look like the following:
+        </p>
+        <pre>
+    const whiteDice = new Dice(4); // Change 4 to 12 for twelve sided dice.
+        </pre>
+        <p>
+          If you wanted to, you could check to see is redDice is using the the
+          instance of Dice and even roll the dice:
+        </p>
+        <pre>
+    redDice instanceof Dice
+    &#60;&#60; true 
+
+    redDice.sides 
+    &#60;&#60; 6
+
+    redDice.roll() 
+    &#60;&#60; 4
+        </pre>
+        <p>
+          With ES6 you can use the new class declaration syntax to rewrite the
+          code as the constructor function. Here is how that would look:
+        </p>
+        <pre>
+    class Dice {
+      constructor(sides=6) {
+        this.sides = sides;
+      }
+      roll() {
+        return Math.floor(this.sides * Math.random() + 1)
+      }
+    }
+
+    const blueDice = new Dice(20); // create a new instance of the Dice class
+    &#60;&#60; Dice { sides: 20 }
+
+    blueDice instanceof Dice // Lets you see if blueDice is a new instance of the Dice class
+    &#60;&#60; true
+
+    blueDice.sides // Displays how many sides the blueDice has
+    &#60;&#60; 20
+
+    blueDice.roll() // Displays a random number between 1 & 20 
+    &#60;&#60; 13
+        </pre>
+        <p>I just wanted to put a few examples of creating an object:</p>
+        <pre>
+    const literalObject = {}; // Easiest way to create a new object is to use the literal syntax
+    &#60;&#60; {}
+
+    constructedObject = new Object(); // It is also possible to use the Object constructor function
+    &#60;&#60; {}
+        </pre>
+        <p>
+          All objects have a constructor property that returns the constructor
+          function that created it:
+        </p>
+        <pre>
+    blueDice.constructor
+    &#60;&#60; [Function: Dice]
+        </pre>
+        <p>
+          We can use the constructor property to instantiate a copy of an
+          object, without having to reference the actual constructor function or
+          class declaration directly.
+        </p>
+        <pre>
+    const greenDice = new redDice.constructor(10);
+    greenDice instanceOf Dice
+    &#60;&#60; true
+        </pre>
+        <u>Static Methods:</u>
+        <p>
+          The static keyword can be used in class declarations to create a
+          static method. These are sometimes called class methods in other
+          programming languages. A static method is called by the class directly
+          rather than by instances of the class. I like that you can do a
+          description like this. It is not a function so you would get an error
+          if you tried to use it like one because static methods are not
+          available to instances of the class.
+        </p>
+        <pre>
+    class Dice {
+      constructor(sides=6) {
+        this.sides = sides;
+      }
+      roll() {
+        return Math.floor(this.sides * Math.random() + 1)
+      }
+      static description() {
+        return 'A way of choosing random numbers'
+      }
+    }
+
+    Dice.description()
+    &#60;&#60; 'A way of choosing random numbers'
+
+    redDice.description
+    &#60;&#60; TypeError: red.description is not a function
+        </pre>
+        <p>
+          I have learned that I am a literal learner and thinker. I am hoping
+          that by adding these next lines of code will help me understand how
+          Objects work for future reference. I can try some of these in the
+          console when I inspect this page. The following code is in the JS for
+          this page. Inspect the page and you can try to type the code in bold
+          letters to see it work.
+        </p>
+        <pre>
+    class Turtle {
+      constructor(name) {
+        this.name = name;
+        this.weapon = 'hands';
+      }
+      sayHi() {
+        return `Hi dude, my name is ${this.name}`;
+      }
+      attack(){
+        return `Feel the power of my ${this.weapon}!`;
+      }
+    }
+        </pre>
+        <p>Now we will create a new turtle instance.</p>
+        <pre>
+    <b>const leo = new Turtle('Leonardo');</b>
+    &#60;&#60; Turtle { name: 'Leonardo' }
+        </pre>
+        <p>
+          The variable leo points to an instance of the Turtle class. It has a
+          name property and a sayHi() method that references the name property.
+        </p>
+        <pre>
+    <b>leo.name;</b>
+    &#60;&#60; 'Leonardo'
+    
+    <b>leo.sayHi();</b>
+    &#60;&#60; 'Hi dude, my name is Leonardo'
+        </pre>
+        <p>
+          If you enter <b>leo.sayHi</b> you will get this instead of the desired
+          result.
+        </p>
+        <pre>
+    sayHi() {
+      return `Hi dude, my name is ${this.name}`;
+    }
+        </pre>
+        <p>
+          We things we can see is the turtles name and weapon. We can add a
+          method to the prototype:
+        </p>
+        <pre>
+  <b>
+    Turtle.prototype.attack = function(){
+      return `Feel the power of my ${this.weapon}!`;
+    }
+  </b>
+        </pre>
+        <p>
+          We have Leonado but lets add Raphael and display his information in
+          the console.
+        </p>
+        <pre>
+    <b>const raph = new Turtle('Raphael');</b>
+
+    <b>raph.weapon = "ninjakens"</b>
+
+    <b>raph.name;</b> 
+    &#60;&#60; 'Raphael'
+
+    <b>raph.sayHi();</b>
+    &#60;&#60; 'Hi dude, my name is Raphael'
+
+    <b>raph.attack();</b>
+    `Feel the power of my ninjakens!`
+        </pre>
+        <u>Finding Out the Prototype</u>
+        <p>There are a number of ways to find the prototype of an object:</p>
+        <pre>
+    // Each of these return the same thing 
+    &#60;&#60; Turtle { attack: [Function], weapon: 'Hands' }
+      
+    <b>raph.constructor.prototype;</b> // Use the constructor function’s prototype property
+
+    <b>Object.getPrototypeOf(raph);</b> // Use the Object.getPrototypeOf() method, which takes the
+    object as a parameter
+
+    // Many JavaScript engines also support the non-standard __proto__ property known as
+    // double underscore proto or dunder proto. It seems it is getting replaced by the
+    // isPrototypeOf() method
+    <b>raph.__proto__;</b>
+
+    // Every object also has a isPrototypeOf() method that returns a boolean to check
+    if it’s the prototype of an instance
+    <b>Turtle.prototype.isPrototypeOf(raph)</b>
+    &#60;&#60; true
+        </pre>
+        <p>
+          The object raph has access to both name and weapon properties, but the
+          name property is considered to be its own property, while the weapon
+          property is inherited from the prototype. Every object has a
+          hasOwnProperty() method that can be used to check if a method is its
+          own property, or is inherited from the prototype.
+        </p>
+        <pre>
+    <b>raph.hasOwnProperty('name');</b>
+    &#60;&#60; true
+
+    <b>raph.hasOwnProperty('weapon');</b>
+    &#60;&#60; false
+        </pre>
+        <p>
+          Difference between an object’s own properties and prototype. Prototype
+          properties are shared by every instance of the Turtle class. The
+          objects all have the same properties. For example, every time an
+          instance of the Turtle class queries the weapon property, it will
+          return “Hands”.
+        </p>
+        <pre>
+    <b>const don = new Turtle('Donatello');</b>
+    &#60;&#60; Turtle { name: 'Donatello' }
+
+    <b>don.weapon;</b>
+    &#60;&#60; 'Hands'
+
+    <b>don.attack();</b>
+    &#60;&#60; 'Feel the power of my Hands!'
+        </pre>
+        <p>
+          Now supposedly we are able to change the weapon which seems to be
+          'Hands' by default because of the way it is in the Turtle Class. I
+          will put code here but so far I have not been able to get it to work.
+        </p>
+        <pre>
+    <b>Turtle.prototype.weapon = 'Feet';</b> // This part works 
+    &#60;&#60; 'Feet'
+        </pre>
+        <p>
+          And the results are suppose to look like the following but I have not
+          been able to get it to work. I keep getting 'Feel the power of my
+          hands!'
+        </p>
+        <pre>
+    <b>leo.attack();</b>
+    &#60;&#60; 'Feel the power of my Feet!'
+
+    <b>raph.attack();</b>
+    &#60;&#60; 'Feel the power of my Feet!'
+    
+    <b>don.attack();</b>
+    &#60;&#60; 'Feel the power of my Feet!'
+        </pre>
+        <u> Overwriting Prototype Properties </u>
+        <p>
+          I like this part. We can change the weapon that each ninja turtle uses
+          and it stays with that turtle. Right now the weapon SHOULD be feet but
+          in my case so far, it is hands. But we will change them this way.
+        </p>
+        <pre>
+    <b>leo.weapon = 'Katana Blades';</b>
+    &#60;&#60; 'Katana Blades'
+
+    <b>raph.weapon = 'Sai';</b>
+    &#60;&#60; 'Sai'
+
+    <b>don.weapon = 'Bo Staff';</b>
+    &#60;&#60; 'Bo Staff'
+        </pre>
+        <p>Now if we want to see the results we can do this:</p>
+        <pre>
+    <b>leo.attack();</b>
+    &#60;&#60; 'Feel the power of my Katana Blades!'
+
+    <b>raph.attack();</b>
+    &#60;&#60; 'Feel the power of my Sai!'
+
+    <b>don.attack();</b>
+    &#60;&#60; 'Feel the power of my Bo Staff!'
+        </pre>
+        <p>
+          Prototypes should be used to define any properties that will remain
+          the same for every instance of the class. All of the turtles use
+          different weapons but they all like the same food, pizza!
+        </p>
+        <pre>
+    <b>Turtle.prototype.food = 'Pizza';</b> // Adding Prototype property that is not in the original class declaration
+
+    <b>Turtle.prototype.eat = function() { // Adding method to the prototype
+      return 'Mmm, this ${this.food} tastes great!';
+    }</b>
+        </pre>
+        <p>Now we can create another turtle instance.</p>
+        <pre>
+    <b>const mike = new Turtle('Michelangelo');</b>     
+
+    <b>mike.eat();</b>
+    &#60;&#60; 'Mmm, this Pizza tastes great!'
+
+    <b>mike.weapon = 'Nunchakus';</b>
+    &#60;&#60; 'Nunchuks'
+
+    <b>mike.attack();</b>
+    &#60;&#60; 'Feel the power of my Nunchakus!'
+        </pre>
+        <u>Public and Private Methods</u>
+        <p>
+          Public methods and properties can be queried directly and changed by
+          assignment even after it has been created. The name and weapon
+          properties are said to be public in this example because we can query
+          their value and they can be changed. giving users or external services
+          too much access to properties and methods could be a recipe for
+          disaster!
+        </p>
+        <pre>
+    <b>raph.weapon;</b>
+    &#60;&#60; 'Sai'
+
+    <b>raph.weapon = 3;</b>
+    &#60;&#60; 3
+
+    <b>raph.attack();</b>
+    &#60;&#60; 'Feel the power of my 3!'
+        </pre>
+        <p>
+          The concept of variable scope can be used to keep some properties and
+          methods private inside a class declaration. This will prevent the user
+          from accessing or changeing the methods and/or properties.
+        </p>
+        <pre>
+    class Turtle {
+      constructor(name,color) {
+        this.name = name;
+        let _color = color;
+        this.setColor = color => { return _color = color; }
+      this.getColor = () => _color;
+      }
+    }
+        </pre>
+        <p>
+          By creating the _color property inside the scope of the constructor
+          function inside the class declaration. It makes it impossible to
+          access outside of this scope. The getColor() and setColor are known as
+          getter and setting methods.
+        </p>
+        <pre>
+    raph = new Turtle('Raphael','Red');
+    &#60;&#60; Turtle { name: 'Raphael', setColor: [Function], getColor: [Function] }
+
+    raph.getColor();
+    &#60;&#60; 'Red'
+
+    raph.setColor(4);
+    &#60;&#60; 4
+
+    // You can also insist that the color property is a string
+    this.setColor = (color) => {
+      if(typeof color === 'string'){
+        return _color = color;
+      } else {
+        throw new Error('Color must be a string');
+      }
+    }
+
+    raph.setColor(4);
+    &#60;&#60; Error: Color must be a string
+        </pre>
       </div>
       <hr />
       <div>
@@ -77,10 +523,8 @@
     <!-- FOOTER HERE -->
     <footer id="footerWrapper">
       <p>
-        &copy;2021 | Jesse Wilson | Cardston, AB |
-        <a href="https://www.byui.edu/online" target="_blank"
-          >BYU-I Online Learning
-        </a>
+        &copy;2021 | Jesse Wilson | Cardston, AB | WDD 330: Frontend Web
+        Development II
       </p>
     </footer>
   </body>
