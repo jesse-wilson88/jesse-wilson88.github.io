@@ -28,7 +28,8 @@
     <link href="css/large.css" rel="stylesheet" />
 
     <!-- JAVASCRIPTS-->
-    <script defer src="js/styles.js"></script>
+    <!-- <script defer src="js/styles.js"></script> -->
+    <script defer src="js/turtle2.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -254,7 +255,7 @@
           letters to see it work.
         </p>
         <pre>
-    class Turtle {
+    <a href="classTurtle1.html" target="_blank">class Turtle</a> {
       constructor(name) {
         this.name = name;
         this.weapon = 'hands';
@@ -474,7 +475,7 @@
           from accessing or changeing the methods and/or properties.
         </p>
         <pre>
-    class Turtle {
+    <a href="classTurtle2.html">class Turtle</a> {
       constructor(name,color) {
         this.name = name;
         let _color = color;
@@ -490,13 +491,13 @@
           getter and setting methods.
         </p>
         <pre>
-    raph = new Turtle('Raphael','Red');
+    <b>raph = new Turtle('Raphael','Red');</b>
     &#60;&#60; Turtle { name: 'Raphael', setColor: [Function], getColor: [Function] }
 
-    raph.getColor();
+    <b>raph.getColor();</b>
     &#60;&#60; 'Red'
 
-    raph.setColor(4);
+    <b>raph.setColor(4);</b>
     &#60;&#60; 4
 
     // You can also insist that the color property is a string
@@ -508,9 +509,31 @@
       }
     }
 
-    raph.setColor(4);
+    <b>raph.setColor(4);</b>
     &#60;&#60; Error: Color must be a string
         </pre>
+        <u>The Prototype Chain</u>
+        <p>
+          An example of a prototype chain by looking at the prototype of the
+          raph instance of the Turtle class that we created in the last section,
+          using the Object.getPrototypeOf() method:
+        </p>
+        <pre>
+    <b>Object.getPrototypeOf(raph);</b>
+    &#60;&#60; Turtle {}
+        </pre>
+        <p>
+          We can peer further down the prototype chain, but calling the
+          Object.getPrototypeOf() method recursively. This shows us that the
+          prototype of the prototype is an apparently empty object literal,
+          although it’s actually an instance of the built-in Object()
+          constructor function
+        </p>
+        <pre>
+    <b>Object.getPrototypeOf(Object.getPrototypeOf(raph))</b>
+    &#60;&#60; {}
+        </pre>
+        <img src="images/prototypeChain.jpg" alt="Prototype Chain" />
       </div>
       <hr />
       <div>
