@@ -28,8 +28,7 @@
     <link href="css/large.css" rel="stylesheet" />
 
     <!-- JAVASCRIPTS-->
-    <!-- <script defer src="js/styles.js"></script> -->
-    <script defer src="js/turtle2.js"></script>
+    <script defer src="js/styles.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -475,7 +474,7 @@
           from accessing or changeing the methods and/or properties.
         </p>
         <pre>
-    <a href="classTurtle2.html">class Turtle</a> {
+    <a href="classTurtle2.html" target="_blank">class Turtle</a> {
       constructor(name,color) {
         this.name = name;
         let _color = color;
@@ -533,8 +532,601 @@
     <b>Object.getPrototypeOf(Object.getPrototypeOf(raph))</b>
     &#60;&#60; {}
         </pre>
-        <p>Continue on page 461</p>
-        <img src="images/prototypeChain.jpg" alt="Prototype Chain" />
+        <figure>
+          <img src="images/prototypeChain.jpg" alt="Prototype Chain" />
+          <figcaption>The prototype chain example</figcaption>
+        </figure>
+        <u>The Object Constructor</u>
+        <p>
+          All objects ultimately inherit from the prototypeof the Object()
+          constructor function. Here is what happens when an object calls a
+          method:
+        </p>
+        <ul>
+          <li>
+            JavaScript engine will check to see if the object has that method
+          </li>
+          <li>
+            If it doesn’t, it will check if the object’s prototype has the
+            method
+          </li>
+          <li>
+            If not, it will check whether the prototype’s prototype has it
+          </li>
+          <li>
+            It will continue all the way up the prototype chain, until it
+            reaches the prototype of the Object() constructor function
+          </li>
+          <li>
+            If the prototype of Object() is without the method, an error will be
+            returned saying the object doesn’t exist
+          </li>
+        </ul>
+        <p>
+          The prototype of the Object constructor function has a large number of
+          methods that are inherited by all objects. The reason why the
+          prototype appears as an empty object literal is because all of its
+          methods are not enumerable. Properties of objects in JavaScript are
+          said to be enumerable or non-enumerable. If they aren’t enumerable,
+          this means they will not show up when a for-in loop is used to loop
+          through an object’s properties and methods. There is a method called
+          propertyIsEnumerable() that every object has (because it's a methos of
+          Object.prototype) that is used to check if a property is enumerable.
+        </p>
+        <pre>
+    <b>Turtle.prototype.propertyIsEnumerable('eat');</b>
+    &#60;&#60; true
+
+    <b>Object.prototype.propertyIsEnumerable('toString');</b>
+    &#60;&#60; false
+
+    <b>Object.prototype.propertyIsEnumerable('propertyIsEnumerable');</b>
+    &#60;&#60; false
+        </pre>
+        <u>Inheritance Using extends</u>
+        <p>
+          We can use the key <i>extends</i> keyword in a class declaration so a
+          class can inherit from another class.
+        </p>
+        <pre>
+    <a href="classTurtle3.html">class Turtle</a> {
+      constructor(name) {
+        this.name = name;
+      }
+      sayHi() {
+        return `Hi dude, my name is ${this.name}`;
+      }
+      swim() {
+        return `${this.name} paddles in the water`;
+      }
+    }
+
+    class NinjaTurtle extends Turtle {
+      constructor(name) {
+        super(name);
+        this.weapon = 'hands';
+    }
+      attack() { return `Feel the power of my ${this.weapon}!` }
+    }
+        </pre>
+        <p>
+          To show how this works lets do some examples. Lets create a turtle.
+          Not a special turtle, just one from a cartoon. Lets say Verne from
+          'Over the Hedge'. There is nothing special about him other than he is
+          a turtle.
+        </p>
+        <pre>
+    <b>verne = new Turtle('Verne');</b>
+    &#60;&#60; 'Verne'
+        </pre>
+        <p>
+          Now lets see Verne's name, how he introduces himself and see how he
+          swims.
+        </p>
+        <pre>
+    <b>verne.name;</b>
+    &#60;&#60; Verne
+
+    <b>verne.sayHi();</b>
+    &#60;&#60; `Hi dude, my name is Verne`
+
+    <b>verne.swim();</b>
+    &#60;&#60; `Verne paddles in the water.'
+        </pre>
+        <p>Now lets see if he uses a weapon and if he can attack with it.</p>
+        <pre>
+    <b>verne.weapon;</b>
+    &#60;&#60; undefined
+    
+    <b>verne.attack();</b>
+    &#60;&#60; Uncaught TypeError: verne.attack is not a function at &#60;anonymous>:1:7
+        </pre>
+        <p>
+          Why did weapon and attack() not work. It is because they are not Ninja
+          Turtles. So lets create one of the Ninja Turtles and see if he has a
+          weapon and can attack. Also see if he can swim and introduce himself
+          without creating him in the Turtle class.
+        </p>
+        <pre>
+    <b>don = new NinjaTurtle("Donatello");</b>
+    &#60;&#60; NinjaTurtle {name: 'Donatello', weapon: 'hands'}
+
+    <b>don.name;</b>
+    &#60;&#60; 'Donatello'
+
+    <b>don.weapon;</b>
+    &#60;&#60; 'hands'
+
+    <b>don.attack();</b>
+    &#60;&#60; 'Feel the power of my hands!'
+
+    <b>don.swim();</b>
+    &#60;&#60; 'Donatello paddles in the water'
+
+    <b>don.sayHi();</b>
+    &#60;&#60; 'Hi dude, my name is Donatello'
+        </pre>
+        <p>
+          As you can see because Donatello is a Ninja Turtle he has all the
+          traits of the NinjaTurtles class and also the Turtle class. If I am
+          understanding correctly, Turtle would be the parent class and
+          NinjaTurtle would be a child class. So NinjaTurtle inherits what is
+          inside Turtle.
+        </p>
+        <u> Polymorphism </u>
+        <p>
+          The concept of polymorphism means that different objects can have the
+          same method, but implement it in different ways. Polymorphism means
+          that objects are able to override this method with a more specific
+          implementation. Although every object has a toString() method, the way
+          it’s implemented can vary between different objects. For example,
+          calling it on an array object will return each value in a
+          comma-separated string:
+        </p>
+        <pre>
+    [1,2,3].toString();
+    &#60;&#60; '1,2,3'
+
+    2..toString();
+    &#60;&#60; '2'
+
+    2 === 2.string();
+    &#60;&#60; false
+
+    '2' === 2.string();
+    &#60;&#60; true 
+        </pre>
+        <p>
+          The toString() method is used by a number of built-in functions in the
+          background. It can be used without fear of causing an error because
+          every object has the method, as it’s inherited from Object.prototype.
+          One example of a function that uses the toString() method is the
+          console.log() method. It’s often a useful exercise to override the
+          toString() method using the prototype, so something more meaningful is
+          displayed. This line of code has been added to the JS file already:
+        </p>
+        <pre>
+    toString() {
+      return `A turtle called ${this.name}`;
+    }
+
+    // Without the code above it could look like this
+    <b>raph.toString();</b>
+    '[object Object]'
+
+    // With the code above added to the JS it could look like this
+    <b>raph.toString();</b>
+    &#60;&#60; 'A turtle called Raphael'
+        </pre>
+        <u> Adding Methods to built-in Objects</u>
+        <p>
+          You are able to add more methods to the prototype of JavaScript’s
+          built-in objects — such as Number, String, and Array to more
+          functionality. This practice is known as monkey-patching, but it’s
+          mostly frowned upon in the JavaScript community, despite it being an
+          incredibly powerful technique.
+        </p>
+        <pre>
+    <b>Number.prototype.isEven = function() {
+      return this%2 === 0;
+    }</b>
+
+    <b>Number.prototype.isOdd = function() {
+      return this%2 === 1;
+    }</b>
+
+    <b>42..isEven();</b>
+    &#60;&#60; true
+
+    <b>765234..isOdd();</b>
+    &#60;&#60; false 
+        </pre>
+        <p>
+          Arrays are powerful objects, but seem to have some basic methods
+          missing in JavaScript that are found in other languages. We can add a
+          first() and last() methods that return the first and last items in the
+          array:
+        </p>
+        <pre>
+    <b>Array.prototype.first = function() {
+      return this[0];
+    }</b>
+
+    <b>Array.prototype.last = function() {
+        return this[this.length -1];
+    }</b>
+
+    <b>const turtles = ['Leonardo', 'Donatello', 'Michaelangelo', 'Raphael'];</b>
+
+    <b>turtles.first();</b>
+    &#60;&#60; 'Leonardo'
+
+    <b>turtles.last();</b>
+    &#60;&#60; 'Raphael'
+        </pre>
+        <p>
+          If you want or need to remove whitespace from the beginning and end of
+          a string:
+        </p>
+        <pre>
+    <b>String.prototype.trim = String.prototype.trim || function() {
+      return this.replace(/^\s+|\s+$/,'');
+    }</b>
+    
+    <b>' hello '.trim();</b>
+    &#60;&#60; 'hello'
+        </pre>
+        <p>
+          While monkey-patching built-in objects can seem a good way to add
+          extra or missing functionality, it can also add unexpected behavior.
+          The current consensus in the JS community is that this shouldn’t be
+          done, so you should avoid monkey-patching any of the built-in object
+          constructor prototypes, unless you have a very good reason. Further
+          problems could occur if the method you’ve added is then implemented
+          natively in the language. An alternative way to avoid causing problems
+          is to use extends to subclass a built class and create your own class.
+          For example, you could create your own array class by extending the
+          built in array class, like so:
+        </p>
+        <pre>
+    <b>class myArray extends Array {
+      constructor(...args){
+        super(...args);
+      }
+      
+      delete(i) {
+        return this.splice(i,1);
+      }
+    }</b>
+
+    <b>const list = new myArray(1,2,3);</b>
+    &#60;&#60; myArray [ 1,2,3 ]
+
+    <b>list.delete(1);</b>
+    &#60;&#60; myArray [ 2 ]
+
+    <b>list</b>
+    &#60;&#60; myArray [ 1, 3 ]
+        </pre>
+        <u>Property Attributes and Descriptors</u>
+        <p>
+          Objects are a collection of key-value paired properties. each property
+          has a number of attributes that provide information about the
+          property. These attributes are stored in a property descriptor, which
+          is an object that contains values of each attribute. All object
+          properties have the following attributes stored in a property
+          descriptor:
+        </p>
+        <ul>
+          <li>
+            value ― This is the value of the property and is undefined by
+            default
+          </li>
+          <li>
+            writable ― This boolean value shows whether a property can be
+            changed or not, and is false by default
+          </li>
+          <li>
+            enumerable ― this boolean value shows whether a property will show
+            up when the object is displayed in a for in loop, and is false by
+            default
+          </li>
+          <li>
+            configurable ― this boolean value shows whether you can delete a
+            property or change any of its attributes, and is false by default.
+          </li>
+        </ul>
+        <p>
+          Up to this point we have only set properties by assignment, which only
+          allows us to set the value attributes by using a property descriptor.
+          Here is an example of a single property of name:
+        </p>
+        <pre>
+          <b>const me = { name: 'DAZ' };</b>
+        </pre>
+        <p>To get or set the property descriptors:</p>
+        <pre>
+    // To get the property descriptors. Because writable is set to true, we can change the name value to something else if we wanted 
+    <b>Object.getOwnPropertyDescriptor(me,'name');</b>
+    &#60;&#60; { value: 'DAZ', writable: true, enumerable: true, configurable: true }
+
+    //To set/add properties to an object. Because writeable is set to false, we cannot change the value of eyeColor.
+    <b>Object.defineProperty(me, 'eyeColor', { value: 'blue', writable: false, enumerable: true });</b>
+    &#60;&#60; { name: 'DAZ', age: 21, eyeColor: 'blue' }
+
+    <b>me.eyeColor = 'purple'</b>
+    &#60;&#60; 'purple'
+
+    <b>me.eyeColor;</b>
+    &#60;&#60; 'blue'
+        </pre>
+        <p>
+          An object property descriptor can have get() and set() methods instead
+          of a value attribute. All objects must have one or the other, they
+          can’t have both. The get() and set() methods can be used to control
+          how a property is set using assignment and the value that is returned
+          when a property is queried. They are particularly useful if a property
+          relies on the value of another property. For example, if we add age
+          and retirementAge properties to the me object, we can then create a
+          yearsToRetirement property that depends on these properties:
+        </p>
+        <pre>
+    <b>me.age = 21;
+
+    me.retirementAge = 65;
+    
+    Object.defineProperty(me, 'yearsToRetirement',{
+      get() {
+        if(this.age > this.retirementAge) { return 0; }
+        else { return this.retirementAge - this.age; }
+      },
+      set(value) {
+        this.age = this.retirementAge - value;
+        return value;
+      }
+    });</b>
+
+    <b>me.yearsToRetirement;</b>
+    &#60;&#60; 44
+
+    // Setter also allows the age to be changed by setting the yearsToRetirement property
+    <b>me.yearsToRetirement = 10;</b>
+    &#60;&#60; 10
+
+    <b>me.age</b>
+    &#60;&#60; 55
+        </pre>
+        <p>
+          We are able to have more fine-grained control over how assignment
+          works with the use of gett and setter methods. To me it seems like you
+          are setting a values default no matter what the value is later set to.
+        </p>
+        <pre>
+  <b> Object.defineProperty(me, 'age', {
+      get() {
+        return 21;
+      },
+      set(value) {
+        return value;
+      }
+    });</b>
+
+    <b>me.age = 30;</b>
+    &#60;&#60; 30
+
+    <b>me.age;</b>
+    &#60;&#60; 21
+        </pre>
+        <p>
+          The next example shows how we can create a Dice class that uses a get
+          function that will return a description of the number of sides, rather
+          than just the actual number, and a set function that prohibits a
+          non-positive number of sides to be set. These getter and setter
+          methods give you much more power in controlling the way property
+          assignment works. However, they should be used sparingly and with
+          care, as changing the expected behavior of an assignment has the
+          potential to cause a lot of confusion.
+        </p>
+        <pre>
+    <b>class Dice {
+      constructor(sides=6){
+        Object.defineProperty(this, 'sides', {
+        get() {
+          return `This dice has ${sides} sides`;
+        },
+        set(value) {
+          if(value > 0) {
+          sides = value;
+
+          return sides;
+          } else {
+            throw new Error('The number of sides must be
+            positive');
+          }
+        }
+      });
+
+      this.roll = function() {
+        return Math.floor(sides * Math.random() + 1)
+        }
+      }
+    }</b>
+
+    <b>const yellowDice = new Dice;</b>
+
+    <b>yellowDice.sides;</b>
+    &#60;&#60; "This dice has 6 sides"
+
+    <b>yellowDice.sides = 10;</b>
+    &#60;&#60; 10
+
+    <b>yellowDice.sides;</b>
+    &#60;&#60; "This dice has 10 sides"
+
+    <b>yellowDice.sides = 0;</b>
+    &#60;&#60; Error: "The number of sides must be positive"
+        </pre>
+        <u>Creating Objects from Other Objects</u>
+        <p>
+          We can create an object from another object. The original object acts
+          sort of like a blueprint or a prototype. This is simply created as an
+          object literal:
+        </p>
+        <pre>
+    <b><a href="objectHuman.html" target="_blank">const Human</a> = {
+      arms: 2,
+      legs: 2,
+      walk() { console.log('Walking'); }
+    }</b>
+        </pre>
+        <p>
+          We can create another human object from the one above by using the
+          Object.create() method:
+        </p>
+        <pre>
+    <b>const lois = Object.create(Human);</b>
+
+    <b>lois.arms;</b>
+    &#60;&#60; 2
+
+    <b>lois.legs;</b>
+    &#60;&#60; 2
+
+    <b>lois.walk();</b>
+    &#60;&#60; Walking
+
+    <b>Human.isPrototypeOf(lois);</b> // The Human object is the prototype of the lois object
+    &#60;&#60; true
+        </pre>
+        <p>
+          We can even add extra properties to each instance using assignment.
+        </p>
+        <pre>
+    <b>lois.name = 'Lois Lane';</b>
+    &#60;&#60; 'Lois Lane'
+
+    <b>lois.job = 'Reporter';</b>
+    &#60;&#60; 'Reporter'
+        </pre>
+        <p>
+          There is an alternative way to add a second argument to the
+          Object.create() method containing properties that are to be added to
+          the new object:
+        </p>
+        <pre>
+    <b>const jimmy = Object.create(Human, { name: { value: 'Jimmy Olsen', enumerable: true }, job: { value: 'Photographer', enumerable: true } });</b>
+        </pre>
+        <p>
+          This method is a little unwieldy as the properties have to be added
+          using property descriptors, making the syntax awkward and overly
+          verbose. It’s often easier to create the object, then add each new
+          property one by one.
+        </p>
+        <p>
+          The Human object can also act like a ‘super-class’, and become the
+          prototype of another object called Superhuman. This will have all the
+          properties and methods that the Human object has, but with some extra
+          methods
+        </p>
+        <pre>
+    const Superhuman = Object.create(Human);
+
+    Superhuman.change = function() {
+      return `${this.realName} goes into a phone box and comes out as ${this.name}!`;
+    };
+        </pre>
+        <p>
+          This method relies on the name and realName properties. It can be a
+          good idea to create default values in the prototype so the method will
+          still work. In this case, we can use names that prompt some real data
+          to be added:
+        </p>
+        <pre>
+    <b>Superhuman.name = 'Name Needed';</b>
+    &#60;&#60; 'Name Needed'
+
+    <b>Superhuman.realName = 'Real Name Needed';</b>
+    &#60;&#60; 'Real Name Needed'
+        </pre>
+        <p>
+          We can now use the Superhuman object as a prototype to create more
+          objects based on it.
+        </p>
+        <pre>
+    <b>const superman = Object.create(Superhuman);</b>
+
+    <b>superman.name = 'Superman';</b>
+    superman.realName = 'Clark Kent';
+
+    <b>superman.change();</b>
+    &#60;&#60; Clark Kent goes into a phone box and comes out as Superman!
+        </pre>
+        <p>
+          Adding custom properties in this way is certainly more long-winded
+          than using a constructor function, where the initial values are passed
+          as an argument to the constructor function. This can be fixed by
+          adding a init() method to the Superhuman object that accepts
+          initialization properties:
+        </p>
+        <pre>
+    <b>Superhuman.init = function(name,realName){
+      this.name = name;</b>
+
+      <b>this.realName = realName;</b>
+
+      <b>this.init = undefined;</b> // this line removes the init function, so it can only be called once
+      
+      <b>return this;
+    }</b>
+
+    // A new ojbect can easily be created and initialized
+    <b>const batman = Object.create(Superhuman);</b> 
+    <b>batman.init('Batman','Bruce Wayne');</b>
+
+    <b>batman.change();</b>
+    &#60;&#60; 'Bruce Wayne goes into a phone box and comes out as Batman!'
+
+    // A new object can also be created and initialized in a single line by adding the call
+    to the init() method at the end of the line that creates the object.
+    <b>const aquaman = Object.create(Superhuman).init('Aquaman', 'Arthur Curry');</b>
+
+    <b>aquaman.change();</b>
+    &#60;&#60; 'Arthur Curry goes into a phone box and comes out as Aquaman!'
+        </pre>
+        <u>Ojbect Prototype Chain</u>
+        <p>
+          When we create an object from another object, using the
+          Object.create() method, the new object will inherit all the properties
+          and methods from the parent object it was created from.
+        </p>
+        <pre>
+          <b>Superhuman.isPrototypeOf(superman);</b>
+          &#60;&#60; true
+
+          <b>Human.isPrototypeOf(Superhuman);</b>
+          &#60;&#60; true
+
+          <b>Superhuman.isPrototypeOf(batman);</b>
+          &#60;&#60; true
+        </pre>
+        <figure>
+          <img
+            src="images/humanPrototypeChain.jpg"
+            alt="Human Prototype Chain"
+          />
+          <figcaption>The prototype chain</figcaption>
+        </figure>
+        <p>
+          Because of this chain, the superman object has all the properties and
+          methods of the Human and Superhuman objects:
+        </p>
+        <pre>
+    <b>superman.walk();</b>
+    &#60;&#60; Walking
+
+    <b>built-insuperman.change();</b>
+    &#60;&#60; 'Clark Kent goes into a phone box and comes out as Superman!'
+        </pre>
       </div>
       <hr />
       <div>

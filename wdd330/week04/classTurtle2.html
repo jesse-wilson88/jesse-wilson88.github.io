@@ -4,30 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta name="description" content="infomation about site." />
-    <meta name="author" content="Jesse Wilson" />
-
-    <!-- SITE TITLE -->
-    <title><!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta name="description" content="infomation about site." />
-    <meta name="author" content="Jesse Wilson" />
-
-    <!-- SITE TITLE -->
-    <title>Class Turtle 2</title>
-
-    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
-      enlarging when a phone is turned sideways-->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+    <title>Class Turtle Example 2</title>
 
     <!-- STYLE SHEETS -->
     <link href="css/normalize.css" rel="stylesheet" />
@@ -42,51 +19,120 @@
     <script defer src="js/turtle2.js"></script>
   </head>
   <body>
-    <!-- HEADER HERE -->
-    <header></header>
+    <main>
+      <h1>Inspect this page to look at the Javascript console.</h1>
+      <p>
+        The concept of variable scope can be used to keep some properties and
+        methods private inside a class declaration. This will prevent the user
+        from accessing or changeing the methods and/or properties.
+      </p>
+      <pre>
+  <a href="classTurtle2.html" target="_blank">class Turtle</a> {
+    constructor(name,color) {
+      this.name = name;
+      let _color = color;
+      this.setColor = color => { return _color = color; }
+    this.getColor = () => _color;
+    }
+  }
+      </pre>
+      <p>
+        By creating the _color property inside the scope of the constructor
+        function inside the class declaration. It makes it impossible to access
+        outside of this scope. The getColor() and setColor are known as getter
+        and setting methods.
+      </p>
+      <pre>
+  <b>raph = new Turtle('Raphael','Red');</b>
+  &#60;&#60; Turtle { name: 'Raphael', setColor: [Function], getColor: [Function] }
 
-    <!-- NAVIGATION HERE -->
-    <nav></nav>
+  <b>raph.getColor();</b>
+  &#60;&#60; 'Red'
 
-    <!-- CONTENT HERE -->
-    <main></main>
+  <b>raph.setColor(4);</b>
+  &#60;&#60; 4
 
-    <!-- FOOTER HERE -->
-    <footer></footer>
-  </body>
-</html>
-</title>
+  // You can also insist that the color property is a string
+  this.setColor = (color) => {
+    if(typeof color === 'string'){
+      return _color = color;
+    } else {
+      throw new Error('Color must be a string');
+    }
+  }
 
-    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
-      enlarging when a phone is turned sideways-->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+  <b>raph.setColor(4);</b>
+  &#60;&#60; Error: Color must be a string
+      </pre>
+      <u>The Prototype Chain</u>
+      <p>
+        An example of a prototype chain by looking at the prototype of the raph
+        instance of the Turtle class that we created in the last section, using
+        the Object.getPrototypeOf() method:
+      </p>
+      <pre>
+  <b>Object.getPrototypeOf(raph);</b>
+  &#60;&#60; Turtle {}
+      </pre>
+      <p>
+        We can peer further down the prototype chain, but calling the
+        Object.getPrototypeOf() method recursively. This shows us that the
+        prototype of the prototype is an apparently empty object literal,
+        although it’s actually an instance of the built-in Object() constructor
+        function
+      </p>
+      <pre>
+  <b>Object.getPrototypeOf(Object.getPrototypeOf(raph))</b>
+  &#60;&#60; {}
+      </pre>
+      <figure>
+        <img src="images/prototypeChain.jpg" alt="Prototype Chain" />
+        <figcaption>The prototype chain example</figcaption>
+      </figure>
+      <u>The Object Constructor</u>
+      <p>
+        All objects ultimately inherit from the prototypeof the Object()
+        constructor function. Here is what happens when an object calls a
+        method:
+      </p>
+      <ul>
+        <li>
+          JavaScript engine will check to see if the object has that method
+        </li>
+        <li>
+          If it doesn’t, it will check if the object’s prototype has the method
+        </li>
+        <li>If not, it will check whether the prototype’s prototype has it</li>
+        <li>
+          It will continue all the way up the prototype chain, until it reaches
+          the prototype of the Object() constructor function
+        </li>
+        <li>
+          If the prototype of Object() is without the method, an error will be
+          returned saying the object doesn’t exist
+        </li>
+      </ul>
+      <p>
+        The prototype of the Object constructor function has a large number of
+        methods that are inherited by all objects. The reason why the prototype
+        appears as an empty object literal is because all of its methods are not
+        enumerable. Properties of objects in JavaScript are said to be
+        enumerable or non-enumerable. If they aren’t enumerable, this means they
+        will not show up when a for-in loop is used to loop through an object’s
+        properties and methods. There is a method called propertyIsEnumerable()
+        that every object has (because it's a methos of Object.prototype) that
+        is used to check if a property is enumerable.
+      </p>
+      <pre>
+  <b>Turtle.prototype.propertyIsEnumerable('eat');</b>
+  &#60;&#60; true
 
-    <!-- STYLE SHEETS -->
-    <link href="css/normalize.css" rel="stylesheet" />
-    <!-- phone-default -->
-    <link href="css/small.css" rel="stylesheet" />
-    <!-- enhance-tablet -->
-    <link href="css/medium.css" rel="stylesheet" />
-    <!-- enhance-desktop -->
-    <link href="css/large.css" rel="stylesheet" />
+  <b>Object.prototype.propertyIsEnumerable('toString');</b>
+  &#60;&#60; false
 
-    <!-- JAVASCRIPTS-->
-    <script defer src="js/style.js"></script>
-  </head>
-  <body>
-    <!-- HEADER HERE -->
-    <header></header>
-
-    <!-- NAVIGATION HERE -->
-    <nav></nav>
-
-    <!-- CONTENT HERE -->
-    <main></main>
-
-    <!-- FOOTER HERE -->
-    <footer></footer>
+  <b>Object.prototype.propertyIsEnumerable('propertyIsEnumerable');</b>
+  &#60;&#60; false
+      </pre>
+    </main>
   </body>
 </html>

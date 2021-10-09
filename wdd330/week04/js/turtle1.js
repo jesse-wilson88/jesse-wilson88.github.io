@@ -14,5 +14,3 @@ class Turtle {
 Turtle.prototype.eat = function () {
   return "Mmm, this ${this.food} tastes great!";
 };
-
-Turtle.prototype.food = "Pizza";

@@ -4,19 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta name="description" content="infomation about site." />
-    <meta name="author" content="Jesse Wilson" />
-
-    <!-- SITE TITLE -->
-    <title>Class Turtle 1</title>
-
-    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
-      enlarging when a phone is turned sideways-->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+    <title>Class Turtle Example 1</title>
 
     <!-- STYLE SHEETS -->
     <link href="css/normalize.css" rel="stylesheet" />
@@ -31,14 +19,8 @@
     <script defer src="js/turtle1.js"></script>
   </head>
   <body>
-    <!-- HEADER HERE -->
-    <header></header>
-
-    <!-- NAVIGATION HERE -->
-    <nav></nav>
-
-    <!-- CONTENT HERE -->
     <main>
+      <h1>Inspect this page to look at the Javascript console.</h1>
       <p>
         I have learned that I am a literal learner and thinker. I am hoping that
         by adding these next lines of code will help me understand how Objects
@@ -48,94 +30,97 @@
         it work.
       </p>
       <pre>
-  class Turtle {
-    constructor(name) {
-      this.name = name;
-      this.weapon = 'hands';
-    }
-    sayHi() {
-      return `Hi dude, my name is ${this.name}`;
-    }
-    attack(){
-      return `Feel the power of my ${this.weapon}!`;
-    }
+class Turtle {
+  constructor(name) {
+    this.name = name;
+    this.weapon = 'hands';
   }
-      </pre>
+  sayHi() {
+    return `Hi dude, my name is ${this.name}`;
+  }
+  attack(){
+    return `Feel the power of my ${this.weapon}!`;
+  }
+}
+    </pre
+      >
       <p>Now we will create a new turtle instance.</p>
       <pre>
-  <b>const leo = new Turtle('Leonardo');</b>
-  &#60;&#60; Turtle { name: 'Leonardo' }
-      </pre>
+<b>const leo = new Turtle('Leonardo');</b>
+&#60;&#60; Turtle { name: 'Leonardo' }
+    </pre>
       <p>
         The variable leo points to an instance of the Turtle class. It has a
         name property and a sayHi() method that references the name property.
       </p>
       <pre>
-  <b>leo.name;</b>
-  &#60;&#60; 'Leonardo'
-  
-  <b>leo.sayHi();</b>
-  &#60;&#60; 'Hi dude, my name is Leonardo'
-      </pre>
+<b>leo.name;</b>
+&#60;&#60; 'Leonardo'
+
+<b>leo.sayHi();</b>
+&#60;&#60; 'Hi dude, my name is Leonardo'
+    </pre>
       <p>
         If you enter <b>leo.sayHi</b> you will get this instead of the desired
         result.
       </p>
       <pre>
-  sayHi() {
-    return `Hi dude, my name is ${this.name}`;
-  }
-      </pre>
+sayHi() {
+  return `Hi dude, my name is ${this.name}`;
+}
+    </pre
+      >
       <p>
         We things we can see is the turtles name and weapon. We can add a method
         to the prototype:
       </p>
       <pre>
 <b>
-  Turtle.prototype.attack = function(){
-    return `Feel the power of my ${this.weapon}!`;
-  }
+Turtle.prototype.attack = function(){
+  return `Feel the power of my ${this.weapon}!`;
+}
 </b>
-      </pre>
+    </pre>
       <p>
         We have Leonado but lets add Raphael and display his information in the
         console.
       </p>
       <pre>
-  <b>const raph = new Turtle('Raphael');</b>
+<b>const raph = new Turtle('Raphael');</b>
 
-  <b>raph.weapon = "ninjakens"</b>
+<b>raph.weapon = "ninjakens"</b>
 
-  <b>raph.name;</b> 
-  &#60;&#60; 'Raphael'
+<b>raph.name;</b> 
+&#60;&#60; 'Raphael'
 
-  <b>raph.sayHi();</b>
-  &#60;&#60; 'Hi dude, my name is Raphael'
+<b>raph.sayHi();</b>
+&#60;&#60; 'Hi dude, my name is Raphael'
 
-  <b>raph.attack();</b>
-  `Feel the power of my ninjakens!`
-      </pre>
+<b>raph.attack();</b>
+`Feel the power of my ninjakens!`
+    </pre>
       <u>Finding Out the Prototype</u>
       <p>There are a number of ways to find the prototype of an object:</p>
       <pre>
-  // Each of these return the same thing 
-  &#60;&#60; Turtle { attack: [Function], weapon: 'Hands' }
-    
-  <b>raph.constructor.prototype;</b> // Use the constructor function’s prototype property
+// Each of these return the same thing 
+&#60;&#60; Turtle { attack: [Function], weapon: 'Hands' }
+  
+<b>raph.constructor.prototype;</b> // Use the constructor function’s prototype property
 
-  <b>Object.getPrototypeOf(raph);</b> // Use the Object.getPrototypeOf() method, which takes the
-  object as a parameter
+<b>Object.getPrototypeOf(raph);</b> // Use the Object.getPrototypeOf() method, which takes the
+object as a parameter
 
-  // Many JavaScript engines also support the non-standard __proto__ property known as
-  // double underscore proto or dunder proto. It seems it is getting replaced by the
-  // isPrototypeOf() method
-  <b>raph.__proto__;</b>
+// Many JavaScript engines also support the non-standard __proto__ property known as
+// double underscore proto or dunder proto. It seems it is getting replaced by the
+// isPrototypeOf() method
+<b>raph.__proto__;</b>
 
-  // Every object also has a isPrototypeOf() method that returns a boolean to check
-  if it’s the prototype of an instance
-  <b>Turtle.prototype.isPrototypeOf(raph)</b>
-  &#60;&#60; true
-      </pre>
+// Every object also has a isPrototypeOf() method that returns a boolean to check
+if it’s the prototype of an instance
+<b>Turtle.prototype.isPrototypeOf(raph)</b>
+&#60;&#60; true
+    </pre
+      >
       <p>
         The object raph has access to both name and weapon properties, but the
         name property is considered to be its own property, while the weapon
@@ -144,12 +129,12 @@
         property, or is inherited from the prototype.
       </p>
       <pre>
-  <b>raph.hasOwnProperty('name');</b>
-  &#60;&#60; true
+<b>raph.hasOwnProperty('name');</b>
+&#60;&#60; true
 
-  <b>raph.hasOwnProperty('weapon');</b>
-  &#60;&#60; false
-      </pre>
+<b>raph.hasOwnProperty('weapon');</b>
+&#60;&#60; false
+    </pre>
       <p>
         Difference between an object’s own properties and prototype. Prototype
         properties are shared by every instance of the Turtle class. The objects
@@ -157,39 +142,39 @@
         Turtle class queries the weapon property, it will return “Hands”.
       </p>
       <pre>
-  <b>const don = new Turtle('Donatello');</b>
-  &#60;&#60; Turtle { name: 'Donatello' }
+<b>const don = new Turtle('Donatello');</b>
+&#60;&#60; Turtle { name: 'Donatello' }
 
-  <b>don.weapon;</b>
-  &#60;&#60; 'Hands'
+<b>don.weapon;</b>
+&#60;&#60; 'Hands'
 
-  <b>don.attack();</b>
-  &#60;&#60; 'Feel the power of my Hands!'
-      </pre>
+<b>don.attack();</b>
+&#60;&#60; 'Feel the power of my Hands!'
+    </pre>
       <p>
         Now supposedly we are able to change the weapon which seems to be
         'Hands' by default because of the way it is in the Turtle Class. I will
         put code here but so far I have not been able to get it to work.
       </p>
       <pre>
-  <b>Turtle.prototype.weapon = 'Feet';</b> // This part works 
-  &#60;&#60; 'Feet'
-      </pre>
+<b>Turtle.prototype.weapon = 'Feet';</b> // This part works 
+&#60;&#60; 'Feet'
+    </pre>
       <p>
         And the results are suppose to look like the following but I have not
         been able to get it to work. I keep getting 'Feel the power of my
         hands!'
       </p>
       <pre>
-  <b>leo.attack();</b>
-  &#60;&#60; 'Feel the power of my Feet!'
+<b>leo.attack();</b>
+&#60;&#60; 'Feel the power of my Feet!'
 
-  <b>raph.attack();</b>
-  &#60;&#60; 'Feel the power of my Feet!'
-  
-  <b>don.attack();</b>
-  &#60;&#60; 'Feel the power of my Feet!'
-      </pre>
+<b>raph.attack();</b>
+&#60;&#60; 'Feel the power of my Feet!'
+
+<b>don.attack();</b>
+&#60;&#60; 'Feel the power of my Feet!'
+    </pre>
       <u> Overwriting Prototype Properties </u>
       <p>
         I like this part. We can change the weapon that each ninja turtle uses
@@ -197,51 +182,51 @@
         in my case so far, it is hands. But we will change them this way.
       </p>
       <pre>
-  <b>leo.weapon = 'Katana Blades';</b>
-  &#60;&#60; 'Katana Blades'
+<b>leo.weapon = 'Katana Blades';</b>
+&#60;&#60; 'Katana Blades'
 
-  <b>raph.weapon = 'Sai';</b>
-  &#60;&#60; 'Sai'
+<b>raph.weapon = 'Sai';</b>
+&#60;&#60; 'Sai'
 
-  <b>don.weapon = 'Bo Staff';</b>
-  &#60;&#60; 'Bo Staff'
-      </pre>
+<b>don.weapon = 'Bo Staff';</b>
+&#60;&#60; 'Bo Staff'
+    </pre>
       <p>Now if we want to see the results we can do this:</p>
       <pre>
-  <b>leo.attack();</b>
-  &#60;&#60; 'Feel the power of my Katana Blades!'
+<b>leo.attack();</b>
+&#60;&#60; 'Feel the power of my Katana Blades!'
 
-  <b>raph.attack();</b>
-  &#60;&#60; 'Feel the power of my Sai!'
+<b>raph.attack();</b>
+&#60;&#60; 'Feel the power of my Sai!'
 
-  <b>don.attack();</b>
-  &#60;&#60; 'Feel the power of my Bo Staff!'
-      </pre>
+<b>don.attack();</b>
+&#60;&#60; 'Feel the power of my Bo Staff!'
+    </pre>
       <p>
         Prototypes should be used to define any properties that will remain the
         same for every instance of the class. All of the turtles use different
         weapons but they all like the same food, pizza!
       </p>
       <pre>
-  <b>Turtle.prototype.food = 'Pizza';</b> // Adding Prototype property that is not in the original class declaration
+<b>Turtle.prototype.food = 'Pizza';</b> // Adding Prototype property that is not in the original class declaration
 
-  <b>Turtle.prototype.eat = function() { // Adding method to the prototype
-    return 'Mmm, this ${this.food} tastes great!';
-  }</b>
-      </pre>
+<b>Turtle.prototype.eat = function() { // Adding method to the prototype
+  return 'Mmm, this ${this.food} tastes great!';
+}</b>
+    </pre>
       <p>Now we can create another turtle instance.</p>
       <pre>
-  <b>const mike = new Turtle('Michelangelo');</b>     
+<b>const mike = new Turtle('Michelangelo');</b>     
 
-  <b>mike.eat();</b>
-  &#60;&#60; 'Mmm, this Pizza tastes great!'
+<b>mike.eat();</b>
+&#60;&#60; 'Mmm, this Pizza tastes great!'
 
-  <b>mike.weapon = 'Nunchakus';</b>
-  &#60;&#60; 'Nunchuks'
+<b>mike.weapon = 'Nunchakus';</b>
+&#60;&#60; 'Nunchuks'
 
-  <b>mike.attack();</b>
-  &#60;&#60; 'Feel the power of my Nunchakus!'
-      </pre>
+<b>mike.attack();</b>
+&#60;&#60; 'Feel the power of my Nunchakus!'
+    </pre>
       <u>Public and Private Methods</u>
       <p>
         Public methods and properties can be queried directly and changed by
@@ -252,18 +237,15 @@
         disaster!
       </p>
       <pre>
-  <b>raph.weapon;</b>
-  &#60;&#60; 'Sai'
+<b>raph.weapon;</b>
+&#60;&#60; 'Sai'
 
-  <b>raph.weapon = 3;</b>
-  &#60;&#60; 3
+<b>raph.weapon = 3;</b>
+&#60;&#60; 3
 
-  <b>raph.attack();</b>
-  &#60;&#60; 'Feel the power of my 3!'
-      </pre>
+<b>raph.attack();</b>
+&#60;&#60; 'Feel the power of my 3!'
+    </pre>
     </main>
-
-    <!-- FOOTER HERE -->
-    <footer></footer>
   </body>
 </html>
