@@ -1510,14 +1510,14 @@
           that points to it.
         </p>
         <pre>
-          <b>const slice = Array.prototype.slice;</b>
+    <b>const slice = Array.prototype.slice;</b>
         </pre>
         <p>
           This method can then be called on the arguments object using the
           call() method:
         </p>
         <pre>
-          <b>slice.call(arguments, 1, 3);</b>
+    <b>slice.call(arguments, 1, 3);</b>
         </pre>
         <p>
           An array-like object can effectively be turned into an array using the
@@ -1525,7 +1525,7 @@
           object as an array (since the slice() method returns an array).
         </p>
         <pre>
-          const argumentsArray = Array.prototype.slice.call(arguments);
+    <b>const argumentsArray = Array.prototype.slice.call(arguments);</b>
         </pre>
         <p>
           Most of these techniques are not needed from ES6 onwards as the
@@ -1533,14 +1533,14 @@
           array:
         </p>
         <pre>
-          <b>const argumentsArray = Array.from(arguments);</b>
+    <b>const argumentsArray = Array.from(arguments);</b>
         </pre>
         <p>
           Alternatively, the spread operator can be used to easily turn an
           array-like object into an array like so:
         </p>
         <pre>
-          <b>const argumentsArray = [...arguments];</b>
+    <b>const argumentsArray = [...arguments];</b>
         </pre>
         <u>Composition Over Inheritance</u>
         <p>
@@ -1565,7 +1565,211 @@
       <div>
         <h1>Notes from JavaScript: Novice to Ninja - Chapter 15:</h1>
         <h2>Modular</h2>
-        <p></p>
+        <p>
+          A module is a self-contained piece of code that provides functions and
+          methods that can then be used in other files and by other modules.
+          This helps keep the code orgainzed in seperate, reusable files. This
+          improves code maintainability. Like what I was tought in WDD 230, a
+          function should only have a single purpose. The code in a module
+          should also have a single purpose. For example, you might keep any
+          functions used for Ajax in their own module. This could then be used
+          in any projects where Ajax was required. By doing so, it allows you to
+          easily swap one module for another without affecting other parts of a
+          project. Modules also allow a public API to be exposed, while keeping
+          the implementation hidden away inside the module.
+        </p>
+        <p>
+          The coupling of code refers to how dependent certain elements or
+          modules of code are on each other. Two pieces of code are said to be
+          tightly coupled if one relies on the other to run. This often occurs
+          if a piece of code makes hard-coded references to another piece of
+          code, requiring it to be used. This will often mean that changes to
+          one piece of code will necessitate changes in the other. On the other
+          hand, two pieces of code are said to loosely coupled if one piece of
+          code can be easily substituted by another without affecting the final
+          outcome. This is often achieved by referring to common methods that
+          are shared by the alternative modules.
+        </p>
+        <p>
+          Here is an example of a very simple Pi module. The following code
+          would be saved in a file called pi.js.
+        </p>
+        <pre>
+    export const PI = 3.1415926;
+        </pre>
+        <p>
+          This would then be imported into your main JavaScript file, main.js
+          using the following code and allow you to use the variable PI inside
+          the main.js file.
+        </p>
+        <pre>
+    import { PI } from './pi.js';
+        </pre>
+        <p>
+          You can also export functions from a module. For example, we could
+          create a library for our stats functions that we used earlier:
+        </p>
+        <pre>
+    function square(x) {
+      return x * x;
+    }
+    
+    function sum(array, callback) {
+      if (callback) {
+        array = array.map(callback);
+      }
+      return array.reduce((a, b) => a + b);
+    }
+    
+    function variance(array) {
+      return sum(array, square) / array.length - square(mean(array));
+    }
+    
+    function mean(array) {
+      return sum(array) / array.length;
+    }
+    
+    export {
+      variance,
+      mean
+    };
+        </pre>
+        <p>
+          Notice that an alternative to using export when the function is
+          defined is to add the export directive after the function definition,
+          as seen in the example above with the variance() function. To import
+          these functions into the main.js file, you’d add this line of code:
+        </p>
+        <pre>
+    // To import these functions into the main.js file
+    import { mean, variance } from './stats.js';
+
+    // Or you can be selective and only import the mean() function
+    import { mean } from './stats.js';
+        </pre>
+        <p>
+          If there are lots of values and functions that need to be imported,
+          then everything in a module file can be imported using the wildcard
+          symbol * along with a namespace for the imported values and functions
+          using the following notation:
+        </p>
+        <pre>
+          import * as stats from './stats.js';
+        </pre>
+        <p>
+          This will then import all the functions from the stats.js module and
+          they’ll be given a namespace of stats. So, the mean function could be
+          used as follows:
+        </p>
+        <pre>
+          stats.mean([2,6,10]);
+        </pre>
+        <u>Default Exports</u>
+        <p>
+          Default exports refer to a single variable, function or class in a
+          module that can be imported without having to be explicitly named. The
+          syntax for default exports is purposely easier to read because this is
+          how modules were designed to be used.
+        </p>
+        <pre>
+    // The following example demonstrates how this would be done for a variable
+    const PI = 3.145926;
+
+    export default PI;
+
+    // The next example demonstrates exporting a single default function:
+    function square(x) {
+      return x * x;
+    }
+    
+    export default square;
+
+    // The last example shows how to export an object as the default value
+    const stats = {
+      square(x) {
+        return x * x;
+      },
+      sum(array, callback) {
+        if (callback) {
+          array = array.map(callback);
+        }
+        return array.reduce((a, b) => a + b);
+      },
+      mean(array) {
+        return this.sum(array) / array.length;
+      },
+      variance(array) {
+        return (
+          this.sum(array, this.square) / array.length -
+          this.square(this.mean(array))
+        );
+      },
+    };
+    export default stats;
+
+    // To import these default values, you would use the following code:
+    import PI from './pi.js';
+    import square from './square.js';
+    import stats from './stats.js';
+        </pre>
+        <p>
+          The big difference with default exports is that you don’t need to use
+          curly braces or make any mention of the value that is being imported,
+          making the statement read more elegantly.
+        </p>
+        <u>Aliases</u>
+        <p>
+          The alias that is assigned to the imported module does not have to
+          match its name in the actual module. For example, you could import the
+          square function in the following way:
+        </p>
+        <pre>
+    import sq from './square.js';
+
+    // The function would then be called using sq() rather than square()
+    sq(8)
+    &#60;&#60; 64
+        </pre>
+        <u>Node.js Modules</u>
+        <p>
+          Node.js had already implemented modules before they were introduced in
+          ES6, and used a slightly different notation called Common JS modules.
+          Node.js will support ES6 modules in some way in the future. But till
+          then Common JS module will most like be be used for years to come.
+        </p>
+        <p>
+          A Common JS module is created in a separate file, and the
+          module.exports method is used to make any functions available to other
+          files, in a similar way to ES6 modules. For example, we could create a
+          module for squaring numbers using the following code inside a file
+          called squareFunction.js:
+        </p>
+        <pre>
+    module.exports = x => x * x;
+        </pre>
+        <p>
+          This is simply the square() function we saw earlier in the chapter
+          written as an anonymous function that’s assigned to module.exports as
+          if it was a variable.
+        </p>
+        <p>
+          To use the module, it needs to then be required inside the another JS
+          file (or from within the Node REPL). This is done using the require()
+          method. This takes the file that contains the module as an argument
+          and returns the function that was exported:
+        </p>
+        <pre>
+    const square = require('./squareFunction');
+        </pre>
+        <p>
+          The function that was exported in the module is now assigned to the
+          variable square, which is then used to call the function in the usual
+          way:
+        </p>
+        <pre>
+    square(6);
+    &#60;&#60; 36
+        </pre>
       </div>
     </main>
 
