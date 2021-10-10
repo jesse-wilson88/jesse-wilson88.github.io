@@ -23,6 +23,12 @@ function resetBoard() {
   }
 }
 
-board.addEventListener("touchend", placement, false);
+// When we did this in our team zoom meeting it worked like a charm. For some
+// reason it is not working unless I inspect the page. I am changing it from
+// "touchend" to "clicked" just so it works for now till I have time to look
+// at it and find out why it is not working now. When we started this two
+// other people tried to be the scribe for this week but the code did not work
+// but mine did till now.
+board.addEventListener("clicked", placement, false);
 
-reset.addEventListener("touchend", resetBoard, false);
+reset.addEventListener("clicked", resetBoard, false);
