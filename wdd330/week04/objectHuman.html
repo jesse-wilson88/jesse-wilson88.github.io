@@ -21,6 +21,165 @@
   <body>
     <main>
       <h1>Inspect this page to look at the Javascript console.</h1>
+      <u>Creating Objects from Other Objects</u>
+      <p>
+        We can create an object from another object. The original object acts
+        sort of like a blueprint or a prototype. This is simply created as an
+        object literal:
+      </p>
+      <pre>
+    <b><a href="objectHuman.html" target="_blank">const Human</a> = {
+      arms: 2,
+      legs: 2,
+      walk() { console.log('Walking'); }
+    }</b>
+        </pre>
+      <p>
+        We can create another human object from the one above by using the
+        Object.create() method:
+      </p>
+      <pre>
+    <b>const lois = Object.create(Human);</b>
+
+    <b>lois.arms;</b>
+    &#60;&#60; 2
+
+    <b>lois.legs;</b>
+    &#60;&#60; 2
+
+    <b>lois.walk();</b>
+    &#60;&#60; Walking
+
+    <b>Human.isPrototypeOf(lois);</b> // The Human object is the prototype of the lois object
+    &#60;&#60; true
+        </pre>
+      <p>We can even add extra properties to each instance using assignment.</p>
+      <pre>
+    <b>lois.name = 'Lois Lane';</b>
+    &#60;&#60; 'Lois Lane'
+
+    <b>lois.job = 'Reporter';</b>
+    &#60;&#60; 'Reporter'
+        </pre>
+      <p>
+        There is an alternative way to add a second argument to the
+        Object.create() method containing properties that are to be added to the
+        new object:
+      </p>
+      <pre>
+    <b>const jimmy = Object.create(Human, { name: { value: 'Jimmy Olsen', enumerable: true }, job: { value: 'Photographer', enumerable: true } });</b>
+        </pre>
+      <p>
+        This method is a little unwieldy as the properties have to be added
+        using property descriptors, making the syntax awkward and overly
+        verbose. It’s often easier to create the object, then add each new
+        property one by one.
+      </p>
+      <p>
+        The Human object can also act like a ‘super-class’, and become the
+        prototype of another object called Superhuman. This will have all the
+        properties and methods that the Human object has, but with some extra
+        methods
+      </p>
+      <pre>
+    const Superhuman = Object.create(Human);
+
+    Superhuman.change = function() {
+      return `${this.realName} goes into a phone box and comes out as ${this.name}!`;
+    };
+        </pre
+      >
+      <p>
+        This method relies on the name and realName properties. It can be a good
+        idea to create default values in the prototype so the method will still
+        work. In this case, we can use names that prompt some real data to be
+        added:
+      </p>
+      <pre>
+    <b>Superhuman.name = 'Name Needed';</b>
+    &#60;&#60; 'Name Needed'
+
+    <b>Superhuman.realName = 'Real Name Needed';</b>
+    &#60;&#60; 'Real Name Needed'
+        </pre>
+      <p>
+        We can now use the Superhuman object as a prototype to create more
+        objects based on it.
+      </p>
+      <pre>
+    <b>const superman = Object.create(Superhuman);</b>
+
+    <b>superman.name = 'Superman';</b>
+    superman.realName = 'Clark Kent';
+
+    <b>superman.change();</b>
+    &#60;&#60; Clark Kent goes into a phone box and comes out as Superman!
+        </pre>
+      <p>
+        Adding custom properties in this way is certainly more long-winded than
+        using a constructor function, where the initial values are passed as an
+        argument to the constructor function. This can be fixed by adding a
+        init() method to the Superhuman object that accepts initialization
+        properties:
+      </p>
+      <pre>
+    <b>Superhuman.init = function(name,realName){
+      this.name = name;</b>
+
+      <b>this.realName = realName;</b>
+
+      <b>this.init = undefined;</b> // this line removes the init function, so it can only be called once
+      
+      <b>return this;
+    }</b>
+
+    // A new ojbect can easily be created and initialized
+    <b>const batman = Object.create(Superhuman);</b> 
+    <b>batman.init('Batman','Bruce Wayne');</b>
+
+    <b>batman.change();</b>
+    &#60;&#60; 'Bruce Wayne goes into a phone box and comes out as Batman!'
+
+    // A new object can also be created and initialized in a single line by adding the call
+    to the init() method at the end of the line that creates the object.
+    <b>const aquaman = Object.create(Superhuman).init('Aquaman', 'Arthur Curry');</b>
+
+    <b>aquaman.change();</b>
+    &#60;&#60; 'Arthur Curry goes into a phone box and comes out as Aquaman!'
+        </pre>
+      <u>Ojbect Prototype Chain</u>
+      <p>
+        When we create an object from another object, using the Object.create()
+        method, the new object will inherit all the properties and methods from
+        the parent object it was created from.
+      </p>
+      <pre>
+          <b>Superhuman.isPrototypeOf(superman);</b>
+          &#60;&#60; true
+
+          <b>Human.isPrototypeOf(Superhuman);</b>
+          &#60;&#60; true
+
+          <b>Superhuman.isPrototypeOf(batman);</b>
+          &#60;&#60; true
+        </pre
+      >
+      <figure>
+        <img src="images/humanPrototypeChain.jpg" alt="Human Prototype Chain" />
+        <figcaption>The prototype chain</figcaption>
+      </figure>
+      <p>
+        Because of this chain, the superman object has all the properties and
+        methods of the Human and Superhuman objects:
+      </p>
+      <pre>
+    <b>superman.walk();</b>
+    &#60;&#60; Walking
+
+    <b>built-insuperman.change();</b>
+    &#60;&#60; 'Clark Kent goes into a phone box and comes out as Superman!'
+        </pre
+      >
     </main>
   </body>
 </html>

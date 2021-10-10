@@ -1100,14 +1100,14 @@
           and methods from the parent object it was created from.
         </p>
         <pre>
-          <b>Superhuman.isPrototypeOf(superman);</b>
-          &#60;&#60; true
+    <b>Superhuman.isPrototypeOf(superman);</b>
+    &#60;&#60; true
 
-          <b>Human.isPrototypeOf(Superhuman);</b>
-          &#60;&#60; true
+    <b>Human.isPrototypeOf(Superhuman);</b>
+    &#60;&#60; true
 
-          <b>Superhuman.isPrototypeOf(batman);</b>
-          &#60;&#60; true
+    <b>Superhuman.isPrototypeOf(batman);</b>
+    &#60;&#60; true
         </pre>
         <figure>
           <img
@@ -1127,6 +1127,439 @@
     <b>built-insuperman.change();</b>
     &#60;&#60; 'Clark Kent goes into a phone box and comes out as Superman!'
         </pre>
+        <u><a href="mixin.html"></a>Mixins</u>
+        <p>
+          A mixin is a way of adding properties and methods of some objects to
+          another object without using inheritance. It allows more complex
+          objects to be created by ‘mixing’ basic objects together. This one is
+          interesting. Basic mixin functionality is provided by the
+          Object.assign() method. This will assign to the object provided as the
+          first argument all of the properties from any objects provided as
+          further arguments. After that you can name them what you want
+          indiviually.
+        </p>
+        <pre>
+    <b>const a = {};</b>
+
+    <b>const b = { name: 'JavaScript' };</b>
+    
+    <b>Object.assign(a,b);</b>
+    &#60;&#60; { name: 'JavaScript' }
+
+    <b>a.name;</b>
+    &#60;&#60; 'JavaScript'
+
+    <b>b.name;</b>
+    &#60;&#60; 'JavaScript'
+
+    <b>a.name = "BASIC";</b>
+    'Java'
+
+    <b>a.name;</b>
+    &#60;&#60; 'BASIC'
+
+    <b>b.name;</b>
+    &#60;&#60; 'JavaScript'
+        </pre>
+        <p>
+          For the example above it works well. The problem come when you try to
+          do the same thing with an array. Arrays and functions are objects, so
+          whenever they’re copied by assignment they will just point to the same
+          object. And when one changes, they all change. This is known as making
+          a shallow copy of an object.
+        </p>
+        <pre>
+    <b>const a = {};</b>
+
+    <b>const b = { numbers: [1,2,3] };</b>
+
+    <b>Object.assign(a,b);</b>
+    &#60;&#60; { numbers: [1,2,3] }
+
+    <b>b.numbers.push(4);</b>
+    &#60;&#60; 4
+
+    <b>b.numbers;</b>
+    &#60;&#60; [1,2,3,4]
+
+    <b>a.numbers;</b> // This has also changed
+    &#60;&#60; [1,2,3,4]
+
+    // It does not matter which one you update, they will both change.
+    <b>a.numbers.push(5);</b>
+    &#60;&#60; 5
+
+    <b>a.numbers;</b>
+    &#60;&#60; [1,2,3,4,5]
+
+    <b>b.numbers;</b> // This has also changed
+    &#60;&#60; [1,2,3,4,5]
+        </pre>
+        <p>
+          You can avoid a shallow copy by creaing your own mixin() function that
+          will assign all properties of an object to another object as a deep
+          copy. Here is the example the book gave but there are some issues with
+          it. It does not work with the code that follows this code. There was
+          an extra '{' in the code. I removed it and I get an illegal return
+          error.
+        </p>
+        <pre>
+    <b>function mixin(target, ...objects) {
+        for (const object of objects) {
+          if (typeof object === "object") {
+            for (const key of Object.keys(object)) {
+              if (typeof object[key] === "object") {
+                target[key] = Array.isArray(object[key]) ? [] : {};
+                mixin(target[key], object[key]);
+              } else {
+                Object.assign(target, object);
+              }
+            }
+          }
+        }
+        return target;
+      }</b>
+        </pre>
+        <p>
+          Here is the code above explained in the book. If the property is an
+          object, we use a ternary operator to check whether it is an array or
+          an object using the Array.isArray() method. If it is an array, then
+          its constructor function will be Array. We create a new array literal,
+          otherwise we create a new object literal.
+        </p>
+        <p>
+          Important part: This ensures a deep copy. The problematic properties
+          that are not deep copied are arrays and objects. Both of these return
+          object when the typeof operator is used. If that is the case, we need
+          to do something different than just use Object.assign() to copy the
+          property. Here is an example the book gives to test if it makes a deep
+          copy. No time to look into it yet but the code above this is what it
+          is suppose to look like.
+        </p>
+        <pre>
+          <b>const a = {}, b = { foo: 'bar' }, c = { numbers: [1,2,3] };</b>
+
+          <b>mixin(a,b,c);</b>
+          &#60;&#60; { foo: 'bar', numbers: [ 1, 2, 3 ] }
+
+          <b>c.numbers.push(4);</b>
+          &#60;&#60; 4
+
+          <b>a.numbers;</b>
+          &#60;&#60; [ 1, 2, 3 ]
+
+          <b>c.numbers</b>
+          &#60;&#60; [ 1, 2, 3, 4]
+        </pre>
+        <u>Using Mixins to Add Properties</u>
+        <p>
+          One use for the mixin() function is to add a large number of
+          properties to an object all at once. For example, we can instantiate a
+          new Superhuman object, then add all its individual properties in one
+          go, instead of one at a time, as we did earlier, while avoiding having
+          to use the more verbose property descriptor notation. But like the
+          code example above it will not work because the mixin() function is
+          not working but this is what it would look like it if was.
+        </p>
+        <pre>
+    <b>const wonderWoman = Object.create(Superhuman);</b>
+
+    // Assigning each property, one by one
+    <b>wonderWoman.name = 'Wonder Woman';</b>
+    &#60;&#60; 'Wonder Woman'
+
+    <b>wonderWoman.realName = 'Diana Prince';</b>
+    &#60;&#60; 'Diana Prince'
+
+    // We can just mix in an object literal and add both properties at once
+    <b>mixin(wonderWoman,{ name: 'Wonder Woman', realName: 'Diana Prince' });</b>
+
+    <b>wonderWoman.change();</b>
+    &#60;&#60; 'Diana Prince goes into a phone box and comes out as Wonder Woman'
+        </pre>
+        <u>Using Mixins to Create a copy() Function</u>
+        <p>
+          Another use of the mixin() function is to create a copy() method that
+          can be used to make an exact, deep copy of an object:
+        </p>
+        <pre>
+    <b>function copy(target) {
+      const object =  Object.create(Object.getPrototypeOf(target));
+
+      mixin(object,target);
+
+      return object;
+  }</b>
+
+    <b>const bizarro = copy(superman);</b>
+
+    <b>bizarro.name = 'Bizarro';</b>
+    &#60;&#60; 'Bizarro';
+
+    <b>bizarro.realName = 'Subject B-0';</b>
+    &#60;&#60; 'Subject B-0'
+
+    <b>bizarro.change();</b>
+    &#60;&#60; 'Subject B-0 goes into a phone box and comes out as Bizzaro!'
+        </pre>
+        <p>
+          The copy() function can now be used to create a factory function for
+          superheros. A factory function is a function that can be used to
+          return an object. The factory function will be based on the Superhuman
+          object. The createSuperhuman() function is an example of a factory
+          function that can now be used to create as many superhuman objects as
+          required.
+        </p>
+        <pre>
+    <b>function createSuperhuman(...mixins) {
+      const object = copy(Superhuman);
+      
+      return mixin(object,...mixins);
+    }</b>
+
+    <b>const hulk = createSuperhuman({name: 'Hulk', realName: 'Bruce Banner'});</b>
+
+    <b>hulk.change();</b>
+    &#60;&#60; 'Bruce Banner goes into a phone box and comes out as Hulk!'
+        </pre>
+        <u>Using the Mixin Function to Add Modular Functionality</u>
+        <p>
+          Inheritance allows us to add functionality to objects by inheriting
+          properties and methods from other objects. It can be undesirable to
+          create a chain of inheritance. Sometimes we just want to add
+          properties and methods without linking the two objects together. The
+          mixin() function lets us encapsulate properties and methods in an
+          object, then add them to other objects without the overhead of an
+          inheritance chain being created. The difference between prototypal
+          inheritance and inheritance from mixin objects is to consider whether
+          an object is something or whether it has something. For example, a
+          tank is a vehicle, so it might inherit from a Vehicle prototype. The
+          tank also has a gun, so this functionality could be added using a gun
+          mixin object. This gives us extra flexibility, since other objects
+          might also use a gun, but not be a vehicle, such as a soldier object,
+          for example. The soldier object might inherit from a Human prototype
+          and also have the gun mixin. We can use this idea to add superpowers
+          to our superhero objects used earlier. All the superheroes are super
+          human, so they inherited any common traits from a Superhuman
+          prototype. But they also have superpowers, and each superhero has a
+          Object-Oriented Programming in JavaScript 489 different mix of powers.
+          This is a perfect use case for mixin objects: we can create some
+          superpower mixin objects that can then be added to any of our
+          superhero objects as required.
+        </p>
+        <pre>
+    <b>const flight = {
+      fly() {
+        console.log(`Up, up and away! ${this.name} soars through the air!`);
+        return this;
+      }
+    }
+    
+    const superSpeed = {
+      move() {
+        console.log(`${this.name} can move faster than a speeding bullet!`);
+        return this;
+      }  
+    }
+    
+    const xRayVision = {
+      xray() {
+        console.log(`${this.name} can see right through you!`);
+        return this;
+      }  
+    }</b>
+        </pre>
+        <p>
+          Now we can add the relevant superpowers to each object in a modular
+          fashion using the mixin() function and see they have gained some extra
+          methods.
+        </p>
+        <pre>
+    <b>mixin(superman,flight,superSpeed,xRayVision);</b>
+
+    <b>mixin(wonderwoman,flight,superSpeed);</b>
+
+    <b>superman.xray();</b>
+    &#60;&#60; 'Superman can see right through you!'
+
+    <b>wonderWoman.fly();</b>
+    &#60;&#60; 'Up, up and away! Wonder Woman soars through the air!'
+        </pre>
+        <p>
+          We can also add the mixins as an argument to the createSuperhero()
+          factory function that we made earlier to create a superhero object
+          with all the relevant methods from the start:
+        </p>
+        <pre>
+    <b>const flash = createSuperhuman({ name: 'Flash', realName: 'Barry Allen' }, superSpeed);</b>
+
+    <b> flash.change();</b>
+    &#60;&#60; 'Barry Allen goes into a phone box and comes out as Flash!'
+
+    <b>flash.move();</b>
+    &#60;&#60; Flash can move faster than a speeding bullet!
+        </pre>
+        <p>
+          If a method returns this, its methods can be chained together to form
+          a sequence Object-Oriented Programming in JavaScript 491 of method
+          calls that are called one after the other. For example, the superman
+          object can call all three of the superpower methods at once:
+        </p>
+        <pre>
+    <b>superman.fly().move().xray();</b>
+    &#60;&#60; Up, up and away! Superman soars through the air!
+       Superman can move faster than a speeding bullet!
+       Superman can see right through you!
+        </pre>
+        <p>
+          Binding this allows us to create generalized methods that refer to
+          properties specific to a particular object. When a function is nested
+          inside another function, which can often happen when using methods in
+          objects, especially ones that accept callback functions. The problem
+          is that the value of this loses its scope, and points to the global
+          object inside a nested function, as can be seen in this example.
+        </p>
+        <pre>
+    // Bad example
+    <b>superman.findFriends = function () {
+      this.friends.forEach(function (friend) {
+        console.log(`${friend.name} is friends with ${this.name}`);
+      });
+    };</b>
+
+    // Better example
+    <b>superman.findFriends = function () {
+      const that = this;
+
+      this.friends.forEach(function (friend) {
+        console.log(`${friend.name} is friends with ${that.name}`);
+      });
+    };</b>
+
+    // Both return the same results but the second one is better 
+    <b>superman.findFriends();</b>
+    &#60;&#60; Batman is friends with Superman
+       Wonder Woman is friends with Superman
+       Aquaman is friends with Superman
+        </pre>
+        <p>
+          ES6 introduced the for-of syntax for arrays and this does not require
+          a nested function to be used, so this remains bound to the superman
+          object:
+        </p>
+        <pre>
+    <b>superman.findFriends = function () {
+      for (const friend of this.friends) {
+        console.log(`${friend.name} is friends with ${this.name}`);
+      }
+    };</b>
+
+    <b>superman.findFriends();</b>
+    &#60;&#60; Batman is friends with Superman
+       Wonder Woman is friends with Superman
+       Aquaman is friends with Superman
+        </pre>
+        <p>
+          Arrow functions were introduced in ES6, and one of the advantages of
+          using them is that they don’t have their own this context, so this
+          remains bound to the original object making the function call
+        </p>
+        <pre>
+    <b>superman.findFriends = function () {
+      this.friends.forEach((friend) => {
+        console.log(`${friend.name} is friends with ${this.name}`);
+      });
+    };</b>
+
+    <b>superman.findFriends();</b>
+    &#60;&#60; Batman is friends with Superman
+       Wonder Woman is friends with Superman
+       Aquaman is friends with Superman
+        </pre>
+        <u>Borrowing Methods from Prototypes</u>
+        <p>
+          It is possible to borrow methods from objects withouthaving to inherit
+          all their properties and methods. This is done by making a reference
+          to the function that you want to borrow (that is, without parentheses
+          so that it isn’t invoked). For example, the batman object doesn’t have
+          any of the superpower methods that the superman object has, but we can
+          create a reference to them that can then be used by another object.
+          For example, we can create a fly() function by referencing the
+          superman object’s fly method:
+        </p>
+        <pre>
+    <b>const fly = superman.fly;</b>
+        </pre>
+        <p>
+          This method can now be called on another object using the call method
+          that all functions have.
+        </p>
+        <pre>
+    <b>fly.call(batman);</b>
+    &#60;&#60; Up, up and away! Batman soars through the air!
+        </pre>
+        <u>Borrowing Array Methods</u>
+        <p>
+          One of the most common uses of borrowing methods was to borrow methods
+          from arrays in ES5. There are many array-like objects in JavaScript,
+          such as the arguments object that’s available in functions, and the
+          node lists that many of the DOM methods return. These act like arrays
+          but are missing a lot of the methods arrays have — often it would be
+          convenient if they had them. the arguments object can use the slice()
+          method from the Array constructor’s prototype by assigning a variable
+          that points to it.
+        </p>
+        <pre>
+          <b>const slice = Array.prototype.slice;</b>
+        </pre>
+        <p>
+          This method can then be called on the arguments object using the
+          call() method:
+        </p>
+        <pre>
+          <b>slice.call(arguments, 1, 3);</b>
+        </pre>
+        <p>
+          An array-like object can effectively be turned into an array using the
+          slice() method with no arguments. This will return the arguments
+          object as an array (since the slice() method returns an array).
+        </p>
+        <pre>
+          const argumentsArray = Array.prototype.slice.call(arguments);
+        </pre>
+        <p>
+          Most of these techniques are not needed from ES6 onwards as the
+          Array.from() method can be used to turn an array-like object into an
+          array:
+        </p>
+        <pre>
+          <b>const argumentsArray = Array.from(arguments);</b>
+        </pre>
+        <p>
+          Alternatively, the spread operator can be used to easily turn an
+          array-like object into an array like so:
+        </p>
+        <pre>
+          <b>const argumentsArray = [...arguments];</b>
+        </pre>
+        <u>Composition Over Inheritance</u>
+        <p>
+          If you do decide to use classes, it’s recommended to make them
+          “skinny” ― meaning they don’t have too many properties and methods.
+          Another good practice when creating classes is to keep inheritance
+          chains short. If you have long lines of inheritance, the objects at
+          the end of these chains will usually end up being bloated with
+          properties and methods they don’t need. It also causes problems if any
+          of the objects in the chain need to change, as these changes will also
+          affect other objects in the chain. A good rule of thumb is to only
+          inherit once, keeping the inheritance chain to just two objects makes
+          unpicking any issues far easier.
+        </p>
+        <p>
+          If you want to use a particular method from a class, but it has lots
+          of properties and methods you don’t need, then it would be preferable
+          to just borrow the method instead, as we saw in the last section.
+        </p>
       </div>
       <hr />
       <div>
