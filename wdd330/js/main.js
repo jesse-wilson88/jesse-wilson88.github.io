@@ -15,6 +15,9 @@ const assignments = [
     label: "Week 04: ",
     url: "week04/",
   },
+  label: "Week 05: ",
+  url: "week05/",
+},
 ];
 
 let ul = document.createElement("ul");
