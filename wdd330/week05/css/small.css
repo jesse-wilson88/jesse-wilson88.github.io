@@ -6,14 +6,61 @@
 }
 
 /*----------- BODY --------------*/
+body {
+  font-size: 16px;
+  font-family: "Philosopher", sans-serif;
+}
 
 /*----------- HEADER --------------*/
+#headerWrapper {
+  background-color: darkslategrey;
+}
 
+header h1 {
+  margin: 0;
+  font-size: 2.3rem;
+  padding: 2%;
+}
 /*----------- NAVIGATION --------------*/
 
 /*----------- MAIN --------------*/
+main {
+  padding: 0 2%;
+}
+
+main h2 {
+  font-size: 1.2rem;
+  margin: 2%;
+  padding: 0;
+}
+
+main p {
+  font-size: 1rem;
+}
+
+li {
+  font-size: 0.8rem;
+}
+
+pre {
+  background-color: rgb(236, 236, 236);
+  border-style: solid;
+}
 
 /*----------- FOOTER --------------*/
+#footerWrapper {
+  background-color: darkslategrey;
+}
+
+footer {
+  padding: 5px;
+  margin: 2% 0;
+  font-size: 11px;
+}
+
+footer p {
+  margin: 2%;
+}
 
 /*----- Clearfix: Force an Element not to collapse -----*/
 .clearfix:after {

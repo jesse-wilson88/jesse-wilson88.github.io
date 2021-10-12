@@ -40,7 +40,159 @@
     <nav></nav>
 
     <!-- CONTENT HERE -->
-    <main></main>
+    <main>
+      <u>Errors, Exceptions, and Warnings</u>
+      <p>
+        Errors are caused by one of the following when something goes wrong in
+        the program:
+      </p>
+      <ul>
+        <li>
+          System error ― there’s a problem with the system or external devices
+          with which the program is interacting
+        </li>
+        <li>
+          Programmer error ― the program contains incorrect syntax or faulty
+          logic; it could even be as simple as a typo
+        </li>
+        <li>
+          User error ― the user has entered data incorrectly, which the program
+          is unable to handle
+        </li>
+      </ul>
+      <p>
+        As prorammers, we have little influence how external systems work but we
+        should be aware of them and attempt to reduce ther impact. Programmer
+        errors are our responsibility, so we must ensure they are minimized as
+        much as possible and fixed promptly. We should try to limit user errors
+        by predecting any possible interactions that may throw an error, and
+        ensure they are dealt with in a way that doesn’t negatively affect the
+        user experience. It might even be argued that user errors are in fact
+        also programmer errors, because the program should be designed in a way
+        that prevents the user from making the error.
+      </p>
+      <u>Exceptions</u>
+      <p>
+        An exception is an error that produces a return value that can then be
+        used by the program to deal with the error. One example is calling a
+        method that does not exsist. This is what it looks like when you call a
+        method that does not exsist:
+      </p>
+      <pre>
+  unicorn();
+  &#60;&#60; ReferenceError: unicorn is not defined
+      </pre>
+      <p>
+        An exception will produce a stack trace. It looks like it is set up to
+        work backwards as you will see in the example below. It is usually one
+        function or method that will cause the error. In this example, we have
+        three functions: function one()invokes function two(), which then
+        invokes function three(). Function three()then invokes the
+        unicorn()function that doesn't exist and causes an error. We can use the
+        stack trace to work backwards and see that this error was caused by
+        invoking the function one()in the first place:
+      </p>
+      <pre>
+  function three(){ unicorn(); } // calls function unicorn which is undefined
+  function two(){ three(); } // calls function three
+  function one(){ two(); } // calls function two
+  one(); // calls function one
+
+  &#60;&#60; index.html:13 Uncaught ReferenceError: unicorn is not defined
+     at three (index.html:13)
+     at two (index.html:17)
+     at one (index.html:21)
+     at index.html:24`
+      </pre>
+      <p>
+        A warning can occur if there’s an error in the code that isn't enough to
+        cause the program to crash. This means the program will continue to run
+        after a warning. This might sound good, but it can be problematic, since
+        the issue that produced the warning may cause the program to continue
+        running incorrectly. An example of a mistake that could cause a warning
+        is assigning a value to a variable that’s undeclared:
+      </p>
+      <pre>
+  pi = 3.142;
+  &#60;&#60; JavaScript Warning: assignment to undeclared variable
+
+  let pi = 3.142;
+  &#60;&#60; 3.142
+      </pre>
+      <p>
+        Warnings and exceptions are presented differently in various
+        environments. Some browsers will show a small icon in the corner of the
+        browser window to indicate that an exception or warning has occurred.
+        Others require the console to be open to see any warnings or exceptions.
+      </p>
+      <u>The Importance of Testing and Debugging</u>
+      <p>
+        I have worked in the DISA for four years and in the IT field longer. The
+        hardest thing is troubleshooting and replicating the problem. Javascript
+        can be a fairly forgiving language. exceptions were not implemented
+        until ECMAScript version 3. If no alert is given, the error might give
+        unexpectd or incorrect results that no one spots and may run in the
+        background for some time before the program crashes. To help programmers
+        should encure their code fails loud so it can be identified and fixed
+        quickly.
+      </p>
+      <u>Strict Mode</u>
+      <p>
+        Increasing the chance of errors might seem like a bad idea at first, but
+        it’s much better to spot errors early on, rather than have them cause
+        problems later. Writing code in strict mode can also help improve its
+        clarity and speed, since it follows conventions and will throw
+        exceptions if any sloppy code practices are used. I find it interesting
+        that not using strict mode is often referred to as 'sloppy mode'. I am
+        not sure how you know there are problems in the code by using 'use
+        strict' but I will see when and if I use it. Here are three examples of
+        how 'use strict' can be used:
+      </p>
+      <pre>
+  'use strict';
+
+  e = 2.718;
+  &#60;&#60; ReferenceError: e is not defined
+      </pre>
+      <p>
+        By adding the line inside a function, strict mode will then only be
+        applied to anything inside that function.
+      </p>
+      <pre>
+  function strictly(){
+    'use strict';
+    // function code goes here
+  }
+      </pre>
+      <p>
+        The recommended way to invoke strict mode is to place all your code into
+        a self-invoking function.
+      </p>
+      <pre>
+  (function() {
+    'use strict';
+
+    // All your code would go inside this function
+  
+  }());
+      </pre>
+      <u>Linting Tools</u>
+      <p>
+        Linting tools such asJS Lint,JS Hint,andES Lintcan be used to test the
+        quality of JavaScript code. They are designed to highlight any sloppy
+        programming practices or syntax errors, and can be very unforgiving.
+        It's possible to add a linting tool as a text-editor plugin; this will
+        then highlight any sloppy code as you type. For more information about
+        ESLint go to
+        <a
+          href="https://www.sitepoint.com/up-and-running-with-eslint-the-pluggable-javascript-linter/"
+          target="_blank"
+          >this article on SitePoint</a
+        >.
+      </p>
+      <u>Feature Detection</u>
+      <p></p>
+    </main>
 
     <!-- FOOTER HERE -->
     <footer id="footerWrapper">
