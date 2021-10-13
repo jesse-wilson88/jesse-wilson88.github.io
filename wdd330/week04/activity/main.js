@@ -28,6 +28,6 @@ function resetBoard() {
 // other people tried to be the scribe for this week but the code did not work
 // but mine did till now. You can tell it works when you inspect the page and
 // then click on the boxes.
-board.addEventListener("touchend", placement, false);
+board.addEventListener("click", placement, false);
 
-reset.addEventListener("touchend", resetBoard, false);
+reset.addEventListener("click", resetBoard, false);

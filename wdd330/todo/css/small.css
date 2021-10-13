@@ -21,6 +21,7 @@ main div {
   width: 400px;
   height: 600px;
   background-color: ivory;
+  margin: auto;
 }
 
 #frameTitle {
@@ -40,11 +41,17 @@ li {
   background-color: lavender;
   list-style: none;
   margin: 5px 0 0 0;
-  padding: 5px 10px;
+  padding: 0.5em 5px;
+}
+
+#checkBox {
+  padding: 5px;
 }
 
 button {
+  background-color: lavender;
   float: right;
+  border: none;
 }
 
 #listArea {

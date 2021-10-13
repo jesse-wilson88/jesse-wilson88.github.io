@@ -11,7 +11,11 @@ button.addEventListener("click", function () {
     const taskItem = document.createElement("li");
     const taskText = document.createElement("span");
     const taskBtn = document.createElement("button");
+    const taskBox = document.createElement("input");
 
+    taskItem.appendChild(taskBox);
+    taskBox.setAttribute("type", "checkbox");
+    taskBox.setAttribute("id", "statusBox");
     taskItem.appendChild(taskText);
     taskText.textContent = taskInput;
     taskItem.appendChild(taskBtn);
