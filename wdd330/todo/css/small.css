@@ -44,8 +44,10 @@ li {
   padding: 0.5em 5px;
 }
 
-#checkBox {
-  padding: 5px;
+input#statusBox {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px 0 0;
 }
 
 button {
