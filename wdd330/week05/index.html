@@ -191,7 +191,231 @@
         >.
       </p>
       <u>Feature Detection</u>
-      <p></p>
+      <p>
+        Programming in JavaScript can be something of a moving target as the
+        APIs it uses are in a constant state of flux and there are new APIs
+        being developed as part of the HTML5 specification all the time. Browser
+        vendors add support for these new features but may not always keep up
+        with the changes. Some vendors don't support certain features. You can't
+        always rely on users having the most up-to-date browser. To help
+        determine browser support for a feature you should use feature
+        detection. For example, say we want to use the shiny new holoDeck API
+        (as far as I know, this doesn't actually exist ... yet), we would wrap
+        any method calls inside the following if block:
+      </p>
+      <pre>
+  if (window.holoDeck) {
+    virtualReality.activate();
+  }
+      </pre>
+      <p>
+        This ensures that no error occurs if the browser doesn’t support the
+        method, because referencing a nonexistent object such as
+        window.virtualReality will return undefined.
+      </p>
+      <u>Debugging in the Browser</u>
+      <p>
+        Debugging is the process of finding out where bugs occur in the code and
+        then dealing with them. It is useful to do this by creating breakpoints,
+        which will stop the process of the code and allow us to go line by line
+        to see what is or is not happening.
+      </p>
+      <p>
+        The most basic form of debugging is to use the alert() method to show a
+        dialog at certain points in the code. The alert() method allows us to
+        effectively put breakpoints in the code that let us check the value of
+        variables at that point to see if they’re what we expect them to be.
+      </p>
+      <u>The console.log() method:</u>
+      <pre>
+  function amIOldEnough(age){
+    if (age &#60; 12) {
+        alert(age);
+        return 'No, sorry.';
+    } else if (age &#60; 18) {
+        return 'Only if you are accompanied by an adult.';
+    }
+    else {
+        return 'Yep, come on in!';
+    }
+  }
+      </pre>
+      <u>Debugger Command</u>
+      <p>
+        One of the most useful commands is the debugger keyword. This will
+        create a breakpoint in your code that will pause the execution of the
+        code and allow you to see where the program is currently up to. Just
+        remember to remove any references to the debugger command before
+        shipping any code.
+      </p>
+      <pre>
+  function amIOldEnough(age){
+    debugger;
+        if (age &#60; 12) {
+          debugger;
+          return 'No, sorry.';
+        } else if (age &#60; 18) {
+          debugger;
+          return 'Only if you are accompanied by an adult.';
+        } else {
+          debugger;
+          return 'Yep, come on in!';
+    }
+  }
+      
+  amIOldEnough(16);
+      </pre>
+      <u>Error Objects</u>
+      <p>
+        An error object can be created by the host environment when an exception
+        occurs, or it can be created in the code using a constructor function,
+        like so:
+      </p>
+      <pre>
+  const error = new Error();
+
+  // This constructor function takes a parameter that’s used as the error message:
+  const error = new Error('Oops, something went wrong');
+      </pre>
+      <p>
+        There are seven more error objects that are used for specific errors:
+      </p>
+      <ul>
+        <li>
+          <b>EvalError</b> is not used in the current ECMAScript specification
+          and only retained for backwards compatibility. It was used to identify
+          errors when using the global eval() function.
+        </li>
+        <li>
+          <b>RangeError</b> is thrown when a number is outside an allowable
+          range of values.
+        </li>
+        <li>
+          <b>ReferenceError</b> is thrown when a reference is made to an item
+          that doesn’t exist. For example, calling a function that hasn’t been
+          defined.
+        </li>
+        <li>
+          <b>SyntaxError</b> is thrown when there’s an error in the code’s
+          syntax.
+        </li>
+        <li>
+          <b>TypeError</b> is thrown when there’s an error in the type of value
+          used; for example, a string is used when a number is expected.
+        </li>
+        <li>
+          <b>URIError</b> is thrown when there’s a problem encoding or decoding
+          the URI.
+        </li>
+        <li>
+          <b>InternalError</b> is a non-standard error that is thrown when an
+          error occurs in the JavaScript engine. A common cause of this is too
+          much recursion.
+        </li>
+      </ul>
+      <p>
+        These error objects can also be used as constructors to create custom
+        error objects:
+      </p>
+      <pre>
+  const error = new TypeError('You need to use numbers in this function');
+      </pre>
+      <p>
+        All error objects have a number of properties, but they’re often used
+        inconsistently across browsers. The only properties that are generally
+        safe to use are:
+      </p>
+      <ul>
+        <li>
+          The name property returns the name of the error constructor function
+          used as a string, such as “Error” or “ReferenceError”.
+        </li>
+        <li>
+          The message property returns a description of the error and should be
+          provided as an argument to the Error constructor function.
+        </li>
+        <li>
+          The stack property will return a stack trace for that error. This is a
+          nonstandard property and it’s recommended that it is not safe to use
+          in production sites.
+        </li>
+      </ul>
+      <u>try, catch, and finally</u>
+      <p>
+        If we suspect a piece of code will result in an exception, we can wrap
+        it in a try block. This will run the code inside the block as normal,
+        but if an exception occurs it will pass the error object that is thrown
+        onto a catch block. Here’s a simple example using our squareRoot()
+        function from earlier:
+      </p>
+      <pre>
+  function imaginarySquareRoot(number) {
+    'use strict';
+    try {
+        return String(squareRoot(number));
+    } catch(error) {
+        return squareRoot(-number)+'i';
+    }
+  }
+
+  // If we suspect a piece of code will result in an exception, we can wrap it in
+  // a try block.
+  imaginarySquareRoot(-49) // no error message shown
+  &#60;&#60; '7i'
+
+  // A finally block can be added after a catch block. This will always be
+  // executed after the try or catch block, regardless of whether an exception
+  // occurred or not.
+  function imaginarySquareRoot(number) {
+    'use strict';
+    let answer;
+    try {
+        answer = String(squareRoot(number));
+    } catch(error) {
+        answer = squareRoot(-number)+"i";
+    } finally {
+        return `+ or - ${answer}`;
+    }
+  }
+      </pre>
+      <u>Tests</u>
+      <p>
+        Testing is an important part of programming that can often be
+        overlooked. A test can simply be a function that tests a piece of code
+        runs as it should.
+      </p>
+      <pre>
+  function itSquareRoots4() {
+    return squareRoot(4) === 2;
+  }
+      </pre>
+      <p>
+        Here we’re comparing the result of squareRoot(4) with the number 2. This
+        will return true if our function works as expected, which it does:
+      </p>
+      <pre>
+  itSquareRoots4();
+  &#60;&#60; true
+      </pre>
+      <u>Test-driven development(TDD)</u>
+      <p>
+        TDD is the process of writing tests before any actual code. Obviously
+        these tests will initially fail, because there is no code to test. The
+        next step is to write some code to make the tests pass. The code is
+        continually tested at each stage to make sure it continues to work. This
+        process should be followed in small piecemeal chunks every time a new
+        feature is implemented, resulting in the following workflow. This is
+        often referred to as the “red-green-refactor” cycle of TDD, as failing
+        tests 368 JavaScript: Novice to Ninja, 2nd Edition usually show up as
+        red, and tests that pass show as green.
+      </p>
+      <ul>
+        <li>Write tests (that initially fail)</li>
+        <li>Write code to pass the tests</li>
+        <li>Refactor the code</li>
+        <li>Test refactored code</li>
+        <li>Write more tests for new features</li>
+      </ul>
     </main>
 
     <!-- FOOTER HERE -->
