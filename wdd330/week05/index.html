@@ -546,6 +546,38 @@
   Time: 0.801s, estimated 1s
   Ran all test suites.
         </pre>
+        <p>
+          It still failed. This time, the failure message is a bit more specific. It says
+          it was expecting the array [1,2,3,4,6,12] but received the array [1,2,3,4,6]―
+          the last number 12 is missing. Looking at our code, this is because the loop only
+          continues while i &#60; n. We need i to go all the way up to and including n,
+          requiring just a small tweak to our code:
+        </p>
+        <pre>
+  function factorsOf(n) {
+    const factors = [];
+    for (let i=1 , max = Math.sqrt(n); i &#60;= max ; i++) {
+      if (n%i === 0){
+        factors.push(i,n/i);
+      }
+    }
+    return factors.sort((a,b) => a - b);
+  }
+        </pre>
+        <p>
+          Now run the test again to confirm it still passes:
+        </p>
+        <pre>
+  est -c {}
+  &#60;&#60; PASS  ./numberCruncher.test.js
+  ✓ factors of 12 (8ms)
+
+  Test Suites: 1 passed, 1 total
+  Tests:       1 passed, 1 total
+  Snapshots:   0 total
+  Time:        1.615s
+  Ran all test suites.
+        </pre>
     </main>
 
     <!-- FOOTER HERE -->
