@@ -417,7 +417,135 @@
         <li>Write more tests for new features</li>
       </ul>
       <u>Jest</u>
-      <p>Stopped on page 370 in the book (p. 389 in PDF)</p>
+      <p>
+        Jest is a TDD framework that was created by Facebook and has gained a
+        lot of popularity. Before you can use jest, you need to install it. You
+        can do this by typing the following command in the terminal:
+      </p>
+      <pre>
+  npm install -g jest
+      </pre>
+      <p>
+        Jest should be installed globally now. You can check to see what version
+        is installed by typing the following command:
+      </p>
+      <pre>
+  jest -v
+  &#60;&#60; v19.0.2
+      </pre>
+      <p>Here is the squareRoot() function fro earlier:</p>
+      <pre>
+  function squareRoot(number) {
+    'use strict';
+    if (number < 0) {
+        throw new RangeError("You can't find the square root of negative numbers")
+      }
+      return Math.sqrt(number);
+    };
+  
+    test('square root of 4 is 2', () => {
+    expect(squareRoot(4)).toBe(2);
+  });
+      </pre>
+      <p>
+        To run this test, simply navigate to the folder that contains the file
+        squareRoot.test.js and enter the following command:
+      </p>
+      <pre>
+  jest -c {}
+
+  // If everything is working okay, it should produce the following output:
+  &#60;&#60; PASS  ./squareRoot.test.js
+  ✓ square root of 4 is 2 (2ms)
+
+  Test Suites: 1 passed, 1 total
+  Tests:       1 passed, 1 total
+  Snapshots:   0 total
+  Time:        2.996s
+      </pre>
+      <u>Crunching Some Numbers</u>
+      <p>To demonstrate the TDD process, we’ll have a go at creating a small library called
+        “Number Cruncher” that will contain some functions that operate on numbers.
+        The first function we’ll try to implement will be called factorsOf(). This will
+        take a number as a parameter and return all the factors12 of that number as an
+        array. Since we’re doing TDD, we need to start by writing the tests first, so create a file
+        called numberCruncher.test.js and add the following code. We have used the toEqual() match in this test. This is because we are testing an array.</p>
+        <pre>
+    test('factors of 12', () => {
+      expect(factorsOf(12)).toEqual([1,2,3,4,6,12]);
+    });
+
+    // This test says our factorsOf() function should return an array containing all the factors of 12 in order, when 12 is provided as an argument. If we run this test, we can see that it fails spectacularly:
+    jest -c {}
+    &#60;&#60; FAIL  ./numberCruncher.test.js
+    ● factors of 12
+
+       ReferenceError: factorsOf is not defined
+
+       at Object.<anonymous>.test (numberCruncher.test.js:2:10)
+       at process._tickCallback (internal/process/next_tick.js:103:7)
+
+    ✕ factors of 12 (6ms)
+
+    Test Suites: 1 failed, 1 total
+    Tests:       1 failed, 1 total
+    Snapshots:   0 total
+    Time:        1.424s
+        </pre>
+        <p>
+          Well, what did you expect? We haven’t written any code yet! Let’s have a go at
+          writing the factorsOf() function. Add the following to the top of the
+          numberCruncher.test.js file:
+        </p>
+        <pre>
+  'use strict';
+
+  function factorsOf(n) {
+    const factors = [];
+      for (let i=1; i &#60; n ; i++) {
+        if (n/i === Math.floor(n/i)){
+          factors.push(i);
+        }
+      }
+    return factors;
+  }
+
+  // Run the test again 
+  jest -c {}
+  &#60;&#60; FAIL ./numberCruncher.test.js
+  ● factors of 12
+
+      expect(received).toBe(expected)
+
+      Expected value to be (using ===):
+      [1, 2, 3, 4, 6, 12]
+      Received:
+      [1, 2, 3, 4, 6]
+
+      Difference:
+
+      - Expected
+      + Received
+
+      @@ -2,7 +2,6 @@
+      1,
+      2,
+      3,
+      4,
+      6,
+      - 12,
+      ]
+
+      at Object.<anonymous>.test (numberCruncher.test.js:14:25)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ✕ factors of 12 (12ms)
+  Test Suites: 1 failed, 1 total
+  Tests: 1 failed, 1 total
+  Snapshots: 0 total
+  Time: 0.801s, estimated 1s
+  Ran all test suites.
+        </pre>
     </main>
 
     <!-- FOOTER HERE -->
