@@ -437,7 +437,7 @@
       <pre>
   function squareRoot(number) {
     'use strict';
-    if (number < 0) {
+    if (number &#60; 0) {
       throw new RangeError("You can't find the square root of negative numbers")
     }
     return Math.sqrt(number);
@@ -670,11 +670,11 @@
           refactor our code. It’s a bit brittle at the moment, because both
           functions accept negative and non-integer values, neither of which
           are prime. They also allow non-numerical arguments to be provided. It
-          turns out that thefactorsOf()function fails silently and returns an
+          turns out that the factorsOf() function fails silently and returns an
           empty array if any of these are passed to it. It would be better to
           throw an exception to indicate that an incorrect argument has been
           used. Let’s create some tests to check that this happens. Add the
-          following tests to thenumberCruncher.test.jsfile:
+          following tests to the numberCruncher.test.jsfile:
         </p>
         <pre>
   it('should throw an exception for non-numerical data', () => {
