@@ -102,7 +102,7 @@ function renderOneHikeLight(hike) {
               <h3>Directions</h3>
               <p>${hike.directions}</p>
           </div>
-          <button onclick="toggleMenu()" class="button">More Information</button>
+          <button class="button">More Information</button>
   </div>`;
   return item;
 }
