@@ -358,8 +358,8 @@
     }
   }
 
-  // If we suspect a piece of code will result in an exception, we can wrap it in
-  // a try block.
+  // If we suspect a piece of code will result in an exception, we can wrap it
+  // in a try block.
   imaginarySquareRoot(-49) // no error message shown
   &#60;&#60; '7i'
 
@@ -438,10 +438,10 @@
   function squareRoot(number) {
     'use strict';
     if (number < 0) {
-        throw new RangeError("You can't find the square root of negative numbers")
-      }
-      return Math.sqrt(number);
-    };
+      throw new RangeError("You can't find the square root of negative numbers")
+    }
+    return Math.sqrt(number);
+  };
   
     test('square root of 4 is 2', () => {
     expect(squareRoot(4)).toBe(2);
@@ -464,18 +464,24 @@
   Time:        2.996s
       </pre>
       <u>Crunching Some Numbers</u>
-      <p>To demonstrate the TDD process, we’ll have a go at creating a small library called
-        “Number Cruncher” that will contain some functions that operate on numbers.
-        The first function we’ll try to implement will be called factorsOf(). This will
-        take a number as a parameter and return all the factors12 of that number as an
-        array. Since we’re doing TDD, we need to start by writing the tests first, so create a file
-        called numberCruncher.test.js and add the following code. We have used the toEqual() match in this test. This is because we are testing an array.</p>
+      <p>
+        To demonstrate the TDD process, we’ll have a go at creating a small
+        library called “Number Cruncher” that will contain some functions that
+        operate on numbers. The first function we’ll try to implement will be
+        called factorsOf(). This will take a number as a parameter and return
+        all the factors12 of that number as an array. Since we’re doing TDD, we
+        need to start by writing the tests first, so create a file called
+        numberCruncher.test.js and add the following code. We have used the
+        toEqual() match in this test. This is because we are testing an array.
+      </p>
         <pre>
     test('factors of 12', () => {
       expect(factorsOf(12)).toEqual([1,2,3,4,6,12]);
     });
 
-    // This test says our factorsOf() function should return an array containing all the factors of 12 in order, when 12 is provided as an argument. If we run this test, we can see that it fails spectacularly:
+    // This test says our factorsOf() function should return an array containing
+    // all the factors of 12 in order, when 12 is provided as an argument. If we
+    // run this test, we can see that it fails spectacularly:
     jest -c {}
     &#60;&#60; FAIL  ./numberCruncher.test.js
     ● factors of 12
@@ -493,9 +499,9 @@
     Time:        1.424s
         </pre>
         <p>
-          Well, what did you expect? We haven’t written any code yet! Let’s have a go at
-          writing the factorsOf() function. Add the following to the top of the
-          numberCruncher.test.js file:
+          Well, what did you expect? We haven’t written any code yet! Let’s have
+          a go at writing the factorsOf() function. Add the following to the top
+          of the numberCruncher.test.js file:
         </p>
         <pre>
   'use strict';
@@ -547,11 +553,12 @@
   Ran all test suites.
         </pre>
         <p>
-          It still failed. This time, the failure message is a bit more specific. It says
-          it was expecting the array [1,2,3,4,6,12] but received the array [1,2,3,4,6]―
-          the last number 12 is missing. Looking at our code, this is because the loop only
-          continues while i &#60; n. We need i to go all the way up to and including n,
-          requiring just a small tweak to our code:
+          It still failed. This time, the failure message is a bit more
+          specific. It says it was expecting the array [1,2,3,4,6,12] but
+          received the array [1,2,3,4,6]― the last number 12 is missing. Looking
+          at our code, this is because the loop only continues while i &#60; n.
+          We need i to go all the way up to and including n, requiring just a
+          small tweak to our code:
         </p>
         <pre>
   function factorsOf(n) {
@@ -568,7 +575,7 @@
           Now run the test again to confirm it still passes:
         </p>
         <pre>
-  est -c {}
+  jest -c {}
   &#60;&#60; PASS  ./numberCruncher.test.js
   ✓ factors of 12 (8ms)
 
@@ -576,6 +583,254 @@
   Tests:       1 passed, 1 total
   Snapshots:   0 total
   Time:        1.615s
+  Ran all test suites.
+        </pre>
+        <p>
+          Now our tests are passing, and our code has been refactored, it’s time
+          to add some more functionality. Let’s write another function called
+          isPrime() that will return true if a number is prime and false if it
+          isn’t. Let’s start by writing a couple of new tests for this at the
+          end of numberCruncher.test.js:
+        </p>
+        <pre>
+  test('2 is prime', () => {
+    expect(isPrime(2)).toBe(true);
+  });
+  
+  test('10 is not prime', () => {
+    expect(isPrime(10)).not.toBe(true);
+  });
+        </pre>
+        <p>
+          The first test checks whether true is returned when a prime number (2)
+          is provided as an argument, and another to check that true is not
+          returned if a nonprime number (10) is given as an argument. These
+          tests use the toBe() matcher to check if the result is true. Note the
+          nice use of negation using the not matcher (although we should
+          probably be checking if it’s false because this test will pass if
+          anything but true is returned). If you run the tests again, you’ll see
+          that our new tests are failing, and our factors test is still passing:
+        </p>
+        <pre>
+  jest -c {}
+  &#60;&#60; FAIL  ./numberCruncher.test.js
+  ● 2 is prime
+
+     ReferenceError: isPrime is not defined
+
+     at Object.<anonymous>.test (numberCruncher.test.js:18:10)
+     at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ● 10 is not prime
+
+     ReferenceError: isPrime is not defined
+
+     at Object.<anonymous>.test (numberCruncher.test.js:22:10)
+     at process._tickCallback (internal/process/next_tick.js:103:7)
+
+  ✓ factors of 12 (4ms)
+  ✕ 2 is prime (1ms)
+  ✕ 10 is not prime (1ms)
+
+  Test Suites: 1 failed, 1 total
+  Tests:       2 failed, 1 passed, 3 total
+  Snapshots:   0 total
+  Time:        0.812s, estimated 1s
+  Ran all test suites.
+        </pre>
+        <p>
+          This is to be expected, since we’re yet to write any code for them.
+          We’d better write the isPrime() function. This will use the
+          factorsOf() function and check to see if the number of factors in the
+          array returned by the factorsOf() function is 2. This is because all
+          prime numbers have precisely two factors. Add the following code to
+          the bottom of the numberCruncher.test.js file:
+        </p>
+        <pre>
+  function isPrime(n) {
+    return factorsOf(n).length === 2;
+  }
+
+  // If we run the tests again, we can see that all three of our
+  // tests have passed
+  jest -c {}
+  &#60;&#60; PASS  ./numberCruncher.test.js
+  ✓ factors of 12 (6ms)
+  ✓ 2 is prime (1ms)
+  ✓ 10 is not prime (1ms)
+
+  Test Suites: 1 passed, 1 total
+  Tests:       3 passed, 3 total
+  Snapshots:   0 total
+  Time:        2.853s
+  Ran all test suites.
+        </pre>
+        <p>
+          Our library of functions is growing! The next step is to again
+          refactor our code. It’s a bit brittle at the moment, because both
+          functions accept negative and non-integer values, neither of which
+          are prime. They also allow non-numerical arguments to be provided. It
+          turns out that thefactorsOf()function fails silently and returns an
+          empty array if any of these are passed to it. It would be better to
+          throw an exception to indicate that an incorrect argument has been
+          used. Let’s create some tests to check that this happens. Add the
+          following tests to thenumberCruncher.test.jsfile:
+        </p>
+        <pre>
+  it('should throw an exception for non-numerical data', () => {
+      expect(factorsOf('twelve').toThrow();
+  });
+  
+  it('should throw an exception for negative numbers', () => {
+      expect(() => factorsOf(-2)).toThrow();
+  });
+  
+  it('should throw an exception for non-integer numbers', () => {
+      expect(() => factorsOf(3.14159)).toThrow();
+  });
+        </pre>
+        <p>
+          These tests all use the toThrow() method to check that an exception
+          has been thrown if the wrong data is entered as an argument. While
+          we’re at it, we can add some extra tests so the isPrime() function
+          also deals with any incorrect arguments. No exceptions are necessary
+          in these cases; non-numerical data, negative numbers and non-integers
+          are simply not prime, so the function should just return false. Add
+          the following code to the bottom of the numberCruncher.test.js file:
+        </p>
+        <pre>
+  test('non-numerical data returns not prime', () => {
+    expect(isPrime('two')).toBe(false);
+  });
+  
+  test('non-integer numbers return not prime', () => {
+    expect(isPrime(1.2)).toBe(false);
+  });
+  
+  test('negative numbers return not prime', () => {
+    expect(isPrime(-1)).toBe(false);
+  });
+        </pre>
+        <p>
+          If you run the tests again, you’ll see that the new tests for the
+          factorsOf() function fail as expected, but the new tests for the
+          isPrime() function actually pass. This is a happy accident because
+          the factorsOf() function is returning an empty array, which is
+          conveniently not of length 2, so false is returned by the function
+          anyway. Let’s try and make all the tests pass by throwing some
+          exceptions in the factorsOf() function. Change the factorsOf()
+          function to the following in numberCruncher.test.js:
+        </p>
+        <pre>
+  function factorsOf(n) {
+    if(Number.isNaN(Number(n))) {
+      throw new RangeError('Argument Error: Value must be an integer');
+    }
+    if(n &#60; 0) {
+      throw new RangeError('Argument Error: Number must be positive');
+    }
+    if(!Number.isInteger(n)) {
+      throw new RangeError('Argument Error: Number must be an integer');
+    }
+    const factors = [];
+    for (let i=1 , max = Math.sqrt(n); i &#60;= max ; i++) {
+      if (n%i === 0){
+        factors.push(i,n/i);
+      }
+    }
+    return factors.sort((a,b) => a - b);
+  }
+        </pre>
+        <p>
+          Now the function checks to see if a negative number or non-integer
+          has been provided as an argument, and throws an exception in both
+          cases. Let’s run our tests again:
+        </p>
+        <pre>
+  jest -c{}
+  &#60;&#60; FAIL  ./numberCruncher.test.js
+  ● non-numerical data returns not prime
+
+      RangeError: Argument Error: Value must be an integer
+
+      at factorsOf (numberCruncher.test.js:5:11)
+      at isPrime (numberCruncher.test.js:23:10)
+      at Object.<anonymous>.test (numberCruncher.test.js:57:10)
+
+  ● non-integer numbers return not prime
+
+      RangeError: Argument Error: Number must be an integer
+
+      at factorsOf (numberCruncher.test.js:11:11)
+      at isPrime (numberCruncher.test.js:23:10)
+      at Object.<anonymous>.test (numberCruncher.test.js:61:10)
+
+  ● negative numbers return not prime
+
+      RangeError: Argument Error: Number must be positive
+
+      at factorsOf (numberCruncher.test.js:8:11)
+      at isPrime (numberCruncher.test.js:23:10)
+      at Object.<anonymous>.test (numberCruncher.test.js:65:10)
+
+  ✓ Returns factors of 12 (4ms)
+  ✓ 2 is prime (1ms)
+  ✓ 10 is not prime
+  ✓ Exception for non-numerical data
+  ✓ Exception for negative numbers (1ms)
+  ✓ Exception for non-integer numbers
+  ✕ Non-numerical data returns not prime (2ms)
+  ✕ Non-integer numbers return not prime
+  ✕ Negative numbers return not prime (1ms)
+
+  Test Suites: 1 failed, 1 total
+  Tests:       3 failed, 6 passed, 9 total
+  Snapshots:   0 total
+  Time:        3.516s
+  Ran all test suites.
+        </pre>
+        <p>
+          Oh, no! Our tests for the factorsOf() function all pass... but the
+          exceptions have caused the isPrime() function to choke and fail the
+          tests. We need to add code that handles any exceptions that might be
+          thrown when the factorsOf() function is called from within the
+          isPrime() function. This sounds like a job for a try and catch block!
+          Change the isPrime() function in the numberCruncher.test.js file to
+          the following:
+        </p>
+        <pre>
+  function isPrime(n) {
+    try {
+      return factorsOf(n).length === 2;
+    } catch (error) {
+      return false;
+    }
+  }
+        </pre>
+        <p>
+          Now we’ve placed the original code inside a try block, so if
+          factorsOf() throws an exception, we can pass it on to the catch block
+          and handle the error. All we have to do here is simply return false if
+          an error is thrown. Now we’ll run our tests again, and hopefully
+          you’ll see the following message:
+        </p>
+        <pre>
+  jest -c{}
+  &#60;&#60; PASS  ./numberCruncher.test.js
+  ✓ Returns factors of 12 (4ms)
+  ✓ 2 is prime (1ms)
+  ✓ 10 is not prime
+  ✓ Exception for non-numerical data (1ms)
+  ✓ Exception for negative numbers
+  ✓ Exception for non-integer numbers (1ms)
+  ✓ Non-numerical data returns not prime
+  ✓ Non-integer numbers return not prime (1ms)
+  ✓ Negative numbers return not prime
+
+  Test Suites: 1 passed, 1 total
+  Tests:       9 passed, 9 total
+  Snapshots:   0 total
+  Time:        2.381s
   Ran all test suites.
         </pre>
     </main>
