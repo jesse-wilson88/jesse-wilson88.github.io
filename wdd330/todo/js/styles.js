@@ -37,7 +37,19 @@ button.addEventListener("click", function () {
   console.log(
     `Array length has ${document.querySelectorAll("li").length} items.`
   );
-  // document.getElementById("li");
+
+  console.log(taskInput);
+
+  let num = document.querySelectorAll("li");
+  let item = document.getElementsByTagName("span");
+  console.log("Task #" + num + " is " + item);
+
+  // Use document.querySelectorAll("li").length to get the number of the item that is added, so there is something from an array to get. The taskItem (task1, task2, task3, etc)
+
+  // let itemNum = document.querySelectorAll("li");
+  // let item = console.log(taskInput);
+
+  // let tasks[itemNum] = item;
 
   input.focus();
 });
