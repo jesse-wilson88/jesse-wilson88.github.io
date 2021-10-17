@@ -7,7 +7,7 @@ button.addEventListener("click", function () {
   console.log(document.querySelectorAll("li").length);
   if (document.querySelectorAll("li").length == 0) {
     console.log("Array length is empty");
-    const tasks = [];
+    let tasks = [];
     console.log(tasks);
   }
 
@@ -43,6 +43,8 @@ button.addEventListener("click", function () {
   let num = document.querySelectorAll("li");
   let item = document.getElementsByTagName("span");
   console.log("Task #" + num + " is " + item);
+
+  tasks;
 
   // Use document.querySelectorAll("li").length to get the number of the item that is added, so there is something from an array to get. The taskItem (task1, task2, task3, etc)
 
