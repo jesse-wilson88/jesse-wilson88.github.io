@@ -4,6 +4,13 @@ const button = document.querySelector("button");
 
 /* Here we use an addEventListener for the button */
 button.addEventListener("click", function () {
+  console.log(document.querySelectorAll("li").length);
+  if (document.querySelectorAll("li").length == 0) {
+    console.log("Array length is empty");
+    const tasks = [];
+    console.log(tasks);
+  }
+
   let taskInput = input.value;
   input.value = "";
 
@@ -25,7 +32,12 @@ button.addEventListener("click", function () {
     taskBtn.addEventListener("click", function () {
       task.removeChild(taskItem);
     });
-
-    input.focus();
   }
+
+  console.log(
+    `Array length has ${document.querySelectorAll("li").length} items.`
+  );
+  // document.getElementById("li");
+
+  input.focus();
 });
