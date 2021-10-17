@@ -11,6 +11,8 @@ button.addEventListener("click", function () {
     console.log(tasks);
   }
 
+  // let tasks = [];
+
   let taskInput = input.value;
   input.value = "";
 
@@ -38,13 +40,13 @@ button.addEventListener("click", function () {
     `Array length has ${document.querySelectorAll("li").length} items.`
   );
 
-  console.log(taskInput);
+  console.log(`User entered: ${taskInput}`);
 
-  let num = document.querySelectorAll("li");
-  let item = document.getElementsByTagName("span");
-  console.log("Task #" + num + " is " + item);
+  let num = document.querySelectorAll("li").length;
+  // let item = document.getElementsByTagName("span");
+  console.log("Task #" + num + " is " + taskInput);
 
-  tasks;
+  tasks.push(taskInput);
 
   // Use document.querySelectorAll("li").length to get the number of the item that is added, so there is something from an array to get. The taskItem (task1, task2, task3, etc)
 
