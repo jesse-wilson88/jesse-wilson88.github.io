@@ -24,7 +24,10 @@ button.addEventListener("click", function () {
 
     taskItem.appendChild(taskBox);
     taskBox.setAttribute("type", "checkbox");
-    taskBox.setAttribute("id", "statusBox");
+    taskBox.setAttribute(
+      "id",
+      `statusBox${document.querySelectorAll("li").length}`
+    );
     taskItem.appendChild(taskText);
     taskText.textContent = taskInput;
     taskItem.appendChild(taskBtn);
@@ -36,18 +39,16 @@ button.addEventListener("click", function () {
     });
   }
 
-  console.log(
-    `Array length has ${document.querySelectorAll("li").length} items.`
-  );
-
   console.log(`User entered: ${taskInput}`);
 
   let num = document.querySelectorAll("li").length;
   // let item = document.getElementsByTagName("span");
+
+  console.log(
+    `Array length has ${document.querySelectorAll("li").length} items.`
+  );
+
   console.log("Task #" + num + " is " + taskInput);
-
-  tasks.push(taskInput);
-
   // Use document.querySelectorAll("li").length to get the number of the item that is added, so there is something from an array to get. The taskItem (task1, task2, task3, etc)
 
   // let itemNum = document.querySelectorAll("li");
