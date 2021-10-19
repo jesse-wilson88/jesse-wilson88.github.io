@@ -2,16 +2,13 @@ const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 
-/* Here we use an addEventListener for the button */
-button.addEventListener("click", function () {
-  console.log(document.querySelectorAll("li").length);
-  if (document.querySelectorAll("li").length == 0) {
-    console.log("Array length is empty");
-    let tasks = [];
-    console.log(tasks);
-  }
-
-  // let tasks = [];
+let addTaskHandler = function () {
+  // console.log(document.querySelectorAll("li").length);
+  // if (document.querySelectorAll("li").length == 0) {
+  //   console.log("Array length is empty");
+  //   let tasks = [];
+  //   console.log(tasks);
+  // }
 
   let taskInput = input.value;
   input.value = "";
@@ -37,39 +34,35 @@ button.addEventListener("click", function () {
     taskBtn.addEventListener("click", function () {
       task.removeChild(taskItem);
     });
+
+    taskItem.addEventListener("click", statusCheckHandler);
   }
 
-  console.log(`User entered: ${taskInput}`);
+  // console.log(`User entered: ${taskInput}`);
 
-  console.log(
-    `Array length has ${document.querySelectorAll("li").length} items.`
-  );
+  // console.log(
+  // `Array length has ${document.querySelectorAll("li").length} items.`
+  // );
 
   // console.log("Task #" + tasks + " is " + taskInput);
 
-  console.log();
-
   input.focus();
-});
+};
 
-taskItem.addEventListener("click", function () {
-  let tasks = document.querySelectorAll("li");
-
-  for (let i = 0; i < tasks; i++) {
-    for (let j = 0; i < 2; j++) {
-      if (tasks[i].children[0].checked == true) {
-        tasks[i].children[j].style.textDecoration = "line-through";
-      } else {
-        tasks[i].children[j].style.textDecoration = "none";
-      }
-    }
+let statusCheckHandler = (event) => {
+  let text = event.target.parentElement.children[1];
+  //Check if the check input is checked
+  if (event.target.checked) {
+    text.style.textDecoration = "line-through";
+  } else {
+    text.style.textDecoration = "none";
   }
+};
 
-  // for (let i = 0; i < tasks; i++) {
-  //   if (tasks[i].children[0].checked == true) {
-  //     tasks[i].children[j].style.textDecoration = "line-through";
-  //   } else {
-  //     tasks[i].children[j].style.textDecoration = "none";
-  //   }
-  // }
+/* Here we use an addEventListener for the button */
+button.addEventListener("click", addTaskHandler);
+input.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    addTaskHandler();
+  }
 });
