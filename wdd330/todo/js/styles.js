@@ -41,20 +41,27 @@ button.addEventListener("click", function () {
 
   console.log(`User entered: ${taskInput}`);
 
-  let num = document.querySelectorAll("li").length;
-  // let item = document.getElementsByTagName("span");
-
   console.log(
     `Array length has ${document.querySelectorAll("li").length} items.`
   );
 
-  console.log("Task #" + num + " is " + taskInput);
-  // Use document.querySelectorAll("li").length to get the number of the item that is added, so there is something from an array to get. The taskItem (task1, task2, task3, etc)
+  // console.log("Task #" + tasks + " is " + taskInput);
 
-  // let itemNum = document.querySelectorAll("li");
-  // let item = console.log(taskInput);
-
-  // let tasks[itemNum] = item;
+  console.log();
 
   input.focus();
+});
+
+taskItem.addEventListener("click", function () {
+  let tasks = document.querySelectorAll("li");
+
+  for (let i = 0; i > tasks; i++) {
+    for (let j = 0; i < 2; j++) {
+      if (tasks.children[0].checked == true) {
+        tasks[i].children[j].style.textDecoration = "line-through";
+      } else {
+        tasks[i].children[j].style.textDecoration = "none";
+      }
+    }
+  }
 });
