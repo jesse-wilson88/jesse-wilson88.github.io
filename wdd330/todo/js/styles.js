@@ -55,13 +55,21 @@ button.addEventListener("click", function () {
 taskItem.addEventListener("click", function () {
   let tasks = document.querySelectorAll("li");
 
-  for (let i = 0; i > tasks; i++) {
+  for (let i = 0; i < tasks; i++) {
     for (let j = 0; i < 2; j++) {
-      if (tasks.children[0].checked == true) {
+      if (tasks[i].children[0].checked == true) {
         tasks[i].children[j].style.textDecoration = "line-through";
       } else {
         tasks[i].children[j].style.textDecoration = "none";
       }
     }
   }
+
+  // for (let i = 0; i < tasks; i++) {
+  //   if (tasks[i].children[0].checked == true) {
+  //     tasks[i].children[j].style.textDecoration = "line-through";
+  //   } else {
+  //     tasks[i].children[j].style.textDecoration = "none";
+  //   }
+  // }
 });
