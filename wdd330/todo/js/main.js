@@ -1,7 +1,7 @@
 const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
-const filterAll = document.querySelector("div").i;
+// const filterAll = document.querySelector("div").i;
 
 let addTaskHandler = function () {
   let taskInput = input.value;
@@ -48,6 +48,11 @@ let statusCheckHandler = (event) => {
   } else {
     text.style.textDecoration = "none";
   }
+};
+let filterActiveHandler = (event) => {
+  let active = event.target.parentElement.children[0];
+
+  return active.checked.filter;
 };
 
 // Here we use an addEventListener for the button
