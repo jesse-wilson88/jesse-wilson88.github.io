@@ -1,6 +1,7 @@
 const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
+const filterAll = document.querySelector("div").i;
 
 let addTaskHandler = function () {
   let taskInput = input.value;
@@ -61,3 +62,7 @@ input.addEventListener("keyup", (event) => {
     addTaskHandler();
   }
 });
+
+// filterAll.addEventListener("click", (event) => {
+//   console.log("Filter All");
+// });
