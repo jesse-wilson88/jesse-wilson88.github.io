@@ -1,7 +1,6 @@
 const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
-// const filterAll = document.querySelector("div").i;
 
 let addTaskHandler = function () {
   let taskInput = input.value;
@@ -49,11 +48,6 @@ let statusCheckHandler = (event) => {
     text.style.textDecoration = "none";
   }
 };
-let filterActiveHandler = (event) => {
-  let active = event.target.parentElement.children[0];
-
-  return active.checked.filter;
-};
 
 // Here we use an addEventListener for the button
 button.addEventListener("click", addTaskHandler);
@@ -68,6 +62,27 @@ input.addEventListener("keyup", (event) => {
   }
 });
 
+// const filterActive = document.querySelector("button");
+const filterAll = document.getElementsByClassName("filterAll");
+const filterActive = document.getElementsByClassName("filterActive");
+const filterCompleted = document.getElementsByClassName("filterCompleted");
+
+let filterActiveHandler = (event) => {
+  console.log("Filter Active");
+};
+
 // filterAll.addEventListener("click", (event) => {
 //   console.log("Filter All");
+// });
+
+filterActive.addEventListener("click", filterActiveHandler);
+
+// let filterActiveHandler = (event) => {
+//   let active = event.target.parentElement.children[0];
+
+//   return active.checked.filter;
+// };
+
+// filterActive.addEventListener("click", function () {
+//   console.log("Filter Active");
 // });
