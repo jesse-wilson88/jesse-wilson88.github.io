@@ -17,6 +17,7 @@ main {
 }
 main div {
   align-self: center;
+  max-width: 300px;
 }
 
 h2 {
@@ -26,10 +27,7 @@ h2 {
 
 #frame {
   border-style: solid;
-  /* width: 400px; */
-  /* height: 600px; */
   height: 500px;
-  /* background-color: ivory; */
   background-color: cadetblue;
   margin: auto;
 }
@@ -72,7 +70,6 @@ button {
 }
 
 #listArea {
-  /* width: 385px; */
   height: 400px;
   overflow: auto;
   border: solid 3px #000;

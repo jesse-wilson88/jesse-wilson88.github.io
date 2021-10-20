@@ -7,21 +7,6 @@
   /*----------- NAVIGATION --------------*/
 
   /*----------- MAIN --------------*/
-  h2 {
-    font-size: 2rem;
-    margin: 5px;
-    padding: 5px;
-  }
-
-  li {
-    font-size: 1.6rem;
-  }
-
-  input#statusBox {
-    width: 20px;
-    height: 20px;
-    margin: 0 7px 0 0;
-  }
 
   /*----------- FOOTER --------------*/
 } /* end of media query */

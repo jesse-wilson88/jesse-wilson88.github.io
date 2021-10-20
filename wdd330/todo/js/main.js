@@ -3,13 +3,6 @@ const input = document.querySelector("input");
 const button = document.querySelector("button");
 
 let addTaskHandler = function () {
-  // console.log(document.querySelectorAll("li").length);
-  // if (document.querySelectorAll("li").length == 0) {
-  //   console.log("Array length is empty");
-  //   let tasks = [];
-  //   console.log(tasks);
-  // }
-
   let taskInput = input.value;
   input.value = "";
 
@@ -31,27 +24,24 @@ let addTaskHandler = function () {
     taskBtn.textContent = "\u274C";
     task.appendChild(taskItem);
 
+    // Here we use an addEventListener to delete a task
     taskBtn.addEventListener("click", function () {
       task.removeChild(taskItem);
     });
 
+    // Here is use an addEventListener to each taskItem so
+    // they can operate seperately.
     taskItem.addEventListener("click", statusCheckHandler);
+
+    // localStorage.setItem(taskItem.toString, input);
   }
-
-  // console.log(`User entered: ${taskInput}`);
-
-  // console.log(
-  // `Array length has ${document.querySelectorAll("li").length} items.`
-  // );
-
-  // console.log("Task #" + tasks + " is " + taskInput);
 
   input.focus();
 };
 
 let statusCheckHandler = (event) => {
   let text = event.target.parentElement.children[1];
-  //Check if the check input is checked
+  // Check if the checkbox is checked
   if (event.target.checked) {
     text.style.textDecoration = "line-through";
   } else {
@@ -59,8 +49,13 @@ let statusCheckHandler = (event) => {
   }
 };
 
-/* Here we use an addEventListener for the button */
+// Here we use an addEventListener for the button
 button.addEventListener("click", addTaskHandler);
+
+// Here we use an addEventListener for the Enter key
+// The button eventListener above can be towards the top
+// but the input eventListener cannot because it has to
+// call the function.
 input.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     addTaskHandler();
