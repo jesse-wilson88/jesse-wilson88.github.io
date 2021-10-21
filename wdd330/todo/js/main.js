@@ -20,6 +20,7 @@ function taskFramework() {
 
     taskItem.appendChild(taskBox);
     taskBox.setAttribute("type", "checkbox");
+    taskBox.setAttribute("id", "statusBox");
     taskItem.setAttribute(
       "id",
       `task${document.querySelectorAll("li").length}`
