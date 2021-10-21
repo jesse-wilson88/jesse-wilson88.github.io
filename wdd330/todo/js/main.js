@@ -2,7 +2,7 @@ const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 
-let addTaskHandler = function () {
+function taskFramework() {
   let taskInput = input.value;
   input.value = "";
 
@@ -21,7 +21,8 @@ let addTaskHandler = function () {
     taskItem.appendChild(taskText);
     taskText.textContent = taskInput;
     taskItem.appendChild(taskBtn);
-    taskBtn.textContent = "\u274C";
+    taskBtn.textContent = "❌";
+
     task.appendChild(taskItem);
 
     // Here we use an addEventListener to delete a task
@@ -32,12 +33,10 @@ let addTaskHandler = function () {
     // Here is use an addEventListener to each taskItem so
     // they can operate seperately.
     taskItem.addEventListener("click", statusCheckHandler);
-
-    // localStorage.setItem(taskItem.toString, input);
   }
 
   input.focus();
-};
+}
 
 let statusCheckHandler = (event) => {
   let text = event.target.parentElement.children[1];
@@ -50,7 +49,8 @@ let statusCheckHandler = (event) => {
 };
 
 // Here we use an addEventListener for the button
-button.addEventListener("click", addTaskHandler);
+// button.addEventListener("click", addTaskHandler);
+button.addEventListener("click", taskFramework);
 
 // Here we use an addEventListener for the Enter key
 // The button eventListener above can be towards the top
@@ -58,31 +58,53 @@ button.addEventListener("click", addTaskHandler);
 // call the function.
 input.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
-    addTaskHandler();
+    // addTaskHandler();
+    taskFramework();
   }
 });
 
 // const filterActive = document.querySelector("button");
-const filterAll = document.getElementsByClassName("filterAll");
-const filterActive = document.getElementsByClassName("filterActive");
-const filterCompleted = document.getElementsByClassName("filterCompleted");
+const filterAll = document.getElementById("filterAll");
+const filterActive = document.getElementById("filterActive");
+const filterCompleted = document.getElementById("filterCompleted");
 
-let filterActiveHandler = (event) => {
-  console.log("Filter Active");
-};
+filterAll.addEventListener("click", taskFramework);
+filterActive.addEventListener("click", taskFramework);
+filterCompleted.addEventListener("click", taskFramework);
 
-// filterAll.addEventListener("click", (event) => {
-//   console.log("Filter All");
-// });
+filterAll.addEventListener("click", (event) => {
+  let value = document.querySelectorAll("li");
 
-filterActive.addEventListener("click", filterActiveHandler);
+  let data = [...value].map((item) => ({
+    checked: item.children[0].checked,
+    task: item.children[1].innerHTML,
+  }));
 
-// let filterActiveHandler = (event) => {
-//   let active = event.target.parentElement.children[0];
+  console.log(data);
+});
 
-//   return active.checked.filter;
-// };
+filterActive.addEventListener("click", (event) => {
+  let value = document.querySelectorAll("li");
 
-// filterActive.addEventListener("click", function () {
-//   console.log("Filter Active");
-// });
+  let data = [...value]
+    .map((item) => ({
+      checked: item.children[0].checked,
+      task: item.children[1].innerHTML,
+    }))
+    .filter((item) => !item.checked);
+
+  console.log(data);
+});
+
+filterCompleted.addEventListener("click", (event) => {
+  let value = document.querySelectorAll("li");
+
+  let data = [...value]
+    .map((item) => ({
+      checked: item.children[0].checked,
+      task: item.children[1].innerHTML,
+    }))
+    .filter((item) => item.checked);
+
+  console.log(data);
+});
