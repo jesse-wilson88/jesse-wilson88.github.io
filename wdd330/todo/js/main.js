@@ -93,6 +93,12 @@ filterActive.addEventListener("click", (event) => {
     }))
     .filter((item) => !item.checked);
 
+  if (data.length < 1 || data.length > 1) {
+    document.querySelector("#taskTotal").innerHTML = `${data.length} Tasks`;
+  } else {
+    document.querySelector("#taskTotal").innerHTML = `${data.length} Task`;
+  }
+
   console.log(data);
 });
 
