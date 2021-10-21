@@ -2,6 +2,7 @@ const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 
+// Toggles the class 'hide' which CSS will remove from sight
 // function filterTasks() {
 //   let element = document.getElementById("task1");
 //   element.classList.toggle("hide");
@@ -84,6 +85,7 @@ filterAll.addEventListener("click", (event) => {
     task: item.children[1].innerHTML,
   }));
 
+  // Calls this function to hide completed tasks
   // filterTasks();
 
   console.log(data);
