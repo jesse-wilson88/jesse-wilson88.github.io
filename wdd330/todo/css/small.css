@@ -110,13 +110,13 @@ button {
   justify-content: center;
 }
 
-#hide {
+.hide {
   display: none;
 }
 
-#show {
+/* #show {
   display: block;
-}
+} */
 
 /*----------- FOOTER --------------*/
 

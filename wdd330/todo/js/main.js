@@ -2,6 +2,11 @@ const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 
+// function filterTasks() {
+//   let element = document.getElementById("task1");
+//   element.classList.toggle("hide");
+// }
+
 function taskFramework() {
   let taskInput = input.value;
   input.value = "";
@@ -14,9 +19,9 @@ function taskFramework() {
 
     taskItem.appendChild(taskBox);
     taskBox.setAttribute("type", "checkbox");
-    taskBox.setAttribute(
+    taskItem.setAttribute(
       "id",
-      `statusBox${document.querySelectorAll("li").length}`
+      `task${document.querySelectorAll("li").length}`
     );
     taskItem.appendChild(taskText);
     taskText.textContent = taskInput;
@@ -58,7 +63,6 @@ button.addEventListener("click", taskFramework);
 // call the function.
 input.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
-    // addTaskHandler();
     taskFramework();
   }
 });
@@ -79,6 +83,8 @@ filterAll.addEventListener("click", (event) => {
     checked: item.children[0].checked,
     task: item.children[1].innerHTML,
   }));
+
+  // filterTasks();
 
   console.log(data);
 });
