@@ -2,15 +2,11 @@ const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 
-// Toggles the class 'hide' which CSS will remove from sight
-// function filterTasks() {
-//   let element = document.getElementById("task1");
-//   element.classList.toggle("hide");
-// }
-
 function taskFramework() {
   let taskInput = input.value;
   input.value = "";
+
+  let items = document.querySelectorAll("li").length;
 
   if (taskInput != "") {
     const taskItem = document.createElement("li");
@@ -21,10 +17,7 @@ function taskFramework() {
     taskItem.appendChild(taskBox);
     taskBox.setAttribute("type", "checkbox");
     taskBox.setAttribute("id", "statusBox");
-    taskItem.setAttribute(
-      "id",
-      `task${document.querySelectorAll("li").length}`
-    );
+    taskItem.setAttribute("id", `task${items}`);
     taskItem.appendChild(taskText);
     taskText.textContent = taskInput;
     taskItem.appendChild(taskBtn);
@@ -43,6 +36,8 @@ function taskFramework() {
   }
 
   input.focus();
+
+  taskCounter();
 }
 
 let statusCheckHandler = (event) => {
@@ -82,13 +77,12 @@ filterAll.addEventListener("click", (event) => {
   let value = document.querySelectorAll("li");
 
   let data = [...value].map((item) => ({
+    timestamp: new Date(),
     checked: item.children[0].checked,
     task: item.children[1].innerHTML,
   }));
 
-  // Calls this function to hide completed tasks
-  // filterTasks();
-
+  taskCounter(data);
   console.log(data);
 });
 
@@ -102,12 +96,7 @@ filterActive.addEventListener("click", (event) => {
     }))
     .filter((item) => !item.checked);
 
-  if (data.length < 1 || data.length > 1) {
-    document.querySelector("#taskTotal").innerHTML = `${data.length} Tasks`;
-  } else {
-    document.querySelector("#taskTotal").innerHTML = `${data.length} Task`;
-  }
-
+  taskCounter(data);
   console.log(data);
 });
 
@@ -121,5 +110,14 @@ filterCompleted.addEventListener("click", (event) => {
     }))
     .filter((item) => item.checked);
 
+  taskCounter(data);
   console.log(data);
 });
+
+function taskCounter(data) {
+  if (data.length < 1 || data.length > 1) {
+    document.querySelector("#taskTotal").innerHTML = `${data.length} Tasks`;
+  } else {
+    document.querySelector("#taskTotal").innerHTML = `${data.length} Task`;
+  }
+}

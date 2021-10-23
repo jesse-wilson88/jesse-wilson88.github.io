@@ -14,20 +14,16 @@ function savelocalitems(tasks) {
 
 function savenewlocalitem(item) {
   tasklist = getlocalitems();
-  if (tasklist != null) {
-    if (Object.keys(tasklist).length != 0) {
-      taskids = Object.values(
-        tasklist.map((i) => {
-          return parseInt(i.id.substring(4));
-        })
-      );
-    } else {
-      taskids = [0];
-    }
+  console.log(Object.keys(tasklist).length);
+  if (Object.keys(tasklist).length > 0) {
+    taskids = Object.values(
+      tasklist.map((i) => {
+        return parseInt(i.id.substring(4));
+      })
+    );
   } else {
     taskids = [0];
   }
-
   newid = "task" + (Math.max(...taskids) + 1);
 
   tasklist.push({
