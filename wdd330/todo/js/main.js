@@ -2,11 +2,9 @@ const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 
-function taskFramework() {
+let addTaskHandler = function () {
   let taskInput = input.value;
   input.value = "";
-
-  let items = document.querySelectorAll("li").length;
 
   if (taskInput != "") {
     const taskItem = document.createElement("li");
@@ -16,8 +14,10 @@ function taskFramework() {
 
     taskItem.appendChild(taskBox);
     taskBox.setAttribute("type", "checkbox");
-    taskBox.setAttribute("id", "statusBox");
-    taskItem.setAttribute("id", `task${items}`);
+    taskBox.setAttribute(
+      "id",
+      `statusBox${document.querySelectorAll("li").length}`
+    );
     taskItem.appendChild(taskText);
     taskText.textContent = taskInput;
     taskItem.appendChild(taskBtn);
@@ -33,12 +33,12 @@ function taskFramework() {
     // Here is use an addEventListener to each taskItem so
     // they can operate seperately.
     taskItem.addEventListener("click", statusCheckHandler);
+
+    // localStorage.setItem(taskItem.toString, input);
   }
 
   input.focus();
-
-  taskCounter();
-}
+};
 
 let statusCheckHandler = (event) => {
   let text = event.target.parentElement.children[1];
@@ -51,8 +51,7 @@ let statusCheckHandler = (event) => {
 };
 
 // Here we use an addEventListener for the button
-// button.addEventListener("click", addTaskHandler);
-button.addEventListener("click", taskFramework);
+button.addEventListener("click", addTaskHandler);
 
 // Here we use an addEventListener for the Enter key
 // The button eventListener above can be towards the top
@@ -60,7 +59,7 @@ button.addEventListener("click", taskFramework);
 // call the function.
 input.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
-    taskFramework();
+    addTaskHandler();
   }
 });
 
@@ -69,20 +68,15 @@ const filterAll = document.getElementById("filterAll");
 const filterActive = document.getElementById("filterActive");
 const filterCompleted = document.getElementById("filterCompleted");
 
-filterAll.addEventListener("click", taskFramework);
-filterActive.addEventListener("click", taskFramework);
-filterCompleted.addEventListener("click", taskFramework);
-
 filterAll.addEventListener("click", (event) => {
   let value = document.querySelectorAll("li");
 
   let data = [...value].map((item) => ({
-    timestamp: new Date(),
     checked: item.children[0].checked,
     task: item.children[1].innerHTML,
   }));
 
-  taskCounter(data);
+  activeTasks();
   console.log(data);
 });
 
@@ -96,7 +90,7 @@ filterActive.addEventListener("click", (event) => {
     }))
     .filter((item) => !item.checked);
 
-  taskCounter(data);
+  activeTasks();
   console.log(data);
 });
 
@@ -110,14 +104,6 @@ filterCompleted.addEventListener("click", (event) => {
     }))
     .filter((item) => item.checked);
 
-  taskCounter(data);
+  activeTasks();
   console.log(data);
 });
-
-function taskCounter(data) {
-  if (data.length < 1 || data.length > 1) {
-    document.querySelector("#taskTotal").innerHTML = `${data.length} Tasks`;
-  } else {
-    document.querySelector("#taskTotal").innerHTML = `${data.length} Task`;
-  }
-}
