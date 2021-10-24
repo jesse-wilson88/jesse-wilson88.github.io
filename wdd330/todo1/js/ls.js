@@ -1,9 +1,3 @@
-// let tasklist = [],
-//   newid,
-//   taskids = [];
-
-let newid = [];
-
 function getlocalitems() {
   let todos = localStorage.getItem("todos");
   // console.log("todos: " + todos);
@@ -32,14 +26,13 @@ function savenewlocalitem(item) {
     tasklist = [];
     taskids = [0];
   }
-  newid = "task" + (Math.max(...taskids) + 1);
 
   tasklist.push({
-    id: newid,
+    id: new Date(),
     task: item,
     completed: false,
-    timestamp: new Date(),
   });
+
   savelocalitems(tasklist);
 }
 

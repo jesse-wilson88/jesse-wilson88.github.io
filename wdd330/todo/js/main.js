@@ -35,8 +35,6 @@ let addTaskHandler = function () {
     // Here is use an addEventListener to each taskItem so
     // they can operate seperately.
     taskItem.addEventListener("click", statusCheckHandler);
-
-    array = [0];
   }
 
   input.focus();
@@ -74,6 +72,7 @@ filterAll.addEventListener("click", (event) => {
   let value = document.querySelectorAll("li");
 
   let data = [...value].map((item) => ({
+    timestamp: new Date(),
     checked: item.children[0].checked,
     task: item.children[1].innerHTML,
   }));
@@ -86,6 +85,7 @@ filterActive.addEventListener("click", (event) => {
 
   let data = [...value]
     .map((item) => ({
+      timestamp: new Date(),
       checked: item.children[0].checked,
       task: item.children[1].innerHTML,
     }))
@@ -99,6 +99,7 @@ filterCompleted.addEventListener("click", (event) => {
 
   let data = [...value]
     .map((item) => ({
+      timestamp: new Date(),
       checked: item.children[0].checked,
       task: item.children[1].innerHTML,
     }))
