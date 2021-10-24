@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="infomation about site." />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>ToDo Application</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/ls.js"></script>
+    <script defer src="js/todos.js"></script>
+    <script defer src="js/utilities.js"></script>
+  </head>
+  <body>
+    <!-- HEADER HERE -->
+    <header></header>
+
+    <!-- NAVIGATION HERE -->
+    <nav></nav>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <div id="frame">
+        <div>
+          <h2 id="frameTitle">Todos</h2>
+        </div>
+        <div class="task" id="listArea">
+          <ul></ul>
+        </div>
+        <div id="filter">
+          <div id="taskTotal">0 Tasks</div>
+          <div id="filterAll">All</div>
+          <div id="filterActive">Active</div>
+          <div id="filterCompleted">Completed</div>
+        </div>
+        <div class="input" id="listBottom">
+          <input id="task" type="text" placeholder="Task" />
+          <button type="button">+</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER HERE -->
+    <footer></footer>
+  </body>
+</html>

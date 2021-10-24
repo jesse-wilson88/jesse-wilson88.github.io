@@ -2,9 +2,19 @@ const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 
-let array = [];
+// Toggles the class 'hide' which CSS will remove from sight
+function filterTasks(data) {
+  let dataids = data.map((i) => {return i.id});
+  var items = task.getElementsByTagName("li");
+  for(const i of items){
+    i.hidden = false;
+    if(!dataids.includes(i.id)){
+      i.hidden = true;
+    }
+  }
+}
 
-let addTaskHandler = function () {
+function taskFramework() {
   let taskInput = input.value;
   input.value = "";
 
@@ -16,9 +26,10 @@ let addTaskHandler = function () {
 
     taskItem.appendChild(taskBox);
     taskBox.setAttribute("type", "checkbox");
-    taskBox.setAttribute(
+    taskBox.setAttribute("id", "statusBox");
+    taskItem.setAttribute(
       "id",
-      `statusBox${document.querySelectorAll("li").length}`
+      `task${document.querySelectorAll("li").length}`
     );
     taskItem.appendChild(taskText);
     taskText.textContent = taskInput;
@@ -35,12 +46,10 @@ let addTaskHandler = function () {
     // Here is use an addEventListener to each taskItem so
     // they can operate seperately.
     taskItem.addEventListener("click", statusCheckHandler);
-
-    array = [0];
   }
 
   input.focus();
-};
+}
 
 let statusCheckHandler = (event) => {
   let text = event.target.parentElement.children[1];
@@ -53,7 +62,8 @@ let statusCheckHandler = (event) => {
 };
 
 // Here we use an addEventListener for the button
-button.addEventListener("click", addTaskHandler);
+// button.addEventListener("click", addTaskHandler);
+button.addEventListener("click", taskFramework);
 
 // Here we use an addEventListener for the Enter key
 // The button eventListener above can be towards the top
@@ -61,7 +71,7 @@ button.addEventListener("click", addTaskHandler);
 // call the function.
 input.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
-    addTaskHandler();
+    taskFramework();
   }
 });
 
@@ -70,13 +80,21 @@ const filterAll = document.getElementById("filterAll");
 const filterActive = document.getElementById("filterActive");
 const filterCompleted = document.getElementById("filterCompleted");
 
+filterAll.addEventListener("click", taskFramework);
+filterActive.addEventListener("click", taskFramework);
+filterCompleted.addEventListener("click", taskFramework);
+
 filterAll.addEventListener("click", (event) => {
   let value = document.querySelectorAll("li");
 
   let data = [...value].map((item) => ({
     checked: item.children[0].checked,
     task: item.children[1].innerHTML,
+    id: item.id,
   }));
+
+  // Calls this function to hide completed tasks
+  filterTasks(data);
 
   console.log(data);
 });
@@ -88,8 +106,18 @@ filterActive.addEventListener("click", (event) => {
     .map((item) => ({
       checked: item.children[0].checked,
       task: item.children[1].innerHTML,
+      id: item.id,
     }))
     .filter((item) => !item.checked);
+
+  // Calls this function to hide completed tasks
+  filterTasks(data);
+
+  if (data.length < 1 || data.length > 1) {
+    document.querySelector("#taskTotal").innerHTML = `${data.length} Tasks`;
+  } else {
+    document.querySelector("#taskTotal").innerHTML = `${data.length} Task`;
+  }
 
   console.log(data);
 });
@@ -101,8 +129,12 @@ filterCompleted.addEventListener("click", (event) => {
     .map((item) => ({
       checked: item.children[0].checked,
       task: item.children[1].innerHTML,
+      id: item.id
     }))
     .filter((item) => item.checked);
+
+  // Calls this function to hide completed tasks
+  filterTasks(data);
 
   console.log(data);
 });
