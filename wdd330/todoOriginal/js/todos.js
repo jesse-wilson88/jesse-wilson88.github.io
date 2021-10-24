@@ -10,10 +10,7 @@ function displayTasks() {
 
     taskItem.appendChild(taskBox);
     taskBox.setAttribute("type", "checkbox");
-    taskBox.setAttribute(
-      "id",
-      `statusBox${document.querySelectorAll("li").length}`
-    );
+    taskItem.setAttribute("id", new Date().getTime());
     taskItem.appendChild(taskText);
     taskText.textContent = taskInput;
     taskItem.appendChild(taskBtn);

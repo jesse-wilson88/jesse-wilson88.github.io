@@ -25,7 +25,7 @@ filterAll.addEventListener("click", (event) => {
   let value = document.querySelectorAll("li");
 
   let data = [...value].map((item) => ({
-    timestamp: new Date().getTime(),
+    id: new Date().getTime(),
     checked: item.children[0].checked,
     task: item.children[1].innerHTML,
   }));
@@ -40,7 +40,7 @@ filterActive.addEventListener("click", (event) => {
 
   let data = [...value]
     .map((item) => ({
-      timestamp: new Date().getTime(),
+      id: new Date().getTime(),
       checked: item.children[0].checked,
       task: item.children[1].innerHTML,
     }))
@@ -56,7 +56,7 @@ filterCompleted.addEventListener("click", (event) => {
 
   let data = [...value]
     .map((item) => ({
-      timestamp: new Date().getTime(),
+      id: new Date().getTime(),
       checked: item.children[0].checked,
       task: item.children[1].innerHTML,
     }))
