@@ -5,7 +5,7 @@ const button = document.querySelector("button");
 displayTasks();
 
 // Here we use an addEventListener for the button
-button.addEventListener("click", displayTasks);
+button.addEventListener("click", addTask);
 
 // Here we use an addEventListener for the Enter key
 // The button eventListener above can be towards the top
@@ -13,7 +13,7 @@ button.addEventListener("click", displayTasks);
 // call the function.
 input.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
-    displayTasks();
+    addTask();
   }
 });
 
@@ -30,6 +30,8 @@ filterAll.addEventListener("click", (event) => {
     task: item.children[1].innerHTML,
   }));
 
+  // Calls this function to show all tasks
+  filterTasks(data);
   console.log(data);
 });
 
@@ -44,6 +46,8 @@ filterActive.addEventListener("click", (event) => {
     }))
     .filter((item) => !item.checked);
 
+  // Calls this function to hide active tasks
+  filterTasks(data);
   console.log(data);
 });
 
@@ -58,6 +62,8 @@ filterCompleted.addEventListener("click", (event) => {
     }))
     .filter((item) => item.checked);
 
+  // Calls this function to hide completed tasks
+  filterTasks(data);
   console.log(data);
 });
 
