@@ -2,7 +2,8 @@ const task = document.querySelector("ul");
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 
-displayTasks();
+displayTasks(getLocalTasks());
+countTasks(getCompletedTasks("All"));
 
 // Here we use an addEventListener for the button
 button.addEventListener("click", addTask);
@@ -17,60 +18,40 @@ input.addEventListener("keyup", (event) => {
   }
 });
 
+// This is where the tasks are filtered
 const filterAll = document.getElementById("filterAll");
 const filterActive = document.getElementById("filterActive");
 const filterCompleted = document.getElementById("filterCompleted");
 
-filterAll.addEventListener("click", displayTasks);
-filterActive.addEventListener("click", displayTasks);
-filterCompleted.addEventListener("click", displayTasks);
-
+// Shows all tasks, completed or not
 filterAll.addEventListener("click", (event) => {
-  let value = document.querySelectorAll("li");
+  task.innerHTML = "";
+  const tasks = getCompletedTasks("All");
 
-  let data = [...value].map((item) => ({
-    id: item.id,
-    completed: item.children[0].checked,
-    task: item.children[1].innerHTML,
-  }));
+  displayTasks(tasks);
 
-  countTasks(data);
-
-  console.log(data);
+  countTasks(tasks);
 });
 
+// Shows only active tasks
 filterActive.addEventListener("click", (event) => {
-  let value = document.querySelectorAll("li");
+  task.innerHTML = "";
+  const tasks = getCompletedTasks(false);
+  displayTasks(tasks);
 
-  let data = [...value]
-    .map((item) => ({
-      id: item.id,
-      completed: item.children[0].checked,
-      task: item.children[1].innerHTML,
-    }))
-    .filter((item) => !item.checked);
-
-  countTasks(data);
-
-  console.log(data);
+  countTasks(tasks);
 });
 
+// Shows only completed tasks
 filterCompleted.addEventListener("click", (event) => {
-  let value = document.querySelectorAll("li");
+  task.innerHTML = "";
+  const tasks = getCompletedTasks(true);
+  displayTasks(tasks);
 
-  let data = [...value]
-    .map((item) => ({
-      id: item.id,
-      completed: item.children[0].checked,
-      task: item.children[1].innerHTML,
-    }))
-    .filter((item) => item.checked);
-
-  countTasks(data);
-
-  console.log(data);
+  countTasks(tasks);
 });
 
+// Displays how many tasks there are filtered or not
 function countTasks(data) {
   let tasks = data.length;
   if (tasks == 1) {

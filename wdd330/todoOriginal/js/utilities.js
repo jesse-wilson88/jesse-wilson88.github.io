@@ -30,6 +30,7 @@ filterAll.addEventListener("click", (event) => {
     task: item.children[1].innerHTML,
   }));
 
+  countTasks(data);
   console.log(data);
 });
 
@@ -44,6 +45,7 @@ filterActive.addEventListener("click", (event) => {
     }))
     .filter((item) => !item.checked);
 
+  countTasks(data);
   console.log(data);
 });
 
@@ -58,5 +60,15 @@ filterCompleted.addEventListener("click", (event) => {
     }))
     .filter((item) => item.checked);
 
+  countTasks(data);
   console.log(data);
 });
+
+function countTasks(data) {
+  let tasks = data.length;
+  if (tasks == 1) {
+    document.getElementById("taskTotal").innerHTML = `${tasks} task`;
+  } else {
+    document.getElementById("taskTotal").innerHTML = `${tasks} tasks`;
+  }
+}

@@ -1,31 +1,17 @@
-console.log("If this does not work clear the local cache and try again.");
-
-let deletingtask = false;
-
+// Adds a new task
 function addTask() {
-  if (input.value !== "") {
-    savenewlocalitem(input.value);
-    displayTasks();
-    input.value = "";
+  let taskInput = input.value;
+  input.value = "";
+  if (taskInput != "") {
+    saveNewLocalTask(taskInput);
+    displayTasks(getLocalTasks());
+    countTasks(getCompletedTasks("All"));
   }
 }
 
-function filterTasks(data) {
-  let dataids = data.map((i) => {
-    return i.id;
-  });
-  let items = task.getElementsByTagName("li");
-  for (const i of items) {
-    i.hidden = false;
-    if (!dataids.includes(i.id)) {
-      i.hidden = true;
-    }
-  }
-}
-
-function displayTasks() {
+// Displays the tasks inside a frame
+function displayTasks(tasks) {
   task.innerHTML = "";
-  let tasks = getlocalitems();
 
   if (tasks !== null) {
     for (const t of tasks) {
@@ -36,17 +22,17 @@ function displayTasks() {
 
       taskItem.appendChild(taskBox);
       taskBox.setAttribute("type", "checkbox");
+      taskBox.checked = t.checked;
       taskBox.setAttribute("id", t.id);
-      if (taskItem.parparentElement != null || taskItem.length == 0) {
-        console.log(tasks.length);
-        if (t.completed) {
-          taskItem.parentElement.children[1].style.textDecoration =
-            "line-through";
-        } else {
-          taskItem.parentElement.children[1].style.textDecoration = "none";
-        }
+
+      // Checks to see is the checkBox is checked or not. Without this
+      // here, they are still checked but the link-through is gone
+      if (t.checked) {
+        taskText.style.textDecoration = "line-through";
+      } else {
+        taskText.style.textDecoration = "none";
       }
-      taskBox.checked = t.completed;
+
       taskItem.setAttribute("id", t.id);
       taskItem.appendChild(taskText);
       taskText.textContent = t.task;
@@ -55,49 +41,29 @@ function displayTasks() {
 
       task.appendChild(taskItem);
 
+      // Here we use an addEventListener to delete a task
       taskBtn.addEventListener("click", function () {
-        deleteTask(taskItem);
-        updateCounter();
+        deleteTask(taskItem.id);
+        task.removeChild(taskItem);
       });
 
+      // Here is use an addEventListener to each taskItem so
+      // they can operate seperately.
       taskItem.addEventListener("click", statusCheckHandler);
     }
-    updateCounter();
   }
+
+  input.focus();
 }
 
-function updateCounter() {
-  let tasks = getlocalitems();
-  let completedtasks = tasks.filter((i) => !i.completed);
-  if (completedtasks.length < 1 || completedtasks.length > 1) {
-    document.querySelector(
-      "#taskTotal"
-    ).innerHTML = `${completedtasks.length} Tasks`;
-  } else {
-    document.querySelector(
-      "#taskTotal"
-    ).innerHTML = `${completedtasks.length} Task`;
-  }
-}
-
-function deleteTask(item) {
-  deletingtask = true;
-  deletelocalitem(item.id);
-  task.removeChild(item);
-}
-
+// Checks to see is the checkBox is checked or not.
 let statusCheckHandler = (event) => {
-  let check = event.target.parentElement.children[1];
-  if (!deletingtask) {
-    // Check if the checkbox is checked
-    if (event.target.checked) {
-      check.style.textDecoration = "line-through";
-      completelocaltask(event.target.id);
-    } else {
-      uncompletelocaltask(event.target.id);
-      check.style.textDecoration = "none";
-    }
-    updateCounter();
+  let text = event.target.parentElement.children[1];
+  // Check if the checkbox is checked
+  if (event.target.checked) {
+    text.style.textDecoration = "line-through";
+  } else {
+    text.style.textDecoration = "none";
   }
-  deletingtask = false;
+  taskChecked(event.target.id);
 };

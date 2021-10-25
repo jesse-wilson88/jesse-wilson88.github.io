@@ -1,65 +1,67 @@
-function getlocalitems() {
+// Gets the tasks from local storage if there are any
+function getLocalTasks() {
   let tasks = localStorage.getItem("tasks");
-  // console.log("tasks: " + tasks);
   return JSON.parse(tasks);
 }
 
-function savelocalitems(tasks) {
-  window.localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-function savenewlocalitem(item) {
-  tasklist = getlocalitems();
-
-  let counter = 0;
-  for (const i in tasklist) {
-    counter++;
+// Saves tasks entered by the user
+function saveNewLocalTask(task) {
+  let taskList = getLocalTasks();
+  if (taskList === null) {
+    taskList = [];
   }
 
-  if (counter > 0) {
-    taskids = Object.values(
-      tasklist.map((i) => {
-        return parseInt(i.id.substring(4));
-      })
-    );
-  } else {
-    tasklist = [];
-    taskids = [0];
-  }
-
-  tasklist.push({
-    id: new Date(),
-    task: item,
-    completed: false,
+  // Adds task to array to be saved in localStorage
+  taskList.push({
+    id: new Date().getTime(),
+    task: task,
+    checked: false,
   });
 
-  savelocalitems(tasklist);
+  window.localStorage.setItem("tasks", JSON.stringify(taskList));
 }
 
-function deletelocalitem(item) {
-  tasklist = getlocalitems();
-  tasklist = tasklist.filter((i) => i.id !== item);
-  savelocalitems(tasklist);
+// Filters out the tasks based on the condition and displays the filtered tasks
+function getCompletedTasks(condition) {
+  let taskList = getLocalTasks();
+  let completedTasks = [];
+
+  if (condition != "All") {
+    completedTasks = taskList.filter((i) => {
+      return i.checked == condition;
+    });
+  } else {
+    completedTasks = taskList;
+  }
+  // I like the following commented out code. Leaving it for later reference
+  // console.log(JSON.stringify(completedTasks, null, 2));
+  return completedTasks;
 }
 
-function completelocaltask(item) {
-  tasklist = getlocalitems();
-  tasktoupdate = tasklist
-    .map((i) => {
-      return i.id;
-    })
-    .indexOf(item);
-  tasklist[tasktoupdate].completed = true;
-  savelocalitems(tasklist);
+// Toggles the checkBox with checked (true) or unchecked (false)
+function taskChecked(id) {
+  let taskList = getLocalTasks();
+
+  for (const task of taskList) {
+    if (task.id == id) {
+      task.checked = !task.checked;
+    }
+  }
+
+  window.localStorage.setItem("tasks", JSON.stringify(taskList));
 }
 
-function uncompletelocaltask(item) {
-  tasklist = getlocalitems();
-  tasktoupdate = tasklist
-    .map((i) => {
-      return i.id;
-    })
-    .indexOf(item);
-  tasklist[tasktoupdate].completed = false;
-  savelocalitems(tasklist);
+// Deletes the task list and updates the array
+function deleteTask(task) {
+  let taskList = getLocalTasks();
+
+  let newTaskList = [];
+  for (const t of taskList) {
+    if (t.id != task) {
+      newTaskList.push(t);
+    }
+  }
+
+  window.localStorage.setItem("tasks", JSON.stringify(newTaskList));
+  countTasks(newTaskList);
 }
