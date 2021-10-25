@@ -53,7 +53,11 @@ filterCompleted.addEventListener("click", (event) => {
 
 // Displays how many tasks there are filtered or not
 function countTasks(data) {
-  let tasks = data.length;
+  let tasks = 0;
+  if (data != null) {
+    tasks = data.length;
+  }
+
   if (tasks == 1) {
     document.getElementById("taskTotal").innerHTML = `${tasks} task`;
   } else {
