@@ -1,6 +1,6 @@
 function getLocalTodos() {
-  let todos = localStorage.getItem("todos");
-  return JSON.parse(todos);
+  let tasks = localStorage.getItem("tasks");
+  return JSON.parse(tasks);
 }
 
 function saveLocalTodos(task) {
@@ -8,10 +8,22 @@ function saveLocalTodos(task) {
 }
 
 function saveNewLocalTodo(item) {
-  taskList = getLocalTodos();
+  let taskList = getLocalTodos();
 
-  if (taskList == null) {
+  let counter = 0;
+  for (const i in taskList) {
+    counter++;
+  }
+
+  if (counter > 0) {
+    taskIds = Object.values(
+      taskList.map((i) => {
+        return parseInt(i.id.substring(4));
+      })
+    );
+  } else {
     taskList = [];
+    taskIds = [0];
   }
 
   taskList.push({

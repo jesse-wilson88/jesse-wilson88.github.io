@@ -1,11 +1,11 @@
 function getlocalitems() {
-  let todos = localStorage.getItem("todos");
-  // console.log("todos: " + todos);
-  return JSON.parse(todos);
+  let tasks = localStorage.getItem("tasks");
+  // console.log("tasks: " + tasks);
+  return JSON.parse(tasks);
 }
 
 function savelocalitems(tasks) {
-  window.localStorage.setItem("todos", JSON.stringify(tasks));
+  window.localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function savenewlocalitem(item) {

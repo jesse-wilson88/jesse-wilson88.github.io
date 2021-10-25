@@ -1,13 +1,13 @@
 function addTask() {
   if (input.value !== "") {
-    saveNewLocalTodo(input.value);
+    saveNewTask(input.value);
     input.value = "";
   }
 }
 
 function displayTasks() {
   task.innerHTML = "";
-  let tasks = getLocalTodos();
+  let tasks = getTasks();
 
   if (tasks !== null) {
     for (const t of tasks) {
@@ -19,7 +19,6 @@ function displayTasks() {
       taskItem.appendChild(taskBox);
       taskBox.setAttribute("type", "checkbox");
       taskItem.setAttribute("id", t.id);
-
       if (taskItem.parentElement != null || taskItem.length == 0) {
         if (t.completed) {
           taskItem.parentElement.children[1].style.textDecoration =
@@ -52,12 +51,11 @@ function displayTasks() {
   }
 }
 
-function deleteTask(item) {
-  taskList = getLocalTodos();
-  taskList = taskList.filter((i) => i.id !== item);
-  saveLocalTodos(taskList);
-  task.removeChild(item);
-}
+// function updateCounter() {
+//   let tasks = getTasks();
+//   let completedTasks = tasks.filter((i) => !i.completed);
+
+// }
 
 let statusCheckHandler = (event) => {
   let text = event.target.parentElement.children[1];
