@@ -1,34 +1,61 @@
-function displayTasks() {
-  let taskInput = input.value;
-  input.value = "";
-
-  if (taskInput != "") {
-    const taskItem = document.createElement("li");
-    const taskText = document.createElement("span");
-    const taskBtn = document.createElement("button");
-    const taskBox = document.createElement("input");
-
-    taskItem.appendChild(taskBox);
-    taskBox.setAttribute("type", "checkbox");
-    taskItem.setAttribute("id", new Date().getTime());
-    taskItem.appendChild(taskText);
-    taskText.textContent = taskInput;
-    taskItem.appendChild(taskBtn);
-    taskBtn.textContent = "❌";
-
-    task.appendChild(taskItem);
-
-    // Here we use an addEventListener to delete a task
-    taskBtn.addEventListener("click", function () {
-      task.removeChild(taskItem);
-    });
-
-    // Here is use an addEventListener to each taskItem so
-    // they can operate seperately.
-    taskItem.addEventListener("click", statusCheckHandler);
+function addTask() {
+  if (input.value !== "") {
+    saveNewLocalTodo(input.value);
+    input.value = "";
   }
+}
 
-  input.focus();
+function displayTasks() {
+  task.innerHTML = "";
+  let tasks = getLocalTodos();
+
+  if (tasks !== null) {
+    for (const t of tasks) {
+      const taskItem = document.createElement("li");
+      const taskText = document.createElement("span");
+      const taskBtn = document.createElement("button");
+      const taskBox = document.createElement("input");
+
+      taskItem.appendChild(taskBox);
+      taskBox.setAttribute("type", "checkbox");
+      taskItem.setAttribute("id", t.id);
+      if (taskItem.parentElement != null || taskItem.length == 0) {
+        if (t.completed) {
+          taskItem.parentElement.children[1].style.textDecoration =
+            "line-through";
+        } else {
+          taskItem.parentElement.children[1].style.textDecoration = "none";
+        }
+      }
+
+      taskBox.checked = t.completed;
+      taskItem.setAttribute("id", t.id);
+      taskItem.appendChild(taskText);
+      taskText.textContent = t.task;
+      taskItem.appendChild(taskBtn);
+      taskBtn.textContent = "❌";
+
+      task.appendChild(taskItem);
+
+      // Here we use an addEventListener to delete a task
+      taskBtn.addEventListener("click", function () {
+        deleteTask(taskItem);
+      });
+
+      // Here is use an addEventListener to each taskItem so
+      // they can operate seperately.
+      taskItem.addEventListener("click", statusCheckHandler);
+
+      input.focus();
+    }
+  }
+}
+
+function deleteTask(item) {
+  taskList = getLocalTodos();
+  taskList = taskList.filter((i) => i.id !== item);
+  saveLocalTodos(taskList);
+  task.removeChild(item);
 }
 
 let statusCheckHandler = (event) => {
