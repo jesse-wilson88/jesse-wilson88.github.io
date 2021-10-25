@@ -1,3 +1,5 @@
+console.log("If this does not work clear the local cache and try again.");
+
 let deletingtask = false;
 
 function addTask() {
@@ -35,7 +37,7 @@ function displayTasks() {
       taskItem.appendChild(taskBox);
       taskBox.setAttribute("type", "checkbox");
       taskBox.setAttribute("id", t.id);
-      if (taskItem.parentElement != null || taskItem.length == 0) {
+      if (taskItem.parparentElement != null || taskItem.length == 0) {
         console.log(tasks.length);
         if (t.completed) {
           taskItem.parentElement.children[1].style.textDecoration =
