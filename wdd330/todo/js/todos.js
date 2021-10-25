@@ -5,7 +5,7 @@ function addTask() {
   if (taskInput != "") {
     saveNewLocalTask(taskInput);
     displayTasks(getLocalTasks());
-    countTasks(getCompletedTasks("All"));
+    countTasks(filterTasks("All"));
   }
 }
 

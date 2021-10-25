@@ -3,7 +3,7 @@ const input = document.querySelector("input");
 const button = document.querySelector("button");
 
 displayTasks(getLocalTasks());
-countTasks(getCompletedTasks("All"));
+countTasks(filterTasks("All"));
 
 // Here we use an addEventListener for the button
 button.addEventListener("click", addTask);
@@ -26,7 +26,7 @@ const filterCompleted = document.getElementById("filterCompleted");
 // Shows all tasks, completed or not
 filterAll.addEventListener("click", (event) => {
   task.innerHTML = "";
-  const tasks = getCompletedTasks("All");
+  const tasks = filterTasks("All");
 
   displayTasks(tasks);
 
@@ -36,7 +36,7 @@ filterAll.addEventListener("click", (event) => {
 // Shows only active tasks
 filterActive.addEventListener("click", (event) => {
   task.innerHTML = "";
-  const tasks = getCompletedTasks(false);
+  const tasks = filterTasks(false);
   displayTasks(tasks);
 
   countTasks(tasks);
@@ -45,7 +45,7 @@ filterActive.addEventListener("click", (event) => {
 // Shows only completed tasks
 filterCompleted.addEventListener("click", (event) => {
   task.innerHTML = "";
-  const tasks = getCompletedTasks(true);
+  const tasks = filterTasks(true);
   displayTasks(tasks);
 
   countTasks(tasks);

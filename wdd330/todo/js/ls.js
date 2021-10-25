@@ -22,20 +22,23 @@ function saveNewLocalTask(task) {
 }
 
 // Filters out the tasks based on the condition and displays the filtered tasks
-function getCompletedTasks(condition) {
+function filterTasks(condition) {
   let taskList = getLocalTasks();
-  let completedTasks = [];
+  let filteredTasks = [];
 
-  if (condition != "All") {
-    completedTasks = taskList.filter((i) => {
-      return i.checked == condition;
-    });
-  } else {
-    completedTasks = taskList;
+  if (taskList != null) {
+    if (condition != "All") {
+      filteredTasks = taskList.filter((i) => {
+        return i.checked == condition;
+      });
+    } else {
+      filteredTasks = taskList;
+    }
   }
+
   // I like the following commented out code. Leaving it for later reference
   // console.log(JSON.stringify(completedTasks, null, 2));
-  return completedTasks;
+  return filteredTasks;
 }
 
 // Toggles the checkBox with checked (true) or unchecked (false)
