@@ -20,7 +20,7 @@ const assignments = [
     url: "week05/",
   },
   {
-    label: "Todo Application: ",
+    label: "Week 06: ",
     url: "todo/",
   },
   {
@@ -41,7 +41,14 @@ assignments.forEach((assignment) => {
   a.setAttribute("href", url);
 
   li.innerHTML = label;
-  a.innerHTML = "Notes & Code";
+  console.log(li.innerHTML);
+  if (li.innerHTML == "Week 06: ") {
+    console.log("This is week 6");
+    a.innerHTML = "Todo Application";
+  } else {
+    console.log("This is not week 6");
+    a.innerHTML = "Notes & Code";
+  }
 
   li.append(a);
   ul.append(li);
