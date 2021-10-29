@@ -132,12 +132,284 @@
         property to a function that describes what it does.
       </p>
       <pre>
-  square.description = 'Squares a number that is provided as an argument'
+  <b>square.description = 'Squares a number that is provided as an argument'</b>
   << 'Squares a number that is provided as an argument'
       </pre>
       <u>Memoization</u>
-      <p></p>
+      <p>
+        If it takes some time for a function to return a value, the value can be
+        saved as a cache property that can be used again later. For example, say
+        squaring a number was an expensive computational operation that took a
+        long time. Here is the square() function rewritten to show how this
+        would look.
+      </p>
+      <pre>
+  <b>function square(x) {
+    square.cache = square.cache || {};
+    if (!square.cache[x]) {
+      square.cache[x] = x * x;
+    }
+    return square.cache[x];
+  }</b>
+      </pre>
+      <p>
+        If we call the function we will see that the cache object stores the
+        results.
+      </p>
+      <pre>
+  <b>square(3);</b>
+  << 9
 
+  <b>square(-11);</b>
+  << 121
+
+  <b>square.cache;</b>
+  << {"3": 9, "-11": 121}
+      </pre>
+      <u>Immediately Invoked Function Expressions</u>
+      <p>
+        An Immediately Invoked Function Expression – or IIFE (pronounced “iffy”)
+        – is an anonymous function that, as the name suggests, is invoked as
+        soon as it’s defined. To achieve this,
+        <b
+          ><span style="color: red"
+            >parentheses placed at the end of the function definition</span
+          ></b
+        >. The function also has to be made into an expression, which is done by
+        placing the whole declaration inside parentheses IIFEs are a useful way
+        of performing a task while keeping any variables wrapped within the
+        scope of the function which. This means the global namespace is not
+        polluted with lots of variable names.
+      </p>
+      <pre>
+  <b>(function () {
+    const temp = "World";
+    console.log(`Hello ${temp}`);
+  })<span style="color:red">()</span>;</b>
+
+  << 'Hello World'
+      </pre>
+      <u>Temporary Variables</u>
+      <p>
+        The book says there is no way to remove a variable from a scope once it
+        has been declared.A variable that is only purpose is Temporarily may
+        cause problems.
+      </p>
+      <ul>
+        <li>Cause confussion if it is still available later in the code</li>
+        <li>
+          The variable name may clash with another piece of code (an external
+          JavaScript library)
+        </li>
+      </ul>
+      <p>
+        Placing any code that uses the temporary variable inside an IIFE will
+        ensure it’s only available while the IIFE is invoked, then it will
+        disappear. The following example uses a IIFE to swap the value of two
+        global variables (a & b). Temp is a temporary variable that only exists
+        while the IIFE is invoked.
+      </p>
+      <pre>
+  <b>let a = 1;
+    let b = 2;
+    
+  (() => {
+    const temp = a;
+    a = b;
+    b = temp;
+  })();</b>
+
+  <b>a;</b>
+  << 2
+
+  <b>b;</b>
+  << 1
+
+  // Temp does not exist after the function has been invoked
+  <b>console.log(temp);</b>
+  << Error: "temp is not defined" 
+      </pre>
+      <p>
+        You do not need to swap two variable in ES6 if you use destructuring.
+      </p>
+      <pre>
+  <b>let [a,b] = [1,2];
+    [a,b] = [b,a];</b>
+
+  <b>a;</b>
+  << 2
+
+  <b>b;</b>
+  << 1
+      </pre>
+      <u>Initialization Code</u>
+      <p>
+        An IIFE can be used to set up an Initialization code that you will not
+        need again. The code is only used one so there is not need to create any
+        reusable, named functions and all the variables will also be temporary.
+        An IIFE will be invoked once, and can set up any variables, objects and
+        event handlers when the page loads.
+      </p>
+      <pre>
+  <b>(function () {
+    const name = "Peter Parker"; // This might be obtained from a cookie in reality
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const date = new Date(),
+      today = days[date.getDay()];
+    console.log(`Welcome back ${name}. Today is ${today}`);
+  })();</b>
+
+        << 'Welcome back Peter Parker. Today is Tuesday'
+      </pre>
+      <p>This is how you would achieve the same code above in ES6.</p>
+      <pre>
+  <b>{
+    const name = "Peter Parker"; // This might be obtained from a cookie in reality
+
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const date = new Date(),
+      today = days[date.getDay()];
+
+    console.log(`Welcome back ${name}. Today is ${today}`);
+  }</b>
+
+  << 'Welcome back Peter Parker. Today is Tuesday'
+      </pre>
+      <u>Creating Self-contained Code Blocks</u>
+      <p>
+        An IIFE can be used to enclose a block of code inside its own private
+        scope so it doesn’t interfere with any other part of the program. Using
+        IIFEs in this way means code can be added or removed separately. Below
+        are two blocks of code that run independently of each other.
+      </p>
+      <pre>
+  <b>(function () {
+    // block A
+    const name = "Block A";
+    console.log(`Hello from ${name}`);
+  })();
+
+  (function () {
+    // block B
+    const name = "Block B";
+    console.log(`Hello from ${name}`);
+  })();
+  </b>
+
+  << Hello from Block A
+  << Hello from Block B
+      </pre>
+      <p>
+        Both code blocks include a variable called name but the modules do not
+        interfere with each other. This is useful for testing purposes because
+        we are separating parts of a program into discrete sections.
+      </p>
+      <u>Functions that Define and Rewrite Themselves</u>
+      <p>
+        A function is able to not only call itself but it can define itself and
+        even redefine itself because of the dynamic nature of JavaScript. This
+        can be done by assigning an anonymous function to a variable that has
+        the same name as the function.
+      </p>
+      <pre>
+  <b>function party() {
+    console.log("Wow this is amazing!");
+    party = function () {
+      console.log("Been there, got the T-Shirt");
+    };
+  }</b>
+  
+  // When the function has been called once, it will be as if it was defined like this:
+  <b>function party() {
+    console.log("Been there, got the T-Shirt");
+  }</b>
+
+  <b>party();</b>
+  << 'Wow this is amazing!'
+
+  // After the first time, it will log the message "Been there, got the T-Shirt:
+  <b>party();</b>
+  << 'Been there, got the T-Shirt'
+
+  <b>party();</b>
+  << 'Been there, got the T-Shirt'
+      </pre>
+      <p>
+        If the function is also assigned to another variable, this variable will
+        maintain the original function definition and not be rewritten. This is
+        because the original function is assigned to a variable, then within the
+        function, a variable with the same name as the function is assigned to a
+        different function.
+      </p>
+      <pre>
+  <b>function party() {
+    console.log("Wow this is amazing!");
+    party = function () {
+      console.log("Been there, got the T-Shirt");
+    };
+  }</b>
+
+  <b>const beachParty = party;</b> // note that the party function has not been invoked
+
+  <b>beachParty();</b> // the party() function has now been redefined, even though it hasn't been called explicitly
+  << 'Wow this is amazing!'
+
+  <b>party();</b>
+  << 'Been there, got the T-Shirt'
+
+  <b>beachParty();</b> // but this function hasn't been redefined
+  << 'Wow this is amazing!'
+
+  <b>beachParty();</b> // no matter how many times this is called it will remain the same
+  << 'Wow this is amazing!'
+      </pre>
+      <p>
+        If any properties have previously been set on the function, these will
+        be lost when the function redefines itself. In the previous example, we
+        can set a music property, and see that it no longer exists after the
+        function has been invoked and redefined
+      </p>
+      <pre>
+  <b>function party() {
+    console.log("Wow this is amazing!");
+    party = function () {
+      console.log("Been there, got the T-Shirt");
+    };
+  }</b>
+
+  <b>party.music = 'Classical Jazz';</b> // set a property of the function
+
+  <b>party();</b>
+  << "Wow this is amazing!"
+
+  <b>party.music;</b> // function has now been redefined, so the property doesn't exist
+  << undefined
+      </pre>
+      <p>
+        This is called the <b>Lazy Definition Pattern</b> and is often used when
+        some initialization code is required the first time it’s invoked. This
+        means the initialization can be done the first time it’s called, then
+        the function can be redefined to what you want it to be for every
+        subsequent invocation.
+      </p>
+      <u>Init-Time Branching</u>
+      <p>PDF_Page_416</p>
       <!-- This is where my questions are added. This is to help me know that I will be continuing my notes above this sectin. -->
       <h2>Questions:</h2>
       <p>
