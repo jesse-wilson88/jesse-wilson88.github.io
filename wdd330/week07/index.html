@@ -44,8 +44,107 @@
 
     <!-- CONTENT HERE -->
     <main>
-      <u>Errors, Exceptions, and Warnings</u>
-      <p>Content</p>
+      <h1>Errors, Exceptions, and Warnings</h1>
+      <u>Function Properties and Methods</u>
+      <p>
+        Functions are first-class objects that can have properties and methods
+        themselves.
+      </p>
+      <pre>
+  <b>function square(x) {
+    return x*x;
+  }</b>
+
+  // We can query the length property and see that is accepts one parameter.
+  <b>square.length</b> 
+  << 1
+      </pre>
+      <u>Call and Apply Methods</u>
+      <p>
+        The call() method can be used to set the value of
+        <b><i>this</i></b> inside a function to an object that is provided as
+        the first argument. Below is an example of the sayHello() function which
+        refers to an unspecific object called <b><i>this</i></b> that has a
+        property called name:
+      </p>
+      <pre>
+  <b>function sayHello(){
+    return `Hello, my name is ${ <i>this</i>.name }`;
+  }</b>
+      </pre>
+      <p>
+        Multiple objects can have the same property (ex name) and use the call()
+        method to invoke the sayHello() function providing each object as an
+        argument. This will then take the value of <b><i>this</i></b> in the
+        function:
+      </p>
+      <pre>
+  <b>const clark = { name: 'Clark' };
+  const bruce = { name: 'Bruce' };</b>
+
+  <b>sayHello.call(clark);</b>
+  << 'Hello, my name is Clarke'
+
+  <b>sayHello.call(bruce);</b>
+  << 'Hello, my name is Bruce'
+      </pre>
+      <p>
+        Now if we were to update the sayHello() function to give a more
+        generalized greeting that is provided as an argument. If we call a
+        functoin that requires any parameters we need to provide those as an
+        argument, which is always the value of <b><i>this</i></b
+        >. This is how it could look like if we updated the sayHello() function
+        that is provided as an argument.
+      </p>
+      <pre>
+  <b>function sayHello(greeting='Hello'){ // Greetings is a default argument
+    return `${ greeting }, my name is ${ <i>this</i>.name }`;
+  }</b>
+  
+  <b>sayHello.call(clark, 'How do you do');</b>
+  << 'How do you do, my name is Clark'
+
+  sayHello.call(bruce);
+  << 'Hello, my name is Bruce'
+      </pre>
+      <p>
+        Function can sill be called using the call method even if it does not
+        refer to an object as the <b><i>this</i></b> in its body. We will use
+        the square function from above. Because <b><i>this</i></b> is not in its
+        body, we need to make the first argument null.
+      </p>
+      <pre>
+<b>square.call(null, 4)</b>
+<< 16
+      </pre>
+      <p>
+        The apply() method works in the same way, except the arguments of the
+        function are provided as an array, even if there is only one argument:
+      </p>
+      <pre>
+<b>square.apply(null, [4])</b>
+<< 16
+      </pre>
+      <u>Custom Properties</u>
+      <p>
+        We can add our own properties to functions the same way we add
+        properties to any object in JS. Here we will add the description
+        property to a function that describes what it does.
+      </p>
+      <pre>
+  square.description = 'Squares a number that is provided as an argument'
+  << 'Squares a number that is provided as an argument'
+      </pre>
+      <u>Memoization</u>
+      <p></p>
+
+      <!-- This is where my questions are added. This is to help me know that I will be continuing my notes above this sectin. -->
+      <h2>Questions:</h2>
+      <p>
+        When would you use the description property to describe what a function
+        does? When would you see it. I thought that was why we put comments in
+        our code.
+      </p>
     </main>
 
     <!-- FOOTER HERE -->

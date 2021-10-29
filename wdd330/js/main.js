@@ -20,7 +20,7 @@ const assignments = [
     url: "week05/",
   },
   {
-    label: "Week 06: ",
+    label: "Todo Application: ",
     url: "todo/",
   },
   {
