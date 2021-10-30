@@ -871,7 +871,7 @@
     };
   }
 
-  <b>const englishGreeter = greeter();  // englishGreeter is a function because it equals a function 
+  const englishGreeter = greeter();  // englishGreeter is a function because it equals a function 
   englishGreeter();</b>
   << Hello
 
@@ -909,12 +909,12 @@
   <b>inside</b>
   << ReferenceError: inside is not defined
       </pre>
-      <P>
+      <p>
         We cannot access the variable <b>inside</b> from outside the function.
         The variable <b>inside</b> is only kept "alive" while the function is
         active. Once the function has been invoked, any references to variables
         inside its scope are removed.
-      </P>
+      </p>
       <p>
         It is possible to gain access to variable outside the function where it
         was created, and after the function has been invoked.
@@ -981,21 +981,277 @@
         functions, as we can see when we invoke it:
       </p>
       <pre>
-        
+  <b>closure();</b>
+  << Outside!
+  << Inside!
       </pre>
-<!--    NOTES GO ABOVE HERE     -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
-<!--         -->
+      <p>
+        This is important as the variable outside should only exist while the
+        outer() function is running. The closure maintains access to this
+        variable, however, even though the outer() has been invoked. A closure
+        doesn’t just have access to the value of a variable, it can also change
+        the value of the variable long after the function in which it was
+        originally declared has been invoked.
+      </p>
+      <u>A Practical Example</u>
+      <p>
+        A closure is formed when a function returns another function that then
+        maintains access to any variables created in the original function’s
+        scope. In the following example, two variables, a and b, are created in
+        the scope of the closure() function. This then returns an anonymous
+        arrow function that maintains access to the variables a and b even after
+        the closure() function has been invoked:
+      </p>
+      <pre>
+  <b>function closure() {
+    const a = 1.8;
+    const b = 32;
+    return c => c * a + b;
+  }</b>
+
+  // Now we can create a new function by invoking the closure() function and
+  // assigning the return value to a variable called toFahrenheit:
+  <b>const toFahrenheit = closure();</b>
+
+  // Now the new function can be invoked with its own argument, but the values of
+  // a and b from the original function are still kept “alive”:
+  <b>toFahrenheit(30);</b>
+  << 86
+      </pre>
+      <u>A Counter Example</u>
+      <p>
+        Closures not only have access to variables declared in a parent
+        function’s scope, they can also change the value of these variables.
+        This allows us to do things like create a counter() function like the
+        one in the example below:
+      </p>
+      <pre>
+  <b>function counter(start) {
+    let i = start;
+    return function () {
+      return i++;
+    };
+  }</b>
+      </pre>
+      <p>
+        This function starts a count using the variable i. It then returns a
+        function that uses a closure that traps and maintains access to the
+        value of i. This function also has the ability to change the value of i,
+        so it increments i by one every time it’s invoked. The reference to the
+        variable i that is defined in the original function is maintained in the
+        new function via a closure. We can create a counter by assigning the
+        return value of the counter() function to a variable:
+      </p>
+      <pre>
+  <b>const count = counter(1);</b>
+      </pre>
+      <p>
+        The variable count now points to a function that has full access to the
+        variable i that was created in the scope of the counter() function.
+        Every time we invoke the count() function, it will return the value of i
+        and then increment it by 1:
+      </p>
+      <pre>
+  <b>count();</b>
+  << 1
+
+  <b>count();</b>
+  2
+      </pre>
+      <u>Generators</u>
+      <p>
+        ES6 introduced support for generators. These are special functions used
+        to produce iterators that maintain the state of a value. An asterisk
+        symbol (*) is placed after the function declaration is used to define a
+        generator function.
+      </p>
+      <pre>
+  <b>function* exampleGenerator() {
+    // code for the generator goes here
+  }</b>
+      </pre>
+      <p>
+        Calling a generator function doesn’t actually run any of the code in the
+        function; it returns a Generator object that can be used to create an
+        iterator that implements a next() method that returns a value every time
+        the next() method is called. Here is an example of a generator to
+        produce a Fibonacci-style number series (a sequence that starts with two
+        numbers and the next number is obtained by adding the two previous
+        numbers together), using the following code:
+      </p>
+      <pre>
+  <b>function* fibonacci(a, b) {
+    let [prev, current] = [a, b];
+    while (true) {
+      [prev, current] = [current, prev + current];
+      yield current;
+    }
+  }</b>
+      </pre>
+      <p>
+        To create a generator object based on this function, we simply assign a
+        variable to the function, and provide it with two starting numbers as
+        arguments:
+      </p>
+      <pre>
+        <b>const sequence = fibonacci(1,1);</b>
+
+        // The generator object is now stored in the sequence variable. It inherits a method
+        called next(), which is then used to obtain the next value produced by the yield
+        command:
+        <b>sequence.next();</b>
+        << 2
+
+        <b>sequence.next();</b>
+        << 3
+
+        <b>sequence.next();</b>
+        << 5
+
+        // It will continue to add up:
+          2  +  3 = 5
+          3  +  5 = 8
+          5  +  8 = 13
+          8  + 13 = 21
+          13 + 21 = 34
+
+        // It’s also possible to iterate over the generator to invoke it multiple times:
+        <b>for (n of sequence) {
+          // stop the sequence after it reaches 100
+          if (n > 10) break;
+          console.log(n);
+        }</b>
+
+        << 8
+        << 13
+        << 21
+        << 34
+        << 55
+        << 89
+      </pre>
+      <u>Pure Function</u>
+      <p>
+        A key aspect of functional programming is its use of pure functions. A
+        pure function is a function that adheres to the following rules:
+      </p>
+      <ul>
+        <li>
+          The return value of a pure function should only depend on the values
+          provided as arguments. It doesn’t rely on values from somewhere else
+          in the program.
+        </li>
+        <li>
+          There are no side-effects. A pure function doesn’t change any values
+          or data elsewhere in the program. It only makes non-destructive data
+          transformations and returns new values, rather than altering any of
+          the underlying data.
+        </li>
+        <li>
+          Referential transparency. Given the same arguments, a pure function
+          will always return the same result.
+        </li>
+      </ul>
+      <p>In order to follow these rules, any pure function must have:</p>
+      <ul>
+        <li>
+          At least one argument; otherwise the return value must depend on
+          something other than the arguments of the function, breaking the first
+          rule
+        </li>
+        <li>
+          return value; otherwise there’s no point in the function (unless it
+          has changed something else in the program – in which case, it’s broken
+          the “no 422 JavaScript: Novice to Ninja, 2nd Edition side-effects”
+          rule).
+        </li>
+      </ul>
+      <p>
+        Pure functions help to make functional programming code more concise and
+        predictable than in other programming styles. The following example
+        shows a pure function that writes the string provided as an argument
+        backwards:
+      </p>
+      <pre>
+  <b>function reverse(string) {
+    return string.split('').reverse().join('');
+  }</b>
+
+
+  // The function does not change the actual value of the argument, it just
+  // returns another string that happens to be the argument written backwards
+  <b>const message = 'Hello JavaScript';
+    reverse(message);</b>
+  << 'tpircSavaJ olleH'
+
+  <b>message // hasn't changed</b>
+  << 'Hello JavaScript'
+      </pre>
+      <p>
+        If I am correct a pure function is when a function uses arguments to use
+        within a function and not a variable used inside a function.
+      </p>
+      <u>Higher-Order Function</u>
+      <p>
+        From the book, it says, "Higher-order functions are functions that
+        accept another function as an argument, or return another function as a
+        result, or both. This sounds like what was described in the
+        <i>Functions That Return Functions</i> section.
+      </p>
+      <u>Currying</u>
+      <p>
+        Currying is a process that involves the partial application of
+        functions. Currying relies on higher-order functions that are able to
+        return partially applied functions. Currying allows you to turn a single
+        function into a series of functions instead. This is useful if you find
+        that you’re frequently calling a function with the same argument. For
+        example, the following multiplier() function is a generic function that
+        returns the product of two numbers that are provided as arguments:
+      </p>
+      <pre>
+  <b>function multiplier(x,y) {
+    return x * y;
+  }
+
+  const tax = multiplier(0.22,400);</b>
+  << 88
+
+  // The could above can be made more useful by adding some code at the start
+  // that allows it to be curried so it returns another function if only one
+  // argument is provided:
+  <b>function multiplier(x, y) {
+    if (y === undefined) {
+      return function (z) {
+        return x * z;
+      };
+    } else {
+      return x * y;
+    }
+  }
+
+  calcTax = multiplier(0.22);</b>
+  << function (z) {
+    return x * z;
+  }
+
+<b>calcTax(400);</b>
+<< 88
+
+      </pre>
+      <h2>Ajax</h2>
+      <p>PDFPage525</p>
+      <!--    NOTES GO ABOVE HERE     -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
       <!-- This is where my questions are added. This is to help me know that I
       will be continuing my notes above this sectin. -->
       <h2>Questions:</h2>
@@ -1004,7 +1260,7 @@
         does? When would you see it. I thought that was why we put comments in
         our code. Here is an example how the loadGame() function can be written
         as an async function.
-      </p>    
+      </p>
     </main>
 
     <!-- FOOTER HERE -->

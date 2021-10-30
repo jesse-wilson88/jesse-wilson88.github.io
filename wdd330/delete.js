@@ -1,9 +1,9 @@
-function outer() {
-  const outside = "Outside!";
-  function inner() {
-    const inside = "Inside!";
-    console.log(outside);
-    console.log(inside);
+function multiplier(x, y) {
+  if (y === undefined) {
+    return function (z) {
+      return x * z;
+    };
+  } else {
+    return x * y;
   }
-  return inner;
 }
