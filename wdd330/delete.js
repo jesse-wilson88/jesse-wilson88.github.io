@@ -1,6 +1,9 @@
-function party() {
-  console.log("Wow this is amazing!");
-  party = function () {
-    console.log("Been there, got the T-Shirt");
-  };
+function outer() {
+  const outside = "Outside!";
+  function inner() {
+    const inside = "Inside!";
+    console.log(outside);
+    console.log(inside);
+  }
+  return inner;
 }

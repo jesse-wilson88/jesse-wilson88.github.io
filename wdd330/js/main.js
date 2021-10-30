@@ -27,6 +27,26 @@ const assignments = [
     label: "Week 07: ",
     url: "week07/",
   },
+  // {
+  //   label: "Week 08: ",
+  //   url: "week08/",
+  // },
+  // {
+  //   label: "Week 09: ",
+  //   url: "week09/",
+  // },
+  // {
+  //   label: "Week 10: ",
+  //   url: "week10/",
+  // },
+  // {
+  //   label: "Week 11: ",
+  //   url: "week11/",
+  // },
+  // {
+  //   label: "Week 12: ",
+  //   url: "week12/",
+  // },
 ];
 
 let ul = document.createElement("ul");
