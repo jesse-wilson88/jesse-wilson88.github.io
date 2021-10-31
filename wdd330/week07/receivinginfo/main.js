@@ -68,6 +68,19 @@ function addTask(event) {
 // If you open up the todo.html file, add a task in the form and then submit it, you
 // should see a message in the console similar to the one below.
 
-// This fakes the fact that the task has been saved to a database and the relevant
-//data has been returned. In reality, the data hasn’t been saved, and the ID property has
+// This fakes the fact that the task has been saved to a database and the relevant data
+// has been returned. In reality, the data hasn’t been saved, and the ID property has
 // just been randomly generated for demonstration purposes.
+
+// Most forms will have an action attribute that specifies the URL to use if the form
+// is sent without using Ajax. It will also have a method attribute that will specify
+// the HTTP verb to use. These methods are available as properties of the form
+// object, so we could use these properties to create a more generalized request
+// object, as follows:
+
+// Commented out because it will not work with the code up to this point.
+// const request = new Request(form.action, {
+//   method: form.method,
+//   header: headers,
+//   body: data,
+// });

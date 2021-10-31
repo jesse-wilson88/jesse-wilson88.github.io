@@ -1619,7 +1619,45 @@
         <a href="sendinginfo/ajax.html" target="_blank">code</a> to view it.
       </p>
       <u>Sending Information</u>
-      <p></p>
+      <p>
+        This code works so I just added a URL to open the
+        <a href="receivinginfo/todo.html" target="_blank">code</a> to view it.
+      </p>
+      <h2>FormData</h2>
+      <p>
+        The Fetch API includes the FormData interface, which makes it much
+        easier to submit information in forms using Ajax. A FormData instance is
+        created using a constructor function:
+      </p>
+      <pre>
+  <b>const data = new FormData();</b>
+      </pre>
+      <p>
+        This code works so I just added a URL to open the
+        <a href="formdata/todo.html" target="_blank">code</a> to view it.
+      </p>
+      <h2>A Living Standard</h2>
+      <p>
+        A “living standard”, which means that the specification is being
+        developed in the wild . This means that, despite it being available to
+        use, it’s still subject to change as developers, browser vendors and
+        end-users provide feedback about how it works. It’s an experimental
+        technology, and new features might get added, or the syntax and behavior
+        of some properties and methods might change in the future.
+      </p>
+      <p>
+        There is a library that takes care of Ajax requests like the Fetch API.
+      </p>
+      <p>
+        The jQuery library is a good option for this – it has the generic ajax()
+        method that can be used in a very similar way to the fetch() method. For
+        example, if you want to get the data from the number API, you would use
+        the following code:
+      </p>
+      <pre>
+  <b>$.ajax('http://numbersapi.com/random')
+  .done(text => outputDiv.innerHTML = text );</b>
+      </pre>
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
       <!--         -->
