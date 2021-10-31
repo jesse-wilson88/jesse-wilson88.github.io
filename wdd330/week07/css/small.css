@@ -46,6 +46,11 @@ pre {
   border-style: solid;
 }
 
+table,
+td {
+  border: 1px solid #000;
+}
+
 /*----------- FOOTER --------------*/
 #footerWrapper {
   background-color: darkslategrey;

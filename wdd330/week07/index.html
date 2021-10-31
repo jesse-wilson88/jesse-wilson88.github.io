@@ -1238,7 +1238,388 @@
 
       </pre>
       <h2>Ajax</h2>
-      <p>PDFPage525</p>
+      <p>
+        Ajax is a technique that allows web pages to communicate asynchronously
+        with a server, and it dynamically updates web pages without
+        reloading.This enables data to be sent and received in the background,
+        as well as portions of a page to be updated in response to user events,
+        while the rest of the program continues to run. The use of Ajax
+        revolutionized how websites worked, and ushered in a new age of web
+        applications. Web pages were no longer static, but dynamic applications.
+      </p>
+      <h2>Clients and Servers</h2>
+      <p>
+        The web of computers known as the internet can be separated into two
+        parts: clients and servers. A client, such as a web browser, will
+        request a resource (usually a web page) from a server, which processes
+        the request and sends back a response to the client.
+      </p>
+      <p>
+        JavaScript was originally designed as a client-side scripting language
+        and adding dynamic features to a web page that is returned from the
+        server. Ajax allows JavaScript to request resources from a server on
+        behalf of the client. The resources requested are usually JSON data or
+        small fragments of text or HTML rather than a whole web page. A server
+        is required when requesting resources using Ajax. Some sever-side
+        languages are PHP, Ruby, Node.js, or .NET to serve the data response
+        following an Ajax request (usually from a back-end database).
+      </p>
+      <u>A Brief History of Ajax</u>
+      <p>
+        The term “Ajax” was coined by Jesse James Garrett in 2005 in the article
+        “Ajax: A New Approach to Web Applications,”2 where he referred to
+        techniques being used by Google in its recent web applications. Ajax was
+        a neat acronym that referred to the different parts of the process being
+        used: Asynchronous JavaScript and XML:
+      </p>
+      <table>
+        <tr>
+          <td id="td"><b>Asynchronous</b></td>
+          <td>
+            When a request for data is sent, the program doesn’t have to stop
+            and wait for the response. It can carry on running, waiting for an
+            event to fire when a response is received. By using callbacks to
+            manage this, programs are able to run in an efficient way, avoiding
+            lag as data is transferred back and forth.
+          </td>
+        </tr>
+        <tr>
+          <td id="td"><b>JavaScript</b></td>
+          <td>
+            JavaScript was always considered a front-end language, not used to
+            communicate with the server. Ajax enabled JavaScript to send
+            requests and receive responses from a server, allowing content to be
+            updated in real time.
+          </td>
+        </tr>
+        <tr>
+          <td id="td"><b>XML</b></td>
+          <td>
+            When the term Ajax was originally coined, XML documents were often
+            used to return data. Many different types of data can be sent, but
+            by far the most commonly used in Ajax nowadays is JSON, which is
+            more lightweight and easier to parse than XML. (Although it has
+            never really taken off, the termAjaj is sometimes used to describe
+            the technique.) JSON also has the advantage of being natively
+            supported in JavaScript, so you can deal with JavaScript objects
+            rather than having to parse XML files using DOM methods.
+          </td>
+        </tr>
+      </table>
+      <p>
+        I thought this was crazy. When the World Wide Web started, web pages
+        contained static content. Any changes to the content on the page
+        required a full page reload, often resulting in the screen going blank
+        while the new page loaded. Remember, this was back in the 1990s, when
+        dial-up modems were the norm. It was not till 2004 and 2005 when Google
+        launched Gmail and Google Maps where the user experience by changing the
+        parts of the page without a full refresh.
+      </p>
+      <u>APIs</u>
+      <p>
+        An application programming interface (API) is a collection of methods
+        that allows external access to another program or service. Many websites
+        allow controlled access to their data via public APIs. This means that
+        developers are able to interact with the data and create mashups of
+        third-party services. A weather site, for example, might have an API
+        that provides methods that return information about the weather in a
+        given location, such as temperature, wind speed, and so on. This can
+        then be used to display local weather data on a web page. The
+        information that’s returned by APIs is often serialized as JSON. Since
+        the data is being provided by an external site, CORS will have to be
+        enabled in order to access information from an API. Some services may
+        also require authentication in order to access their APIs.
+      </p>
+      <h2>The Fetch API</h2>
+      <p>
+        The Fetch API, which is currently a living standard for requesting and
+        sending data asynchronously across a network. Fetch API uses promises to
+        avoid callback hell.
+      </p>
+      <u>Basic Usage</u>
+      <p>
+        The Fetch API provides a global fetch() method that only has one
+        mandatory argument, which is the URL of the resource you wish to fetch.
+        A very basic example would look something like the following piece of
+        code:
+      </p>
+      <pre>
+  <b>fetch('https://example.com/data')
+    .then( // code that handles the response )
+    .catch( // code that runs if the server returns an error )</b>
+      </pre>
+      <p>
+        The fetch() method returns a promise that resolves to the response
+        returned from the URL that was provided as an argument. In the example
+        above, the promise will be resolved when a response is received from the
+        URL https:example.com/data.
+      </p>
+      <u>Response Interface</u>
+      <p>
+        The Fetch API introduced the Response interface that deals with the
+        object that’s returned when the promise is fulfilled. Response objects
+        have a number of properties and methods that allow us to process the
+        response effectively. we can use an if block to check if the request was
+        successful, and throw an error otherwise:
+      </p>
+      <pre>
+  <b>const url = 'https:example.com/data';
+
+  fetch(url).then((response) => {
+    if(response.ok) {
+    return response;
+  }throw Error(response.statusText);
+  })
+  .then( response => console.log("Do something with response")
+  .catch( error => console.log('There was an error!') ))</b>
+      </pre>
+      <p>
+        Notice that the error thrown refers to the statusText property of the
+        response object and specifies the status message that corresponds to the
+        code returned, for example it might be 'Forbidden' for a status code of
+        403. Some other properties of the Response object are:
+      </p>
+      <ul>
+        <li>
+          headers – A Headers object (see later section) containing any headers
+          associated with the response
+        </li>
+        <li>url – A string containing the URL of response</li>
+        <li>
+          redirected – A boolean value that specifies if the response is the
+          result of a redirect
+        </li>
+        <li>
+          type – A string value of “basic”, “cors”, “error” or “opaque”. A value
+          of “basic” is used for a response from the same domain. A value of
+          “cors” means the data was received from a valid cross-origin request
+          from a different domain. A value of “opaque” is used for a response
+          received from “no-cors” request from another domain, which means
+          access to the data will be severely restricted. A value of “error” is
+          used when a network error occurs.
+        </li>
+      </ul>
+      <u>Redirects</u>
+      <p>
+        The redirect() method can be used to redirect to another URL but there
+        is no support for the redirect() method in any browser.
+      </p>
+      <u>Text Reponses</u>
+      <p>
+        The text() method takes a stream of text from the response, reads it to
+        completion and then returns a promise that resolves to a USVSting object
+        that can be treated as a string in JavaScript. Here is an example of how
+        it would bre resolved:
+      </p>
+      <pre>
+  <b>fetch(url)
+    .then( response => response.text() ); // transforms the text stream into a JavaScript string
+    .then( text => console.log(text) )
+    .catch( error => console.log('There was an error: ', error))</b>
+      </pre>
+      <p>
+        A promise is returned, that resolves with a string representation of the
+        text that was returned. In the next statement, we take the result of the
+        promise and use console.log() to display the text in the console.
+      </p>
+      <u>File Responses</u>
+      <p>
+        The blob() method is used to read a file of raw data, such as an image
+        or a spreadsheet. Once it has read the whole file, it returns a promise
+        that resolves with a blob object. Here is an example:
+      </p>
+      <pre>
+  <b>fetch(url)
+    .then( response => response.blob() ); // transforms the data into a blob object
+    .then( blob => console.log(blob.type) )
+    .catch( error => console.log('There was an error: ', error))</b>
+      </pre>
+      <p>
+        This is similar to the text example above, but the blob() method is used
+        to return a blob object. We then use the type property to log the
+        MIME-type to log what type of file we have received.
+      </p>
+      <u>JSON Responses</u>
+      <p>
+        JSON is probably the most common format for AJAX responses. The json()
+        method is used to deal with these by transforming a stream of JSON data
+        into a promise that resolves to a JavaScript object. Here is an example:
+      </p>
+      <pre>
+  <b>fetch(url)
+    .then( response => response.json() ); // transforms the JSON data into a JavaScript object
+    .then( data => console.log(Object.entries(data)) )
+    .catch( error => console.log('There was an error: ', error))
+  </b>
+      </pre>
+      <u>Creating Response Objects</u>
+      <p>
+        Although most of the time you will be dealing with a response object
+        that is returned from a request you make, you can also create your own
+        response objects using a constructor function:
+      </p>
+      <pre>
+  <b>const response = new Response("Hello!", {
+    ok: true,
+    status: 200,
+    statusText: "OK",
+    type: "cors",
+    url: "/api",
+  });</b>
+      </pre>
+      <p>
+        The first argument is the data that is to be returned while the second
+        argument is an object that can be used to provide values for any of the
+        properties listed above. This is useful if we need to send a dummy
+        response for testing purposes or if we are creating an API that needs to
+        send a response.
+      </p>
+      <u>Request Interface</u>
+      <p>
+        We can get more fine-grained control over the request being made by
+        providing a Request object as an argument. This allows a number of
+        options to be set about the request. Request objects are created using
+        the Request() constructor, and include the following properties:
+      </p>
+      <ul>
+        <li>
+          url – The URL of the requested resource (the only property that is
+          required)
+        </li>
+        <li>
+          method – a string that specifies which HTTP method should be used for
+          the request. By default, this is GET
+        </li>
+        <li>
+          headers – This is a Headers object (see later section) that provides
+          details of the request’s headers
+        </li>
+        <li>
+          mode – Allows you to specify if Cross-origin resource sharing (CORS)
+          is used or not. CORS is enabled by default
+        </li>
+        <li>
+          cache – Allows you to specify how the request will use the browser’s
+          cache. For example, you can force it to request a resource and update
+          the cache with the result, or you can force it to only look in the
+          cache for the resource
+        </li>
+        <li>
+          credentials – Lets you specify if cookies should be allowed with the
+          request
+        </li>
+        <li>
+          redirect – Specifies what to do if the response returns a redirect.
+          There’s a choice of three values: “follow” (the redirect is followed),
+          “error” (an error is thrown) or “manual” (the user has to click on a
+          link to follow the redirect)
+        </li>
+      </ul>
+      <p>
+        A constructor function is used to create a new Request object. An
+        example is shown below:
+      </p>
+      <pre>
+  <b>const request = new Request("https://example.com/data", {
+    method: "GET",
+    mode: "cors",
+    redirect: "follow",
+    cache: "no-cache",
+  });</b>
+      </pre>
+      <p>
+        The url property is the first argument, and is required. The second
+        argument is an object made up of any of the other properties listed
+        above.
+      </p>
+      <pre>
+  <b>fetch(request)
+    .then( // do something with the response )
+    .catch( // handle any errors)</b>
+
+    ------------------------------------------
+
+  <b>fetch('https://example.com/data', {
+    method: 'GET',
+    mode: 'cors',
+    redirect: 'follow',
+    cache: 'no-cache'
+  })
+  .then( // do something with the response )
+  .catch( // handle any errors)
+    </b>
+      </pre>
+      <u>Headers Interface</u>
+      <p>
+        HTTP headers are used to pass on any additional information about a
+        request or response. This information is typically contained in headers
+        and includes the file-type of the resource, cookie information,
+        authentication information and when the resource was last modified. A
+        new Headers instance is created using a constructor function, as seen in
+        the example below:
+      </p>
+      <pre>
+  <b>const headers = new Headers();</b>
+      </pre>
+      <p>
+        A Headers object includes the following properties and methods that can
+        be used to access information about the headers, as well as edit the
+        header information.
+      </p>
+      <ul>
+        <li>
+          has() – Can be used to check if the headers object contains the header
+          provided as an argument
+        </li>
+        <li>get() - Returns the value of the header provided as an argument</li>
+        <li>
+          set() – Can be used to set a value of an already existing header, or
+          create a new header with the value provided as an argument if it does
+          not already exist
+        </li>
+        <li>append() – Adds a new header to the headers object</li>
+        <li>delete() – Removes the header provided as an argument</li>
+        <li>
+          keys(), values() and entries() – Iterators that can be used to iterate
+          over the headers key, values or entries (key and value pairs)
+        </li>
+      </ul>
+      <u>Putting it all together</u>
+      <p>
+        We can use the Headers, Request and Response objects to put together a
+        typical example that sets up the URL, Request and Headers before calling
+        the fetch() method:
+      </p>
+      <pre>
+  <b>const url = "https:example.com/data";
+    const headers = new Headers({
+      "Content-Type": "text/plain",
+      "Accept-Charset": "utf-8",
+      "Accept-Encoding": "gzip,deflate",
+  });
+
+  const request = (url, { headers: headers });
+
+  fetch(request)
+    .then(function (response) {
+      if (response.ok) {
+        return response;
+      }
+      throw Error(response.statusText);
+    })
+    .then((response) =>
+      console
+        .log("Do something with response")
+        .catch((error) => console.log("There was an error!"))
+    );</b>
+      </pre>
+      <u>Receiving Information</u>
+      <p>
+        This code works so I just added a URL to open the
+        <a href="sendinginfo/ajax.html" target="_blank">code</a> to view it.
+      </p>
+      <u>Sending Information</u>
+      <p></p>
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
       <!--         -->
