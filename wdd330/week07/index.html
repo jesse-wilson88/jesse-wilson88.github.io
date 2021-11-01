@@ -602,7 +602,7 @@
         look like the snippet below.
       </p>
       <pre>
-  // uses the error-first callback style popularized by Node.js.
+  // The code above ses the error-first callback style popularized by Node.js.
   // In this coding pattern, callbacks have two arguments. The first is the error
   // argument, which is an error object provided if something goes wrong when
   // completing the operation. The second argument is any data returned by the
@@ -811,6 +811,10 @@
         return value of the function in a promise that can then be assigned to a
         variable. The next line of code is not executed until the promise is
         resolved.
+      </p>
+      <p>
+        Here is an example how the loadGame() function can be written as an
+        async function.
       </p>
       <pre>
   <b>async function loadGame(userName) {
@@ -1658,27 +1662,11 @@
   <b>$.ajax('http://numbersapi.com/random')
   .done(text => outputDiv.innerHTML = text );</b>
       </pre>
-      <!--    NOTES GO ABOVE HERE     -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!-- This is where my questions are added. This is to help me know that I
-      will be continuing my notes above this sectin. -->
       <h2>Questions:</h2>
       <p>
         When would you use the description property to describe what a function
         does? When would you see it. I thought that was why we put comments in
-        our code. Here is an example how the loadGame() function can be written
-        as an async function.
+        our code.
       </p>
     </main>
 
