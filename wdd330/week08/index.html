@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="infomation about site." />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Week 7 Notes & Codes</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
+
+    <!-- JAVASCRIPTS-->
+    <script defer src="js/styles.js"></script>
+  </head>
+  <body>
+    <!-- HEADER HERE -->
+    <header id="headerWrapper">
+      <h1>Week 7 Notes & Codes</h1>
+    </header>
+
+    <!-- NAVIGATION HERE -->
+    <nav></nav>
+
+    <!-- CONTENT HERE -->
+    <main>
+      <h1>CSS3 Transforms And Transitions</h1>
+      <p>
+        For years, the only way to displaytext on an angle was to use an image
+        of text created in an image-editing program and the only way to animate
+        was to change positioning with JavaScript. This is far from ideal. Enter
+        CSS3: without a line of JavaScript or a single JPEG, you can tilt,
+        scale, move, and even flip your elements with ease.
+      </p>
+      <h2>Transforms</h2>
+      <p>
+        The CSS3 transform lets you translate, rotate, scale, and.or shew any
+        element on the page. Some effects are possible using previously existing
+        CSS features (translating with relatice and absolute positioning), CSS3
+        give us more control over many more aspects of the elements appearance.
+      </p>
+      <p>
+        With transform functions we can manipulate an element's appearance.The
+        value of the transform property is one or more transform functions
+        (separated by spaces) that will be applied in the order they’re
+        provided. All modern browsers, starting with IE10 and Android 3, also
+        support the transformation of elements in 3D space, but 3D transforms
+        are beyond the scope of this book.
+      </p>
+      <u>Translation</u>
+      <p>
+        Translation functions allow you to move elements up, down, left, or
+        right. This is similar to the behavior of position: relative; moving
+        elements along the x and y axes. When employing a translation function,
+        you're moving elements without impacting the flow of the document.
+        Unlike positioning: relative; you position an element against either its
+        current position or a parent or other ancestor. A translated element can
+        only be moved relative to its current position.
+      </p>
+      <pre>
+  // The translate(x,y) function moves an element x from the left, and y from the top
+  <b>transform: translate(45px, -45px);</b>
+
+  // If you only want to move an element vertically
+  <b>transform: translateX(45px);</b> // Move 45px to the right along
+  the x axis
+
+  // If you only want to move an element horizontally
+  <b>transform: translateY(-30px);</b> // Move up along the y axis by 30px
+      </pre>
+      <figure>
+        <img src="images/dukes1.jpg" alt="Put your dukes up sir" />
+        <figcaption>
+          Figure 8.1. This block will serve to illustrate CSS3 transforms
+        </figcaption>
+      </figure>
+      <p>
+        Let's pretend the image above is HTML code and we will use the following
+        code to change how it looks. Here is the code that we will be working
+        with for the words <b>Put your dukes up, sire</b>.
+      </p>
+      <pre>
+  &#60;h1>Put your &#60;span>dukes</span> up, sire</h1>
+
+  // We will have it change when 'duke' is hovered over
+  <b>.ad-ad2 h1:hover span {
+    color: #484848;  
+    transform: translateX(40px);
+  }</b>
+      </pre>
+      <p>
+        Because transforms does not work on inline elements, this is how the
+        code would look so it did work.
+      </p>
+      <pre>
+  <b>.ad-ad2 h1 span {
+    font-size: 30px;
+    color: #999999;
+    display: inline-block;
+  }</b>
+      </pre>
+      <p>
+        This would be the result after hovering over the word dukes.
+      </p>
+      <figure>
+        <img src="images/dukes2.jpg" alt="Put up your dukes hovered over">
+        <figcaption>Figure 8.2. The result of our translate transform</figcaption>
+      </figure>
+      <u>Scaling</u>
+      <p>
+        The scale(x,y) function scales an element by the defined factors horizontally then
+vertically. If only variable is passed to the scale(x) function, it will be used for bother x and y values and will maintain the original aspect ratio. If you did scale(1) would leave the element the same size, scale(2)
+would double its proportions, scale(0.5) would halve them, and so on. Providing
+different values will distort the element, as you’d expect.
+      </p>
+      <pre>
+  <b>transform: scale(1.5, 0.25);</b>
+
+  // You can also scale only horizontally or vertically.
+  <b>scaleX(x); // Horizontal dimensions
+  scaleY(y); // Vertical dimensions
+  </b>
+
+  // This is how you add a scale transform to your span. You shouldn’t declare a new transform:
+  // because of the cascade, a second transform would override the first. To declare multiple
+  // transformations, provide a space-separated list of transform functions.
+  // A scaled element will grow outwards from or shrink inwards towards its center.
+  <b>.ad-ad2 h1:hover span {
+    color: #484848;
+    transform: translateX(40px) scale(1.5);
+  }</b>
+      </pre>
+      <p>
+        If your text looks like the Figure 8.3, you may adjusting
+        the element’s height, width, or font-size instead of using a scale() transform.
+      </p>
+      <figure>
+        <img src="images/inlinetext.jpg" alt="Unwanted inline text results">
+        <figcaption>Figure 8.3. Using the scale function on inline text can have unwanted results</figcaption>
+      </figure>
+      <p>
+        In our example, however, we want the text to pop out of the ad without reflowing
+        the surrounding text, so the scale does exactly what we need it to do. Figure 8.4
+        shows what our hover state looks like with the scale added to the existing translation.
+      </p>
+      <figure>
+        <img src="images/dukes3.jpg" alt="The word dukes is scaled to a larger size">
+        <figcaption>Figure 8.4. Our ad now has plenty of pop</figcaption>
+      </figure>
+      <u>Rotation</u>
+      <p>
+        The rotate() function rotates an element around the point of origin by a specified
+        angle value. As with scale, by default the point of origin is the element’s center. 
+      </p>
+      <pre>
+  // Values for the rotation() function can be degrees, grads, radians, or turns.
+  <b>.ad-ad2 h1:hover span {
+    color: #484848;
+    transform: rotate(10deg) translateX(40px) scale(1.5);
+  }</b>
+      </pre>
+      <p>
+        Declaring the rotation before the translate so it is applied first. Transforms are applied in the order provided. In this case, the span will be rotated 10 degrees, and then moved
+        40px along the rotated x axis as it would be seen in figure 8.5.
+      </p>
+      <figure>
+        <img src="images/dukes4.jpg" alt="Shows the word duke scaled and rotated clockwise">
+        <figcaption>
+          Figure 8.5. Our text has now been translated, scaled, and rotated—that’s quite a punch!
+        </figcaption>
+      </figure>
+      <u>shew</u>
+      <p>
+        The skew(x,y) function specifies a skew along the x and y axes. As you’d expect,
+the x specifies the skew on the x axis, and the y specifies the skew on the y axis. If
+the second parameter is omitted, the skew will only occur on the x axis as shows in figure 8.6.
+      </p>
+      <figure>
+        <img src="images/skew.jpg" alt="Some text with a skew transform applied">
+        <figcaption>Figure 8.6. Some text with a skew transform applied</figcaption>
+      </figure>
+      <u>Changing the Origin of the Transform</u>
+      <p>
+        We can control the origin from which your transforms are
+        applied. This is done using the transform-origin property. It has the same syntax
+        as the background-position property, and defaults to the center of the object. Applying a rotate() transform to a circle would have no
+        visible effect—a circle rotated 90 degrees still looks exactly the same as it did before
+        being rotated. An ellipse rotated 180 degrees around its center would also look the
+        same as it did before being rotated upside down. However, if you gave your circle
+        or ellipse a transform-origin of 10% 10% or top center, you would notice the
+        rotation as Figure 8.7 illustrates.
+      </p>
+      <figure>
+        <img src="images/origin.jpg" alt="Rotating an ellipse1 is more noticeable if the transform-origin is set to something other than the default
+        50% 50%">
+        <figcaption>Figure 8.7. Rotating an ellipse1 is more noticeable if the transform-origin is set to something other than the default
+          50% 50%</figcaption>
+      </figure>
+      <pre>
+  <b>transform-origin: 0 0;</b>
+      </pre>
+      <p>
+        The order of transform functions does matter: if you rotate before translating,
+        your translate direction will be on the rotated axis. The rightmost square in Figure
+        8.8 was translated then rotated with transform: translateX(200px)
+        rotate(135deg);. The leftmost square was rotated first then translated along
+        the newly rotated axis: transform: rotate(135deg) translateX(200px).
+      </p>
+      <figure>
+        <img src="images/orderoftransform.jpg" alt="The order of transform functions makes a difference">
+        <figcaption>Figure 8.8. The order of transform functions makes a difference</figcaption>
+      </figure>
+      <u>Support for Internet Explorer 8 and Earlier</u>
+      <p>
+        I am not taking notes for this section since Explorer 8 has not been supported since January 12, 2016. The code it shared looked nasty anyways. You can look at page 193 - 194 for if you really want to see it and go over it.
+      </p>
+      <u>Transitions</u>
+      <p>
+        Animation has certainly been possible for some time with JavaScript, but native
+        CSS transitions generally require less client-side processing, so they’ll usually appear
+        smoother. On mobile devices with limited computing power, this can be a lifesaver.
+      </p>
+      <p>
+        Transitions allow the values of CSS properties to change over time, essentially
+        providing simple animations. For example, if a link changes color on hover, you
+        can have it gradually fade from one color to the other instead of a sudden change. We can animate any of the transforms we’ve just seen, so that our pages feel more
+        dynamic.
+      </p>
+      <p>
+        CSS transitions are declared along with the regular styles on an element. Whenever
+        the target properties change, the browser will apply the transition making the change
+        gradual. Often the change will be due to different styles applied to a hover state;
+        however, transitions will work equally well if the property in question is changed
+        by adding a class, or otherwise using JavaScript to change state. This is significant:
+        rather than writing out an animation in JavaScript, you can simply switch a property
+        value and rely on the browser to do all the heavy lifting.
+      </p>
+      <p>Here are the steps to create a simple transition using only CSS:</p>
+      <ol>
+        <li>Declare the original state of the element in the default style declaration.</li>
+        <li>Declare the final state of your transitioned element; for example, a :hover state.</li>
+        <li>Include the transition functions in your default style declaration using the
+          transition properties, including: transition-property, transition-duration,
+          transition-timing-function, and transition-delay. We’ll look at each of
+          these and how they work shortly.</li>
+      </ol>
+      <p>
+        The important point to note is that the transition is declared in the default or
+        originating state. The -webkit- vendor prefix is still needed for older mobile devices,
+        including iOS6.1, BlackBerry10, Android 4.3 and UC Browser for Android. All
+        other browsers, including IE10 and Android 4.4 browser support the unprefixed
+        syntax.
+      </p>
+      <u>transition-property</u>
+      <p>
+        The transition-property property defines the CSS properties of the element that
+        should be transitioned, with all for all properties being the default.
+      </p>
+      <p>
+        Any property changing from one value to another for which you can find a valid
+        midpoint can be transitioned. For example, in transitioning from a 1px red border
+        to a 15px blue border, we transition the color and width of the border. The midpoint of 1px and 15px is obvious (8px), so we know that is a transitionable property value.
+        The midpoint between red and blue might not seem obvious, but the browser converts
+        named colors to their numeric values, which have a midpoint. If the borderstyle
+        were declared as changing from solid to dashed, that would not be a transitionable
+        property as there is no midpoint between these key terms.
+      </p>
+      <p>
+        It is important to include a pre-state and a post-state. For example, to transition
+        from rectangular corners to rounded corners, set the original state to border-radius:
+        0;. A
+        list of properties for Animatable CSS properties can be animated is found at
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties">MDN Web Docs</a>.
+      </p>
+      <pre>
+  // Appling the transition to the transform property
+  <b>.ad-ad2 h1 span {
+    transition-property: transform;
+  }</b>
+
+  // Seperate transition-property declaration by commas
+  <b>.foo {
+    transition-property: transform, color;
+  }</b>
+</pre>
+  <p>
+    In itself, the transition-property property has no effect; that’s because we still
+    need to specify the duration of the transition.
+  </p>
+  <u>The transition-duration Property</u>
+  <p>
+    The transition-duration property sets how long the transition will taketo go from the default state to the transitioned state. It can be done in seconds (s) or milliseconds (ms).
+  </p>
+  <pre>
+    // Seconds
+    transition-duration: 0.2s;
+
+    Milliseconds
+    transition-duration: 200ms;
+  </pre>
+  <u>The transition-timing-function Property</u>
+  <p>PDFPage198</p>
+      <!--    NOTES GO ABOVE HERE     -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!-- This is where my questions are added. This is to help me know that I
+      will be continuing my notes above this sectin. -->
+    </main>
+
+    <!-- FOOTER HERE -->
+    <footer></footer>
+  </body>
+</html>
