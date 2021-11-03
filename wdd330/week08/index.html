@@ -467,7 +467,182 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
   }</b>
       </pre>
       <u>Animation Properties</u>
-      <p>PDFPage204</p>
+      <p>
+        The animation properties, remembering that you will need two declarations for
+        each property as the -webkit- prefix is still needed in WebKit browsers, are as
+        follows:
+      </p>
+      <p>
+        The <b>animation-name</b> property is used to attach an animation (previously defined using the @keyframes syntax) to an element:
+      </p>
+      <pre>
+  <b>animation-name: appearDisappear;</b>
+      </pre>
+      <p>
+        The <b>animation-duration</b> property defines the length of time (in seconds or milliseconds)
+        an animation takes to complete one iteration (all the way through, from
+        0% to 100%): 
+      </p>
+      <pre>
+  <b>animation-duration: 300ms;</b>
+      </pre>
+      <p>
+        The <b>animation-timing-function</b> determines how the animation will progress over its duration.:
+      </p>
+      <figure>
+        <img src="images/bike_sprite.png" alt="The sprite image we'll use to create the animation" class="ad-ad3">
+        <figcaption>Figure 8.9. The sprite image we'll use to create the animation</figcaption>
+      </figure>
+      <pre>
+  <b>animation-timing-function: linear;</b>
+
+  // To make the bike_sprite.png file look like it is moving
+  .ad-ad3 :after {
+    content: '';
+    width: 90px;
+    height: 92px;
+    background-image: url(../images/bike_sprite.png);
+    display: block;
+    margin: auto;
+  }
+
+  @keyframes bike {
+    0% {
+    background-position: 0 0;
+    }
+    100% {
+        background-position: -360px 0;
+    }
+  }
+
+  // This is used to show the first image after going through the spright, if I am correct. Not sure where you would put it.
+  <b>animation-timing-function: steps(4, end);</b>
+      </pre>
+      <p>
+        The <b>animation-iteration-count</b> property lets you define how many times the
+        animation will play through. The value is generally an integer, but you can also use
+        numbers with decimal points (in which case, the animation will end partway through
+        206 HTML5 & CSS3 for the Real World
+        an iteration), or the value infinite for endlessly repeating animations.
+      </p>
+      <pre>
+  <b>animation-iteration-count: infinite;</b>
+      </pre>
+      <p>
+        When the animation iterates, it normally goes from the 0% to the 100% keyframe,
+        jumping back to the 0% when it starts a new iteration (if the animation-iterationcount
+        is greater than 1). This is the default or normal value for <b>animation-direction</b>.
+        You can use the animation-direction property to change this behavior. With the alternate value, the
+        initial iteration and odd-numbered iterations after that will go in the normal 0% to
+        100% direction, but the second iteration and every even iteration after that will go
+        in the reverse direction of 100% to 0%.
+      </p>
+      <pre>
+  <b>animation-direction: alternate;;</b>
+      </pre>
+      <p>
+        The <b>animation-delay</b> property is used to define how many milliseconds or seconds
+        to wait before the browser begins the animation:
+      </p>
+      <pre>
+  <b>animation-delay: 50ms;</b>
+      </pre>
+      <p>
+        The <b>animation-fill-mode</b> property defines what happens before the first animation
+        iteration begins and after the last animation iteration concludes. By default, an animation
+        has no effect on property values outside of when it’s iterating, but we can
+        override this default behavior of animation-fill-mode: none. The available values are none, forwards, backwards, or both.
+      </p>
+      <pre>
+  <b>animation-fill-mode: both;</b>
+      </pre>
+      <p>
+        The <b>animation-play-state</b> property defines whether the animation is running or
+        paused. A paused animation displays the current state of the animation statically.
+        When a paused animation is resumed, it restarts from the current position.
+      </p>
+      <pre>
+  <b>animation-name: appearDisappear;</b>
+      </pre>
+      <p>
+        This book is so good at taking you through code and then letting you know that you should not do something a certain way. Here is a better way, but there is a way you should do it. Drives me crazy...lol I just want to know HOW to do something the right way. But one again here is another example:
+      </p>
+      <u>The Shorthand animation Property</u>
+      <p>
+        Fortunately, there’s a shorthand for all of these animation properties, especially
+        since we’re still including the -webkit- prefix. The animation property takes as
+        its value a space-separated list of values for the longhand animation-name, animation-
+        duration, animation-timing-function, animation-delay, animation-iteration-
+        count, animation-direction, animation-fill-mode, and animation-playstate
+        properties:
+      </p>
+      <pre>
+  <b>.verbose {
+    animation-name: appearDisappear; 
+    animation-duration: 300ms; 
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-delay: 5s;
+    animation-fill-mode: backwards;
+    animation-play-state: running;
+  }</b>
+  
+  /* shorthand */
+  // Note that in the shorthand version, we’ve left out the animation-iteration-count
+  and animation-play-state since both were set to default.
+  <b>.concise {
+    animation: 300ms ease-in alternate 5s backwards appearDisappear;
+  }</b>
+
+  // To declare multiple animations on an element, include a grouping for each animation
+  //name, with each shorthand grouping separated by a comma.
+  <b>.target {
+    animation:
+    animationOne 300ms ease-in backwards,
+    animationTwo 600ms ease-out 1s forwards;
+  }</b>
+      </pre>
+      <p>
+        This is how the bike code should look like to make the bike_sprite.png file look like the man is pedaling.
+      </p>
+      <pre>
+  <b>@keyframes bike {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -360px 0;
+    }
+  }
+
+  @keyframes move {
+    0% {
+      transform: translateX(-100px);
+    }
+    100% {
+      transform: translateX(100px);
+    }
+  }  
+    
+  h1:after {
+    content: '';
+    width: 90px;
+    height: 92px;
+    background-image: url(../images/bike_sprite.png);
+    display: block;
+    margin: auto;
+    animation: 
+        0.4s steps(4, end) infinite 50ms bike,
+        8s linear infinite 50ms move;
+    animation-play-state: paused;
+  }
+
+  h1:hover:after {
+    animation-play-state: running;
+  }</b>
+      </pre>
+      <h2></h2>
 
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
