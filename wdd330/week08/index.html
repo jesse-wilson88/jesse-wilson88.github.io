@@ -125,10 +125,13 @@
       </figure>
       <u>Scaling</u>
       <p>
-        The scale(x,y) function scales an element by the defined factors horizontally then
-vertically. If only variable is passed to the scale(x) function, it will be used for bother x and y values and will maintain the original aspect ratio. If you did scale(1) would leave the element the same size, scale(2)
-would double its proportions, scale(0.5) would halve them, and so on. Providing
-different values will distort the element, as you’d expect.
+        The scale(x,y) function scales an element by the defined factors 
+        horizontally then vertically. If only variable is passed to the 
+        scale(x) function, it will be used for bother x and y values and will 
+        maintain the original aspect ratio. If you did scale(1) would leave the 
+        element the same size, scale(2) would double its proportions, 
+        scale(0.5) would halve them, and so on. Providing different values will 
+        distort the element, as you’d expect.
       </p>
       <pre>
   <b>transform: scale(1.5, 0.25);</b>
@@ -138,8 +141,8 @@ different values will distort the element, as you’d expect.
   scaleY(y); // Vertical dimensions
   </b>
 
-  // This is how you add a scale transform to your span. You shouldn’t declare a new transform:
-  // because of the cascade, a second transform would override the first. To declare multiple
+  // This is how you add a scale transform to your span. You shouldn’t declare a new transform:   
+  // because of the cascade, a second transform would override the first. To declare multiple   
   // transformations, provide a space-separated list of transform functions.
   // A scaled element will grow outwards from or shrink inwards towards its center.
   <b>.ad-ad2 h1:hover span {
@@ -299,24 +302,172 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
   <b>.foo {
     transition-property: transform, color;
   }</b>
-</pre>
-  <p>
-    In itself, the transition-property property has no effect; that’s because we still
-    need to specify the duration of the transition.
-  </p>
-  <u>The transition-duration Property</u>
-  <p>
-    The transition-duration property sets how long the transition will taketo go from the default state to the transitioned state. It can be done in seconds (s) or milliseconds (ms).
-  </p>
-  <pre>
-    // Seconds
-    transition-duration: 0.2s;
+      </pre>
+      <p>
+        In itself, the transition-property property has no effect; that’s because we still
+        need to specify the duration of the transition.
+      </p>
+      <u>The transition-duration Property</u>
+      <p>
+        The transition-duration property sets how long the transition will take to go from the default state to the transitioned state. It can be done in seconds (s) or milliseconds (ms).
+      </p>
+      <pre>
+  // Seconds
+  transition-duration: 0.2s;
 
-    Milliseconds
-    transition-duration: 200ms;
-  </pre>
-  <u>The transition-timing-function Property</u>
-  <p>PDFPage198</p>
+  // Milliseconds
+  transition-duration: 200ms;
+      </pre>
+      <p>
+        While transitions are supported in all modern browsers, the fact that 
+        they’re declared separately from the properties that are changing means 
+        that those changes will still be apparent in older browsers without support 
+        for transitions. Those browsers will still apply the :hover (or other) 
+        state, except that the changes will happen instantly rather than 
+        transitioning over time.
+      </p>
+      <u>The transition-timing-function Property</u>
+      <p>
+        The transition-timing-function lets you control the pace of the transition 
+        in even more granular detail. The most common timing functions include the 
+        key terms ease, linear, ease-in, ease-out, or ease-in-out. Here are the 
+        different key terms explained:
+      </p>
+      <ul>
+        <li>The default ease has a slow start, then it speeds up, and ends slowly.</li>
+        <li>The ease-in-out is similar to ease, but accelerates more sharply at the beginning.</li>
+        <li>The linear creates a transition that animates at a constant speed.</li>
+        <li>ease-in creates a transition that is slow to start but gains speed, then stops abruptly.</li>
+        <li>The opposite, ease-out, starts at full speed, then slows progressively as it reaches the conclusion of the transition.</li>
+      </ul>
+      <p>
+        The book says the best way to familiarize ourself with these is to play around with them and try them all. This is something I did when I taught myself BASIC. It also says it is helpful to set the transition-duration longer when testing timing functions if it is too fast. Then I can put it to what I want. The book talks about making our own <a href="http://cubic-bezier.com/">cubic-bezier</a> function but most likely I will not since it is calculus and I have never taken a calculus class. Here is another <a href="http://estelle.github.io/animation/files/cubicbezierprint.html">link</a> the book shared.
+      </p>
+      <p>
+        With these predefined timing functions and developer-defined cubic Bézier function, we can divide the transition over equidistant steps. With steps we can:
+      </p>
+      <ul>
+        <li>You define the number of steps and the direction of either start or end.</li>
+        <li>Where either the first step happens at the animation start.</li>
+        <li>
+          Where the last step happens at the animation end respectively.
+        </li>
+      </ul>
+      <p>
+        For example, steps(5, start) would jump
+        through the equidistant steps of 0%, 20%, 40%, 60%, and 80%, and steps(5, end)
+        198 HTML5 & CSS3 for the Real World
+        would jump throught the equidistant steps of 20%, 40%, 60%, 80%, and 100%.
+      </p>
+      <pre>
+  // This makes the transition fast to start with, becoming slower as it progresses. Of
+  // course, with a 0.2 second duration, the difference is barely perceptible.
+  <b>transition-timing-function: ease-out;</b>
+      </pre>
+      <u>The transition-delay Property</u>
+      <p>
+        By using the transition-delay property, it’s possible to introduce a delay before the transition begins. A transition noramally begins immediately with a default of 0. To delay the transition include the number of seconds (s) or milliseconds (ms). 50ms delay is enough time to wait and make sure the user are intentionally hovering over your ad or anything else they can hover over. You don't want the user to have a bad experience accidently hovering over something (an ad or anything else).
+      </p>
+      <pre>
+  <b>-webkit-transition-delay: 50ms;
+  transition-delay: 50ms;</b>  
+      </pre>
+      <p>
+        <b>Negative</b> time <b>delays</b> that's less than the duration of the entire transition will cause it to start immediately, but it will start partway through the animation. if you have a delay of -500ms on a 2s transition, the transition will start a quarter of the way through, and will last 1.5 seconds.
+      </p>
+      <u>The transition Shorthand Property</u>
+      <p>
+        With four transition properties and a vendor prefix, you could wind up with eight
+        lines of CSS for a single transition. Fortunately, as with other properties such as border, there’s a shorthand available. The transition property is shorthand for
+        the four transition properties just described.
+      </p>
+      <pre>
+  // Let’s take another look at our transition so far
+  <b>.ad-ad2 h1 span {
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-delay: 50ms;
+  }</b>
+
+  // Now let’s combine all those values into a shorthand declaration
+  <b>.ad-ad2 h1 span {
+    transition: transform 0.2s ease-out 50ms;
+  }</b>
+      </pre>
+      <u>Multiple Transitions</u>
+      <p>
+        The transition properties allow for multiple transitions in one call. For example,
+        if we want to change the color at the same time as changing the rotation and size,
+        we can. If we wanted to transition the text colors instead of just transitioning the rotation we would have to include the color property in the transitioned style declaration and then either add the color property in the transition-property
+        value list, or use the key term all.
+      </p>
+      <pre>
+  <b>transition-property: transform, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  transition-delay: 50ms;</b>
+
+  // If you want your properties to transition at different rates, or if you just want a select
+  // few to have a transition effect. Simply include each value in a comma-separated list using 
+  // the same order as the transition-property for all your longhand transition property declarations.
+  <b>transition-property: transform, color;
+  transition-duration: 0.2s, 0.1s;
+  transition-timing-function: ease-out, linear;
+  transition-delay: 50ms;</b>
+
+  // And the shorthand would look like this:
+  <b>transition: transform 0.2s ease-out 50ms, color 0.1s linear 50ms;</b>
+
+  // Or we can change both properties at the same rate and delay, you can include
+  // both property names. When using the all keyword, all the properties transition 
+  // at the same rate, speed, and delay.
+  <b>transition: all 0.2s ease-out 50ms;</b>
+      </pre>
+      <h2>Annimations</h2>
+      <p>
+        Transitions animate elements over time and are limited in what they can do. We can define the staring and ending states but there are no fine-grained control over any intermediate states. Unlike transtions, CSS animations will allow you to control each step of an animation via key frames. A keyframe is a snapshot
+        that defines a starting or end point of any smooth transition. With CSS transitions,
+        we’re essentially limited to defining a first and a last keyframe. CSS animations allow
+        us to add any number of keyframes in between, to CSS animations is great for mobile devices with the lack of powerful proccessors compaired to weighty, CPU-intensive JavaScript animation. But it’s still better
+        to employ JavaScript for intricate, stateful UIs, and when you do, you’ll likely want
+        to use a JavaScript animation library to help with manageability and performance.
+      </p>
+      <u>Keyframes</u>
+      <p>
+        Each keyframe looks like its own nested CSS declaration block. Instead of a traditional
+        selector, though, you use a percentage value, or a comma-separated list of
+        percentage values. There are two keyterms―from and to―which evaluate to 0%
+        and 100% respectively. These values specify how far along the animation each
+        keyframe is located.
+      </p>
+      <pre>
+  <b>@keyframes moveRight { 
+    from {
+    transform: translateX(-50%);
+    }
+    to {
+    transform: translateX(50%);
+    }
+  }
+  
+  @keyframes appearDisappear { 
+    0%, 100% {
+    opacity: 0;
+    }
+    20%, 80% {
+    opacity: 1;
+    }
+  }
+  
+  @keyframes bgMove {
+    100% {
+    background-position: 120% 0;
+    }
+  }</b>
+      </pre>
+      <p>PDFPage202</p>
+
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
       <!--         -->
