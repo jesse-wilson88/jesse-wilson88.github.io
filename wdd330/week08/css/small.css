@@ -54,6 +54,11 @@ figcaption {
   font-size: 0.6rem;
 }
 
+.myCanvas {
+  border: dotted 2px black;
+  background-color: antiquewhite;
+}
+
 /*----------- FOOTER --------------*/
 #footerWrapper {
   background-color: darkslategrey;

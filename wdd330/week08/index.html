@@ -28,7 +28,7 @@
     <link href="css/large.css" rel="stylesheet" />
 
     <!-- JAVASCRIPTS-->
-    <script defer src="js/styles.js"></script>
+    <!-- <script defer src="js/styles.js"></script> -->
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -41,7 +41,7 @@
 
     <!-- CONTENT HERE -->
     <main>
-      <h1>CSS3 Transforms And Transitions</h1>
+      <h1>Chapter 8: CSS3 Transforms And Transitions</h1>
       <p>
         For years, the only way to displaytext on an angle was to use an image
         of text created in an image-editing program and the only way to animate
@@ -642,7 +642,61 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
     animation-play-state: running;
   }</b>
       </pre>
-      <h2></h2>
+      <h1>Chapter 12: Canvas, SVG, and Drag and Drop</h1>
+      <h2>Canvas</h2>
+      <p>
+        With HTML5’s Canvas API, we can draw anything we can imagine, all through
+        JavaScript. We are able to improve the performance of our website by not downloading images off the network. With canvas we can draw:
+      </p>
+      <ul>
+        <li>shapes and lines</li>
+        <li>arcs and text</li>
+        <li>gradients and patterns</li>
+      </ul>
+      <p>
+        Canvas can also manipulate pixels in images and videos.
+      </p>
+      <pre>
+  // The text in between the canvas tags will only be shown if the canvas element is
+  //not supported by the visitor’s browser
+  <b>&#60;canvas>
+    Sorry! Your browser doesn’t support Canvas.
+  &#60;/canvas></b>
+      </pre>
+      <p>
+        Since drawing on the canvas is done using JavaScript, we’ll need a way to grab the
+        element from the DOM. We’ll do so by giving our canvas an ID:
+      </p>
+      <pre>
+  <b>&#60;canvas id="myCanvas" class="myCanvas">
+    Sorry! Your browser doesn’t support Canvas.
+  &#60;/canvas></b>
+      </pre>
+      <p>
+        The canvas element takes both a width and height attribute, which must also be
+        set.
+      </p>
+      <pre>
+  // Let’s add a width and height attribute to the canvas element
+  <b>&#60;canvas id="myCanvas" class="myCanvas" width="200" height="200">
+    Sorry! Your browser doesn’t support Canvas.
+  &#60;/canvas></b>
+
+  // Let’s add a border to our canvas using some CSS to visually distinguish it
+  on the page.
+  <b>.myCanvas {
+    border: dotted 2px black;
+  }</b>
+
+  // Just adding a background-color to the CSS. This is cool
+  <canvas id="myCanvas" class="myCanvas" width="200" height="200">
+    Sorry! Your browser doesn’t support Canvas.
+  </canvas>
+      </pre>
+      <u>Drawing on the Canvas</u>
+      <p>
+        All drawing on the canvas happens via the Canvas JavaScript API.
+      </p>
 
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
