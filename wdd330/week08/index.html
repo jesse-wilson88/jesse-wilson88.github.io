@@ -41,7 +41,7 @@
 
     <!-- CONTENT HERE -->
     <main>
-      <h1>Chapter 8: CSS3 Transforms And Transitions</h1>
+      <h1><a href="https://www.sitepoint.com/premium/books/html5-css3-for-the-real-world-2nd-edition/read/12">Chapter 8: CSS3 Transforms And Transitions</a></h1>
       <p>
         For years, the only way to displaytext on an angle was to use an image
         of text created in an image-editing program and the only way to animate
@@ -642,7 +642,7 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
     animation-play-state: running;
   }</b>
       </pre>
-      <h1>Chapter 12: Canvas, SVG, and Drag and Drop</h1>
+      <h1><a href="https://www.sitepoint.com/premium/books/html5-css3-for-the-real-world-2nd-edition/read/12">Chapter 12: Canvas, SVG, and Drag and Drop</a></h1>
       <h2>Canvas</h2>
       <p>
         With HTML5’s Canvas API, we can draw anything we can imagine, all through
@@ -696,7 +696,7 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
       <u>Drawing on the Canvas</u>
       <p>
         With HTML5’s Canvas API, we can draw anything we can imagine, all through
-        JavaScript. To see how this code looks when it is ran click  <a href="./canvas/" target="_blank">here</a>.
+        JavaScript. To see how this code looks when it is ran click <a href="./canvas/" target="_blank">here</a>.
         Before we can draw onto a canvas, we need to
         grab hold of the canvas element on our page. I tried to take notes for this portion of the book but nothing made sense from what was written and the code that was displayed. That is why I shared the complete code to look at it. 
       </p>
@@ -905,7 +905,432 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
           <figcaption>Figure 12.6. Our shiny new circle</figcaption>
         </figure>
         <u>Saving Canvas Drawings</u>
-        <p>PDFPage319</p>
+        <p>
+          If we deside to keep a copy of our drawing, we can use the API's toDataURL method to save it. It can be saved as a png or jpg, pending on what we specify. Then we can right-click the image and save it as a PNG or JPG. This is what the function looks like to save the drawn image. This does not seem to work.
+        </p>
+        <pre>
+  <b>function saveDrawing() {
+    var canvas5 = document.getElementById("demo5");
+    window.open(canvas5.toDataURL("image/png"));
+  }</b>
+
+  // This is how it is called or can be called
+  <b>var button = document.getElementById("saveButton");
+  button.addEventListener("click", saveDrawing, false);</b>
+        </pre>
+        <u>Drawing to the Canvas</u>
+        <p>
+          To ensure the image has loaded, an event listener will be added that will run the code only once the window’s load event has fired.
+        </p>
+        <pre>
+  <b>window.addEventListener("load", drawImageToCanvas, false);</b>
+        </pre>
+        <p>
+          Then we can grap the image from our page.
+        </p>
+        <pre>
+  <b>function drawImageToCanvas() {
+    var canvas = document.getElementById("demo6");
+    var context = canvas.getContext("2d");
+    var image = document.getElementById("myImageElem");
+  }</b>
+        </pre>
+        <figure>
+          <img src="./images/getImage.jpg" alt="An image and a canvas sitting on a page, doing very little">
+          <figcaption>Figure 12.8. An image and a canvas sitting on a page, doing very little</figcaption>
+        </figure>
+        <p>
+          We can use canvas’s drawImage method to redraw the image from our page into the
+          canvas.
+        </p>
+        <pre>
+  function drawImageToCanvas() {
+    var canvas = document.getElementById("demo6");
+    var context = canvas.getContext("2d");
+    var image = document.getElementById("myImageElem");
+    <b>context.drawImage(image, 0, 0);</b>
+  }
+        </pre>
+        <p>
+          Because we’ve drawn the image to the (0,0) coordinate, the image appears in the
+          top-left of the canvas, as you can see in Figure 12.9.
+        </p>
+        <figure>
+          <img src="./images/redrawImage.jpg" alt="Redrawing an image inside a canvas">
+          <figcaption>Figure 12.9. Redrawing an image inside a canvas</figcaption>
+        </figure>
+        <pre>// Since the image is 64 by 64 pixels and
+          the canvas is 200 by 200 pixels. If we draw the image to (68, 68), it would be in the center.
+          <b>context.drawImage(image, 68, 68);</b>
+        </pre>
+        <figure>
+          <img src="./images/redrawImageCenter.jpg" alt="Displaying the image in the center of the canvas">
+          <figcaption>Figure 12.10. Displaying the image in the center of the canvas</figcaption>
+        </figure>
+        <u>Manipulating Images</u>
+        <p>
+          Redrawing an image element from the page onto a canvas is fairly unexciting. It’s
+          really no different from using an img element. But what is intresting is when we can manipulate the image after it is drawn in canvas. After the image is drawn, we can use the getImageData method from the Canvas API to manipulate the pixels of that image. For example we can take the color image and change it to black and white.
+        </p>
+        <p>
+          getImageData will return an ImageData object, which contains three properties:
+          width, height, and data. The first two are self-explanatory; it’s the last one, data,
+          that interests us. data contains information about the pixels in the ImageData object in the form of
+          an array. Each pixel on the canvas will have four values in the data array, which
+          correspond to that pixel’s R, G, B, and A values. A stands for Alpha, a measure of the element’s transparency, with 0 meaning the element is totally transparent, 1
+          meaning it’s totally opaque, and 0.5 meaning it’s 50% transparent.
+        </p>
+        <pre>
+  var canvas = document.getElementById("myCanvas");
+  var context = canvas.getContext("2d");
+  var image = document.getElementById("myImageElem");
+  // draw the image at x=0 and y=0 on the canvas
+  context.drawImage(image, 68, 68);
+  var imageData = context.getImageData(0, 0, 1, 1);
+  var pixelData = imageData.data;
+  console.log(pixelData.length);
+        </pre>
+        <u>Security Errors with getImageData</u>
+        <p>
+          You may get an error with getImaeData because when you’re
+          running the code locally on your computer, you’ll be using the file:// protocol
+          to open local files. And files loaded with the file:// protocol are considered to
+          come from different domains, which is deemed a security error. The true security 
+          issue that Chrome and Firefox are attempting to prohibit is a user
+          on one domain manipulating images on another domain. For example, stopping me
+          from loading an official logo from http://google.com/ and then manipulating the
+          pixel data.
+        </p>
+        <p>
+          Information leakage can occur if scripts from one domain can access
+          information (e.g. read pixels) from images from another domain
+          (this is called a cross-origin request). To mitigate this, canvas elements
+          are defined with a flag indicating whether they are originclean.
+        </p>
+        <p>
+          To help prevent this an origin-flas will be set to false if the image you want to manipulate is on a different domain from the JS doing the manipulating. This flag is set to false in Chrome and Firefox while you're testing from files on your hard drive. If you want to test pixel manipulation using canvas in Firefox or Chrome, you’ll
+          need to either test it on a web server running on your computer (http://localhost/),
+          or test it online.
+        </p>
+        <u>Converting an Image from Color to Black and White</u>
+        <p>
+          To do this we need to use the getImageData(0, 0, 200, 200) to get entire canvas and then use a for loop to get each pixal in the image and change it to gray-scale. In most for loops we increment by 1 but since each pixel has four values (R, G, B, and A) we need to increment by 4.
+        </p>
+        <p>
+          We then need to determine the gray-scale for the current pixel. This can be done with a mathematical formula for converting RGB to grayscale. We just need
+          to multiply each of the red, green, and blue values by some specific numbers.
+        </p>
+        <pre>
+  function manipulateImage() {
+    ⋮
+    for (var i = 0; i < imageData.data.length; i += 4) {
+    red = imageData.data[i];
+    green = imageData.data[i + 1];
+    blue = imageData.data[i + 2];
+    <b>grayscale = red * 0.3 + green * 0.59 + blue * 0.11;</b>
+  }
+
+  // Once that is one we need to store those values back in to the data array
+  <b>imageData.data[i] = grayscale;
+  imageData.data[i + 1] = grayscale;
+  imageData.data[i + 2] = grayscale;</b>
+        </pre>
+        <p>
+          To plave the image back into the canvase we need to use the putImageData method.
+        </p>
+        <pre>
+  function manipulateImage() {
+    var canvas = document.getElementById("demo7");
+    var context = canvas.getContext("2d");
+    var image = document.getElementById("secondImage");
+    context.drawImage(image, 60, 60);
+    var imageData = context.getImageData(0, 0, 200, 200);
+    for (var i = 0; i < imageData.data.length; i += 4) {
+      var red = imageData.data[i];
+      var green = imageData.data[i + 1];
+      var blue = imageData.data[i + 2];
+      var grayscale = red * 0.3 + green * 0.59 + blue * 0.11;
+      imageData.data[i] = grayscale;
+      imageData.data[i + 1] = grayscale;
+      imageData.data[i + 2] = grayscale;
+    }
+    <b>context.putImageData(imageData, 0, 0);</b>
+  }
+        </pre>
+        <u>Manipulating Video with Canvas</u>
+        <p>
+          We still start out by setting up the canvas and the context.
+        </p>
+        <pre>
+  <b>function makeVideoOldTimey() {
+    var video = document.getElementById("video");
+    var canvas = document.getElementById("canvasOverlay");
+    var context = canvas.getContext("2d");
+  }</b>
+
+  // Then an addEventListener is used to call the draw function when the play event fires
+  <b>video.addEventListener("play", function() {
+    draw(video,context,canvas);
+  }, false);</b>
+        </pre>
+        <p>
+          There is a lot of things that you need to check when doing this. Things like checking to see if the videos is paused or ended. Since we want to pass several parameters to the draw function—video, context,
+          and canvas—we must call it from inside an anonymous function. This is what the anonymous draw function would look like.
+        </p>
+        <pre>
+  <b>function draw(video, context, canvas) {
+    if (video.paused || video.ended) return false;
+    drawOneFrame(video, context, canvas);
+  }</b>
+        </pre>
+        <p>
+          The drawOneFrame function is nearly
+          identical to the code we had earlier for converting an image from color to black and
+          white, except that we’re drawing the video element onto the canvas instead of a
+          static image.
+        </p>
+        <pre>
+  <b>function drawOneFrame(video, context, canvas){
+    // draw the video onto the canvas
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    var pixelData = imageData.data; 
+    // Loop through the red, green and blue pixels, 
+    // turning them grayscale
+    
+    var red, green, blue, greyscale;  
+    for (var i = 0; i < pixelData.length; i += 4) {
+      red = pixelData[i];
+      green = pixelData[i + 1];
+      blue = pixelData[i + 2];
+      //we'll ignore the alpha value, which is in position i+3
+          
+      grayscale = red * 0.3 + green * 0.59 + blue * 0.11;
+          
+      pixelData[i] = grayscale;
+      pixelData[i + 1] = grayscale;
+      pixelData[i + 2] = grayscale;
+    }
+            
+    context.putImageData(imageData, 0, 0); 
+  }</b>
+        </pre>
+        <p>
+          The setTimeout method allows us to keep calling the draw function over and over
+again, without pause. The final parameter is the value for delay, which tells the
+browser how long, in milliseconds, to wait before calling the function. We need to add this to the draw function.
+        </p>
+        <pre>
+  // Start over!
+  <b>setTimeout(function(){ draw(video, context, canvas); }, 0);</b>
+        </pre>
+        <u>Displaying Text on the Canvas</u>
+        <p>
+          There is so much here what I wanted to capture is how to change the text. These 
+          lines of code were added into the catch part of the code to display the error so the user
+          know what is going wrong.
+        </p>
+        <pre>
+  // First we should reset the width or height of the canvas
+  <b>canvas.width = canvas.width;</b>
+
+  // Change the background color from black to transparent
+  <b>canvas.style.backgroundColor = "transparent";</b>
+  <b>context.fillStyle = "white";</b>
+
+  // I think this sets the font color to white
+  <b><b>context.fillStyle = "white";</b></b>
+
+  // Align the text
+  <b>context.textAlign = "left";</b>
+  
+  // Set the font-family
+  <b>context.font = "18px LeagueGothic, Tahoma, Geneva, sans-serif";</b>
+        </pre>
+        <p>
+          As the book says we use the fillText method to draw the text, which takes the text to be drawn and the x,y
+          coordinates where it should be placed. Since the message is long they showed how to split it up in sections, placing each one on the canvas
+          separately.
+        </p>
+        <pre>
+  <b>context.fillText("There was an error rendering ", 10, 20);  
+  context.fillText("the video to the canvas.", 10, 40);
+  context.fillText("Perhaps you are viewing this page from", 10, 70);
+  context.fillText("a file on your computer?", 10, 90);
+  context.fillText("Try viewing this page online instead.", 10, 130);</b>
+        </pre>
+        <p>
+          This is how the catch section would look when put all together.
+        </p>
+        <pre>
+  function drawOneFrame(video, context, canvas){
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    try {
+    …
+    } catch (err) {
+      // clear the canvas 
+      context.clearRect(0,0,canvas.width,canvas.height);
+      canvas.style.backgroundColor = "transparent";
+      context.fillStyle = "white";
+      context.textAlign = "left";
+      context.font = "18px LeagueGothic, Tahoma, Geneva, sans-serif";
+      context.fillText("There was an error rendering ", 10, 20);  
+      context.fillText("the video to the canvas.", 10, 40);
+      context.fillText("Perhaps you are viewing this page from", 10, 70);
+      context.fillText("a file on your computer?", 10, 90);
+      context.fillText("Try viewing this page online instead.", 10, 130); 
+
+      return false; 
+    }
+  }
+        </pre>
+        <p>
+          As a last step, we return false. This lets us check in the draw function whether an
+          exception was thrown. If it was, we want to stop calling drawOneFrame for each
+          video frame, so we exit the draw function
+        </p>
+        <pre>
+  function draw(video, context, canvas) {
+    if (video.paused || video.ended) return false;
+
+    <b>drawOneFrame(video, context, canvas);</b>
+    
+    // Start over!
+    setTimeout(function(){ draw(video, context, canvas); }, 0);
+  }
+        </pre>
+        <u>Accessibility Concerns</u>
+        <p>
+          A major downside of canvas in its current form is its lack of accessibility. The canvas
+          doesn’t create a DOM node, is not a text-based format, and is thus essentially invisible
+          to tools such as screen readers. Even though we wrote text to the
+          canvas in our last example, that text is essentially no more than a bunch of pixels
+          and is therefore inaccessible―it’s just like an image that contains text.
+        </p>
+        <h2>SVG</h2>
+        <p>
+          SVG stands for Scalable Vector Graphics, a specific file
+          format that allows you to describe vector graphics using XML (eXtensible Markup Language). A major selling point
+          of vector graphics in general is that, unlike bitmap images (such as GIF, JPEG, PNG,
+          and TIFF), vector images preserve their quality even as you blow them up or shrink
+          them down. We can use SVG to do many of the same tasks we can do with canvas,
+          including drawing paths, shapes, text, gradients, and patterns.
+        </p>
+        <p>
+          Drawing a circle in SVG is arguably easier than drawing a circle with canvas. Here’s
+          how we do it:
+        </p>
+        <pre>
+  <b>&#60;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    &#60;circle cx="50" cy="50" r="25" fill="red"/>
+  &#60;/svg></b>
+        </pre>
+          <figure>
+            <img src="./images/svgCircle.jpg" alt="A circle drawn using SVG">
+            <figcaption>Figure 12.11. A circle drawn using SVG</figcaption>
+          </figure>
+          <p>
+            It is cool that I can just have this code in the HTML file and it shows but it was easier at this point to show the image of how it would look. For some reason the area is hugh when I just use the svg tag.
+          </p>
+          <p>
+            Here is how you could make a rectangle.
+          </p>
+          <pre>
+  &#60;svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 400">
+  &#60;desc>Drawing a rectangle</desc>
+  <b>&#60;rect x="10" y="10" width="100" height="100"
+    fill="blue" stroke="red" stroke-width="3" /></b>
+  &#60;/svg>
+          </pre>
+          <figure>
+            <img src="./images/svgRectangle.jpg" alt="A rectangle drawn with SVG">
+              <figcaption>Figure 12.12. A rectangle drawn with SVG</figcaption>
+          </figure>
+          <p>
+            Not all shapes are this easy. If you want to create complex shapes the code can look scary. Here is part of the code that was shared in the book:
+          </p>
+          <pre>
+  style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.761343;
+  stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;
+  stroke-dasharray:none;stroke-dashoffset:0" d="m 249.28667,389.00422 -9.7738,
+  30.15957 -31.91999,7.5995 c - 2.74681,1.46591 -5.51239,2.92436 -1.69852,
+  6.99979 l 30.15935,12.57 796 -11.80876,32.07362 c -1.56949,4.62283 -0.21957,
+  6.36158 4.24212,3.35419 l 26.59198,-24.55691 30.9576,17.75909 c 3.83318,
+  2.65893 6.12086,0.80055 5.36349,-3.57143 l -12.10702,-34.11764 22.72561,
+  -13.7066 c 2.32805,-1.03398 5.8555,-6.16054 -0.46651,-6.46042 l -33.5 0135,
+  -0.66887 -11.69597,-27.26175 c -2.04282,-3.50583 -4.06602,-7.22748 -7.06823,
+  -0.1801 z"
+          </pre>
+          <p>
+            As I go through all this, I am thinking to myself, when I have time I should try to add the HTML code to my index file and tie it to the CSS & JS that is added so I can see it broken down from section instead of it complete from the files canvas folder in my GitHub.
+          </p>
+          <u>Drawing an Image to Raphaël’s Container</u>
+          <p>
+            Here is the code for the Raphaël container.
+          </p>
+          <pre>
+  &#60;article class="ad-ad4">
+    &#60;div id="mapDiv">
+      &#60;h1 id="geoHeading">Where in the world are you?&#60;/h1>
+        &#60;form id="geoForm">
+        &#60;input type="button" id="geobutton" value="Tell us!">
+        &#60;/form>
+      <b>&#60;div class="spin" id="spinner">&#60;/div></b> // Spinner is placed
+    &#60;/div>
+  &#60;/article>
+          </pre>
+          <p>
+            The element is passed to the Raphael method.
+          </p>
+          <pre>
+  <b>var container = Raphael(document.getElementById("spinner"), 125, 125);</b>
+          </pre>
+          <p>
+            We then draw the spinner SVG image into the newly created container with the
+            Raphaël method image, which is called on a Raphaël container object. This method
+            takes the path to the image, the starting coordinates where the image should be
+            drawn, and the width and height of the image.
+          </p>
+          <pre>
+  // This code our spinner image will appear once the geolocation code begins to
+  // run, and will spin until the map is displayed.
+  <b>var spinner = container.image("images/spinnerBW.svg", 0, 0, 125, 125);</b>
+          </pre>
+          <p>
+            We create a new object attrsToAnimate specifying that we want to animate the rotation,
+            and we want to rotate by 720 degrees (two full turns).
+          </p>
+          <pre>
+  <b>var attrsToAnimate = { transform: "r720" };</b>
+          </pre>
+          <p>
+            The final step is to call the animate method, and specify how long the animation
+            should last.
+          </p>
+          <pre>
+  <b>spinner.animate(attrsToAnimate, 60000);</b>
+          </pre>
+          <p>
+            Once the map is completely loaded we need to not have the spinner showing
+          </p>
+          <pre>
+  <b>function displayOnMap(position) {
+    document.getElementById("spinner").style.display = "none";
+  }</b>
+          </pre>
+          <u>Canvas versus SVG</u>
+          <p>
+            The book says it depends on what we are doing and that goes with many other ways we can create our web page. It all depends on what we are doing. They both have their benefits, but if a person was designing a game canvas would be the way to go because they can require a lof of animations.
+          </p>
+          <p>
+            If you need to paint pixels to the screen and have no concerns about
+            the ability to retrieve and modify your shapes, canvas is probably the better choice.
+            If, on the other hand, you need to be able to access and change specific aspects of
+            your graphics, SVG might be more appropriate.
+          </p>
+          <h2>Drag and Drop</h2>
 
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
