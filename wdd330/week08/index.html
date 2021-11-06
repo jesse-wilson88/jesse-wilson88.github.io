@@ -695,8 +695,217 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
       </pre>
       <u>Drawing on the Canvas</u>
       <p>
-        All drawing on the canvas happens via the Canvas JavaScript API.
+        With HTML5’s Canvas API, we can draw anything we can imagine, all through
+        JavaScript. To see how this code looks when it is ran click  <a href="./canvas/" target="_blank">here</a>.
+        Before we can draw onto a canvas, we need to
+        grab hold of the canvas element on our page. I tried to take notes for this portion of the book but nothing made sense from what was written and the code that was displayed. That is why I shared the complete code to look at it. 
       </p>
+      <p><i>I will try my best to take some notes.</i> Before we can draw onto a canvas, we need to
+      grab hold of the canvas element on our page.</p>
+      <pre>
+  <b>var canvas = document.getElementById("myCanvas");</b>
+      </pre>
+      <p>
+        Once we’ve stored our canvas element in a variable, we then set up the canvas’s
+        context. The context is the place where your drawing is rendered. We obtain our drawing context by calling the getContext method and passing it
+        the string "2d", since we’ll be drawing in two dimensions.
+      </p>
+      <pre>
+  <b>var context = canvas.getContext("2d");</b>
+      </pre>
+        <p>
+          The object that’s returned by getContext is an instance of CanvasRenderingContext2D. 
+          On a real-life painting canvas, you must first saturate your brush with paint before
+          you can begin. In the HTML5 canvas, you must do the same, and we do so with the
+          strokeStyle or fillStyle properties. Both strokeStyle and fillStyle are set on
+          a context object, and both take one of three values: a string representing a color, a
+          CanvasGradient object, or a CanvasPattern object
+        </p>
+        <pre>
+  <b>context.strokeStyle = "red";</b>
+        </pre>
+        <p>
+          Fill it with the color blue.
+        </p>
+        <pre>
+  <b>context.fillStyle = "blue";</b>
+        </pre>
+        <p>
+          Let’s change our blue fill to blue with a 50% opacity
+        </p>
+        <pre>
+  <b>context.fillStyle = "rgba(0, 0, 255, 0.5)";</b>
+        </pre>
+        <u>Drawing a Rectangle to the Canvas</u>
+        <p>
+          Once we’ve defined the color of the stroke and the fill, we’re ready to start drawing!
+          Let’s begin by drawing a rectangle. We can repeat the steps we just took: grabbing
+          the canvas and the context, and setting a fill and stroke style. But now, we’ll draw
+          a rectangle.We can do this by calling the fillRect and strokeRect methods.
+        </p>
+        <pre>
+  <b>context.fillRect(10, 10, 100, 100);
+  context.strokeRect(10, 10, 100, 100);</b>
+        </pre>
+        <p>
+          The code would go together like this:
+        </p>
+        <pre>
+  <b>var canvas = document.getElementById("myCanvas");
+  var context = canvas.getContext("2d");
+  context.strokeStyle = "red";
+  context.fillStyle = "rgba(0, 0, 255, 0.5)";
+  context.fillRect(10, 10, 100, 100);
+  context.strokeRect(10, 10, 100, 100);</b>
+        </pre>
+        <figure>
+          <img src="./images/simpleRectangle.jpg" alt="A simple rectangle—not bad for our first canvas drawing!">
+          <figcaption>Figure 12.2. A simple rectangle—not bad for our first canvas drawing!</figcaption>
+        </figure>
+        <p>
+          In the canvas coordinate system, the top-left corner is (0,0). If the canvas is 200 pixels by 200 pixels, then the bottom-right corner is (200,200), as Figure 12.3 illustrates.
+        </p>
+        <figure>
+          <img src="./images/canvasCoords.jpg" alt="The canvas coordinate system goes top-to-bottom and left-to-right">
+          <figcaption>Figure 12.3. The canvas coordinate system goes top-to-bottom and left-to-right</figcaption>
+        </figure>
+        <u>Variations on fillStyle</u>
+        <p>
+          Instead of a color as our fillStyle, we could have used a CanvasGradient or a
+          CanvasPattern object. createPattern
+          takes two parameters: the image to create the pattern with, and how that image
+          should be repeated. The repeat value is a string, and the valid values are the same
+          as those in CSS: repeat, repeat-x, repeat-y, and no-repeat. The image may still be loading unless it is in the browser cache. To be on the safe side, we’ll use the image’s onload property to create our pattern once the image has been fully loaded.
+        </p>
+        <pre>
+  <b>function drawPattern() {
+    …
+    var img = new Image();
+    img.src = "../images/bg-bike.png";
+    img.onload = function() {
+      var pattern = context.createPattern(img, "repeat"); 
+      context.fillStyle = pattern;                        
+      context.fillRect(10, 10, 100, 100);                  
+      context.strokeRect(10, 10, 100, 100);             
+    };
+  }</b>
+        </pre>
+        <p>
+          We can also create a CanvasGradient object to use as our fillStyle. To create a CanvasGradient, we call one of two methods: createLinearGradient() or createRadialGradient(); then we add one or more color stops to the gradient. createLinearGradient ’s x0 and y0 represent the starting location of the gradient. x1 and y1 represent the ending location.
+        </p>
+        <pre>
+  <b>function drawGradient() {
+    var canvas = document.getElementById("demo3");
+    var context = canvas.getContext("2d");
+    context.strokeStyle = "red";
+    var gradient = context.createLinearGradient(0, 0, 0, 200); 
+  }</b>
+        </pre>
+        <p>
+          Now we need to specify the color stops with the addColorStop() method. The offset is a value between 0 and 1. An offset of 0 is at the start of the gradient, and an offset of 1 is at the end of the gradient. To make a gradient that starts as blue and begins to blend into white halfway down the gradient, we can specify a blue color stop with an offset of 0 and a purple color stop with an offset of 1.
+        </p>
+        <pre>
+  <b>function drawGradient() {
+    …
+    var gradient = context.createLinearGradient(0, 0, 0, 200);
+    gradient.addColorStop(0, "blue"); 
+    gradient.addColorStop(1, "white"); 
+    context.fillStyle = gradient; 
+    context.fillRect(10, 10, 100, 100); 
+    context.strokeRect(10, 10, 100, 100); 
+  }</b>
+        </pre>
+        <figure>
+          <img src="./images/linearGradient.jpg" alt="Creating a linear gradient with canvas">
+          <figcaption>Figure 12.5. Creating a linear gradient with canvas</figcaption>
+        </figure>
+        <u>Drawing Other Shapes by Creating Paths</u>
+        <p>
+          We are not limited to only drawing rectangles. The book says we can draw any shape we can imaging but there are no built-in methods for drawing circles or other shapes. To draw more interesting shapes, we must first lay out the
+          path of the shape. Paths create a blueprint for your lines, arcs, and shapes, but paths are invisible
+          until you give them a stroke! When we drew rectangles, we first set the strokeStyle
+          and then called fillRect. When we dray more complex shapes, wew need to take three steps:
+        </p>
+        <ul>
+          <li>Layout the path</li>
+          <li>Stroke the path</li>
+          <li>Fill the path</li>
+        </ul>
+        <p>
+          The first step is to
+          begin the path of the circle. We do that with the method beginPath(), which resets
+          the default path for you to begin drawing a new shape:
+        </p>
+        <pre>
+  <b>function drawCircle(canvas) {
+    var context = canvas.getContext("2d");
+    context.beginPath();
+  }</b>
+        </pre>
+        <p>
+          Now we need to create an arc. An arc is a segment of a circle, but as there’s no
+          method for creating a circle, we can draw a 360° arc. We create it using the arc
+          method.
+        </p>
+        <pre>
+  function drawCircle(canvas) {
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    context.beginPath();
+    <b>context.arc(50, 50, 30, 0, Math.PI*2, true);
+  }</b>
+        </pre>
+        <p>
+          The signature for the arc method is: arc(x, y, radius, startAngle, endAngle,
+          anticlockwise). x and y represent where on the canvas you want the arc’s path to begin. startAngle and endAngle represent the start and end angles along the circle’s circumference
+          that you want to draw. anticlockwise is an optional argument. If you wanted the arc to be drawn counterclockwise
+          instead of clockwise, you would set this value to <b style="color:blue">true</b>.
+        </p>
+        <pre>
+  function drawCircle(canvas) {
+    var context = canvas.getContext("2d");
+    context.beginPath();
+    context.arc(100, 100, 50, 0, Math.PI*2, <b style="color:blue">true</b>);
+    <b>context.closePath();</b>
+  }
+        </pre>
+        <p>
+          Now we have a path—but unless we stroke it or fill it, we’ll be unable to see it.
+        </p>
+        <pre>
+  function drawCircle(canvas) {
+    var context = canvas.getContext("2d");
+    context.beginPath();
+    context.arc(50, 50, 30, 0, Math.PI*2, true);
+    context.closePath();
+    <b>context.strokeStyle = "red";
+    context.fillStyle = "blue";
+    context.lineWidth = 3;</b>
+  }
+        </pre>
+        <p>
+          Lastly, we fill and stroke the path. To fill a path you simply call fill, and to
+          stroke it you call stroke.
+        </p>
+        <pre>
+  function drawCircle(canvas) {
+    var context = canvas.getContext("2d");
+    context.beginPath();
+    context.arc(100, 100, 50, 0, Math.PI*2, true);
+    context.closePath();
+    context.strokeStyle = "red";
+    context.fillStyle = "blue";
+    context.lineWidth = 3;
+    <b>context.fill();
+    context.stroke();</b>
+  }
+        </pre>
+        <figure>
+          <img src="./images/shinyNewCircle.jpg" alt="Our shiny new circle">
+          <figcaption>Figure 12.6. Our shiny new circle</figcaption>
+        </figure>
+        <u>Saving Canvas Drawings</u>
+        <p>PDFPage319</p>
 
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
