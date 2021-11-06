@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;1,500&display=swap');
+
+@media only screen and (max-width: 32.5em) {
+    .starship__Card {width: 90%;
+    margin-left: 0;
+    margin-right: 0;}
+}
+
+.noselect {
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+body {
+    font-family: 'Open Sans', 'sans-serif';
+}
+
+.btn {
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 1.25rem;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.starship__Card {
+    background-color: rgb(148, 147, 147);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-width: 500px;
+}
+
+.starship__name {
+    background-color: lightblue;
+    color: navy;
+    padding: 1rem;
+    padding-bottom: .5rem;
+    margin: 0;
+    font-family: 'Poller One', cursive;
+}
+
+.starship__manu {
+    background-color: lightblue;
+    color: navy;
+    padding: .5rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    margin: 0;
+    font-style: italic;
+}
+
+.starship__content1, .starship__content2 {
+    background-color: white;
+    margin: 0;
+    padding: 1rem;
+}
+
+.starship__content1 {
+    padding-bottom: 0;
+}
+
+.starship__content2 {
+    padding-bottom: 1rem;
+    padding-top: .5rem;}
+
+.list {margin: auto;}
+
+.title {font-weight: bold;}
+
+#pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {display: none;}

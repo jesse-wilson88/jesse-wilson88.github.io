@@ -1331,7 +1331,163 @@ browser how long, in milliseconds, to wait before calling the function. We need 
             your graphics, SVG might be more appropriate.
           </p>
           <h2>Drag and Drop</h2>
+          <p>
+            There are two major kinds of functionality you can implement with Drag and Drop:
+            dragging files from your computer into a web page—in combination with the File
+            API—or dragging elements into other elements on the same page. For more information on how to combine Drag and Drop with the File API
+            in order to let users drag files from their desktop onto your websites go to <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API">Mozilla Developer Network</a>.
+          </p>
+          <p>
+            Here are some steps to adding drag and drop to a page:
+          </p>
+          <ul>
+            <li>Set the draggable attribute on any HTML elements you’d like to be draggable.</li>
+            <li>Add an event listener for the dragstart event on any draggable HTML elements.</li>
+            <li>Add an event listener for the dragover and drop events on any elements that you
+              want to have accept dropped items.
+            </li>
+          </ul>
+          <u>Making Elements Draggable</u>
+          <p>
+            To make things draggable we need to add the draggable attribute to them. Since draggable is not a boolean attribute, we need to explicitly set it to true.
+          </p>
+          <pre>
+  &#60;img src="images/computer-mouse-pic.svg" width="30" alt="mouse treat" id="mouse1" <b>draggable="true"</b>>
 
+  &#60;img src="images/computer-mouse-pic.svg" width="30" alt="mouse treat" id="mouse2" <b>draggable="true"</b>>
+
+  &#60;img src="images/computer-mouse-pic.svg" width="30" alt="mouse treat" id="mouse3" <b>draggable="true"</b>>
+          </pre>
+          <p>
+            Set an event listener for the dragstart event on each image.
+          </p>
+          <pre>
+  <b>var mice = document.querySelectorAll("#mouseContainer img");</b>
+          </pre>
+          <p>
+            loop through all the img elements contained in the mice variable, and
+            add an event listener for the dragstart event on each computer mouse
+          </p>
+          <pre>
+  <b>var mouse = null;
+    for (var i=0; i < mice.length; i++) {
+    mouse = mice[i];
+    mouse.addEventListener('dragstart', function (event) {
+    // handle the dragstart event
+    });
+  }</b>
+          </pre>
+          <u>The DataTransfer Object</u>
+          <p>
+            DataTransfer objects are one type of object outlined in the Drag and Drop API. These
+            objects allow us to set and get data about the elements that are being dragged. Specifically,
+            DataTransfer lets us define two pieces of information:
+          </p>
+          <ul>
+            <li>The type of data we’re saving of the draggable element</li>
+            <li>The value of the data itself</li>
+          </ul>
+          <p>
+            In the case of our draggable mouse images, we want to be able to store the ID of
+            these images so that we know which image is being dragged around. To do this, we first tell DataTransfer that we want to save some plain text by passing
+            in the string text/plain. Then we give it the ID of our mouse image.
+          </p>
+          <pre>
+  mouse.addEventListener("dragstart", function (event) {
+    <b>event.dataTransfer.setData("text/plain", this.id);</b>
+  });
+          </pre>
+          <p>
+            When an element is dragged, we save the ID of the element in the DataTransfer object,
+            to be used again once the element is dropped.
+          </p>
+          <u>Accepting Dropped Elements</u>
+          <p>
+            Now that our mouse images are set up to be dragged, we are unable to drag them anywhere. This is because, by fefault, elements on the page aren’t set up to receive dragged
+            items.
+          </p>
+          <p>
+            We need to make sure that the image of the cat has an ID of cat so .
+          </p>
+          <pre>
+  &#60;article id="ac3">
+    &#60;h1>Wai-Aria? HAHA!&#60;/h1>
+      &#60;h2 id="catHeading">Form Accessibility&#60;/h2>
+
+      <b>&#60;img src="images/cat.png" id="cat" alt="WAI-ARIA Cat"></b>
+          </pre>
+          <p>
+            An ID was given to the h2 element so we can change the text once we've dropped the mouse onto the cat. Here is how we handle the dragover event.
+          </p>
+          <pre>
+  <b>var cat = document.getElementById("cat");
+    cat.addEventListener("dragover", function(event) {
+    event.preventDefault();
+  });</b> 
+          </pre>
+          <p>
+            This merely ensured that the mouse picture can actually
+            be dragged over the cat picture and prevent the default behavior, and JavaScript's preventDefault method serves this purpose exactly. 
+          </p>
+          <p>
+            The code for the drop handler is a bit more complex. We first need to figure out what the cat should say when a mouse is dropped
+            on it. We can do this retrieving the ID of the dropped mouse from
+            the DataTransfer object.
+          </p>
+          <p>
+            We’ll store these options inside an object called mouseHash, where the first step is
+            to declare our object:
+          </p>
+          <pre>
+  <b>cat.addEventListener("drop", function(event) {
+    var mouseHash = {};</b>
+          </pre>
+          <p>
+            Next, we’re going to take advantage of JavaScript’s objects allowing us to store
+            key/value pairs inside them, as well as storing each response in the mouseHash object,
+            associating each response with the ID of one of the mouse images:
+          </p>
+          <pre>
+  <b>cat.addEventListener("drop", function(event) {
+    var mouseHash = {
+      mouse1: 'NOMNOMNOM',
+      mouse2: 'Meow',
+      mouse3: 'Purrrrrr ...'
+    };
+  }</b> 
+          </pre>
+          <p>
+            The next step is to grab the h2 element that we’ll change to reflect the cat’s response:
+          </p>
+          <pre>
+  <b>var catHeading = document.getElementById('catHeading');</b>
+          </pre>
+          <p>
+            We now need to get the ID from the dragged element.
+          </p>
+          <pre>
+  // This will let us know which mouse was dropped.
+  <b>var mouseID = event.originalEvent.dataTransfer.getData("text/plain");</b>
+          </pre>
+          <p>
+            We use the information stored in the item variable (the dragged mouse’s ID) to retrieve
+            the correct message for the h2 element.
+          </p>
+          <p>
+            Now we need to remove it from the page because it has now been eaten.
+          </p>
+          <pre>
+  <b>var mousey = document.getElementById(item);
+  mousey.parentNode.removeChild(mousey);</b>
+          </pre>
+          <p>
+            Last but not least, we must also prevent the default behavior of not allowing elements
+            to be dropped on our cat image, as we did before:
+          </p>
+          <pre>
+  <b>event.preventDefault();</b>
+          </pre>
+          
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
       <!--         -->
