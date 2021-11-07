@@ -313,10 +313,10 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
       </p>
       <pre>
   // Seconds
-  transition-duration: 0.2s;
+  <b>transition-duration: 0.2s;</b>
 
   // Milliseconds
-  transition-duration: 200ms;
+  <b>transition-duration: 200ms;</b>
       </pre>
       <p>
         While transitions are supported in all modern browsers, the fact that 
@@ -959,9 +959,10 @@ the second parameter is omitted, the skew will only occur on the x axis as shows
           <img src="./images/redrawImage.jpg" alt="Redrawing an image inside a canvas">
           <figcaption>Figure 12.9. Redrawing an image inside a canvas</figcaption>
         </figure>
-        <pre>// Since the image is 64 by 64 pixels and
-          the canvas is 200 by 200 pixels. If we draw the image to (68, 68), it would be in the center.
-          <b>context.drawImage(image, 68, 68);</b>
+        <pre>
+  // Since the image is 64 by 64 pixels and
+  the canvas is 200 by 200 pixels. If we draw the image to (68, 68), it would be in the center.
+  <b>context.drawImage(image, 68, 68);</b>
         </pre>
         <figure>
           <img src="./images/redrawImageCenter.jpg" alt="Displaying the image in the center of the canvas">
