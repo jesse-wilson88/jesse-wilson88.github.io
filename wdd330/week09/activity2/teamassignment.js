@@ -14,7 +14,7 @@ function getSound() {
   //get the data-key from the <div> that got clicked
 
   var keySound = window.event.target.parentElement.attributes["data-key"].value;
-  // console.log(keySound);
+  console.log(keySound);
   var playingBtn = window.event.target.parentElement;
   //add that class name of 'playing' to the existing class list
 
@@ -28,8 +28,7 @@ function getSound() {
       // Run funtion to get translateY value
       i = translateY();
       playingBtn.style = "transform: translateY(" + i + "px)";
-      // i = i + 10;
-      console.log(playingBtn.style.transform);
+      // console.log(playingBtn.style.transform);
     }
     //gets the length of the audio file and makes it longer by multiplying
     var audioDuration = audioElement.duration * 2000;
@@ -53,7 +52,7 @@ function translateY() {
   var moveY = window.event.target.parentElement.attributes["style"];
 
   if (typeof moveY == "undefined") {
-    console.log("Typeof is undefined");
+    // console.log("Typeof is undefined");
     return 10;
   } else {
     if (i < 100) {
