@@ -12,32 +12,36 @@ let i = 0;
 
 function getSound() {
   //get the data-key from the <div> that got clicked
+  var validateTarget = window.event.target.parentElement.classList.value;
 
-  var keySound = window.event.target.parentElement.attributes["data-key"].value;
-  console.log(keySound);
-  var playingBtn = window.event.target.parentElement;
-  //add that class name of 'playing' to the existing class list
+  if (validateTarget != "keys") {
+    var keySound =
+      window.event.target.parentElement.attributes["data-key"].value;
+    var playingBtn = window.event.target.parentElement;
+    //add that class name of 'playing' to the existing class list
 
-  soundFile.forEach((audioElement) => {
-    var soundbyte = audioElement.getAttribute("data-key");
-    // console.log(soundbyte);
-    //match audio data-key to div data-key
-    if (soundbyte === keySound) {
-      playSound(audioElement);
-      playingBtn.classList.add("playing");
-      // Run funtion to get translateY value
-      i = translateY();
-      playingBtn.style = "transform: translateY(" + i + "px)";
-      // console.log(playingBtn.style.transform);
-    }
-    //gets the length of the audio file and makes it longer by multiplying
-    var audioDuration = audioElement.duration * 2000;
+    soundFile.forEach((audioElement) => {
+      var soundbyte = audioElement.getAttribute("data-key");
+      // console.log(soundbyte);
+      //match audio data-key to div data-key
+      if (soundbyte === keySound) {
+        console.log(keySound);
+        playSound(audioElement);
+        playingBtn.classList.add("playing");
+        // Run funtion to get translateY value
+        i = translateY();
+        playingBtn.style = `transform: translateY(${i}px)`;
+        console.log(playingBtn.style.transform);
+      }
+      //gets the length of the audio file and makes it longer by multiplying
+      var audioDuration = audioElement.duration * 2000;
 
-    //function to timeout and remove the playing class, takes a generic function
-    setTimeout(function () {
-      playingBtn.classList.remove("playing");
-    }, audioDuration);
-  });
+      //function to timeout and remove the playing class, takes a generic function
+      setTimeout(function () {
+        playingBtn.classList.remove("playing");
+      }, audioDuration);
+    });
+  }
 
   //if a single ket gets pressed 10 times, then remove the .moveButton class
   //count how many

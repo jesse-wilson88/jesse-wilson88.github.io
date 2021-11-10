@@ -1,0 +1,30 @@
+#square1 {
+  margin: 100px;
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+
+#square2 {
+  margin: 100px;
+  width: 100px;
+  height: 100px;
+  background: blue;
+}
+
+#square3 {
+  margin: 100px;
+  width: 100px;
+  height: 100px;
+  background: orange;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

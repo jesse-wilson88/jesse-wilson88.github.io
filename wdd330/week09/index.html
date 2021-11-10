@@ -9,7 +9,7 @@
     <meta name="author" content="Jesse Wilson" />
 
     <!-- SITE TITLE -->
-    <title>Week 8 Notes & Codes</title>
+    <title>Week 9 Notes & Codes</title>
 
     <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
       enlarging when a phone is turned sideways-->
@@ -33,14 +33,440 @@
   <body>
     <!-- HEADER HERE -->
     <header id="headerWrapper">
-      <h1>Week 8 Notes & Codes</h1>
+      <h1>Week 9 Notes & Codes</h1>
     </header>
 
     <!-- NAVIGATION HERE -->
     <nav></nav>
 
     <!-- CONTENT HERE -->
-    <main></main>
+    <main>
+      <h1>
+        <a
+          href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/9"
+          target="_blank"
+          >The Window Object</a
+        >
+      </h1>
+      <u>The Browser Object Model</u>
+      <p>
+        Browser Object Model (or BOM for short) is a collection of properties
+        and methods that contain information about the browser and computer
+        screen. There is no official standard for the BOM, although there are a
+        number of properties and methods that are supported by all the major
+        browsers, making a sort of de facto standard. These properties and
+        methods are made available through the window object. Every browser
+        window, tab, popup, frame, and iframe has a window object.
+      </p>
+      <u>Going Global</u>
+      <p>
+        Global variables are variables that are created without using the const,
+        let or var keywords. Global variables can be accessed in all parts of
+        the program. Global variables are actual properties of a global object.
+        In a browser environment, the global object is the window object. Any
+        global variable created is actually a property of the window object.
+      </p>
+      <pre>
+  <b>x = 6;</b> // global variable created
+  << 6
+
+  <b>window.x</b> // same variable can be accessed as a property of the window object
+  << 6
+  
+  <b>window.x === x;</b> // both variables are exactly the same
+  &#60;&#60; true
+      </pre>
+      <p>
+        We should refer to global variables without using the window object;
+        it’s less typing and your code will be more portable between
+        environments unless we need to check whether a global variable has been
+        defined.
+      </p>
+      <pre>
+  <b>if (x) {</b>
+    // do something
+  <b>}</b>
+      </pre>
+      <p>
+        If the variable is accessed as a property of the window object, then the
+        code will still work, as window.x will simply return false,
+      </p>
+      <pre>
+  <b>if (window.x) {</b>
+    // do something
+  <b>}</b>
+      </pre>
+      <p>
+        The parseInt() and isNaN(), are actually methods of the global object,
+        which in a browser environment makes them methods of the window object.
+      </p>
+      <pre>
+  <b>window.parseInt(4.2);</b>
+  &#60;&#60; 4
+
+  <b>window.isNaN(4.2);</b>
+  &#60;&#60; false
+
+  // ES6 made parseInt() and isNaN() methods of the Number object
+  <b>Number.parseInt(4.2);</b>
+  &#60;&#60; 4
+
+  <b>Number.isNaN(4.2);</b>
+  &#60;&#60; false
+      </pre>
+      <u>Dialogs</u>
+      <p>
+        The alert(), confirm() and prompt() functions produce dialogs in the
+        browswer. All browsers support these as methods of the window object.
+      </p>
+      <p>
+        The window.alert() method will pause the execution of the program and
+        display a message in a dialog box. The message is provided as an
+        argument to the method, and undefined is always returned.
+      </p>
+      <pre>
+  <b>window.alert('Hello');</b>
+  &#60;&#60; undefined
+      </pre>
+      <p>
+        The window.confirm() method will stop the execution of the program and
+        display a confirmation dialog that shows a message with options of OK
+        and cancel.
+      </p>
+      <pre>
+  <b>window.confirm('Do you wish to continue?');</b>
+  &#60;&#60; undefined
+      </pre>
+      <p>
+        The window.prompt() method will stop the execution of the program and
+        prompt the user to enter some text with options of OK and cancel. The
+        text is returned if the user clicks OK or null of the user clicks
+        cancel.
+      </p>
+      <pre>
+  <b>window.prompt('Please enter your name:');</b>
+      </pre>
+      <h2>Browser Information</h2>
+      <p>
+        The window object has a number of properties and methods that provide
+        information about the user’s browser.
+      </p>
+      <u>Which Browser?</u>
+      <p>
+        The window object has a navigator property that returns a reference to
+        the Navigator object. The Navigator object contains information about
+        the browser being used. Its userAgent property will return information
+        about the browser and operating system being used. For example, if I run
+        the following line of code, it shows that I am using Safari version 10
+        on Mac OS. Don't rely on this information because it can be masquerade a
+        different browser.
+      </p>
+      <pre>
+  <b>window.navigator.userAgent</b>
+  &#60;&#60; "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8"
+      </pre>
+      <u>Location, Location, Location</u>
+      <p>
+        The window.location property is an object that contains a number of
+        properties that provide information about different fragments of the
+        URL.
+      </p>
+      <pre>
+  // The href property returns the full URL as a string
+  <b>window.location.href</b>
+  &#60;&#60; "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja"
+
+  // We can assign the property where we want to go
+  <b>window.location.href = 'https://www.sitepoint.com/javascript/'</b>
+  &#60;&#60; "https://www.sitepoint.com/javascript/"
+
+  // The protocol property returns a string describing the protocol used (such 
+  // as http, https, pop2, ftp, etc.)
+  <b>window.location.protocol</b>
+  &#60;&#60; "https:"
+
+  // The host property returns a string describing the domain of the current URL
+  <b>window.location.host</b>
+  &#60;&#60; << "www.sitepoint.com"
+
+  // The hostname property returns a string describing the domain of the current URL
+  <b>window.location.hostname</b>
+  &#60;&#60; "www.sitepoint.com"
+
+  // The port property returns a string describing the port number but it will
+  // return an empty string if the port is not stated in the URL
+  <b>window.location.port</b>
+  &#60;&#60; ""
+
+  // The pathname property returns a string of the path that follows the domain
+  <b>window.location.pathname</b>
+  &#60;&#60; "/premium/books/javascript-novice-to-ninja"
+
+  // The search property returns a string that starts with a '?' followed by the query
+  // string parameters. It returns an empty string if there are no query string parameters.
+  <b>window.location.search</b>
+  &#60;&#60; "?q=javascript&limit=24&offset=0&page=1&content_types[]=All&slugs[]=all&states[]=available&amp;order="
+
+  // The hash property returns a string that starts with a "#" followed by the fragment
+  // identifier. It returns an empty string if there is no fragment identifier
+  <b>window.location.hash</b>
+  &#60;&#60; ""
+
+  // The origin property returns a string that shows the protocol and domain where
+  // the current page originated from. This property is read-only, so cannot be changed
+  <b>window.location.origin</b>
+  &#60;&#60; "https://www.sitepoint.com"
+      </pre>
+      <p>The window.location object also has methods that can be used</p>
+      <pre>
+  // The reload() method can be used to force a reload of the current page. 
+  // The browser will be forced to reload if a parameter of true is given.
+  // Other wise it will reload from the cache.
+  <b>window.location.reload()</b>
+
+  // The assign() method can be used to load another resource from a URL
+  // provided as a parameter.
+  <b>window.location.assign('https://www.sitepoint.com/')</b>
+
+  // The replace() method is almost the same as the assign() method, except the
+  // current page will not be stored in the session history, so the user will be
+  // unable to navigate back to it using the back button.
+  <b>window.location.replace(''https://www.sitepoint.com/');</b>
+
+  // The toString() method returns a string containing the whole URL.
+  <b>window.location.toString();</b>
+  &#60;&#60; "https://www.sitepoint.com/javascript/"
+      </pre>
+      <h2>The Browser History</h2>
+      <p>
+        The window.history property can be used to access information about any
+        previously visited pages in the current browser session.
+      </p>
+      <pre>
+  // The window.history.length property shows how many pages have been visited
+  // before arriving at the current page.
+  <b>window.history.length</b>
+  &#60;&#60; 3
+
+  // The window.history.go() method can be used to go to a specific page, where 0
+  / is the current page.
+  <b>window.history.go(1);</b> // goes forward 1 page
+  <b>window.history.go(0);</b> // reloads the current page
+  <b>window.history.go(-1);</b> // goes back 1 page
+
+  // A method used to navigate forwards by one page
+  <b>window.history.forward()</b>
+  
+  // A method used to navigate backwards by one page
+  <b>window.history.back()</b>
+      </pre>
+      <h2>Controlling Windows</h2>
+      <p>
+        A new window can be opened using the window.open() method. You can
+        assign window.open() method to a variable.
+      </p>
+      <pre>
+  //                          (           URL      , Window Title, list of attributes                 ) 
+  <b>const popup = window.open('https://sitepoint.com', 'SitePoint' ,'width=400,height=400,resizable=yes');</b>
+
+  // The close() method can be used to close a window, assuming you have a
+  // reference to it
+  <b>popup.close();</b>
+
+  // It is possible to move a window by passing parameters (x & y coords)
+  <b>window.moveTo(0,0); // will move the window to the top-left corner of the screen</b>
+      </pre>
+      <h2>Screen Information</h2>
+      <p>
+        You can use window.screen to find out the height & width of the screen
+        the browser is displayed on in pixels.
+      </p>
+      <pre>
+  <b>window.screen.height</b>
+  &#60;&#60; 1024
+
+  <b>window.screen.width</b>
+  &#60;&#60; 1280
+
+  // The availHeight and availWidth can be used to find the height and width of the
+  // screen, excluding any operating system menus.
+  <b>window.screen.availWidth</b>
+  &#60;&#60; 1024
+
+  <b>window.screen.availHeight</b>
+  &#60;&#60; 1280
+
+  // The colorDepth property can be used to find the color bit depth of the user’s
+  // monitor even though it is not really used for anything other than collecting user statistics.
+  <b>window.screen.colorDepth;</b>
+  &#60;&#60; 24
+      </pre>
+      <h2>The Document Object</h2>
+      <p>
+        Each window object contains a document object. This object has
+        properties and methods that deal with the page that has been loaded into
+        the window. The document object contains a few other methods that are
+        worth looking at.
+      </p>
+      <u>write() method</u>
+      <pre>
+  // The write() method simply writes a string of text to the page. If a page has
+  //already loaded, it will completely replace the current document
+  <b>document.write('Hello, world!');</b>
+
+  // It is
+  possible to include HTML in the string and become part of the DOM tree.
+  <b>document.write('&#60;h1>Hello, world!&#60;/h1>');</b>
+
+  // It can also be used within a document inside
+  &#60;script> tags to inject a string into the markup. This will NOT overwrite the rest
+  of the HTML on the page.
+  <b>&#60;h1>
+  &#60;script>document.write("Hello, world!")&#60;/script>
+  &#60;/h1></b>
+      </pre>
+      <u>Cookies</u>
+      <p>
+        Cookies are small files that are saved locally on a user’s computer.
+        Cookies can be used to sidestep this problem by storing information that
+        can then be retrieved between requests. Cookies can be used for
+        personalizing a user’s browsing experience, storing user preferences,
+        keeping track of user choices (such as a shopping cart), authentication
+        and tracking users.
+      </p>
+      <pre>
+  // a cookie file might contain the following information:
+  "name=Superman; hero=true; city=Metropolis"
+      </pre>
+      <u>Creating Cookies</u>
+      <pre>
+  <b>document.cookie = 'name=Superman';</b>
+  &#60;&#60; "name=Superman"
+
+  // You can add more cookies by assigning them to document.cookie.
+  <b>document.cookie = 'hero=true';</b>
+  &#60;&#60; "hero=true"
+
+  <b>document.cookie = 'hero=true';</b>
+  &#60;&#60; "city=Metropolis"
+      </pre>
+      <u>Changing Cookie Values</u>
+      <pre>
+  <b>document.cookie = 'name=Batman'</b>
+  &#60;&#60; "name=Batman"
+
+  <b>document.cookie = 'city=Gotham'</b>
+  &#60;&#60; "city=Gotham"
+      </pre>
+      <u>Reading Cookies</u>
+      <pre>
+        <b>document.cookie:</b>
+  &#60;&#60; "name=Batman; hero=true; city=Gotham"
+
+  // We can use the split() method to break the string into an array containing each name/value pair.
+  <b>const cookies = document.cookie.split("; ");
+  for (crumb of cookies){
+    const [key,value] = crumb.split("=");
+    console.log(`The value of ${key} is ${value}`);
+  }</b>
+  &#60;&#60; The value of name is Batman
+  &#60;&#60; The value of hero is true
+  &#60;&#60; The value of city is Gotham
+      </pre>
+      <u>Cookie Expiry Dates</u>
+      <pre>
+  <b>const expiryDate = new Date();
+  const tomorrow = expiryDate.getTime() + 1000 * 60 * 60 * 24;
+  expiryDate.setTime(tomorrow);
+  
+  document.cookie = `name=Batman; expires=${expiryDate.toUTCString()}`;</b>
+
+  // An alternative is to set the max-age value in seconds.
+  <b>document.cookie = 'name=Batman; max-age=86400' // 86400 secs = 1 day</b>
+      </pre>
+      <u>The Path and Domain of Cookies</u>
+      <p>
+        By default, cookies can only be read by pages inside the same directory
+        and domain as the file was set. This is for security reasons so that
+        access to the cookie is limited. The path can be changed so that any
+        page in the root directory can read the cookie.
+      </p>
+      <pre>
+  <b>document.cookie = 'name=Batman; path=/'</b>
+
+  // This is what it would look like for the sitepoint website
+  document.cookie = 'name=Batman; domain=sitepoint.com';
+      </pre>
+      <u>Secure Cookies</u>
+      <pre>
+  <b>document.cookie = 'name=Batman; secure';</b>
+      </pre>
+      <u>Deleting Cookies</u>
+      <pre>
+  // To remove a cookie, you need to set it to expire at a time in the past
+  <b>document.cookie = 'name=Batman; expires=Thu, 01 Jan 1970 00:00:01 GMT';</b>
+      </pre>
+      <h2>Timing Functions</h2>
+      <u>setTimeout()</u>
+      <p>
+        The window.setTimeout() method accepts a callback to a function as its
+        first parameter and a number of milliseconds as its second parameter.
+      </p>
+      <pre>
+  // Show an alert dialog after three seconds (that’s 3000 milliseconds):
+  <b>window.setTimeout( () => alert("Time's Up!"), 3000);</b>
+  &#60;&#60; 4 // Not sure what this is but it goes up every time.
+
+  // You can prevent the alert from popping up if you can type the next line of code with the number that was generated from the code above.
+  <b>window.clearTimeout(4);</b>
+  &#60;&#60; undefined 
+      </pre>
+      <u>setInterval()</u>
+      <p>
+        The window.setInterval() method works in a similar way to
+        window.setTimeout(), except that it will repeatedly invoke the callback
+        function after every given number of milliseconds.
+      </p>
+      <pre>
+  // It is also possible to use a named function
+  <b>function chant(){ console.log('Beetlejuice'); }</b>
+
+  // Set up the interval and assign it to a variable
+  <b>const summon = window.setInterval(chant,1000);</b>
+  &#60;&#60; 6
+
+  // The setInterval can be interrupted
+  <b>window.clearInterval(summon);</b>
+      </pre>
+      <u>Animation</u>
+      <p>
+        I put this section in its own page to observe. Click
+        <a href="./animation/" target="_blank">here</a> to see.
+      </p>
+      <h1>
+        <a
+          href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/14"
+          target="_blank"
+          >HTML5 APIs</a
+        >
+      </h1>
+
+      <!--    NOTES GO ABOVE HERE     -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!--         -->
+      <!-- This is where my questions are added. This is to help me know that I
+      will be continuing my notes above this sectin. -->
+    </main>
 
     <!-- FOOTER HERE -->
     <footer></footer>
