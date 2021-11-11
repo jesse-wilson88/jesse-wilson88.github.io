@@ -26,9 +26,11 @@
     <link href="css/medium.css" rel="stylesheet" />
     <!-- enhance-desktop -->
     <link href="css/large.css" rel="stylesheet" />
+    <link href="css/animation.css" rel="stylesheet" />
 
     <!-- JAVASCRIPTS-->
     <script defer src="js/styles.js"></script>
+    <script defer src="js/animation.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -440,9 +442,61 @@
       </pre>
       <u>Animation</u>
       <p>
-        I put this section in its own page to observe. Click
-        <a href="./animation/" target="_blank">here</a> to see.
+        The second argument is 1000/60, which equates to a frame speed of 60
+        frames per second (JavaScript).
       </p>
+      <pre>
+    <b>const squareElement = document.getElementById("square");
+  
+    let angle = 0;
+  
+    setInterval(() => {
+      angle = (angle + 2) % 360;
+      squareElement.style.transform = `rotate(${angle}deg)`;
+    }, 1000 / 60);</b>
+      </pre>
+      <div id="square1"></div>
+      <p>requestAnimationFrame example (JavaScript)</p>
+      <pre>
+    <b>const squareElement = document.getElementById("square");
+  
+    let angle = 0;
+  
+    function rotate() {
+      angle = (angle + 2) % 360;
+      squareElement.style.transform = `rotate(${angle}deg)`;
+      window.requestAnimationFrame(rotate);
+    }
+  
+    const id = requestAnimationFrame(rotate);</b>
+  
+    // To start the animation, we need to call the requestAnimationFrame() method,
+    // giving the rotate() function as an argument. This will return a unique ID that
+    // can be employed to stop the animation using the window.cancelAnimationFrame() method. 
+    // Not sure where it would be put yet but the animation can be stopped with:
+    <b>cancelAnimationFrame(id);</b>
+      </pre>
+      <div id="square2"></div>
+      <div>Pure CSS animation example (CSS)</div>
+      <pre>
+    <b>#square {
+      margin: 100px;
+      width: 100px;
+      height: 100px;
+      background: #cc0;
+      animation: spin 4s linear infinite;
+    }
+    
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }</b>
+      </pre>
+      <div id="square3"></div>
       <h1>
         <a
           href="https://www.sitepoint.com/premium/books/javascript-novice-to-ninja-2nd-edition/read/14"
@@ -450,7 +504,6 @@
           >HTML5 APIs</a
         >
       </h1>
-
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
       <!--         -->
