@@ -528,6 +528,186 @@
           >HTML5 APIs</a
         >
       </h1>
+      <h2>The data- Attribute</h2>
+      <p>
+        The data- attribute is a way of embedding data in a web page using
+        custom attributes that are ignored by the browser. They’re also private
+        to a page, so are not intended to be used by an external service – their
+        sole purpose is to be used by a JavaScript program. They’re perfect for
+        adding data that can be used as a hook that the program utilizes to
+        access information about a particular element on the page.
+      </p>
+      <p>
+        The names of these attributes can be decided by the developer, but they
+        must use the following format:
+      </p>
+      <ul>
+        <li>Start with data-.</li>
+        <li>
+          Contain only lowercase letters, numbers, hyphens, dots, colons or
+          underscores.
+        </li>
+        <li>Include an optional string value.</li>
+      </ul>
+      <pre>
+  <b>data-powers = 'flight superSpeed'
+  data-rating = '5'
+  data-dropdown
+  data-user = 'DAZ'
+  data-max-length = '32'</b>
+      </pre>
+      <p>
+        The information contained in the attributes can be used to identify
+        particular elements. For example, all the elements with an attribute of
+        data-dropdown could be identified as dropdown menu. The values of the
+        attributes can also be used to filter different elements. For example,
+        we could find all the elements that have a data-rating value of 3 or
+        more.
+      </p>
+      <p>
+        Each element has a dataset property that can be used to access any
+        dataattributes it contains. Here’s an example of some markup:
+      </p>
+      <pre>
+  <b><div id='hero' data-powers='flight superSpeed'>
+    Superman
+  </div></b>
+      </pre>
+      <p>The data-powers attribute can be accessed using the following code:</p>
+      <pre>
+  <b>const superman = document.getElementById('hero');
+  const powers = superman.dataset.powers;</b>
+  &#60;&#60; 'flight superSpeed'
+      </pre>
+      <p>
+        Notice that the data- prefix is dropped. To access the attribute, powers
+        is used as if it’s a property of the dataset object. If a data-
+        attribute’s name contains hyphens, they are replaced with camel-case
+        notation, so data-max-length would be accessed using dataset.maxLength.
+      </p>
+      <p>
+        any data- attribute can be found using the standard getAttribute method.
+        So the previous code could be replaced with the following if you still
+        need to support older browsers:
+      </p>
+      <pre>
+  <b>const powers = superman.getAttribute('data-powers');</b>
+      </pre>
+      <p>
+        The restriction of only using a string value can be overcome by encoding
+        any JavaScript object or value as a JSON string, then performing
+        type-conversion later, as required. For example, the value of
+        data-max-length will return a string, but can easily be converted into a
+        number using the following code:
+      </p>
+      <pre>
+  <b>const maxLength = Number(element.dataset.maxLength);</b>
+      </pre>
+      <h2>HTML5 APIs</h2>
+      <p>
+        The HTML5 specification contains a number of APIs that help to gain
+        access to hardware, such as cameras, batteries, geolocation, and the
+        graphics card. Hardware evolves quickly, and APIs are frequently
+        introduced to give developers access, and control new features that
+        appear in the latest devices. Due to the ever-changing nature of most
+        APIs, it’s still best practice to use feature detection before using any
+        of the API methods.
+      </p>
+      <u>HTML5 Web Storage</u>
+      <p>
+        The Web Storage API provides a key-value store on the client’s computer
+        that is similar to using cookies but has fewer restrictions, more
+        storage capacity, and is generally easier to use. This makes it perfect
+        for storing information about users, as well as storing
+        application-specific information that can then be used during future
+        sessions.
+      </p>
+      <p>The Web Storage API has some crucial differences with cookies:</p>
+      <ul>
+        <li>
+          Information stored is not shared with the server on every request.
+        </li>
+        <li>
+          Information is available in multiple windows of the browser (but only
+          if the domain is the same).
+        </li>
+        <li>
+          Storage capacity limit is much larger than the 4KB limit for cookies.
+        </li>
+        <li>
+          Any data stored does not automatically expire as it does with cookies.
+          This potentially makes cookies a better choice for something like
+          showing a popup once a day.
+        </li>
+      </ul>
+      <p>
+        If a browser supports the Web Storage API, the window object will have a
+        property called localStorage, which is a native object with a number of
+        properties and methods used to store data. The information is saved in
+        the form of key-value pairs, and the values can only be strings. There
+        is also a sessionStorage object that works in the same way, although the
+        data is only saved for the current session.
+      </p>
+      <p>
+        Here is a basic example of storing information. To save a value locally,
+        use:
+      </p>
+      <pre>
+  <b>localStorage.setItem('name', 'Walter White');</b>
+
+  // Retreive the data using getItem()
+  <b>localStorage.getItem('name');</b>
+  &#60;&#60; "Walter White"
+
+  // Retreive the data using assignment
+  <b>localStorage.name = 'Heisenberg';
+
+  console.log(localStorage.name);</b>
+  &#60;&#60; "Heisenberg"
+
+  // Remove data from local storage using the removeItem() method
+  <b>localStorage.removeItem('name');</b>
+
+  // We can also delete data
+  <b>delete localStorage.name;</b>
+
+  // We can also remove all data from local storage
+  <b>localStorage.clear();
+  </b>
+      </pre>
+      <p>
+        Every time a value is saved to local storage, a storage event is fired.
+        Note that this event is only fired on any other windows or tabs from the
+        same domain, and only if the value of the item being saved changes. The
+        event object sent by the event listener to the callback has a number of
+        properties that provide information about the updated item:
+      </p>
+      <ul>
+        <li><b>key</b> tells us the key of the item that changed</li>
+        <li>
+          <b>newValue</b> tells us the new value to which it has been changed
+        </li>
+        <li>
+          <b>oldValue</b> tells us the previous value before it was changed
+        </li>
+        <li>
+          <b>storageArea</b> tells us if it is stored in local or session
+          storage
+        </li>
+      </ul>
+      <p>
+        The fact that only strings can be saved might seem like a restriction at
+        first, but by using JSON, we can store any JavaScript object in local
+        storage.
+      </p>
+      <pre>
+  <b>localStorage.setItem('superman', JSON.stringify(hero);</b>
+
+  // To retrieve the superhero
+  <b>superman = JSON.parse(localStorage.getItem('superman'));</b>
+      </pre>
+      <u>Geolocation</u>
+      <p>PDFPage560</p>
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
       <!--         -->
