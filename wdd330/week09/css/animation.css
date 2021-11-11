@@ -1,19 +1,22 @@
 #square1 {
-  margin: 100px;
+  /* margin: 100px;*/
+  margin: 20px;
   width: 100px;
   height: 100px;
   background: red;
 }
 
 #square2 {
-  margin: 100px;
+  /* margin: 100px; */
+  margin: 20px;
   width: 100px;
   height: 100px;
   background: blue;
 }
 
 #square3 {
-  margin: 100px;
+  /* margin: 100px; */
+  margin: 20px;
   width: 100px;
   height: 100px;
   background: orange;
