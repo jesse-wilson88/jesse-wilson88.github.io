@@ -709,8 +709,97 @@
       <u>Geolocation</u>
       <p>
         The Geolocation API is used to obtain the geographical position of the
-        device.
+        device and provides a useful interface for adding location-based
+        information to a website or application. This can be used to find the
+        user’s exact location, link to nearby places or measure the speed at
+        which the user is moving and be used to filter data based on the user’s
+        location or speed and direction of travel.
       </p>
+      <p>
+        If geolocation is available, it will be a property of the navigator
+        object with a property method called getCurrentPosition() that will
+        return a position object to a specified callback function. In this
+        example that callback function is called youAreHere():
+      </p>
+      <pre>
+  <b>navigator.geolocation.getCurrentPosition(youAreHere);</b>
+      </pre>
+      <p>
+        The position object passed to the youAreHere() function has a coords
+        property with a latitude and longitude property, which together give the
+        coordinates of the device. These coordinates can then be used in
+        conjunction with other applications or web services (such as a mapping
+        service) to obtain the user’s exact location.
+      </p>
+      <pre>
+  <b>function youAreHere(position) {
+    console.log(`Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`);
+  }</b>
+      </pre>
+      <p>
+        The position object has several other properties that can be used to
+        find out information about the location and movement of the device:
+      </p>
+      <ul>
+        <li>
+          position.speed property returns the ground speed of the device in
+          meters per second.
+        </li>
+        <li>
+          position.altitude property returns an estimate of the device’s
+          altitude in meters above the WGS84 ellipsoid, which is a standard
+          measurement for the center of the Earth.
+        </li>
+        <li>
+          position.heading property returns the direction the device is moving
+          in. This is measured as a bearing in degrees, clockwise from North.
+        </li>
+        <li>
+          position.timestamp property returns the time that the position
+          information was recorded.
+        </li>
+        <li>
+          position.accuracy property returns the accuracy of the latitude and
+          longitude properties in meters. This can be useful to know the town or
+          city users are in or their exact location.
+        </li>
+        <li>
+          position.altitudeAccuracy property, which returns the accuracy of the
+          altitude property in meters.
+        </li>
+      </ul>
+      <p>
+        For the position.accuracy & position.altitudeAccuracy property, the
+        lower the returned value, the more accurate the measurements are.
+      </p>
+      <p>
+        The geolocation object has a watchPosition() method that will call a
+        callback function every time the position of the device is updated. This
+        method returns an ID that can be used to reference the position being
+        watched.
+      </p>
+      <pre>
+  <b>const id = navigator.geolocation.watchPosition(youAreHere);</b>
+
+  // The clearWatch() method can be used to stop the callback being called, using
+  // the ID of the watch as an argument.
+  <b>navigator.geolocation.clearWatch(id);</b>
+      </pre>
+      <u>Web Workers</u>
+      <p>
+        Web workers allow processes to be run in the background, adding support
+        for concurrency in JavaScript. The idea is that any processes that could
+        take a long time are carried out in the background, so the website will
+        continue to function without getting the “script has become
+        unresponsive” message that occurs when a script runs too long.
+      </p>
+      <p>
+        To get started, use the Worker() constructor function to create a new
+        worker:
+      </p>
+      <pre>
+  <b>const worker = new Worker('task.js');</b>
+      </pre>
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
       <!--         -->
