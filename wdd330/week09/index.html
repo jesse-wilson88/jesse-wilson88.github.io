@@ -31,6 +31,8 @@
     <!-- JAVASCRIPTS-->
     <script defer src="js/styles.js"></script>
     <script defer src="js/animation.js"></script>
+    <script defer src="js/factors.js"></script>
+    <script defer src="js/main.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -268,7 +270,7 @@
         assign window.open() method to a variable.
       </p>
       <pre>
-  //                          (           URL      , Window Title, list of attributes                 ) 
+  //                       (           URL         , Window Title, list of attributes                 ) 
   <b>const popup = window.open('https://sitepoint.com', 'SitePoint' ,'width=400,height=400,resizable=yes');</b>
 
   // The close() method can be used to close a window, assuming you have a
@@ -276,7 +278,7 @@
   <b>popup.close();</b>
 
   // It is possible to move a window by passing parameters (x & y coords)
-  <b>window.moveTo(0,0); // will move the window to the top-left corner of the screen</b>
+  <b>window.moveTo(0,0);</b> // will move the window to the top-left corner of the screen
       </pre>
       <h2>Screen Information</h2>
       <p>
@@ -337,7 +339,7 @@
         and tracking users.
       </p>
       <pre>
-  // a cookie file might contain the following information:
+  // A cookie file might contain the following information:
   "name=Superman; hero=true; city=Metropolis"
       </pre>
       <u>Creating Cookies</u>
@@ -362,7 +364,7 @@
       </pre>
       <u>Reading Cookies</u>
       <pre>
-        <b>document.cookie:</b>
+  <b>document.cookie:</b>
   &#60;&#60; "name=Batman; hero=true; city=Gotham"
 
   // We can use the split() method to break the string into an array containing each name/value pair.
@@ -800,6 +802,115 @@
       <pre>
   <b>const worker = new Worker('task.js');</b>
       </pre>
+      <p>
+        This function takes the name of another JavaScript file as an argument.
+        In the example, this is a file called task.js. If this file exists, it
+        will be downloaded asynchronously. The worker will only start once the
+        file has finished downloading completely. If the file doesn’t exist, an
+        error is thrown.
+      </p>
+      <p>
+        The variable that’s assigned to the constructor function (worker in our
+        example) can now be used to refer to the worker in the main program. In
+        the worker script (task.js), the keyword self is used to refer to the
+        worker.
+      </p>
+      <p>
+        Web workers use the concept of messages to communicate back and forth
+        between the main script and worker script. The postMessage() method can
+        be used to send a message and start the worker working. The argument to
+        this method can send any data to the web worker. To post a message to
+        the worker, the following code is used inside the main script:
+      </p>
+      <pre>
+  <b>worker.postMessage('Hello');</b>
+      </pre>
+      <p>
+        To post a message from the worker, the following is used in the worker
+        script:
+      </p>
+      <pre>
+  <b>self.postMessage('Finished');</b>
+      </pre>
+      <p>
+        When a message is posted, a message event is fired, so they can be dealt
+        with using an event listener. The data sent with the message as an
+        argument is stored in the data property of the event object that’s
+        passed to the callback function.
+      </p>
+      <pre>
+  <b>worker.addEventListener('message', (event) => {
+    console.log(event.data);
+  }, false);</b>
+
+  // When a worker has completed its task, it can be stopped using the terminate()
+  // method from within the main script:
+  <b>worker.terminate();</b>
+
+  // Or using the close() method from inside the worker script:
+  <b>self.close();</b>
+      </pre>
+      <u>Facorizing Example</u>
+      <p>
+        The original code given in the book would mess up the page because it
+        would have to calculate the factors of a number that had a length of 18
+        or more (ex. 180000000000000000). It also showed how to fix this by
+        storing the number to be factorized is stored in the event.data
+        property. The factorsOf() function is then used to find the factors of
+        the number, convert it into a string and then send a message back
+        containing the answer. The close() method to terminate the worker, since
+        its work is done.
+      </p>
+      <br /><br />
+      <div id="pre">
+        <button id="rainbow">Change Color</button>
+        <form>
+          <label for="number">Enter a Number to Factorize:</label>
+          <input id="number" type="number" name="number" min="1" value="20" />
+          <button type="submit">Submit</button>
+        </form>
+        <div id="output"></div>
+      </div>
+      <u>Shared Web Workers</u>
+      <p>
+        Web workers allow computationally complex operations to be performed in
+        a separate thread, meaning that the flow of a program won’t suffer
+        interruptions, and an application will not freeze or hang. They are a
+        useful feature that help to keep sites responsive, even when complicated
+        operations are being carried out.
+      </p>
+      <p>
+        We can also create shared web workers that allow lots of different
+        scripts on the same domain to access the same worker object.
+      </p>
+      <u>Service Workers</u>
+      <p>
+        The Service Worker API allows a worker script to run in the background
+        with the added benefit of being able to intercept network requests. This
+        allows you to take alternative action if the network is offline, and
+        effectively create app-like offline experiences. Service workers also
+        allow access to push notifications and background syncing. Service
+        workers require a secure network to run on HTTPS to avoid any malicious
+        code hijacking network requests.
+      </p>
+      <u>Websockets</u>
+      <p>
+        Websocket is a new protocol that allows two-way communication with a
+        server – also known as push messaging. This means that a connection is
+        kept open and responses are ‘pushed’ to the client as soon as they are
+        received.
+      </p>
+      <p>
+        I wrote the
+        <b><a href="./websocket/websocket.html" target="_blank">code</a></b>
+        into a new page so it was seperate. It works when I send a message but
+        based on what the book says the response is not working. I will have to
+        look at this later when I have more itme. Putting the code to work is
+        found on page 551 - 556.
+      </p>
+      <u>Notifications</u>
+      <p>PDFPage575</p>
+
       <!--    NOTES GO ABOVE HERE     -->
       <!--         -->
       <!--         -->
