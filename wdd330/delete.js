@@ -9,3 +9,15 @@ function drawCircle(canvas) {
   context.fill();
   context.stroke();
 }
+
+video.addEventListener("loadedmetadata", () => {
+  console.log(video.duration);
+});
+
+video.addEventListener(
+  "pause",
+  () => {
+    console.log("The video has been paused");
+  },
+  false
+);

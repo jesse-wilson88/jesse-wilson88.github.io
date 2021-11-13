@@ -31,8 +31,9 @@
     <!-- JAVASCRIPTS-->
     <script defer src="js/styles.js"></script>
     <script defer src="js/animation.js"></script>
-    <script defer src="js/factors.js"></script>
     <script defer src="js/main.js"></script>
+    <script defer src="js/factors.js"></script>
+    <script defer src="js/canvas.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -909,24 +910,368 @@
         found on page 551 - 556.
       </p>
       <u>Notifications</u>
-      <p>PDFPage575</p>
+      <p>
+        The Notification API allows you to show messages using the system’s
+        notifications. This is usually a popup in the corner of the screen, but
+        it changes depending on the operating system. An advantage of using the
+        system notification is that they will still be displayed even if the web
+        page that calls them isn’t the current tab.
+      </p>
+      <p>
+        Before you can send notifications, you need to get permission granted by
+        the user. This can be achieved using the requestPermission() method of a
+        Notification global object.
+      </p>
+      <pre>
+  // Visit any website in your browser and enter the following code in the console
+  <b>if(window.Notification) {
+    Notification.requestPermission();
+  }</b>
+      </pre>
+      <p>
+        If the permission property is set to granted we can create a new
+        notification using a constructor function.
+      </p>
+      <pre>
+  // This will produce a system notification with the title “Hello JavaScript!”.
+  if(window.Notification) {
+    Notification.requestPermission()
+    <b>.then((permission) => {
+      if(Notification.permission === 'granted') {
+        new Notification('Hello JavaScript!');
+      }
+    });</b>
+  }
+      </pre>
+      <p>
+        The constructor function’s first parameter is the title of the
+        notification, and is required. The function also accepts a second
+        parameter, which is an object of options. These include body that
+        specifies any text that you want to appear below the title, and icon
+        where you can specify a link to an image that will be displayed as part
+        of the notification:
+      </p>
+      <pre>
+  <b>const notification = new Notification('JavaScript: Novice to Ninja',{
+    body: 'The new book from SitePoint',
+    icon: 'sitepointlogo.png'
+  });</b>
+      </pre>
+      <p>
+        Depending on your browser and computer OS, some notifications close
+        automatically after a short period of time, and some will stay on the
+        screen until the user clicks on them. We can close the notification
+        programmatically using the close() method:
+      </p>
+      <pre>
+  <b>notification.close();</b>
+      </pre>
+      <p>
+        The notification instance has a number of events that it can react to,
+        including click (when a user clicks on it), show (when the notification
+        appears) and close (when the notification is closed).
+      </p>
+      <pre>
+  // Open a new window when the user clicked on the
+  // notification using the following code:
+  <b>otification.addEventListener('click', () => {
+    window.open('https://sitepoint.com')
+  }, false);</b>
+      </pre>
+      <u>Multimedia</u>
+      <p>
+        Flash was discontinued December 2020. HTML5 introduced the &#60;audio>
+        and &#60;video> tags used to insert audio and video clips into a web
+        page. It also introduced a Media API for controlling the playback of the
+        clips using JavaScript. The controls attribute for
+        &#60;audio>&#60;audio> and &#60;video> can be added (without any value)
+        and will display the browser’s native controls, such as play, pause, and
+        volume control.
+      </p>
+      <pre>
+  // Insert an audio clip by using the &#60;audio> tag and the src attribute to point to the audio file.
+  <b>&#60;audio src='/song.mp3' controls>
+    Your browser does not support the audio element.
+  &#60;/audio></b>
 
-      <!--    NOTES GO ABOVE HERE     -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!--         -->
-      <!-- This is where my questions are added. This is to help me know that I
-      will be continuing my notes above this sectin. -->
+  // Source: https://www.youtube.com/watch?v=Y1fiOJDXA-E&ab_channel=FreddieMercurySolo
+<audio src='./media/Freddie Mercury  Montserrat Caballé - Barcelona (Original David Mallet Video 1987 Remastered).mp3' controls>
+      Your browser does not support the audio element.
+  </audio>
+      </pre>
+      <pre>
+  // Insert an video clip by using the &#60;video> tag and the src attribute to point to the audio file.
+  <b>&#60;video src='http://movie.mp4' controls>
+    Your browser does not support the audio element.
+  &#60;/video></b>
+
+  // Source: https://www.youtube.com/watch?v=Y1fiOJDXA-E&ab_channel=FreddieMercurySolo
+  <video src='media/Freddie Mercury  Montserrat Caballé - Barcelona (Original David Mallet Video 1987 Remastered).mp4' controls>
+    Your browser does not support the video element.
+  </video>
+      </pre>
+      <p>
+        The audio or video element can be referenced by a variable using one of
+        the DOM methods.
+      </p>
+      <pre>
+  <b>const video = document.getElementsByTagName('video')[0];</b>
+      </pre>
+      <p>
+        Audio and video elements have a number of properties and methods to
+        control the playback of the clip.
+      </p>
+      <pre>
+  // The play() method will start the clip playing from its current position
+  <b>video.play();</b>
+
+  // The pause() method will pause the clip at its current position
+  <b>video.pause();</b>
+
+  // The volume property is a number that can be used to set the audio volume
+  <b>video.volume = 0.9;</b>
+
+  // The muted property is a boolean value that can be used to mute the audio
+  <b>video.muted = true;</b>
+
+  // The currentTime property is a number value that can be used to jump to another
+  // part of the clip
+  <b>video.currentTime += 10;</b> // jumps forward 10 seconds
+
+  // The playbackRate property is used to fast-forward or rewind the clip by
+  // changing its value. A value of 1 is playback at normal speed
+  <b>video.playbackRate = 8;</b> // fast-forward at 8 times as fast
+
+  // The loop property is a boolean value that can be set to true to make the clip
+  // repeat in a loop
+  <b>video.loop = true;</b>
+
+  // The duration property can be used to see how long the clip lasts
+  <b>video.duration;</b>
+  &#60;&#60; 52.209
+      </pre>
+      <p>
+        Some of the properties are only available once the browser has received
+        all the metadata associated with the video. This means that, in order to
+        ensure a value is returned, you should use an event listener that fires
+        once the metadata has loaded, like the one shown below:
+      </p>
+      <pre>
+  <b>video.addEventListener('loadedmetadata', () => {
+    console.log(video.duration);
+  });</b>
+      </pre>
+      <p>
+        Audio and video clips also have a number of events that will fire when
+        they occur, including:
+      </p>
+      <ul>
+        <li>
+          The play event, which fires when the clip starts and when it resumes
+          after a pause.
+        </li>
+        <li>The pause event, which fires when the clip is paused.</li>
+        <li>The volumechange event, which fires when the volume is changed.</li>
+        <li>
+          The loadedmetadata event, which we saw in the note above, and which
+          fires when all the video’s metadata has loaded.
+        </li>
+      </ul>
+      <p>
+        These events allow you to respond to any interactions the user has with
+        the video.
+      </p>
+      <pre>
+  // The following event listener can be added to check whether
+  the user has paused the video
+  <b>video.addEventListener("pause", () => {
+      console.log("The video has been paused");
+    },
+    false
+  );</b>
+      </pre>
+      <p>
+        The audio and video elements bring native support for multimedia into
+        the browser, and the API gives developers full control of the playback
+        of audio tracks and video clips.
+      </p>
+      <h2>Other APIs</h2>
+      <p>
+        The list of APIs is constantly growing, and includes APIs for accessing
+        a device’s camera, uploading files, accessing the battery status,
+        handling push notifications, building drag-and-drop functionality,
+        creating 3D effects with WebGL, and many more! A comprehensive list of
+        HTML5 APIs can be found at the Mozilla Developer Network.
+      </p>
+      <p>
+        There are some security and privacy considerations to keep in mind when
+        considering some HTML5 APIs – especially those on the cutting edge that
+        haven’t been used in the wild for long. For example, there are concerns
+        that the ambient light API might make it possible to steal data and the
+        battery API has been dropped by Apple and Mozilla due to concerns over
+        user profiling.
+      </p>
+      <h2>Drawing with Canvas</h2>
+      <p>
+        The canvas element was introduced to allow graphics to be drawn onto a
+        web page in real time using JavaScript. A canvas element is a
+        rectangular element on the web page. It has a coordinate system that
+        starts at (0,0) in the top-left corner.
+      </p>
+      <pre>
+  // This is code for the HTML. Each section is modified just to show it seperately:
+  <b>&#60;canvas id="canvas" width="400" height="400"
+    >Sorry, but your browser does not support the canvas element
+  &#60;/canvas></b>
+      </pre>
+      <p>
+        This canvas can now be accessed in a JavaScript program using the
+        document.getElementById() method. The following code draws the blue
+        rectangle.
+      </p>
+      <pre>
+  <b>const canvasElement = document.getElementById('canvas');</b>
+
+  // The getContext() method is used to access the context:
+  <b>const context = canvasElement.getContext('2d');</b>
+
+  // The fill colors can be changed by assigning a CSS color to the fillStyle 
+  // property respectively. These colors will be utilized for everything that’s 
+  // drawn onto the canvas until they’re changed:
+  <b>context.fillStyle = "#0000cc";</b> // a blue fill color
+
+  // The lineWidth property can be used to set the width of any line strokes drawn
+  // onto the canvas. It defaults to one pixel and remains the same until it’s changed:
+  <b>context.lineWidth = 4;</b>
+
+  // The fillRect() method can draw a filled-in rectangle. The first two parameters
+  // are the coordinates of the top-left corner, the third parameter is the width, and the
+  // last parameter is the height. The following produces a filled-in blue rectangle in
+  // the top-left corner of the canvas at coordinates (10,10) that is 100 pixels wide and
+  // 50 pixels high:
+  <b>context.fillRect(10,10,100,50);</b>
+      </pre>
+      <p>The following code draws the gray outlined rectangle.</p>
+      <pre>
+  <b>const canvasElement = document.getElementById('canvas');</b>
+
+  // The getContext() method is used to access the context:
+  <b>const context = canvasElement.getContext('2d');</b>
+
+  // The fill colors can be changed by assigning a CSS color to the strokeStyle 
+  // property respectively. These colors will be utilized for everything that’s 
+  // drawn onto the canvas until they’re changed:
+  <b>context.strokeStyle = "#ccc";</b> // a gray stroke color
+
+  // The lineWidth property can be used to set the width of any line strokes drawn
+  // onto the canvas. It defaults to one pixel and remains the same until it’s changed:
+  <b>context.lineWidth = 4;</b>
+
+  // The strokeRect() method works in the same way, but produces a rectangle that
+  // is not filled in. This will draw the outline of a rectangle underneath the last one:
+  <b>context.strokeRect(10,100,100,50);</b>
+      </pre>
+      <p>The following code draws the red 'T'.</p>
+      <pre>
+  <b>const canvasElement = document.getElementById('canvas');</b>
+
+  // The getContext() method is used to access the context:
+  <b>const context = canvasElement.getContext('2d');</b>
+
+  // Straight lines can be drawn employing the moveTo() and lineTo() methods.
+  // These methods can be used together to produce a path. Nothing will actually be
+  // drawn onto the canvas until the stroke() method is called. The following
+  // example will draw a thick red T shape onto the canvas by moving to the
+  // coordinates (130,50), then drawing a horizontal line 30 pixels long, and finally
+  // moving to the middle of that line and drawing a vertical line 40 pixels long:
+  <b>context.beginPath();
+  context.moveTo(130, 50);
+  context.lineTo(180, 50);
+  context.moveTo(155, 50);
+  context.lineTo(155, 90);
+  context.strokeStyle = '#c00';
+  context.lineWidth = 15;
+  context.stroke();</b>
+      </pre>
+      <p>The following code draws the yellow circle.</p>
+      <pre>
+  <b>const canvasElement = document.getElementById('canvas');</b>
+
+  // The getContext() method is used to access the context:
+  <b>const context = canvasElement.getContext('2d');</b>
+  // The arc() method can be used to draw an arc of a given radius from a particular
+  // point. The first two parameters are the coordinates of the center of the arc; the
+  // next parameter is the radius, followed by the start angle, then the finish angle
+  // (note that these are measured in radians). The last parameter is a boolean value
+  // that says whether the arc should be drawn counter-clockwise. The following
+  // example will draw a yellow circle of radius 30 pixels at center (200,200), since
+  // Math.PI * 2 represents a full turn:
+  <b>context.beginPath();
+  context.arc(200, 200, 30, 0, Math.PI * 2, false);
+  context.strokeStyle = '#ff0';
+  context.lineWidth = 4;
+  context.stroke();</b>
+      </pre>
+      <p>This draws the green Hello text</p>
+      <pre>
+  <b>const canvasElement = document.getElementById('canvas');</b>
+
+  // The getContext() method is used to access the context:
+  <b>const context = canvasElement.getContext('2d');</b>
+  
+  // The fillText() method is used to write text onto the canvas. The first parameter
+  // is the text to be displayed, while the next two parameters are the x and y
+  // coordinates, respectively. The font property can be used to set the font style
+  // used, otherwise the style is inherited from the canvas element’s CSS setting (note
+  // that it needs to be changed before the fillText() method is used to draw the
+  // text). The following example will draw the text “Hello” in green at coordinates
+  // (20,50), as shown below.
+  <b>context.fillStyle = '#0c0'; // a blue fill color
+  context.font = 'bold 26px sans-serif';
+  context.fillText('Hello', 20, 200);</b>
+      </pre>
+
+      <p>This is the results of the code above.</p>
+      <canvas id="canvas" width="400" height="400"
+        >Sorry, but your browser does not support the canvas element
+      </canvas>
+      <h2>Shims and Polyfills</h2>
+      <p>
+        HTML5 APIs progress at a rapid rate ― new APIs are constantly being
+        introduced, and existing APIs often change. We can’t always guarantee
+        that users will have the most up-to-date browser. This is where a shim
+        or a polyfill comes in handy. These are libraries of code that allow you
+        to use the APIs as usual. They then fill in the necessary code that’s
+        not provided natively by the user’s browser.
+      </p>
+      <p>
+        The terms shim and polyfill are often used interchangeably. The main
+        difference is a piece of code that adds some missing functionality to a
+        browser. A polyfill is a shim that achieves the same functionality,
+        while also using the API commands that would be used if the feature was
+        supported natively.
+      </p>
+      <p>
+        This means that your code can use the APIs as normal and it should work
+        as expected in older browsers. The advantage here is that the same set
+        of standard API commands can be used ― you don’t need to write
+        additional code to deal with different levels of support. And when users
+        update their browsers, the transition will be seamless, as their
+        experience will remain the same.
+      </p>
+
       <h2>Questions:</h2>
+      <p>
+        Is there any way to draw multiple canvas drawings and place them in
+        different areas of a page? I tried but it seems like there can only be
+        one line like this in JavaScript. I tried but I got an error. I tried
+        using different ids (canvas1, canvas2, etc.) to seperate different
+        areas. I also used different canvasElement (canvasElement1`,
+        canvasElement2, etc.), but it did not help.
+      </p>
+      <pre>
+  <b>const context = canvasElement.getContext('2d');</b>
+      </pre>
     </main>
 
     <!-- FOOTER HERE -->
