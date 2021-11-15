@@ -68,6 +68,13 @@ figcaption {
   background-color: antiquewhite;
 }
 
+#warning {
+  background-color: red;
+  color: white;
+  font-style: bold;
+  padding: 10px;
+}
+
 /*----------- FOOTER --------------*/
 #footerWrapper {
   background-color: darkslategrey;
