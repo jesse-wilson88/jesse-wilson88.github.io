@@ -35,10 +35,10 @@ const assignments = [
     label: "Week 09: ",
     url: "week09/",
   },
-  // {
-  //   label: "Week 10: ",
-  //   url: "week10/",
-  // },
+  {
+    label: "Week 10: ",
+    url: "week10/",
+  },
   // {
   //   label: "Week 11: ",
   //   url: "week11/",
