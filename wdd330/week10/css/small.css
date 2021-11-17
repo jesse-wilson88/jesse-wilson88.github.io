@@ -68,7 +68,8 @@ figcaption {
   background-color: antiquewhite;
 }
 
-#warning {
+#warning,
+#note {
   background-color: red;
   color: white;
   font-style: bold;
