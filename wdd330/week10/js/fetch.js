@@ -31,7 +31,7 @@ const outputdata = async () => {
 
     document.getElementById(
       "quake"
-    ).innerHTML += `<li>On ${formatDate} an ${i.type} hit ${i.place} with a magnitude of ${i.mag}.</li>`;
+    ).innerHTML += `<li id="dataLine">On ${formatDate} an ${i.type} hit ${i.place} with a magnitude of ${i.mag}.</li>`;
   }
 };
 

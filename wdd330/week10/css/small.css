@@ -76,6 +76,14 @@ figcaption {
   padding: 10px;
 }
 
+#quake {
+  list-style-type: none;
+}
+
+#dataLine {
+  padding: 2px;
+}
+
 /*----------- FOOTER --------------*/
 #footerWrapper {
   background-color: darkslategrey;
