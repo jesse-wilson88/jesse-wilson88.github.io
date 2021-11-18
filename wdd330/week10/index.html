@@ -29,6 +29,7 @@
 
     <!-- JAVASCRIPTS-->
     <script defer src="js/styles.js"></script>
+    <script defer src="js/fetch.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -787,6 +788,11 @@
       <p>
         To use Fetch in unsupported browsers, there is a Fetch Polyfill available that recreates the functionality for non-supporting browsers.
       </p>
+      <p>
+        To demonstrate Fetch working, here is a demo pulling the Date, location of the earthquake and the magnitude. Just click the button.
+      </p>
+      <button onclick="outputdata()">Click</button>
+      <ul id="quake"></ul>
     </main>
 
     <!-- FOOTER HERE -->
