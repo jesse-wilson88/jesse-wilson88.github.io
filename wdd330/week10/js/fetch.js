@@ -22,7 +22,7 @@ const outputdata = async () => {
   for (const i of mydata) {
     var date = new Date(i.time);
     formatDate =
-      date.toLocaleString("default", { month: "long" }) +
+      date.toLocaleString("default", { month: "short" }) +
       " " +
       (date.getUTCDate() < 10 ? "0" : "") +
       date.getUTCDate() +
@@ -35,4 +35,6 @@ const outputdata = async () => {
   }
 };
 
-// outputdata();
+const button = document.querySelector("button");
+
+button.addEventListener("click", outputdata);
