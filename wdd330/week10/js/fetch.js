@@ -1,14 +1,28 @@
-url =
-  "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2019-01-01&endtime=2019-03-02&latitude=43.814540699999995&longitude=-111.78491029999999&maxradiuskm=100";
+let latitude;
+let longitude;
+let startDate;
+let endDate;
+let url = "";
+
+function getCoords() {
+  latitude = document.getElementById("latitude").value;
+  longitude = document.getElementById("longitude").value;
+  radius = document.getElementById("radius").value;
+  startDate = document.getElementById("startDate").value;
+  endDate = document.getElementById("endDate").value;
+
+  url = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${startDate}&endtime=${endDate}&latitude=${latitude}&longitude=${longitude}&maxradiuskm=${radius}`;
+  console.log(url);
+
+  outputdata();
+}
 
 const getEarthquake = async () => {
+  document.getElementById("loading").innerHTML = "Loading...";
   const response = await fetch(url);
-
-  // Grabs the promise
   const data = await response.json();
   let mydata = [];
 
-  // Gets the properties of the earthquake data
   for (const i of data.features.values()) {
     mydata.push(i.properties);
   }
@@ -20,6 +34,7 @@ const outputdata = async () => {
   let mydata = await getEarthquake();
 
   for (const i of mydata) {
+    console.log(i);
     var date = new Date(i.time);
     formatDate =
       date.toLocaleString("default", { month: "short" }) +
@@ -31,10 +46,11 @@ const outputdata = async () => {
 
     document.getElementById(
       "quake"
-    ).innerHTML += `<li id="dataLine">On ${formatDate} an ${i.type} hit ${i.place} with a magnitude of ${i.mag}.</li>`;
+    ).innerHTML += `<li>On ${formatDate} an ${i.type} hit ${i.place} with a magnitude of ${i.mag}.</li>`;
   }
+  document.getElementById("finish").innerHTML = "Done";
 };
 
 const button = document.querySelector("button");
 
-button.addEventListener("click", outputdata);
+button.addEventListener("click", getCoords);

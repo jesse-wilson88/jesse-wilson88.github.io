@@ -789,11 +789,19 @@
         To use Fetch in unsupported browsers, there is a Fetch Polyfill available that recreates the functionality for non-supporting browsers.
       </p>
       <p>
-        Click the button below to demonstrate using Fetch working, here is a demo pulling the Date, location of the earthquake and the magnitude of the earthquake.
+        Need to add validations for the input tags below.
       </p>
       <h2>Working Fetch Example:</h2>
+      <div>Click the button to show the earthquake data.</div>
+      <div>Latitude: <input id="latitude" type="number" /></div>
+      <div>Longitude: <input id="longitude" type="number" /></div>
+      <div>Radius: <input id="radius" type="number" /></div>
+      <div>Start Date: <input id="startDate" type="date" /></div>
+      <div>End Date: <input id="endDate" type="date" /></div>
       <button type="button">Click</button>
+      <div id="loading"></div>
       <ul id="quake"></ul>
+      <div id="finish"></div>
     </main>
 
     <!-- FOOTER HERE -->

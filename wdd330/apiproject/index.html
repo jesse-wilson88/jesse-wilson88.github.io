@@ -9,7 +9,7 @@
     <meta name="author" content="Jesse Wilson" />
 
     <!-- SITE TITLE -->
-    <title>Fetch</title>
+    <title>Address Book Application</title>
 
     <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
       enlarging when a phone is turned sideways-->
@@ -19,10 +19,16 @@
     />
 
     <!-- STYLE SHEETS -->
-    <link href="styles.css" rel="stylesheet" />
+    <link href="css/normalize.css" rel="stylesheet" />
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet" />
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet" />
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet" />
 
     <!-- JAVASCRIPTS-->
-    <script defer src="fetch.js"></script>
+    <script defer src="js/styles.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -33,18 +39,15 @@
 
     <!-- CONTENT HERE -->
     <main>
-      <div>Click the button to show the earthquake data.</div>
-      <div>Latitude: <input id="latitude" type="number" /></div>
-      <div>Longitude: <input id="longitude" type="number" /></div>
-      <div>Radius: <input id="radius" type="number" /></div>
-      <div>Start Date: <input id="startDate" type="date" /></div>
-      <div>End Date: <input id="endDate" type="date" /></div>
-      <div>
-        <button type="button">Click</button>
-      </div>
-      <div>
-        <ul id="quake"></ul>
-        <div id="finish"></div>
+      <div class="row">
+        <div class="column">
+          <div class="contactList">
+            <div class="header">Contact List</div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="contactInfo"></div>
+        </div>
       </div>
     </main>
 

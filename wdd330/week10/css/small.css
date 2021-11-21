@@ -84,6 +84,11 @@ figcaption {
   padding: 2px;
 }
 
+input {
+  margin: 5px;
+  height: 20px;
+}
+
 /*----------- FOOTER --------------*/
 #footerWrapper {
   background-color: darkslategrey;
