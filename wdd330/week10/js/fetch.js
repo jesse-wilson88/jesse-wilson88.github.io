@@ -19,6 +19,7 @@ function getCoords() {
 
 const getEarthquake = async () => {
   document.getElementById("loading").innerHTML = "Loading...";
+
   const response = await fetch(url);
   const data = await response.json();
   let mydata = [];

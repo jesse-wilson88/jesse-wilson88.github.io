@@ -33,7 +33,9 @@
 
     <!-- CONTENT HERE -->
     <main>
-      <div>Click the button to show the earthquake data.</div>
+      <div>
+        Enter the information for where you want to search for earthquakes.
+      </div>
       <div>Latitude: <input id="latitude" type="number" /></div>
       <div>Longitude: <input id="longitude" type="number" /></div>
       <div>Radius: <input id="radius" type="number" /></div>
@@ -43,6 +45,7 @@
         <button type="button">Click</button>
       </div>
       <div>
+        <div id="loading"></div>
         <ul id="quake"></ul>
         <div id="finish"></div>
       </div>
