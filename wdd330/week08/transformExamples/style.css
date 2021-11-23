@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 60rem;
+  margin: 0 auto;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background: lightgrey;
+}
+
+h1,
+h2 {
+  margin-bottom: -0.8rem;
+}
+
+div {
+  margin: 0 0 2.5rem;
+}
+
+.example1 {
+  width: 100px;
+  aspect-ratio: 1/1;
+  background: aqua;
+  transition: transform 1s ease-in;
+}
+
+.example1:hover {
+  transform: translate(45px, 50px);
+}
+
+.example2 {
+  width: 100px;
+  aspect-ratio: 1/1;
+  background: greenyellow;
+  transition: transform 2s ease;
+}
+
+.example2:hover {
+  transform: scale(2, 3);
+}
+
+.example3 {
+  width: 100px;
+  aspect-ratio: 1/1;
+  background: greenyellow;
+  transition: transform 2s ease;
+}
+
+.example3:hover {
+  transform: translateX(100px) scale(2);
+}
+
+.example4 {
+  width: 100px;
+  aspect-ratio: 1/2;
+  background: pink;
+  display: inline-block;
+  transition: transform 1.5s ease;
+}
+
+.example5 {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-left: 5rem;
+  background: red;
+  transition: transform 1.5s ease;
+}
+
+.example4:hover {
+  transform: rotate(45deg);
+}
+
+.example5:hover {
+  transform: rotate(-135deg);
+}
+
+.example6 {
+  width: 100px;
+  height: 100px;
+  background: skyblue;
+  transition: transform 1.5s ease;
+}
+
+.example6:hover {
+  transform: skew(35deg, 10deg);
+}
+
+.example7 {
+  width: 100px;
+  height: 100px;
+  background: darkgoldenrod;
+  border-radius: 50%;
+  transition: transform 2s linear;
+  transform-origin: top center; /* or we can use 10% 10% */
+}
+
+.example7:hover {
+  transform: rotate(360deg);
+}
+
+.example8 {
+  width: 100px;
+  aspect-ratio: 1/1;
+  background: blue;
+  display: inline-block;
+  transition: transform 1.5s ease;
+}
+
+.example9 {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-left: 5rem;
+  background: blueviolet;
+  transition: transform 1.5s ease;
+}
+
+.example8:hover {
+  transform: translateX(200px) rotate(135deg);
+}
+
+.example9:hover {
+  transform: rotate(135deg) translateX(200px);
+}
+
+.ease,
+.linear,
+.ease-in,
+.ease-out,
+.ease-in-out {
+  width: 100px;
+  aspect-ratio: 1/1;
+  background: maroon;
+  transition: transform 3s;
+  color: white;
+  padding: 0.5rem;
+}
+
+.ease:hover,
+.linear:hover,
+.ease-in:hover,
+.ease-out:hover,
+.ease-in-out:hover {
+  transform: translateX(600px);
+}
+
+.ease {
+  transition-timing-function: ease;
+}
+
+.linear {
+  transition-timing-function: linear;
+}
+
+.ease-in {
+  transition-timing-function: ease-in;
+}
+
+.ease-out {
+  transition-timing-function: ease-out;
+}
+
+.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+
+.positive-delay,
+.negative-delay {
+  width: 150px;
+  aspect-ratio: 1/1;
+  background: cadetblue;
+  color: white;
+  padding: 0.5rem;
+}
+
+.positive-delay {
+  transition: transform 3s ease-in 1s, background-color 2s ease;
+}
+
+.negative-delay {
+  transition: transform 3s ease-in -1s; /* animatino will last only 1s => 2s -1s = 1s*/
+}
+
+.positive-delay:hover,
+.negative-delay:hover {
+  background-color: purple;
+  transform: translateX(500px);
+}
+
+.move-right,
+.appear-disappear,
+.bg-move {
+  width: 150px;
+  aspect-ratio: 1/1;
+  background: peru;
+}
+
+.move-right:hover {
+  animation: moveRight 2s ease-in;
+}
+
+.appear-disappear:hover {
+  animation: appearDisappear 2s linear alternate;
+}
+
+.bg-move:hover {
+  animation: infiniteRotation 1.5s ease infinite;
+}
+
+/* Animations starts here */
+@keyframes moveRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+@keyframes appearDisappear {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+}
+@keyframes infiniteRotation {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotateX(360deg);
+  }
+}

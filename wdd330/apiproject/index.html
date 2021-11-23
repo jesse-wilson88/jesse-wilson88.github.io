@@ -28,7 +28,9 @@
     <link href="css/large.css" rel="stylesheet" />
 
     <!-- JAVASCRIPTS-->
-    <script defer src="js/styles.js"></script>
+    <script defer src="js/ls.js"></script>
+    <script defer src="js/contacts.js"></script>
+    <script defer src="js/main.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -40,13 +42,48 @@
     <!-- CONTENT HERE -->
     <main>
       <div class="row">
-        <div class="column">
+        <div class="column1">
           <div class="contactList">
             <div class="header">Contact List</div>
+            <div class="contacts">
+              <ul></ul>
+            </div>
           </div>
         </div>
-        <div class="column">
-          <div class="contactInfo"></div>
+        <div class="column2">
+          <div class="contactInfo">
+            <table id="contactTable">
+              <tr>
+                <td id="label">First Name:</td>
+                <td><input name="fName" id="fName" type="text" /></td>
+              </tr>
+              <tr>
+                <td id="label">Last Name:</td>
+                <td><input name="lName" id="lName" type="text" /></td>
+              </tr>
+              <tr>
+                <td id="label">Address:</td>
+                <td><input name="address" id="address" type="text" /></td>
+              </tr>
+              <tr>
+                <td id="label">Zip/Postal Code:</td>
+                <td><input name="zip" id="zip" type="text" /></td>
+              </tr>
+              <tr>
+                <td id="label">Phone #:</td>
+                <td><input name="phone" id="phone" type="tel" /></td>
+              </tr>
+              <tr>
+                <td id="label">Country:</td>
+                <td><input name="country" id="country" type="text" /></td>
+              </tr>
+            </table>
+          </div>
+          <div class="options">
+            <button id="newContact">New</button>
+            <button id="editContact">Edit</button>
+            <button id="saveContact">Save</button>
+          </div>
         </div>
       </div>
     </main>

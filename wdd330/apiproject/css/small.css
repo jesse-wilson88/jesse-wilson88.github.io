@@ -21,10 +21,18 @@ body {
   margin-top: 10px;
 }
 
-.column {
+.column1,
+.column2 {
   border: solid 1px black;
-  width: 500px;
   height: 600px;
+}
+
+.column1 {
+  width: 300px;
+}
+
+.column2 {
+  width: 700px;
 }
 
 .header {
@@ -36,10 +44,83 @@ body {
   font-size: 3rem;
 }
 
-.contactInfo {
-  margin: 5px 0;
+.contacts {
   height: 500px;
+  overflow: auto;
+}
+
+.contactInfo {
+  height: 475px;
   border-bottom: solid 1px black;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  width: 270px;
+  height: 30px;
+  border: 1px solid black;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+li button {
+  float: right;
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+
+#contactTable {
+  margin: 25px 0 0 5px;
+}
+
+#label {
+  font-size: 30px;
+  text-align: right;
+}
+
+input {
+  height: 40px;
+  width: 475px;
+  font-size: 30px;
+}
+
+.options {
+  height: 100px;
+  text-align: center;
+}
+
+.options button {
+  background-color: lightgray;
+  padding: 10px;
+  vertical-align: top;
+  box-shadow: 2px 1px 2px gray;
+  margin: 4px 10px 4px 10px;
+  height: 90px;
+  width: 90px;
+  font-size: 30px;
+}
+
+#newContact {
+  float: left;
+}
+#saveContact {
+  float: right;
+}
+
+button:hover {
+  background-color: white;
+}
+
+button:active {
+  box-shadow: 0 0 0 white;
+  margin: 6px 10px 2px 10px;
 }
 /*----------- FOOTER --------------*/
 
