@@ -3,10 +3,17 @@ const editContactButton = document.getElementById("editContact");
 const saveContactButton = document.getElementById("saveContact");
 
 newContactButton.addEventListener("click", function () {
-  console.log("New Contact button has been clicked.");
+  statusAction = "new";
+
+  for (i of input) {
+    // console.log(i);
+    i.disabled = false;
+  }
+  // console.log("New Contact button has been clicked.");
   document.getElementById("fName").value = "";
   document.getElementById("lName").value = "";
   document.getElementById("address").value = "";
+  document.getElementById("city").value = "";
   document.getElementById("zip").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("country").value = "";
@@ -15,13 +22,24 @@ newContactButton.addEventListener("click", function () {
 });
 
 editContactButton.addEventListener("click", function () {
-  console.log("Edit Contact button has been clicked.");
+  // console.log("Edit Contact button has been clicked.");
+  statusAction = "edit";
+  editContact();
 });
 
 saveContactButton.addEventListener("click", function () {
-  console.log("Save Contact button has been clicked.");
-  // saveNewLocalContact();
-  addContact();
+  if (statusAction == "new") {
+    // console.log("Adding Contact");
+    addContact();
+  } else {
+    // console.log("Updating Contact");
+    updateLocalContact();
+  }
+
+  for (i of input) {
+    // console.log(i);
+    i.disabled = true;
+  }
 });
 
 displayContacts(getLocalContacts());
