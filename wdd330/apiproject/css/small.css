@@ -48,13 +48,16 @@ body {
 
 .contacts {
   background-color: #116466;
+  color: #d1e8e2;
   height: 500px;
   overflow: auto;
 }
 
 .contactInfo {
-  height: 475px;
+  height: 498px;
   border-bottom: solid 1px black;
+  background-color: #d9b08c;
+  overflow: auto;
 }
 
 ul {
@@ -65,22 +68,27 @@ li {
   list-style-type: none;
   width: 270px;
   height: 30px;
-  border: 1px solid black;
+  border: 1px solid #d1e8e2;
   margin-left: 8px;
   margin-bottom: 5px;
   padding-top: 2.5px;
   padding-left: 5px;
 }
 
+li:hover {
+  border: 2px solid;
+  font-weight: bold;
+}
+
 li button {
   float: right;
   margin: 0;
   padding: 0;
-  background: white;
+  background-color: #116466;
 }
 
 #contactTable {
-  margin: 25px 0 0 5px;
+  margin: 0 0 0 5px;
 }
 
 #label {
@@ -97,6 +105,7 @@ input {
 .options {
   height: 100px;
   text-align: center;
+  background-color: #d1e8e2;
 }
 
 .options button {
