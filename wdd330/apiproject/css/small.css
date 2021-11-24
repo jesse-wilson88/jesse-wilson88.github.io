@@ -36,6 +36,8 @@ body {
 }
 
 .header {
+  background-color: #2c3531;
+  color: #ffcb9a;
   height: 100px;
   border-bottom: solid 1px black;
   display: flex;
@@ -45,6 +47,7 @@ body {
 }
 
 .contacts {
+  background-color: #116466;
   height: 500px;
   overflow: auto;
 }

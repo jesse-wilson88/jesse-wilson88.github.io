@@ -14,6 +14,7 @@ newContactButton.addEventListener("click", function () {
   document.getElementById("lName").value = "";
   document.getElementById("address").value = "";
   document.getElementById("city").value = "";
+  document.getElementById("state").value = "";
   document.getElementById("zip").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("country").value = "";
@@ -24,7 +25,10 @@ newContactButton.addEventListener("click", function () {
 editContactButton.addEventListener("click", function () {
   // console.log("Edit Contact button has been clicked.");
   statusAction = "edit";
-  editContact();
+  for (i of input) {
+    // console.log(i);
+    i.disabled = false;
+  }
 });
 
 saveContactButton.addEventListener("click", function () {

@@ -1,5 +1,7 @@
+// This is used to know if the save button saves new contact or updates old one
 let statusAction = "";
 
+// Gets the contacts from local storage if there is one
 function getLocalContacts() {
   let contacts = localStorage.getItem("contacts");
   // console.log("Getting local contacts if stored.");
@@ -7,7 +9,16 @@ function getLocalContacts() {
   return JSON.parse(contacts);
 }
 
-function saveNewLocalContact(fName, lName, address, city, zip, phone, country) {
+function saveNewLocalContact(
+  fName,
+  lName,
+  address,
+  city,
+  state,
+  zip,
+  phone,
+  country
+) {
   // console.log("Saving new contact.");
   let contactList = getLocalContacts();
   if (contactList === null) {
@@ -21,6 +32,7 @@ function saveNewLocalContact(fName, lName, address, city, zip, phone, country) {
     lName: lName,
     address: address,
     city: city,
+    state: state,
     zip: zip,
     phone: phone,
     country: country,
@@ -54,6 +66,7 @@ function updateLocalContact() {
         contactData[placement].address =
           document.getElementById("address").value;
         contactData[placement].city = document.getElementById("city").value;
+        contactData[placement].state = document.getElementById("state").value;
         contactData[placement].zip = document.getElementById("zip").value;
         contactData[placement].phone = document.getElementById("phone").value;
         contactData[placement].country =
@@ -74,14 +87,5 @@ function deleteContact(contact) {
       newContactList.push(c);
     }
     window.localStorage.setItem("contacts", JSON.stringify(newContactList));
-  }
-}
-
-function editContact() {
-  // console.log("Editing enabled");
-
-  for (i of input) {
-    // console.log(i);
-    i.disabled = false;
   }
 }

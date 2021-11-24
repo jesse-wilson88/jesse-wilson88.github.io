@@ -6,10 +6,11 @@ function addContact() {
   let lName = document.getElementById("lName").value;
   let address = document.getElementById("address").value;
   let city = document.getElementById("city").value;
+  let state = document.getElementById("state").value;
   let zip = document.getElementById("zip").value;
   let phone = document.getElementById("phone").value;
   let country = document.getElementById("country").value;
-  saveNewLocalContact(fName, lName, address, city, zip, phone, country);
+  saveNewLocalContact(fName, lName, address, city, state, zip, phone, country);
   displayContacts(getLocalContacts());
 }
 
@@ -25,10 +26,10 @@ function displayContacts(contacts) {
       deleteBtn.textContent = "❌";
       contact.appendChild(myContact);
 
-      myContact.addEventListener("click", function (thing) {
+      myContact.addEventListener("click", function (event) {
         // console.log("Contact's name was clicked");
         // console.log(thing.target.id);
-        displayData(thing.target.id);
+        displayData(event.target.id);
       });
 
       deleteBtn.addEventListener("click", function () {
@@ -50,6 +51,7 @@ function displayData(id) {
         document.getElementById("lName").value = c.lName;
         document.getElementById("address").value = c.address;
         document.getElementById("city").value = c.city;
+        document.getElementById("state").value = c.state;
         document.getElementById("zip").value = c.zip;
         document.getElementById("phone").value = c.phone;
         document.getElementById("country").value = c.country;
