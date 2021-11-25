@@ -46,4 +46,6 @@ saveContactButton.addEventListener("click", function () {
   }
 });
 
+function validate() {}
+
 displayContacts(getLocalContacts());
