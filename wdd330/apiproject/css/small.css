@@ -89,10 +89,6 @@ li button {
   background-color: #116466;
 }
 
-/* #contactTable {
-  margin: 0 0 0 5px;
-} */
-
 label {
   display: inline-block;
   width: 150px;
@@ -103,7 +99,7 @@ label {
 
 input {
   height: 40px;
-  width: 375px;
+  width: 500px;
   font-size: 30px;
 }
 
@@ -119,6 +115,11 @@ input {
 #zip {
   text-transform: uppercase;
 }
+
+/* #fName:invalid && #lname:invalid && #company:invalid {
+  border: 1px solid red;
+  color: black;
+} */
 
 .options {
   height: 100px;

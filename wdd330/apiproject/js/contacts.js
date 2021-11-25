@@ -4,13 +4,24 @@ const input = document.querySelectorAll("input");
 function addContact() {
   let fName = document.getElementById("fName").value;
   let lName = document.getElementById("lName").value;
+  let company = document.getElementById("company").value;
   let address = document.getElementById("address").value;
   let city = document.getElementById("city").value;
   let state = document.getElementById("state").value;
   let zip = document.getElementById("zip").value;
   let phone = document.getElementById("phone").value;
   let country = document.getElementById("country").value;
-  saveNewLocalContact(fName, lName, address, city, state, zip, phone, country);
+  saveNewLocalContact(
+    fName,
+    lName,
+    company,
+    address,
+    city,
+    state,
+    zip,
+    phone,
+    country
+  );
   displayContacts(getLocalContacts());
 }
 
@@ -29,6 +40,11 @@ function displayContacts(contacts) {
       myContact.addEventListener("click", function (event) {
         // console.log("Contact's name was clicked");
         // console.log(thing.target.id);
+        for (i of input) {
+          // console.log(i);
+          i.disabled = true;
+        }
+
         displayData(event.target.id);
       });
 
@@ -41,6 +57,8 @@ function displayContacts(contacts) {
 }
 
 function displayData(id) {
+  document.getElementById("newContact").innerHTML = "New";
+  document.getElementById("editContact").innerHTML = "Edit";
   contactData = getLocalContacts();
   // console.log(contactData);
   if (contactData !== null) {
@@ -49,6 +67,7 @@ function displayData(id) {
         document.getElementById("id").value = c.id;
         document.getElementById("fName").value = c.fName;
         document.getElementById("lName").value = c.lName;
+        document.getElementById("company").value = c.company;
         document.getElementById("address").value = c.address;
         document.getElementById("city").value = c.city;
         document.getElementById("state").value = c.state;

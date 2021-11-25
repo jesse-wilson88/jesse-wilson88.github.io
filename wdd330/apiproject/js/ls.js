@@ -12,6 +12,7 @@ function getLocalContacts() {
 function saveNewLocalContact(
   fName,
   lName,
+  company,
   address,
   city,
   state,
@@ -30,6 +31,7 @@ function saveNewLocalContact(
     id: new Date().getTime(),
     fName: fName,
     lName: lName,
+    company: company,
     address: address,
     city: city,
     state: state,
@@ -63,6 +65,8 @@ function updateLocalContact() {
         contactData[placement].fName = document.getElementById("fName").value;
 
         contactData[placement].lName = document.getElementById("lName").value;
+        contactData[placement].company =
+          document.getElementById("company").value;
         contactData[placement].address =
           document.getElementById("address").value;
         contactData[placement].city = document.getElementById("city").value;

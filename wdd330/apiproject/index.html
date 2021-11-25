@@ -54,230 +54,99 @@
         <div class="column2">
           <div class="contactInfo">
             <form action="">
-              <span>
-                <label for="fName">First Name: </label>
-                <input
-                  name="fName"
-                  class="input"
-                  id="fName"
-                  type="text"
-                  maxlength="32"
-                  pattern="[A-Za-z]"
-                  disabled
-                  required
-                />
-              </span>
-              <br />
-              <span>
-                <label for="lName">Last Name: </label>
-                <input
-                  name="lName"
-                  class="input"
-                  id="lName"
-                  type="text"
-                  maxlength="32"
-                  pattern="[A-Za-z]"
-                  disabled
-                />
-              </span>
-              <br />
-              <span>
-                <label for="address">Address: </label>
-                <input
-                  name="address"
-                  class="input"
-                  id="address"
-                  type="text"
-                  maxlength="32"
-                  pattern="[A-Za-z]"
-                  disabled
-                />
-              </span>
-              <br />
-              <span>
-                <label for="city">City: </label>
-                <input
-                  name="city"
-                  class="input"
-                  id="city"
-                  type="text"
-                  maxlength="20"
-                  pattern="[A-Za-z]"
-                  disabled
-                />
-              </span>
-              <br />
-              <span>
-                <label for="state">State: </label>
-                <input
-                  name="state"
-                  class="input"
-                  id="state"
-                  type="text"
-                  maxlength="15"
-                  disabled
-                />
-              </span>
-              <br />
-              <span>
-                <label for="zip">Zip Code: </label>
-                <input
-                  name="zip"
-                  class="input"
-                  id="zip"
-                  type="text"
-                  maxlength="7"
-                  pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
-                  disabled
-                />
-              </span>
-              <br />
-              <span>
-                <label for="phone">Phone: </label>
-                <input
-                  name="phone"
-                  class="input"
-                  id="phone"
-                  type="tel"
-                  maxlength="10"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9] {4}"
-                  placeholder="801-555-1212"
-                  disabled
-                />
-              </span>
-              <br />
-              <span>
-                <label for="country">Country: </label>
-                <input
-                  name="country"
-                  class="input"
-                  id="country"
-                  type="text"
-                  maxlength="20"
-                  pattern="[A-Za-z]"
-                  disabled
-                />
-              </span>
+              <label id="id" hidden></label>
+              <label for="fName">First Name: </label>
+              <input
+                name="fName"
+                class="input"
+                id="fName"
+                type="text"
+                maxlength="32"
+                pattern="[A-Za-z]"
+                disabled
+                required
+              />
+              <label for="lName">Last Name: </label>
+              <input
+                name="lName"
+                class="input"
+                id="lName"
+                type="text"
+                maxlength="32"
+                pattern="[A-Za-z]"
+                disabled
+              />
+              <label for="company">Company: </label>
+              <input
+                name="company"
+                class="input"
+                id="company"
+                type="text"
+                maxlength="32"
+                pattern="[A-Za-z]"
+                disabled
+              />
+              <label for="address">Address: </label>
+              <input
+                name="address"
+                class="input"
+                id="address"
+                type="text"
+                maxlength="32"
+                pattern="[A-Za-z]"
+                disabled
+              />
+              <label for="city">City: </label>
+              <input
+                name="city"
+                class="input"
+                id="city"
+                type="text"
+                maxlength="20"
+                pattern="[A-Za-z]"
+                disabled
+              />
+              <label for="state">State: </label>
+              <input
+                name="state"
+                class="input"
+                id="state"
+                type="text"
+                maxlength="15"
+                disabled
+              />
+              <label for="zip">Zip Code: </label>
+              <input
+                name="zip"
+                class="input"
+                id="zip"
+                type="text"
+                maxlength="7"
+                pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
+                disabled
+              />
+              <label for="phone">Phone: </label>
+              <input
+                name="phone"
+                class="input"
+                id="phone"
+                type="tel"
+                maxlength="10"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9] {4}"
+                placeholder="801-555-1212"
+                disabled
+              />
+              <label for="country">Country: </label>
+              <input
+                name="country"
+                class="input"
+                id="country"
+                type="text"
+                maxlength="20"
+                pattern="[A-Za-z]"
+                disabled
+              />
             </form>
-
-            <!-- <table id="contactTable">
-              <tr>
-                <td><input id="id" type="text" hidden /></td>
-              </tr>
-              <tr>
-                <td id="label">First Name:</td>
-                <td>
-                  <input
-                    name="fName"
-                    class="input"
-                    id="fName"
-                    type="text"
-                    maxlength="32"
-                    pattern="[A-Za-z]"
-                    disabled
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td id="label">Last Name:</td>
-                <td>
-                  <input
-                    name="lName"
-                    class="input"
-                    id="lName"
-                    type="text"
-                    maxlength="32"
-                    pattern="[A-Za-z]"
-                    disabled
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td id="label">Address:</td>
-                <td>
-                  <input
-                    name="address"
-                    class="input"
-                    id="address"
-                    type="text"
-                    maxlength="32"
-                    pattern="[A-Za-z]"
-                    disabled
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td id="label">City:</td>
-                <td>
-                  <input
-                    name="city"
-                    class="input"
-                    id="city"
-                    type="text"
-                    maxlength="20"
-                    pattern="[A-Za-z]"
-                    disabled
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td id="label">State:</td>
-                <td>
-                  <input
-                    name="state"
-                    class="input"
-                    id="state"
-                    type="text"
-                    maxlength="15"
-                    disabled
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td id="label">Zip Code:</td>
-                <td>
-                  <input
-                    name="zip"
-                    class="input"
-                    id="zip"
-                    type="text"
-                    maxlength="7"
-                    pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
-                    disabled
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td id="label">Phone #:</td>
-                <td>
-                  <input
-                    name="phone"
-                    class="input"
-                    id="phone"
-                    type="tel"
-                    maxlength="10"
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9] {4}"
-                    placeholder="801-555-1212"
-                    disabled
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td id="label">Country:</td>
-                <td>
-                  <input
-                    name="country"
-                    class="input"
-                    id="country"
-                    type="text"
-                    maxlength="20"
-                    pattern="[A-Za-z]"
-                    disabled
-                  />
-                </td>
-              </tr>
-            </table> -->
           </div>
           <div class="options">
             <button id="newContact">New</button>
