@@ -1,6 +1,9 @@
+// Get the only ul element in the HTML
 const contact = document.querySelector("ul");
+// Get all of the input fields
 const input = document.querySelectorAll("input");
 
+// Adds new contact to address book
 function addContact() {
   let fName = document.getElementById("fName").value;
   let lName = document.getElementById("lName").value;
@@ -9,8 +12,8 @@ function addContact() {
   let city = document.getElementById("city").value;
   let state = document.getElementById("state").value;
   let zip = document.getElementById("zip").value;
-  let phone = document.getElementById("phone").value;
   let country = document.getElementById("country").value;
+  let phone = document.getElementById("phone").value;
   saveNewLocalContact(
     fName,
     lName,
@@ -25,29 +28,36 @@ function addContact() {
   displayContacts(getLocalContacts());
 }
 
+// Displays the contact names on the let side of the address book
 function displayContacts(contacts) {
   contact.innerHTML = "";
   if (contacts !== null) {
     for (const c of contacts) {
       const myContact = document.createElement("li");
       const deleteBtn = document.createElement("button");
-      myContact.append(`${c.fName} ${c.lName}`);
+
+      // Checks to see if the fName and lName should be displayed or company
+      if (c.fName == "" && c.lName == "" && c.company != "") {
+        myContact.append(`${c.company}`);
+      } else {
+        myContact.append(`${c.fName} ${c.lName}`);
+      }
+
       myContact.setAttribute("id", c.id);
       myContact.appendChild(deleteBtn);
       deleteBtn.textContent = "❌";
       contact.appendChild(myContact);
 
+      // Event listener to display the contacts information
       myContact.addEventListener("click", function (event) {
-        // console.log("Contact's name was clicked");
-        // console.log(thing.target.id);
         for (i of input) {
-          // console.log(i);
           i.disabled = true;
         }
 
         displayData(event.target.id);
       });
 
+      // Event listener to delete a contact and their information
       deleteBtn.addEventListener("click", function () {
         deleteContact(myContact.id);
         contact.removeChild(myContact);
@@ -56,11 +66,11 @@ function displayContacts(contacts) {
   }
 }
 
+// Displays the contact information on the right side of the address book
 function displayData(id) {
   document.getElementById("newContact").innerHTML = "New";
   document.getElementById("editContact").innerHTML = "Edit";
   contactData = getLocalContacts();
-  // console.log(contactData);
   if (contactData !== null) {
     for (c of contactData) {
       if (id == c.id) {
@@ -72,9 +82,10 @@ function displayData(id) {
         document.getElementById("city").value = c.city;
         document.getElementById("state").value = c.state;
         document.getElementById("zip").value = c.zip;
-        document.getElementById("phone").value = c.phone;
         document.getElementById("country").value = c.country;
+        document.getElementById("phone").value = c.phone;
       }
     }
   }
+  requiredField();
 }

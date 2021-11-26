@@ -105,6 +105,7 @@ input {
 
 #fName,
 #lName,
+#company,
 #address,
 #city,
 #state,
@@ -116,10 +117,9 @@ input {
   text-transform: uppercase;
 }
 
-/* #fName:invalid && #lname:invalid && #company:invalid {
-  border: 1px solid red;
-  color: black;
-} */
+input:required {
+  border-left: 4px solid red;
+}
 
 .options {
   height: 100px;

@@ -63,8 +63,8 @@
                 type="text"
                 maxlength="32"
                 pattern="[A-Za-z]"
+                onblur="requiredField()"
                 disabled
-                required
               />
               <label for="lName">Last Name: </label>
               <input
@@ -74,6 +74,7 @@
                 type="text"
                 maxlength="32"
                 pattern="[A-Za-z]"
+                onblur="requiredField()"
                 disabled
               />
               <label for="company">Company: </label>
@@ -84,6 +85,7 @@
                 type="text"
                 maxlength="32"
                 pattern="[A-Za-z]"
+                onblur="requiredField()"
                 disabled
               />
               <label for="address">Address: </label>
@@ -125,17 +127,6 @@
                 pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
                 disabled
               />
-              <label for="phone">Phone: </label>
-              <input
-                name="phone"
-                class="input"
-                id="phone"
-                type="tel"
-                maxlength="10"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9] {4}"
-                placeholder="801-555-1212"
-                disabled
-              />
               <label for="country">Country: </label>
               <input
                 name="country"
@@ -144,6 +135,17 @@
                 type="text"
                 maxlength="20"
                 pattern="[A-Za-z]"
+                disabled
+              />
+              <label for="phone">Phone: </label>
+              <input
+                name="phone"
+                class="input"
+                id="phone"
+                type="tel"
+                maxlength="10"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9] {4}"
+                placeholder="8015551212"
                 disabled
               />
             </form>

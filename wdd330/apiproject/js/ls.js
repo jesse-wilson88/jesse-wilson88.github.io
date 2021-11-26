@@ -1,14 +1,14 @@
-// This is used to know if the save button saves new contact or updates old one
+// This is used to know if the New button or Edit button were clicked
 let statusAction = "";
 
-// Gets the contacts from local storage if there is one
+// Gets the contacts from local storage if there are any
 function getLocalContacts() {
   let contacts = localStorage.getItem("contacts");
-  // console.log("Getting local contacts if stored.");
-  // console.log(contacts);
+
   return JSON.parse(contacts);
 }
 
+// Saves the new contact to the local storage
 function saveNewLocalContact(
   fName,
   lName,
@@ -17,16 +17,17 @@ function saveNewLocalContact(
   city,
   state,
   zip,
-  phone,
-  country
+  country,
+  phone
 ) {
-  // console.log("Saving new contact.");
+  // checks to see if there are contacts in the local storage
   let contactList = getLocalContacts();
+  // If no contacts are found in the local storage a new array is created
   if (contactList === null) {
-    // console.log("New array is being created.");
     contactList = [];
   }
 
+  // If contacts are found in the local storage it is put into an array
   contactList.push({
     id: new Date().getTime(),
     fName: fName,
@@ -36,32 +37,27 @@ function saveNewLocalContact(
     city: city,
     state: state,
     zip: zip,
-    phone: phone,
     country: country,
+    phone: phone,
   });
 
-  // console.log(`Contact List ${contactList}`);
-
   window.localStorage.setItem("contacts", JSON.stringify(contactList));
+
+  clearData();
 }
 
+// Updates contact information already in the local storage
 function updateLocalContact() {
-  // console.log("Wanting to update contact.");
-  // get the id of the contact to be updated
+  // Get the id of the contact to be updated
   let id = document.getElementById("id").value;
-  // console.log(`ID = ${id}`);
-  //get all the contacts from localStorage
+  // Get all the contacts from localStorage
   let contactData = getLocalContacts();
-  //locate the contact to be updated via the id
+  // Locate the contact to be updated via the id
   if (contactData !== null) {
     for (c of contactData) {
       if (id == c.id) {
-        //Replace the contact with the data passed to this function
-        // console.log(c);
-        // console.log(`ID = ${id}`);
-        // console.log(contactData);
+        // Replace the contact information with the new data passed to this function
         let placement = contactData.map((i) => i.id).indexOf(c.id);
-        // console.log(placement);
         contactData[placement].fName = document.getElementById("fName").value;
 
         contactData[placement].lName = document.getElementById("lName").value;
@@ -72,16 +68,19 @@ function updateLocalContact() {
         contactData[placement].city = document.getElementById("city").value;
         contactData[placement].state = document.getElementById("state").value;
         contactData[placement].zip = document.getElementById("zip").value;
-        contactData[placement].phone = document.getElementById("phone").value;
         contactData[placement].country =
           document.getElementById("country").value;
-        // console.log(contactData);
+        contactData[placement].phone = document.getElementById("phone").value;
+
         window.localStorage.setItem("contacts", JSON.stringify(contactData));
       }
     }
   }
+
+  clearData();
 }
 
+// Deletes the contact and all its info
 function deleteContact(contact) {
   let myContact = getLocalContacts();
 
@@ -92,4 +91,5 @@ function deleteContact(contact) {
     }
     window.localStorage.setItem("contacts", JSON.stringify(newContactList));
   }
+  clearData();
 }
