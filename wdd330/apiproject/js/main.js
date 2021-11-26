@@ -72,7 +72,6 @@ saveContactButton.addEventListener("click", function () {
       }
     }
     lockFields();
-    displayData();
     document.getElementById("saveContact").innerHTML = "Clear";
   } else {
     clearData();
@@ -102,7 +101,6 @@ function unlockFields() {
 // Disables the contact information fields so they cannot be edited
 function lockFields() {
   for (i of input) {
-    // console.log(i);
     i.disabled = true;
   }
 }

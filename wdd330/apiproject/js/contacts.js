@@ -73,6 +73,7 @@ function displayContacts(contacts) {
 
 // Displays the contact information on the right side of the address book
 function displayData(id) {
+  console.log("Displaying data");
   document.getElementById("newContact").innerHTML = "New";
   document.getElementById("editContact").innerHTML = "Edit";
   contactData = getLocalContacts();
