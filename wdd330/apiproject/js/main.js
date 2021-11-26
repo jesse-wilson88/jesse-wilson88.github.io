@@ -55,7 +55,7 @@ saveContactButton.addEventListener("click", function () {
   // Checks to see how the contact information will be saved
   if (!locked) {
     if (fName == "" && lName == "" && company == "") {
-      alert("Please enter first name, last name, company or click cancel.");
+      alert("Please enter first name, last name, or company.");
     } else if (statusAction == "new") {
       // The new button was clicked to add a new contact
       addContact();
