@@ -59,7 +59,12 @@ function displayContacts(contacts) {
 
       // Event listener to delete a contact and their information
       deleteBtn.addEventListener("click", function () {
+        const contactInfoId = document.getElementById("id").value;
         deleteContact(myContact.id);
+        if (contactInfoId == myContact.id) {
+          clearData();
+        }
+
         contact.removeChild(myContact);
       });
     }

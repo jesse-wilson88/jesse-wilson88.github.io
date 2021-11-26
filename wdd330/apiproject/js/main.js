@@ -5,6 +5,7 @@ const saveContactButton = document.getElementById("saveContact");
 // Event listener for creating a new contact
 newContactButton.addEventListener("click", function () {
   const verify = document.getElementById("newContact").innerHTML;
+  document.getElementById("saveContact").innerHTML = "Save";
   // console.log(verify);
   if (verify === "New") {
     statusAction = "new";
@@ -12,11 +13,13 @@ newContactButton.addEventListener("click", function () {
     unlockFields();
     clearData();
     requiredField();
-    // console.log("New Contact button has been clicked.");
+
     document.getElementById("editContact").innerHTML = "Cancel";
     document.getElementById("fName").focus();
   } else {
+    document.getElementById("saveContact").innerHTML = "Clear";
     document.getElementById("newContact").innerHTML = "New";
+
     lockFields();
     requiredField();
     statusAction = "";
@@ -30,15 +33,16 @@ editContactButton.addEventListener("click", function () {
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
 
+  // If fields fName, lName, or company have data, make fields editable
   if ((verify == "Edit" && fName != "") || lName != "" || company != "") {
     statusAction = "edit";
     for (i of input) {
-      // console.log(i);
       i.disabled = false;
     }
-
+    document.getElementById("saveContact").innerHTML = "Save";
     document.getElementById("newContact").innerHTML = "Cancel";
   } else {
+    document.getElementById("saveContact").innerHTML = "Clear";
     document.getElementById("editContact").innerHTML = "Edit";
     lockFields();
     requiredField();
@@ -48,22 +52,30 @@ editContactButton.addEventListener("click", function () {
 
 // Event listener for saveing contact information
 saveContactButton.addEventListener("click", function () {
+  const verify = document.getElementById("saveContact").innerHTML;
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
   const locked = document.getElementById("fName").hasAttribute("disabled");
 
-  // Checks to see how the contact information will be saved
-  if (!locked) {
-    if (fName == "" && lName == "" && company == "") {
-      alert("Please enter first name, last name, or company.");
-    } else if (statusAction == "new") {
-      // The new button was clicked to add a new contact
-      addContact();
-    } else if (statusAction == "edit") {
-      // The edit button was clicked to edit an exsisting contact
-      updateLocalContact();
+  if (verify == "Save") {
+    // Checks to see how the contact information will be saved
+    if (!locked) {
+      if (fName == "" && lName == "" && company == "") {
+        alert("Please enter first name, last name, or company.");
+      } else if (statusAction == "new") {
+        // The new button was clicked to add a new contact
+        addContact();
+      } else if (statusAction == "edit") {
+        // The edit button was clicked to edit an exsisting contact
+        updateLocalContact();
+      }
     }
+    lockFields();
+    displayData();
+    document.getElementById("saveContact").innerHTML = "Clear";
+  } else {
+    clearData();
   }
 });
 
@@ -83,7 +95,6 @@ function clearData() {
 // Enables the contact information fields so data can be entered
 function unlockFields() {
   for (i of input) {
-    // console.log(i);
     i.disabled = false;
   }
 }

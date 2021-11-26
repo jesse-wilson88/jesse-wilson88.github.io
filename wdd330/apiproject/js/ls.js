@@ -43,7 +43,7 @@ function saveNewLocalContact(
 
   window.localStorage.setItem("contacts", JSON.stringify(contactList));
 
-  clearData();
+  displayData();
 }
 
 // Updates contact information already in the local storage
@@ -77,13 +77,13 @@ function updateLocalContact() {
     }
   }
 
-  clearData();
+  // clearData();
 }
 
 // Deletes the contact and all its info
 function deleteContact(contact) {
   let myContact = getLocalContacts();
-
+  console.log(contact);
   let newContactList = [];
   for (const c of myContact) {
     if (c.id != contact) {
@@ -91,5 +91,4 @@ function deleteContact(contact) {
     }
     window.localStorage.setItem("contacts", JSON.stringify(newContactList));
   }
-  clearData();
 }

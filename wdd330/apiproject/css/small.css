@@ -137,6 +137,7 @@ input:required {
 
 .options button {
   padding: 15px 25px;
+  width: 125px;
   font-size: 24px;
   text-align: center;
   cursor: pointer;
