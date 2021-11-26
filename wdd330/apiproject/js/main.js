@@ -41,6 +41,7 @@ editContactButton.addEventListener("click", function () {
   } else {
     document.getElementById("editContact").innerHTML = "Edit";
     lockFields();
+    requiredField();
     statusAction = "";
   }
 });
@@ -63,9 +64,6 @@ saveContactButton.addEventListener("click", function () {
       // The edit button was clicked to edit an exsisting contact
       updateLocalContact();
     }
-    lockFields();
-    document.getElementById("newContact").innerHTML = "New";
-    document.getElementById("editContact").innerHTML = "Edit";
   }
 });
 

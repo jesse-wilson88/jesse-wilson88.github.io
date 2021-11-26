@@ -4,10 +4,11 @@ function requiredField() {
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
+  const disabled = document.getElementById("fName").hasAttribute("disabled");
 
   // If all three fields (fname, lName, company) are blank,
   // set field required to true
-  if (fName == "" && lName == "" && company == "") {
+  if (fName == "" && lName == "" && company == "" && !disabled) {
     document.getElementById("fName").required = true;
     document.getElementById("lName").required = true;
     document.getElementById("company").required = true;
