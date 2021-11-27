@@ -4,9 +4,9 @@ const saveContactButton = document.getElementById("saveContact");
 
 // Event listener for creating a new contact
 newContactButton.addEventListener("click", function () {
-  const verify = document.getElementById("newContact").innerHTML;
+  const button = document.getElementById("newContact").innerHTML;
 
-  if (verify == "New") {
+  if (button == "New") {
     document.getElementById("saveContact").innerHTML = "Save";
     document.getElementById("editContact").innerHTML = "Cancel";
     statusAction = "new";
@@ -28,24 +28,22 @@ newContactButton.addEventListener("click", function () {
 
 // Event Listener for editing exsisting contact
 editContactButton.addEventListener("click", function () {
-  const verify = document.getElementById("editContact").innerHTML;
+  const button = document.getElementById("editContact").innerHTML;
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
   const locked = document.getElementById("fName").hasAttribute("disabled");
 
-  if (verify == "Edit") {
+  if (button == "Edit") {
     statusAction = "edit";
     console.log("If Statement");
-    if (fName == "" && lName == "" && company == "") {
-      console.log("Should not do anything");
-    } else {
+    if (!locked && fName != "" && lName != "" && company != "") {
       console.log("Should unlock fields");
       document.getElementById("newContact").innerHTML = "Cancel";
       document.getElementById("saveContact").innerHTML = "Save";
       unlockFields();
     }
-  } else if (verify == "Cancel") {
+  } else if (button == "Cancel") {
     console.log("Should clear data and lock cells");
     document.getElementById("editContact").innerHTML = "Edit";
     document.getElementById("saveContact").innerHTML = "Clear";
@@ -59,13 +57,13 @@ editContactButton.addEventListener("click", function () {
 
 // Event listener for saveing contact information
 saveContactButton.addEventListener("click", function () {
-  const verify = document.getElementById("saveContact").innerHTML;
+  const button = document.getElementById("saveContact").innerHTML;
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
   const locked = document.getElementById("fName").hasAttribute("disabled");
 
-  if (verify == "Save") {
+  if (button == "Save") {
     // Checks to see how the contact information will be saved
     if (!locked) {
       if (fName == "" && lName == "" && company == "") {
