@@ -93,5 +93,6 @@ function displayData(id) {
       }
     }
   }
+  displayContacts();
   requiredField();
 }

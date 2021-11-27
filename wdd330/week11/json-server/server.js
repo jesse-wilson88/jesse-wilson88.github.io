@@ -1,21 +1,22 @@
-const fs = require('fs');
-const jsonServer = require('json-server');
-const jwt = require('jsonwebtoken');
-const bodyParser = require('body-parser');
+const fs = require("fs");
+const jsonServer = require("json-server");
+const jwt = require("jsonwebtoken");
+const bodyParser = require("body-parser");
 const server = jsonServer.create();
-const router = jsonServer.router('./database.json');
+const router = jsonServer.router("./database.json");
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(jsonServer.defaults());
 
-const SECRET_KEY = '123456789';
+const SECRET_KEY = "123456789";
 
 // token timeout is set here
-const expiresIn = '1m';
+const expiresIn = "1m";
 
 // Create a token from a payload
 function createToken(payload) {
+  console.log("Token created");
   return jwt.sign(payload, SECRET_KEY, { expiresIn });
 }
 
@@ -35,29 +36,31 @@ function isAuthenticated({ email, password }) {
   return (
     //userdb.users.findIndex(user => user.username === username && user.password === password) !== -1
     router.db
-      .get('users')
-      .findIndex(user => user.email === email && user.password === password)
+      .get("users")
+      .findIndex((user) => user.email === email && user.password === password)
       .value() !== -1
   );
 }
 
-server.post('/login', (req, res) => {
+server.post("/login", (req, res) => {
   const { email, password } = req.body;
 
   if (isAuthenticated({ email, password }) === false) {
     const status = 401;
-    const message = 'Incorrect username or password';
+    const message = "Incorrect username or password";
     res.status(status).json({ status, message });
     return;
   }
+  // console.log("BOOM!");
   const accessToken = createToken({ email, password });
   res.status(200).json({ accessToken });
 });
+
 server.use((req, res, next) => {
-  if (req.method === 'POST') {
+  if (req.method === "POST") {
     const { authorization } = req.headers;
     if (authorization) {
-      const [scheme, token] = authorization.split(' ');
+      const [scheme, token] = authorization.split(" ");
       //jwt.verify(token, 'json-server-auth-123456');
       // Add claims to request
       req.claims = verifyToken(token);
@@ -71,16 +74,16 @@ server.use((req, res, next) => {
 server.use(/^(?!\/auth).*$/, (req, res, next) => {
   if (
     req.headers.authorization === undefined ||
-    req.headers.authorization.split(' ')[0] !== 'Bearer'
+    req.headers.authorization.split(" ")[0] !== "Bearer"
   ) {
     const status = 401;
-    const message = 'Error in authorization format';
+    const message = "Error in authorization format";
     res.status(status).json({ status, message });
     return;
   }
   try {
-    console.log('checking token');
-    verifyToken(req.headers.authorization.split(' ')[1]);
+    console.log("checking token");
+    verifyToken(req.headers.authorization.split(" ")[1]);
 
     next();
   } catch (err) {
@@ -93,5 +96,5 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
 server.use(router);
 
 server.listen(3000, () => {
-  console.log('Run Auth API Server');
+  console.log("Run Auth API Server");
 });

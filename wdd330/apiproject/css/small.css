@@ -108,11 +108,11 @@ input {
 #company,
 #address,
 #city,
-#state,
 #country {
   text-transform: capitalize;
 }
 
+#state,
 #zip {
   text-transform: uppercase;
 }

@@ -70,11 +70,14 @@ saveContactButton.addEventListener("click", function () {
         // The edit button was clicked to edit an exsisting contact
         updateLocalContact();
       }
+    } else if ("Clear") {
+      lockFields();
+      document.getElementById("newContact").innerHTML = "New";
+      document.getElementById("editContact").innerHTML = "Edit";
+      document.getElementById("saveContact").innerHTML = "Clear";
+    } else {
+      clearData();
     }
-    lockFields();
-    document.getElementById("saveContact").innerHTML = "Clear";
-  } else {
-    clearData();
   }
 });
 
