@@ -40,7 +40,7 @@ const assignments = [
     url: "week10/",
   },
   {
-    label: "Final Project: ",
+    label: "Week 14: ",
     url: "apiproject/",
   },
 ];
@@ -59,10 +59,10 @@ assignments.forEach((assignment) => {
   li.innerHTML = label;
   console.log(li.innerHTML);
   if (li.innerHTML == "Week 06: ") {
-    console.log("This is week 6");
     a.innerHTML = "Todo Application";
+  } else if (li.innerHTML == "Week 14: ") {
+    a.innerHTML = "Final Project";
   } else {
-    console.log("This is not week 6");
     a.innerHTML = "Notes & Code";
   }
 
