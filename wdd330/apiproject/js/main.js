@@ -5,9 +5,10 @@ const saveContactButton = document.getElementById("saveContact");
 // Event listener for creating a new contact
 newContactButton.addEventListener("click", function () {
   const verify = document.getElementById("newContact").innerHTML;
-  document.getElementById("saveContact").innerHTML = "Save";
-  document.getElementById("editContact").innerHTML = "Cancel";
-  if (verify === "New") {
+
+  if (verify == "New") {
+    document.getElementById("saveContact").innerHTML = "Save";
+    document.getElementById("editContact").innerHTML = "Cancel";
     statusAction = "new";
 
     unlockFields();
@@ -31,21 +32,28 @@ editContactButton.addEventListener("click", function () {
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
+  const locked = document.getElementById("fName").hasAttribute("disabled");
 
-  // If fields fName, lName, or company have data, make fields editable
-  if ((verify == "Edit" && fName != "") || lName != "" || company != "") {
+  if (verify == "Edit") {
     statusAction = "edit";
-    for (i of input) {
-      i.disabled = false;
+    console.log("If Statement");
+    if (fName == "" && lName == "" && company == "") {
+      console.log("Should not do anything");
+    } else {
+      console.log("Should unlock fields");
+      document.getElementById("newContact").innerHTML = "Cancel";
+      document.getElementById("saveContact").innerHTML = "Save";
+      unlockFields();
     }
-    document.getElementById("saveContact").innerHTML = "Save";
-    document.getElementById("newContact").innerHTML = "Cancel";
-  } else {
-    document.getElementById("saveContact").innerHTML = "Clear";
+  } else if (verify == "Cancel") {
+    console.log("Should clear data and lock cells");
     document.getElementById("editContact").innerHTML = "Edit";
+    document.getElementById("saveContact").innerHTML = "Clear";
     lockFields();
+    clearData();
     requiredField();
-    statusAction = "";
+  } else {
+    console.log("Else Statement");
   }
 });
 
