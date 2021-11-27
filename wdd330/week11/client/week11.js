@@ -9,6 +9,8 @@ import { makeRequest } from "./authHelpers.js";
 const myAuth = new Auth();
 
 const loginForm = document.getElementById("login");
-loginForm.querySelector("button").addEventListener("click", () => {
+loginForm.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault();
+
   myAuth.login();
 });

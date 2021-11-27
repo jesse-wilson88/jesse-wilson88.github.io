@@ -152,6 +152,7 @@ input:required {
 button:hover {
   background-color: #116466;
   color: #d1e8e2;
+  font-weight: bold;
 }
 
 button:active {
