@@ -39,14 +39,10 @@ const assignments = [
     label: "Week 10: ",
     url: "week10/",
   },
-  // {
-  //   label: "Week 11: ",
-  //   url: "week11/",
-  // },
-  // {
-  //   label: "Week 12: ",
-  //   url: "week12/",
-  // },
+  {
+    label: "Final Project: ",
+    url: "apiproject/",
+  },
 ];
 
 let ul = document.createElement("ul");
