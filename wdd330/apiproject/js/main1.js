@@ -38,8 +38,12 @@ editContactButton.addEventListener("click", function () {
     for (i of input) {
       i.disabled = false;
     }
-    document.getElementById("saveContact").innerHTML = "Save";
-    document.getElementById("newContact").innerHTML = "Cancel";
+    document.getElementById("saveContact").innerHTML = "Clear";
+    document.getElementById("editContact").innerHTML = "Edit";
+    document.getElementById("newContact").innerHTML = "New";
+    clearData();
+    lockFields();
+    // requiredField();
   } else {
     document.getElementById("saveContact").innerHTML = "Clear";
     document.getElementById("editContact").innerHTML = "Edit";

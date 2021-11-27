@@ -76,8 +76,7 @@ function updateLocalContact() {
       }
     }
   }
-  console.log("Display Contact");
-  console.log("Display Data");
+
   displayContacts(contactData);
   displayData(contactData);
 }
