@@ -103,6 +103,18 @@ input {
   font-size: 30px;
 }
 
+input:required {
+  border-left: 4px solid red;
+}
+
+input:valid {
+  background: white;
+}
+
+input:invalid {
+  /* background:; */
+}
+
 #fName,
 #lName,
 #company,
@@ -115,10 +127,6 @@ input {
 #state,
 #zip {
   text-transform: uppercase;
-}
-
-input:required {
-  border-left: 4px solid red;
 }
 
 .options {

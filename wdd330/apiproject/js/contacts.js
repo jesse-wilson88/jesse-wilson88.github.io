@@ -22,8 +22,8 @@ function addContact() {
     city,
     state,
     zip,
-    phone,
-    country
+    country,
+    phone
   );
   displayContacts(getLocalContacts());
 }

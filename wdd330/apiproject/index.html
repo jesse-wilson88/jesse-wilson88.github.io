@@ -58,69 +58,63 @@
               <label for="fName">First Name: </label>
               <input
                 name="fName"
-                class="input"
                 id="fName"
                 type="text"
                 maxlength="32"
-                pattern="[A-Za-z]"
+                pattern="[A-Za-z]{2,32}"
                 onblur="requiredField()"
                 disabled
               />
               <label for="lName">Last Name: </label>
               <input
                 name="lName"
-                class="input"
                 id="lName"
                 type="text"
                 maxlength="32"
-                pattern="[A-Za-z]"
+                pattern="[A-Za-z]{2,32}"
                 onblur="requiredField()"
                 disabled
               />
               <label for="company">Company: </label>
               <input
                 name="company"
-                class="input"
                 id="company"
                 type="text"
                 maxlength="32"
-                pattern="[A-Za-z]"
+                pattern="[A-Za-z]{2,32}"
                 onblur="requiredField()"
                 disabled
               />
               <label for="address">Address: </label>
               <input
                 name="address"
-                class="input"
                 id="address"
                 type="text"
                 maxlength="32"
-                pattern="[A-Za-z]"
+                pattern="^[#.0-9a-zA-Z\s,-]+$"
                 disabled
               />
               <label for="city">City: </label>
               <input
                 name="city"
-                class="input"
                 id="city"
                 type="text"
-                maxlength="20"
-                pattern="[A-Za-z]"
+                maxlength="32"
+                pattern="[A-Za-z]{2,32}"
                 disabled
               />
               <label for="state">State: </label>
               <input
                 name="state"
-                class="input"
                 id="state"
                 type="text"
+                minlength="2"
                 maxlength="2"
                 disabled
               />
               <label for="zip">Zip Code: </label>
               <input
                 name="zip"
-                class="input"
                 id="zip"
                 type="text"
                 maxlength="7"
@@ -130,22 +124,20 @@
               <label for="country">Country: </label>
               <input
                 name="country"
-                class="input"
                 id="country"
                 type="text"
-                maxlength="20"
-                pattern="[A-Za-z]"
+                maxlength="32"
+                pattern="[A-Za-z]{2,32}"
                 disabled
               />
               <label for="phone">Phone: </label>
               <input
                 name="phone"
-                class="input"
                 id="phone"
                 type="tel"
-                maxlength="10"
+                maxlength="12"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9] {4}"
-                placeholder="8015551212"
+                placeholder="801-555-1212"
                 disabled
               />
             </form>

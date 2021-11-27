@@ -76,7 +76,10 @@ function updateLocalContact() {
       }
     }
   }
+  console.log("Display Contact");
+  console.log("Display Data");
   displayContacts(contactData);
+  displayData(contactData);
 }
 
 // Deletes the contact and all its info

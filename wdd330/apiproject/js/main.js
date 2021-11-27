@@ -65,20 +65,20 @@ saveContactButton.addEventListener("click", function () {
       } else if (statusAction == "new") {
         // The new button was clicked to add a new contact
         addContact();
+        lockFields();
+        document.getElementById("saveContact").innerHTML = "Clear";
+        document.getElementById("editContact").innerHTML = "Edit";
       } else if (statusAction == "edit") {
         // The edit button was clicked to edit an exsisting contact
         updateLocalContact();
         lockFields();
+        document.getElementById("saveContact").innerHTML = "Clear";
+        document.getElementById("newContact").innerHTML = "New";
       }
     }
   } else {
-    lockFields();
-
     clearData();
   }
-  document.getElementById("newContact").innerHTML = "New";
-  document.getElementById("editContact").innerHTML = "Edit";
-  document.getElementById("saveContact").innerHTML = "Clear";
 });
 
 // Clears all the contact informatoin data fields on the right side of the address book
