@@ -43,7 +43,7 @@ function saveNewLocalContact(
 
   window.localStorage.setItem("contacts", JSON.stringify(contactList));
 
-  document.getElementById("id").value = contactList[contactList.length - 1].id;
+  displayData(contactList[contactList.length - 1].id);
 }
 
 // Updates contact information already in the local storage
@@ -93,7 +93,7 @@ function updateLocalContact() {
   }
 
   displayContacts(contactData);
-  displayData(contactData);
+  displayData(contactData.id);
 }
 
 // Deletes the contact and all its info

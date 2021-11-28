@@ -8,6 +8,7 @@ newContactButton.addEventListener("click", (event) => {
   const button = document.getElementById("newContact").innerHTML;
 
   if (button == "New") {
+    document.getElementById("id").value = "";
     // Clears the contactData fields for a new contact data
     document.getElementById("saveContact").innerHTML = "Save";
     document.getElementById("editContact").innerHTML = "Cancel";
@@ -55,6 +56,7 @@ editContactButton.addEventListener("click", (event) => {
 saveContactButton.addEventListener("click", (event) => {
   event.preventDefault();
   const button = document.getElementById("saveContact").innerHTML;
+  const id = document.getElementById("id").value;
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
@@ -65,14 +67,14 @@ saveContactButton.addEventListener("click", (event) => {
     if (!locked) {
       if (fName == "" && lName == "" && company == "") {
         alert("Please enter first name, last name, or company.");
-      } else if (statusAction == "new") {
+      } else if (id == "") {
         // The new button was clicked to add a new contact
         document.getElementById("saveContact").innerHTML = "Clear";
         document.getElementById("editContact").innerHTML = "Edit";
 
         addContact();
         lockFields();
-      } else if (statusAction == "edit") {
+      } else {
         // The edit button was clicked to edit an exsisting contact
         document.getElementById("saveContact").innerHTML = "Clear";
         document.getElementById("newContact").innerHTML = "New";
@@ -89,15 +91,7 @@ saveContactButton.addEventListener("click", (event) => {
 
 // Clears all the contact informatoin data fields on the right side of the address book
 function clearData() {
-  document.getElementById("fName").value = "";
-  document.getElementById("lName").value = "";
-  document.getElementById("company").value = "";
-  document.getElementById("address").value = "";
-  document.getElementById("city").value = "";
-  document.getElementById("state").value = "";
-  document.getElementById("zip").value = "";
-  document.getElementById("country").value = "";
-  document.getElementById("phone").value = "";
+  document.getElementById("form").reset();
 }
 
 // Enables the contact information fields so data can be entered
