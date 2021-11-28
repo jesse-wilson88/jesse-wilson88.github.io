@@ -58,19 +58,34 @@ function updateLocalContact() {
       if (id == c.id) {
         // Replace the contact information with the new data passed to this function
         let placement = contactData.map((i) => i.id).indexOf(c.id);
-        contactData[placement].fName = document.getElementById("fName").value;
+        contactData[placement].fName = document
+          .getElementById("fName")
+          .value.trim();
 
-        contactData[placement].lName = document.getElementById("lName").value;
-        contactData[placement].company =
-          document.getElementById("company").value;
-        contactData[placement].address =
-          document.getElementById("address").value;
-        contactData[placement].city = document.getElementById("city").value;
-        contactData[placement].state = document.getElementById("state").value;
-        contactData[placement].zip = document.getElementById("zip").value;
-        contactData[placement].country =
-          document.getElementById("country").value;
-        contactData[placement].phone = document.getElementById("phone").value;
+        contactData[placement].lName = document
+          .getElementById("lName")
+          .value.trim();
+        contactData[placement].company = document
+          .getElementById("company")
+          .value.trim();
+        contactData[placement].address = document
+          .getElementById("address")
+          .value.trim();
+        contactData[placement].city = document
+          .getElementById("city")
+          .value.trim();
+        contactData[placement].state = document
+          .getElementById("state")
+          .value.trim();
+        contactData[placement].zip = document
+          .getElementById("zip")
+          .value.trim();
+        contactData[placement].country = document
+          .getElementById("country")
+          .value.trim();
+        contactData[placement].phone = document
+          .getElementById("phone")
+          .value.trim();
 
         window.localStorage.setItem("contacts", JSON.stringify(contactData));
       }

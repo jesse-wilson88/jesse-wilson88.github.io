@@ -5,15 +5,15 @@ const input = document.querySelectorAll("input");
 
 // Adds new contact to address book
 function addContact() {
-  let fName = document.getElementById("fName").value;
-  let lName = document.getElementById("lName").value;
-  let company = document.getElementById("company").value;
-  let address = document.getElementById("address").value;
-  let city = document.getElementById("city").value;
-  let state = document.getElementById("state").value;
-  let zip = document.getElementById("zip").value;
-  let country = document.getElementById("country").value;
-  let phone = document.getElementById("phone").value;
+  let fName = document.getElementById("fName").value.trim();
+  let lName = document.getElementById("lName").value.trim();
+  let company = document.getElementById("company").value.trim();
+  let address = document.getElementById("address").value.trim();
+  let city = document.getElementById("city").value.trim();
+  let state = document.getElementById("state").value.trim();
+  let zip = document.getElementById("zip").value.trim();
+  let country = document.getElementById("country").value.trim();
+  let phone = document.getElementById("phone").value.trim();
   saveNewLocalContact(
     fName,
     lName,

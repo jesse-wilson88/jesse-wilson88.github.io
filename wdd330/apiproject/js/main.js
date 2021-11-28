@@ -3,7 +3,8 @@ const editContactButton = document.getElementById("editContact");
 const saveContactButton = document.getElementById("saveContact");
 
 // Event listener for creating a new contact
-newContactButton.addEventListener("click", function () {
+newContactButton.addEventListener("click", (event) => {
+  event.preventDefault();
   const button = document.getElementById("newContact").innerHTML;
 
   if (button == "New") {
@@ -17,19 +18,19 @@ newContactButton.addEventListener("click", function () {
     clearData();
 
     // document.getElementById("fName").focus();
-  }
-  // else {
-  //   document.getElementById("saveContact").innerHTML = "Clear";
-  //   document.getElementById("newContact").innerHTML = "New";
+  } else {
+    document.getElementById("saveContact").innerHTML = "Clear";
+    document.getElementById("newContact").innerHTML = "New";
 
-  //   lockFields();
-  //   requiredField();
-  //   statusAction = "";
-  // }
+    lockFields();
+    requiredField();
+    statusAction = "";
+  }
 });
 
 // Event Listener for editing exsisting contact
-editContactButton.addEventListener("click", function () {
+editContactButton.addEventListener("click", (event) => {
+  event.preventDefault();
   const button = document.getElementById("editContact").innerHTML;
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
@@ -53,7 +54,8 @@ editContactButton.addEventListener("click", function () {
 });
 
 // Event listener for saveing contact information
-saveContactButton.addEventListener("click", function () {
+saveContactButton.addEventListener("click", (event) => {
+  event.preventDefault();
   const button = document.getElementById("saveContact").innerHTML;
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;

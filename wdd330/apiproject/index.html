@@ -81,7 +81,7 @@
                 id="company"
                 type="text"
                 maxlength="32"
-                pattern="[A-Za-z]{2,32}"
+                pattern="[A-Za-z ]{2,32}"
                 onblur="requiredField()"
                 disabled
               />
@@ -100,7 +100,7 @@
                 id="city"
                 type="text"
                 maxlength="32"
-                pattern="[A-Za-z]{2,32}"
+                pattern="[A-Za-z ]{2,32}"
                 disabled
               />
               <label for="state">State: </label>
@@ -118,7 +118,7 @@
                 id="zip"
                 type="text"
                 maxlength="7"
-                pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
+                pattern="^\d{5}-\d{4}|\d{5}|[A-Z]\d[A-Z] \d[A-Z]\d$"
                 disabled
               />
               <label for="country">Country: </label>
@@ -127,7 +127,7 @@
                 id="country"
                 type="text"
                 maxlength="32"
-                pattern="[A-Za-z]{2,32}"
+                pattern="[A-Za-z ]{2,32}"
                 disabled
               />
               <label for="phone">Phone: </label>
@@ -136,7 +136,7 @@
                 id="phone"
                 type="tel"
                 maxlength="12"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9] {4}"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 placeholder="801-555-1212"
                 disabled
               />
