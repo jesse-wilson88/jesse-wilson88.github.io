@@ -16,8 +16,6 @@ newContactButton.addEventListener("click", (event) => {
     unlockFields();
     requiredField();
     clearData();
-
-    // document.getElementById("fName").focus();
   } else {
     document.getElementById("saveContact").innerHTML = "Clear";
     document.getElementById("newContact").innerHTML = "New";
