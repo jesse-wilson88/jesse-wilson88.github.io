@@ -7,23 +7,25 @@ newContactButton.addEventListener("click", function () {
   const button = document.getElementById("newContact").innerHTML;
 
   if (button == "New") {
+    // Clears the contactData fields for a new contact data
     document.getElementById("saveContact").innerHTML = "Save";
     document.getElementById("editContact").innerHTML = "Cancel";
     statusAction = "new";
 
     unlockFields();
+    requiredField();
     clearData();
-    requiredField();
 
-    document.getElementById("fName").focus();
-  } else {
-    document.getElementById("saveContact").innerHTML = "Clear";
-    document.getElementById("newContact").innerHTML = "New";
-
-    lockFields();
-    requiredField();
-    statusAction = "";
+    // document.getElementById("fName").focus();
   }
+  // else {
+  //   document.getElementById("saveContact").innerHTML = "Clear";
+  //   document.getElementById("newContact").innerHTML = "New";
+
+  //   lockFields();
+  //   requiredField();
+  //   statusAction = "";
+  // }
 });
 
 // Event Listener for editing exsisting contact
@@ -61,28 +63,26 @@ saveContactButton.addEventListener("click", function () {
   if (button == "Save") {
     // Checks to see how the contact information will be saved
     if (!locked) {
-      console.log("Fields not locked");
       if (fName == "" && lName == "" && company == "") {
         alert("Please enter first name, last name, or company.");
       } else if (statusAction == "new") {
         // The new button was clicked to add a new contact
-        addContact();
-        lockFields();
         document.getElementById("saveContact").innerHTML = "Clear";
         document.getElementById("editContact").innerHTML = "Edit";
+
+        addContact();
+        lockFields();
       } else if (statusAction == "edit") {
         // The edit button was clicked to edit an exsisting contact
-        updateLocalContact();
-        lockFields();
         document.getElementById("saveContact").innerHTML = "Clear";
         document.getElementById("newContact").innerHTML = "New";
-      }
 
-      let id = document.getElementById("id").value;
-      displayData(id);
+        updateLocalContact();
+        lockFields();
+      }
     }
   } else {
-    console.log("Button == Clear");
+    // Clears the contactData on the right column
     clearData();
   }
 });
