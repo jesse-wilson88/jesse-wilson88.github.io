@@ -101,6 +101,16 @@ input {
   height: 40px;
   width: 500px;
   font-size: 30px;
+  border-radius: 10px;
+  outline: none; /* Good for when border-radius is used */
+  padding-left: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 4px #116466;
+}
+
+input:focus {
+  background-color: white;
+  border: 2px solid #2c3531;
 }
 
 input:required {
@@ -155,6 +165,7 @@ input:invalid {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #d1e8e2;
+  cursor: pointer;
 }
 
 button:hover {

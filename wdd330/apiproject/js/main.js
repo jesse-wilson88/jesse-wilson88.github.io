@@ -36,22 +36,17 @@ editContactButton.addEventListener("click", function () {
 
   if (button == "Edit") {
     statusAction = "edit";
-    console.log("If Statement");
-    if (!locked && fName != "" && lName != "" && company != "") {
-      console.log("Should unlock fields");
+    if ((locked && fName != "") || lName != "" || company != "") {
       document.getElementById("newContact").innerHTML = "Cancel";
       document.getElementById("saveContact").innerHTML = "Save";
       unlockFields();
     }
   } else if (button == "Cancel") {
-    console.log("Should clear data and lock cells");
     document.getElementById("editContact").innerHTML = "Edit";
     document.getElementById("saveContact").innerHTML = "Clear";
     lockFields();
     clearData();
     requiredField();
-  } else {
-    console.log("Else Statement");
   }
 });
 
@@ -66,6 +61,7 @@ saveContactButton.addEventListener("click", function () {
   if (button == "Save") {
     // Checks to see how the contact information will be saved
     if (!locked) {
+      console.log("Fields not locked");
       if (fName == "" && lName == "" && company == "") {
         alert("Please enter first name, last name, or company.");
       } else if (statusAction == "new") {
@@ -83,8 +79,11 @@ saveContactButton.addEventListener("click", function () {
       }
     }
   } else {
+    console.log("Button == Clear");
     clearData();
   }
+  // let id = document.getElementById("id").value;
+  // displayData(id);
 });
 
 // Clears all the contact informatoin data fields on the right side of the address book
