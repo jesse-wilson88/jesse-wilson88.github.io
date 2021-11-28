@@ -77,13 +77,14 @@ saveContactButton.addEventListener("click", function () {
         document.getElementById("saveContact").innerHTML = "Clear";
         document.getElementById("newContact").innerHTML = "New";
       }
+
+      let id = document.getElementById("id").value;
+      displayData(id);
     }
   } else {
     console.log("Button == Clear");
     clearData();
   }
-  // let id = document.getElementById("id").value;
-  // displayData(id);
 });
 
 // Clears all the contact informatoin data fields on the right side of the address book
