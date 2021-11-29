@@ -72,7 +72,7 @@
                 id="lName"
                 type="text"
                 maxlength="32"
-                pattern="[A-Za-z]{2,32}"
+                pattern="[A-Za-z ]{2,32}"
                 onchange="requiredField()"
                 onblur="return letters(this, event)" onkeypress="return letters(this, event)"
                 disabled
@@ -93,7 +93,7 @@
                 id="address"
                 type="text"
                 maxlength="32"
-                pattern="[a-zA-Z0-9]+"
+                pattern="[a-zA-Z0-9 ]+"
                 disabled
               />
               <label for="city">City: </label>
@@ -150,7 +150,7 @@
           <div class="options">
             <button id="newContact">New</button>
             <button id="editContact">Edit</button>
-            <button type="submit" id="saveContact">Clear</button>
+            <button id="saveContact">Clear</button>
           </div>
         </form>
         </div>
