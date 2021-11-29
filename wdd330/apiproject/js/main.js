@@ -8,16 +8,16 @@ newContactButton.addEventListener("click", (event) => {
   const button = document.getElementById("newContact").innerHTML;
 
   if (button == "New") {
-    document.getElementById("id").value = "";
     // Clears the contactData fields for a new contact data
+    document.getElementById("id").value = "";
     document.getElementById("saveContact").innerHTML = "Save";
     document.getElementById("editContact").innerHTML = "Cancel";
-    statusAction = "new";
 
     unlockFields();
     requiredField();
     clearData();
   } else {
+    // User clicked cancel so fields are locked and buttons are reset to default
     document.getElementById("saveContact").innerHTML = "Clear";
     document.getElementById("newContact").innerHTML = "New";
 
@@ -37,7 +37,6 @@ editContactButton.addEventListener("click", (event) => {
   const locked = document.getElementById("fName").hasAttribute("disabled");
 
   if (button == "Edit") {
-    statusAction = "edit";
     if ((locked && fName != "") || lName != "" || company != "") {
       document.getElementById("newContact").innerHTML = "Cancel";
       document.getElementById("saveContact").innerHTML = "Save";

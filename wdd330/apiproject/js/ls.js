@@ -1,6 +1,3 @@
-// This is used to know if the New button or Edit button were clicked
-let statusAction = "";
-
 // Gets the contacts from local storage if there are any
 function getLocalContacts() {
   let contacts = localStorage.getItem("contacts");

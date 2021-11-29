@@ -62,7 +62,8 @@
                 type="text"
                 maxlength="32"
                 pattern="[A-Za-z]{2,32}"
-                onblur="requiredField()"
+                onchange="requiredField()"
+                onblur="return letters(this, event)" onkeypress="return letters(this, event)"
                 disabled
               />
               <label for="lName">Last Name: </label>
@@ -72,7 +73,8 @@
                 type="text"
                 maxlength="32"
                 pattern="[A-Za-z]{2,32}"
-                onblur="requiredField()"
+                onchange="requiredField()"
+                onblur="return letters(this, event)" onkeypress="return letters(this, event)"
                 disabled
               />
               <label for="company">Company: </label>
@@ -82,7 +84,7 @@
                 type="text"
                 maxlength="32"
                 pattern="[A-Za-z ]{2,32}"
-                onblur="requiredField()"
+                change="requiredField()"
                 disabled
               />
               <label for="address">Address: </label>
@@ -91,7 +93,7 @@
                 id="address"
                 type="text"
                 maxlength="32"
-                pattern="^[#.0-9a-zA-Z\s,-]+$"
+                pattern="[a-zA-Z0-9]+"
                 disabled
               />
               <label for="city">City: </label>
@@ -100,6 +102,7 @@
                 id="city"
                 type="text"
                 maxlength="32"
+                onblur="return letters(this,event);" onkeypress="return letters(this,event);"
                 pattern="[A-Za-z ]{2,32}"
                 disabled
               />
@@ -110,6 +113,7 @@
                 type="text"
                 minlength="2"
                 maxlength="2"
+                onblur="return letters(this,event);" onkeypress="return letters(this,event);"
                 disabled
               />
               <label for="zip">Zip Code: </label>
@@ -127,6 +131,7 @@
                 id="country"
                 type="text"
                 maxlength="32"
+                onblur="return letters(this,event);" onkeypress="return letters(this,event);"
                 pattern="[A-Za-z ]{2,32}"
                 disabled
               />
@@ -136,6 +141,7 @@
                 id="phone"
                 type="tel"
                 maxlength="12"
+                onblur="return num(this,event);" onkeypress="return num(this,event);"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 placeholder="801-555-1212"
                 disabled
@@ -144,7 +150,7 @@
           <div class="options">
             <button id="newContact">New</button>
             <button id="editContact">Edit</button>
-            <button id="saveContact">Clear</button>
+            <button type="submit" id="saveContact">Clear</button>
           </div>
         </form>
         </div>

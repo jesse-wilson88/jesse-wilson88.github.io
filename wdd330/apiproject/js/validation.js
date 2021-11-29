@@ -20,3 +20,48 @@ function requiredField() {
     document.getElementById("company").required = false;
   }
 }
+
+// Validate only numbers entered for phone number
+function num(tel, e) {
+  var charCode = e.which ? e.which : e.keyCode;
+  if (charCode == 46 || (charCode > 31 && (charCode < 48 || charCode > 57))) {
+    alert("Only Numbers Allowed");
+    return false;
+  } else {
+    if (tel.value.length == 3 || tel.value.length == 7) {
+      //keycode to avoid response to backspace
+      if (e.keyCode != 8) {
+        tel.value = tel.value + "-";
+      }
+    }
+    return true;
+  }
+}
+
+// Validate only letters entered
+function letters(text, e) {
+  var charCode = e.which ? e.which : e.keyCode;
+  if (charCode == 46 || (charCode > 47 && charCode < 65)) {
+    alert("Only Letters Allowed");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// function alphaNumerical(text, e) {
+//   var charCode = e.which ? e.which : e.keyCode;
+//   if (
+//     charCode == 32 || // space
+//     (charCode > 31 && (charCode < 48 || charCode > 57)) ||
+//     charCode == 46 ||
+//     (charCode > 47 && charCode < 65)
+//   ) {
+//     console.log("true");
+//     return true;
+//   } else {
+//     console.log("false");
+//     alert("message");
+//     return false;
+//   }
+// }
