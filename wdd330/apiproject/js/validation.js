@@ -70,31 +70,3 @@ function alphaNumerical(text, e) {
     return false;
   }
 }
-
-// // Validate only letters entered
-// function alphaNumeric(text, e) {
-//   e.preventDefault();
-//   if (/^[a-zA-Z0-9]+$/.test(text)) {
-//     alert("match");
-//   } else {
-//     alert("Only letters & numbers are allowed");
-//     return false;
-//   }
-// }
-
-// // Validate only letters entered
-// function alphaNumerical(text, e) {
-//   var charCode = e.which ? e.which : e.keyCode;
-//   if (
-//     charCode == 32 || // space
-//     charCode == 45 || // hyphen
-//     (charCode > 47 && charCode < 58) || // 0 - 9
-//     (charCode > 64 && charCode < 91) || // A - Z
-//     (charCode > 96 && charCode < 123) // a - z
-//   ) {
-//     return true;
-//   } else {
-//     alert("Only letters & numbers are allowed");
-//     return false;
-//   }
-// }
