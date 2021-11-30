@@ -16,6 +16,8 @@ newContactButton.addEventListener("click", (event) => {
     unlockFields();
     requiredField();
     clearData();
+
+    document.getElementById("fName").focus();
   } else {
     // User clicked cancel so fields are locked and buttons are reset to default
     document.getElementById("saveContact").innerHTML = "Clear";
