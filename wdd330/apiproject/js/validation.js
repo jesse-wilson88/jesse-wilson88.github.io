@@ -38,12 +38,29 @@ function phoneNumber(tel, e) {
   }
 }
 
-// Validate only letters entered
+// Validate for letters only
 function letters(text, e) {
   var charCode = e.which ? e.which : e.keyCode;
-  console.log(`charCode: ${charCode}`);
   if (
+    charCode == 32 ||
     charCode == 45 ||
+    (charCode > 64 && charCode < 91) ||
+    (charCode > 96 && charCode < 123)
+  ) {
+    // alert("Only Letters Allowed");
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Validate for letters & numbers only
+function alphaNumerical(text, e) {
+  var charCode = e.which ? e.which : e.keyCode;
+  if (
+    charCode == 32 ||
+    charCode == 45 ||
+    (charCode > 47 && charCode < 58) ||
     (charCode > 64 && charCode < 91) ||
     (charCode > 96 && charCode < 123)
   ) {
