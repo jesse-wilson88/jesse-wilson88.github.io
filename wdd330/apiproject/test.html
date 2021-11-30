@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="infomation about site." />
+    <meta name="author" content="Jesse Wilson" />
+
+    <!-- SITE TITLE -->
+    <title>Document</title>
+
+    <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH & stops the font from
+      enlarging when a phone is turned sideways-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- STYLE SHEETS -->
+    <!-- <link href="css/normalize.css" rel="stylesheet" /> -->
+    <!-- phone-default -->
+    <!-- <link href="css/small.css" rel="stylesheet" /> -->
+    <!-- enhance-tablet -->
+    <!-- <link href="css/medium.css" rel="stylesheet" /> -->
+    <!-- enhance-desktop -->
+    <!-- <link href="css/large.css" rel="stylesheet" /> -->
+
+    <!-- JAVASCRIPTS-->
+    <!-- <script defer src="js/styles.js"></script> -->
+  </head>
+  <body>
+    Enter Only Numbers:
+    <input id="onlynumbers" type="text" />
+    <br /><br />
+    Enter Only Alphabets:
+    <input id="onlyalpha" type="text" />
+    <br /><br />
+    Enter other than Alphabets and numbers like special characters:
+    <input id="speclchar" type="text" />
+    <script>
+      document.getElementById("onlynumbers").onkeypress = function (e) {
+        onlyNumbers(e.key, e);
+      };
+
+      document.getElementById("onlyalpha").onkeypress = function (e) {
+        onlyAlpha(e.key, e);
+      };
+
+      document.getElementById("speclchar").onkeypress = function (e) {
+        speclChar(e.key, e);
+      };
+
+      function onlyNumbers(key, e) {
+        var letters = /^[0-9]/g; //g means global
+        if (!key.match(letters)) e.preventDefault();
+      }
+
+      function onlyAlpha(key, e) {
+        var letters = /^[a-z]/gi; //i means ignorecase
+        if (!key.match(letters)) e.preventDefault();
+      }
+
+      function speclChar(key, e) {
+        var letters = /^[0-9a-z]/gi;
+        if (!key.match(letters)) e.preventDefault();
+      }
+    </script>
+  </body>
+</html>

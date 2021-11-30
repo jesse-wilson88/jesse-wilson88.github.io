@@ -22,10 +22,11 @@ function requiredField() {
 }
 
 // Validate only numbers entered for phone number
-function phoneNumber(tel, e) {
+function num(tel, e) {
+  e.preventDefault();
   var charCode = e.which ? e.which : e.keyCode;
   if (charCode == 46 || (charCode > 31 && (charCode < 48 || charCode > 57))) {
-    // alert("Only Numbers Allowed");
+    alert("Only Numbers Allowed");
     return false;
   } else {
     if (tel.value.length == 3 || tel.value.length == 7) {
@@ -40,34 +41,22 @@ function phoneNumber(tel, e) {
 
 // Validate only letters entered
 function letters(text, e) {
+  e.preventDefault();
   var charCode = e.which ? e.which : e.keyCode;
-  console.log(`charCode: ${charCode}`);
-  if (
-    charCode == 45 ||
-    (charCode > 64 && charCode < 91) ||
-    (charCode > 96 && charCode < 123)
-  ) {
-    // alert("Only Letters Allowed");
-    return true;
-  } else {
+  if (charCode == 46 || (charCode > 47 && charCode < 65)) {
+    alert("Only Letters Allowed");
+    console.log("False");
     return false;
+  } else {
+    console.log("True");
+    return true;
   }
 }
 
-// // Validate only letters entered
-// function alphaNumeric(text, e) {
-//   e.preventDefault();
-//   if (/^[a-zA-Z0-9]+$/.test(text)) {
-//     alert("match");
-//   } else {
-//     alert("Only letters & numbers are allowed");
-//     return false;
-//   }
-// }
-
-// // Validate only letters entered
 // function alphaNumerical(text, e) {
+//   e.preventDefault();
 //   var charCode = e.which ? e.which : e.keyCode;
+//   console.log(charCode);
 //   if (
 //     charCode == 32 || // space
 //     charCode == 45 || // hyphen
@@ -75,9 +64,10 @@ function letters(text, e) {
 //     (charCode > 64 && charCode < 91) || // A - Z
 //     (charCode > 96 && charCode < 123) // a - z
 //   ) {
-//     return true;
-//   } else {
-//     alert("Only letters & numbers are allowed");
+//     alert("Only letters or numbers can be used.");
 //     return false;
+//   } else {
+//     alert("A letter or number was pressed.");
+//     return true;
 //   }
 // }

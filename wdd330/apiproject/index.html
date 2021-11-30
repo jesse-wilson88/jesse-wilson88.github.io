@@ -61,9 +61,9 @@
                 id="fName"
                 type="text"
                 maxlength="32"
+                onblur="return letters(this,event);" onkeypress="return letters(this,event);"
                 pattern="[A-Za-z]{2,32}"
                 onchange="requiredField()"
-                onblur="return letters(this, event)" onkeypress="return letters(this, event)"
                 disabled
               />
               <label for="lName">Last Name: </label>
@@ -72,9 +72,9 @@
                 id="lName"
                 type="text"
                 maxlength="32"
+                onblur="return letters(this,event);" onkeypress="return letters(this,event);"
                 pattern="[A-Za-z ]{2,32}"
                 onchange="requiredField()"
-                onblur="return letters(this, event)" onkeypress="return letters(this, event)"
                 disabled
               />
               <label for="company">Company: </label>
@@ -82,7 +82,8 @@
                 name="company"
                 id="company"
                 type="text"
-                maxlength="32"
+                maxlength="32"                
+                onblur="return alphaNumeric(this,event);" onkeypress="return alphaNumeric(this,event);"
                 pattern="[A-Za-z ]{2,32}"
                 onchange="requiredField()"
                 disabled
@@ -141,7 +142,7 @@
                 id="phone"
                 type="tel"
                 maxlength="12"
-                onblur="return num(this,event);" onkeypress="return num(this,event);"
+                onblur="return phoneNumber(this,event);" onkeypress="return phoneNumber(this,event);"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 placeholder="801-555-1212"
                 disabled
