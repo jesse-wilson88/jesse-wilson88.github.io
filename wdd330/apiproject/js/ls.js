@@ -15,7 +15,8 @@ function saveNewLocalContact(
   state,
   zip,
   country,
-  phone
+  phone,
+  dob
 ) {
   // checks to see if there are contacts in the local storage
   let contactList = getLocalContacts();
@@ -36,6 +37,7 @@ function saveNewLocalContact(
     zip: zip,
     country: country,
     phone: phone,
+    dob: dob,
   });
 
   window.localStorage.setItem("contacts", JSON.stringify(contactList));
@@ -82,6 +84,9 @@ function updateLocalContact() {
           .value.trim();
         contactData[placement].phone = document
           .getElementById("phone")
+          .value.trim();
+        contactData[placement].dob = document
+          .getElementById("dob")
           .value.trim();
 
         window.localStorage.setItem("contacts", JSON.stringify(contactData));

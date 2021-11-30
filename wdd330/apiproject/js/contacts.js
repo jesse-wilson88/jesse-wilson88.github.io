@@ -14,6 +14,7 @@ function addContact() {
   let zip = document.getElementById("zip").value.trim();
   let country = document.getElementById("country").value.trim();
   let phone = document.getElementById("phone").value.trim();
+  let dob = document.getElementById("dob").value.trim();
   saveNewLocalContact(
     fName,
     lName,
@@ -23,7 +24,8 @@ function addContact() {
     state,
     zip,
     country,
-    phone
+    phone,
+    dob
   );
   displayContacts(getLocalContacts());
 }
@@ -89,6 +91,7 @@ function displayData(id) {
         document.getElementById("zip").value = c.zip;
         document.getElementById("country").value = c.country;
         document.getElementById("phone").value = c.phone;
+        document.getElementById("dob").value = c.dob;
       }
     }
   }
