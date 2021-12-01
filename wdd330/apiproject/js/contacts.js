@@ -77,7 +77,7 @@ function displayContacts(contacts) {
 function displayData(id) {
   document.getElementById("newContact").innerHTML = "New";
   document.getElementById("editContact").innerHTML = "Edit";
-  contactData = getLocalContacts();
+  const contactData = getLocalContacts();
   if (contactData !== null) {
     for (c of contactData) {
       if (id == c.id) {
