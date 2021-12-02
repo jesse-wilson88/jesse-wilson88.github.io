@@ -97,14 +97,14 @@ function clearData() {
 
 // Enables the contact information fields so data can be entered
 function unlockFields() {
-  for (i of input) {
+  for (let i of input) {
     i.disabled = false;
   }
 }
 
 // Disables the contact information fields so they cannot be edited
 function lockFields() {
-  for (i of input) {
+  for (let i of input) {
     i.disabled = true;
   }
 }
