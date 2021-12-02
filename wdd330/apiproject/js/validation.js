@@ -72,16 +72,16 @@ function phoneNumber(tel, e) {
 }
 
 // Validate only numbers entered for date of birth
-function date(dob, e) {
+function date(date, e) {
   var charCode = e.which ? e.which : e.keyCode;
   if (charCode == 46 || (charCode > 31 && (charCode < 48 || charCode > 57))) {
     // alert("Only Numbers Allowed");
     return false;
   } else {
-    if (dob.value.length == 2 || dob.value.length == 5) {
+    if (date.value.length == 2 || date.value.length == 5) {
       //keycode to avoid response to backspace
       if (e.keyCode != 8) {
-        dob.value = dob.value + "/";
+        date.value = date.value + "/";
       }
     }
     return true;

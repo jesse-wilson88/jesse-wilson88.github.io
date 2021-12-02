@@ -23,7 +23,7 @@ const getEarthquake = async () => {
   const response = await fetch(url);
   const data = await response.json();
   let mydata = [];
-
+  
   for (const i of data.features.values()) {
     mydata.push(i.properties);
   }
