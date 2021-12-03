@@ -113,8 +113,6 @@ function displayData(id) {
 }
 
 function getMap(contactAddress) {
-  // let key = "AIzaSyDFzPm6JNDK7h4mrUZAeYNiLeh6YEiQZLg";
-  // let url = `https://www.google.com/maps/embed/v1/place?q=${contactAddress}&key=${key}`;
   let url = `https://maps.google.com/maps?q=${contactAddress}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
   document.getElementById(
