@@ -14,8 +14,8 @@ newContactButton.addEventListener("click", (event) => {
     document.getElementById("editContact").innerHTML = "Cancel";
 
     unlockFields();
-    requiredField();
     clearData();
+    requiredField();
 
     document.getElementById("fName").focus();
   } else {
@@ -93,6 +93,8 @@ saveContactButton.addEventListener("click", (event) => {
 // Clears all the contact informatoin data fields on the right side of the address book
 function clearData() {
   document.getElementById("form").reset();
+
+  document.getElementById("map").innerHTML = "";
 }
 
 // Enables the contact information fields so data can be entered

@@ -93,19 +93,31 @@ function displayData(id) {
         document.getElementById("phone").value = c.phone;
         document.getElementById("dob").value = c.dob;
 
-        let mapAddress = `${c.address},${c.city},${c.state}`.replace(
-          / /g,
-          "%20"
-        );
-        // let url = `https://www.google.com/maps/place/${mapAddress}`;
-        let url = `https://maps.googlea.com/maps?q=${c.city},%20${c.state}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
-        console.log(url);
-
-        document.getElementById(
-          "map"
-        ).innerHTML = `<iframe class="map" title="Google map" src="${url}" loading="lazy">`;
+        let theAddress = document.getElementById("address").value;
+        if (theAddress.toString().toLowerCase().includes("box")) {
+          let mapAddress = `${c.city},%20${c.state}`.replace(/ /g, "+");
+          console.log("True");
+          getMap(mapAddress);
+        } else {
+          let mapAddress = `${c.address},%20${c.city},%20${c.state}`.replace(
+            / /g,
+            "+"
+          );
+          console.log("False");
+          getMap(mapAddress);
+        }
       }
     }
+    requiredField();
   }
-  requiredField();
+}
+
+function getMap(contactAddress) {
+  // let key = "AIzaSyDFzPm6JNDK7h4mrUZAeYNiLeh6YEiQZLg";
+  // let url = `https://www.google.com/maps/embed/v1/place?q=${contactAddress}&key=${key}`;
+  let url = `https://maps.google.com/maps?q=${contactAddress}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
+  document.getElementById(
+    "map"
+  ).innerHTML = `<iframe class="map" title="Google map" src="${url}" loading="lazy"></iframe>`;
 }

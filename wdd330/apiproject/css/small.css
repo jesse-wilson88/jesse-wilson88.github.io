@@ -181,6 +181,14 @@ button:active {
   transform: translateY(4px);
 }
 
+iframe {
+  width: 655px;
+}
+/* 
+#map {
+  float: right;
+} */
+
 /*----------- FOOTER --------------*/
 
 /*----- Clearfix: Force an Element not to collapse -----*/
