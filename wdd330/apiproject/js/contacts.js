@@ -92,6 +92,18 @@ function displayData(id) {
         document.getElementById("country").value = c.country;
         document.getElementById("phone").value = c.phone;
         document.getElementById("dob").value = c.dob;
+
+        let mapAddress = `${c.address},${c.city},${c.state}`.replace(
+          / /g,
+          "%20"
+        );
+        // let url = `https://www.google.com/maps/place/${mapAddress}`;
+        let url = `https://maps.googlea.com/maps?q=${c.city},%20${c.state}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+        console.log(url);
+
+        document.getElementById(
+          "map"
+        ).innerHTML = `<iframe class="map" title="Google map" src="${url}" loading="lazy">`;
       }
     }
   }
