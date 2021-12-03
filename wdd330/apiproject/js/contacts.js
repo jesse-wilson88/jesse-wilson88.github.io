@@ -96,14 +96,14 @@ function displayData(id) {
         let theAddress = document.getElementById("address").value;
         if (theAddress.toString().toLowerCase().includes("box")) {
           let mapAddress = `${c.city},%20${c.state}`.replace(/ /g, "+");
-          console.log("True");
+          // console.log("True");
           getMap(mapAddress);
         } else {
           let mapAddress = `${c.address},%20${c.city},%20${c.state}`.replace(
             / /g,
             "+"
           );
-          console.log("False");
+          // console.log("False");
           getMap(mapAddress);
         }
       }
