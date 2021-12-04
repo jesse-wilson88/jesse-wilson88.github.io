@@ -28,14 +28,14 @@ function saveNewLocalContact(
   // If contacts are found in the local storage it is put into an array
   contactList.push({
     id: new Date().getTime(),
-    fName: fName,
-    lName: lName,
-    company: company,
-    address: address,
-    city: city,
-    state: state,
-    zip: zip,
-    country: country,
+    fName: fName.toLowerCase(),
+    lName: lName.toLowerCase(),
+    company: company.toLowerCase(),
+    address: address.toLowerCase(),
+    city: city.toLowerCase(),
+    state: state.toLowerCase(),
+    zip: zip.toLowerCase(),
+    country: country.toLowerCase(),
     phone: phone,
     dob: dob,
   });
@@ -59,7 +59,8 @@ function updateLocalContact() {
         let placement = contactData.map((i) => i.id).indexOf(c.id);
         contactData[placement].fName = document
           .getElementById("fName")
-          .value.trim();
+          .value.trim()
+          .toLowerCase();
 
         contactData[placement].lName = document
           .getElementById("lName")
