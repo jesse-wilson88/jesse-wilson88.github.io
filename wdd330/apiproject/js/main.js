@@ -6,10 +6,13 @@ const saveContactButton = document.getElementById("saveContact");
 newContactButton.addEventListener("click", (event) => {
   event.preventDefault();
   const button = document.getElementById("newContact").innerHTML;
+  const id = document.getElementById("id");
+  const contactInfo = document.getElementById("contactInfo");
+  const error = document.getElementById("error");
 
   if (button == "New") {
     // Clears the contactData fields for a new contact data
-    document.getElementById("id").value = "";
+    id.value = "";
     document.getElementById("saveContact").innerHTML = "Save";
     document.getElementById("editContact").innerHTML = "Cancel";
 
@@ -22,11 +25,16 @@ newContactButton.addEventListener("click", (event) => {
     // User clicked cancel so fields are locked and buttons are reset to default
     document.getElementById("saveContact").innerHTML = "Clear";
     document.getElementById("newContact").innerHTML = "New";
+    document.getElementById("error").innerHTML = "";
 
     lockFields();
     requiredField();
+    displayData(id.value);
     statusAction = "";
   }
+  error.classList.remove("error");
+  contactInfo.style.height = "498px";
+  error.innerHTML = "";
 });
 
 // Event Listener for editing exsisting contact
@@ -36,6 +44,8 @@ editContactButton.addEventListener("click", (event) => {
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
+  const contactInfo = document.getElementById("contactInfo");
+  const error = document.getElementById("error");
   const locked = document.getElementById("fName").hasAttribute("disabled");
 
   if (button == "Edit") {
@@ -51,6 +61,9 @@ editContactButton.addEventListener("click", (event) => {
     clearData();
     requiredField();
   }
+  error.classList.remove("error");
+  contactInfo.style.height = "498px";
+  error.innerHTML = "";
 });
 
 // Event listener for saveing contact information
@@ -61,17 +74,23 @@ saveContactButton.addEventListener("click", (event) => {
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
+  const contactInfo = document.getElementById("contactInfo");
+  const error = document.getElementById("error");
   const locked = document.getElementById("fName").hasAttribute("disabled");
 
   if (button == "Save") {
     // Checks to see how the contact information will be saved
     if (!locked) {
       if (fName == "" && lName == "" && company == "") {
-        alert("Please enter first name, last name, or company.");
+        validateInput();
       } else if (id == "") {
         // The new button was clicked to add a new contact
         document.getElementById("saveContact").innerHTML = "Clear";
         document.getElementById("editContact").innerHTML = "Edit";
+
+        error.classList.remove("error");
+        contactInfo.style.height = "498px";
+        error.innerHTML = "";
 
         addContact();
         lockFields();
@@ -80,9 +99,17 @@ saveContactButton.addEventListener("click", (event) => {
         document.getElementById("saveContact").innerHTML = "Clear";
         document.getElementById("newContact").innerHTML = "New";
 
+        error.classList.remove("error");
+        contactInfo.style.height = "498px";
+        error.innerHTML = "";
+
         updateLocalContact();
         lockFields();
       }
+      // displayData(id);
+      // error.classList.remove("error");
+      // contactInfo.style.height = "498px";
+      // error.innerHTML = "";
     }
   } else {
     // Clears the contactData on the right column

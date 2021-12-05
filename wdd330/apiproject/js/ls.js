@@ -64,25 +64,32 @@ function updateLocalContact() {
 
         contactData[placement].lName = document
           .getElementById("lName")
-          .value.trim();
+          .value.trim()
+          .toLowerCase();
         contactData[placement].company = document
           .getElementById("company")
-          .value.trim();
+          .value.trim()
+          .toLowerCase();
         contactData[placement].address = document
           .getElementById("address")
-          .value.trim();
+          .value.trim()
+          .toLowerCase();
         contactData[placement].city = document
           .getElementById("city")
-          .value.trim();
+          .value.trim()
+          .toLowerCase();
         contactData[placement].state = document
           .getElementById("state")
-          .value.trim();
+          .value.trim()
+          .toLowerCase();
         contactData[placement].zip = document
           .getElementById("zip")
-          .value.trim();
+          .value.trim()
+          .toLowerCase();
         contactData[placement].country = document
           .getElementById("country")
-          .value.trim();
+          .value.trim()
+          .toLowerCase();
         contactData[placement].phone = document
           .getElementById("phone")
           .value.trim();
