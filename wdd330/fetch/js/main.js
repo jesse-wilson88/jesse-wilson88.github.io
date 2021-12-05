@@ -1,58 +1,69 @@
-const artistName = async () => {
-  // document.getElementById("loading").innerHTML = "Loading...";
+let url = "https://www.churchofjesuschrist.org/temples/list?lang=eng";
 
-  const response = await fetch(url);
-  const data = await response.json();
-  let mydata = [];
+fetch(url)
+  .then((res) => res.json())
+  .then((out) => {
+    console.log("Checkout this JSON! ", out);
+  })
+  .catch((err) => {
+    throw err;
+  });
 
-  for (const i of data.features.values()) {
-    mydata.push(i.properties);
-  }
+// const artistName = async () => {
+//   // document.getElementById("loading").innerHTML = "Loading...";
 
-  return mydata;
-};
+//   const response = await fetch(url);
+//   const data = await response.json();
+//   let mydata = [];
 
-historyData = {
-  host: "https://history.muffinlabs.com/",
-  load: function (options) {
-    var callback, month, day, host;
-    var path = "/date";
+//   for (const i of data.features.values()) {
+//     mydata.push(i.properties);
+//   }
 
-    host = this.host;
+//   return mydata;
+// };
 
-    if (typeof options == "function") {
-      callback = options;
-    } else if (typeof options == "object") {
-      callback = options.callback;
-    }
+// historyData = {
+//   host: "https://history.muffinlabs.com/",
+//   load: function (options) {
+//     var callback, month, day, host;
+//     var path = "/date";
 
-    if (typeof options.month === "undefined") {
-      options.month = new Date().getMonth() + 1;
-    }
+//     host = this.host;
 
-    if (typeof options.day === "undefined") {
-      options.day = new Date().getDate();
-    }
+//     if (typeof options == "function") {
+//       callback = options;
+//     } else if (typeof options == "object") {
+//       callback = options.callback;
+//     }
 
-    month = options.month;
-    day = options.day;
-    path = path + "/" + month + "/" + day;
+//     if (typeof options.month === "undefined") {
+//       options.month = new Date().getMonth() + 1;
+//     }
 
-    if (options.host !== undefined) {
-      host = options.host;
-    }
+//     if (typeof options.day === "undefined") {
+//       options.day = new Date().getDate();
+//     }
 
-    return fetch(host + path, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (callback) {
-          callback(data);
-        }
-        return data;
-      });
-  },
-};
+//     month = options.month;
+//     day = options.day;
+//     path = path + "/" + month + "/" + day;
+
+//     if (options.host !== undefined) {
+//       host = options.host;
+//     }
+
+//     return fetch(host + path, {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         if (callback) {
+//           callback(data);
+//         }
+//         return data;
+//       });
+//   },
+// };
