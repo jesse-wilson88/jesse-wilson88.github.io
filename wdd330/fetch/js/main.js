@@ -1,6 +1,6 @@
 let url = "https://www.churchofjesuschrist.org/temples/list";
 
-fetch(url)
+fetch(url, { mode: "no-cors" })
   .then((res) => res.json())
   .then((out) => {
     console.log("Checkout this JSON! ", out);
