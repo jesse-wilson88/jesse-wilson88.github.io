@@ -21,7 +21,7 @@ newContactButton.addEventListener("click", (event) => {
     requiredField();
 
     document.getElementById("fName").focus();
-  } else {
+  } else if (button == "Cancel") {
     // User clicked cancel so fields are locked and buttons are reset to default
     document.getElementById("saveContact").innerHTML = "Clear";
     document.getElementById("newContact").innerHTML = "New";
@@ -94,6 +94,7 @@ saveContactButton.addEventListener("click", (event) => {
 
         addContact();
         lockFields();
+        displayData(id);
       } else {
         // The edit button was clicked to edit an exsisting contact
         document.getElementById("saveContact").innerHTML = "Clear";
@@ -105,6 +106,7 @@ saveContactButton.addEventListener("click", (event) => {
 
         updateLocalContact();
         lockFields();
+        displayData(id);
       }
       // displayData(id);
       // error.classList.remove("error");

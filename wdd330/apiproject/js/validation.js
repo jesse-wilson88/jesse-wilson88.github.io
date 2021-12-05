@@ -88,6 +88,7 @@ function date(date, e) {
   }
 }
 
+// If fName, lName. or company is
 function validateInput() {
   fName = document.getElementById("fName").value;
   lName = document.getElementById("lName").value;
@@ -95,10 +96,10 @@ function validateInput() {
   contactInfo = document.getElementById("contactInfo");
   error = document.getElementById("error");
 
-  if (fName == "" && lName == "" && company == "") {
-    console.log("No entry in fName, lName, or company");
-    contactInfo.style.height = "468px";
-    error.classList.add("error");
-    error.innerHTML = "Please enter first name, last name, or company.";
-  }
+  // if (fName == "" && lName == "" && company == "") {
+  console.log("No entry in fName, lName, or company");
+  contactInfo.style.height = "468px";
+  error.classList.add("error");
+  error.innerHTML = "Please enter first name, last name, or company.";
+  // }
 }

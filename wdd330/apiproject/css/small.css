@@ -57,7 +57,6 @@ body {
   height: 498px;
   padding-top: 25px;
   padding-left: 20px;
-  /* border-bottom: solid 1px black; */
   background-color: #d9b08c;
   overflow: auto;
 }
@@ -76,11 +75,14 @@ li {
   padding-top: 2.5px;
   padding-left: 5px;
   text-transform: capitalize;
+  background: linear-gradient(to right, #2c3531 50%, #116466 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
 }
 
 li:hover {
-  border: 2px solid;
-  font-weight: bold;
+  background-position: left bottom;
 }
 
 li button {
@@ -117,14 +119,6 @@ input:focus {
 input:required {
   border-left: 4px solid red;
 }
-
-input:valid {
-  background: white;
-}
-
-/* input:invalid { */
-/* background:; */
-/* } */
 
 #fName,
 #lName,
@@ -173,6 +167,13 @@ button:hover {
   background-color: #116466;
   color: #d1e8e2;
   font-weight: bold;
+}
+
+button::after {
+  left: 0;
+  right: 0;
+  top: -100%;
+  bottom: 100%;
 }
 
 button:active {
