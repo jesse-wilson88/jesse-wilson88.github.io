@@ -161,25 +161,50 @@ input:required {
   border-radius: 15px;
   box-shadow: 0 9px #d1e8e2;
   cursor: pointer;
+
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
 button:hover {
-  background-color: #116466;
-  color: #d1e8e2;
+  color: #d9b08c;
   font-weight: bold;
+  border: 1px solid #d1e8e2;
 }
 
 button::after {
-  left: 0;
-  right: 0;
-  top: -100%;
-  bottom: 100%;
+  content: "";
+  background: #2c3531;
+  position: absolute;
+  z-index: -1;
+  padding: 0.85em 0.75em;
+  display: block;
 }
 
 button:active {
   background-color: #116466;
   box-shadow: 0 5px #d1e8e2;
   transform: translateY(4px);
+}
+
+button[class^="slide"]::after {
+  transition: all 0.35s;
+}
+
+button[class^="slide"]:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all 0.35s;
+}
+
+button.slide_from_top::after {
+  left: 0;
+  right: 0;
+  top: -100%;
+  bottom: 100%;
 }
 
 .errorBackGroundColor {
