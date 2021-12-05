@@ -1,4 +1,4 @@
-let url = "https://www.churchofjesuschrist.org/temples/list?lang=eng";
+let url = "https://www.churchofjesuschrist.org/temples/list";
 
 fetch(url)
   .then((res) => res.json())
