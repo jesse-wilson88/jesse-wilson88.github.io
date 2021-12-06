@@ -1,69 +1,84 @@
 Scriptures in JSON
 JSON editions of the LDS scriptures. Includes changes from the 2013 edition.
 
+https://github.com/bcbooks/scriptures-json
+
 Contents
 book-of-mormon.json: version 4 (bom-4)
-Includes original headings, title page, testimonies
+--Includes original headings, title page, testimonies
+
 doctrine-and-covenants.json: version 3 (dc-3)
 Does not include introduction (under copyright) or official declarations (OD 2 came out in 1978 and is under copyright)
+
 pearl-of-great-price.json: version 3 (pgp-3)
 Includes the facsimiles
 Does not include introduction (under copyright)
+
 old-testament.json: version 1 (ot-1)
 KJV
 Does not include JST
 new-testament.json: version 1 (nt-1)
 KJV
 Does not include JST
-flat/_: flat editions, only includes headings and verses
+
+flat/_\__: flat editions, only includes headings and verses
 flat/book-of-mormon-flat.json: version 2 (source bom-4)
 flat/doctrine-and-covenants-flat.json: version 2 (source dc-3)
 flat/pearl-of-great-price-flat.json: version 2 (source pgp-3)
 flat/old-testament-flat.json: version 1 (source ot-1)
 flat/new-testament-flat.json: version 1 (source nt-1)
-reference/_: reference editions, with books, chapter numbers, and verse numbers as keys, only includes headings and verses
+
+reference/\_: reference editions, with books, chapter numbers, and verse numbers as keys, only includes headings and verses
 reference/book-of-mormon-reference.json: version 2 (source bom-4)
 reference/doctrine-and-covenants-reference.json: version 2 (source dc-3)
 reference/pearl-of-great-price-reference.json: version 2 (source pgp-3)
 reference/old-testament-reference.json: version 1 (source ot-1)
 reference/new-testament-reference.json: version 1 (source nt-1)
 scripts/\*: Python scripts for exporting flat and reference editions
+
 Notes
-These JSON editions do not include copyrighted material (footnotes, chapter summaries, the Book of Mormon introduction, etc.).
-The Book of Mormon text comes from the Mormon Documentation Project SQLite file (from December 2011, though I compared the exported text to the latest 2013 version and there were no differences). I exported the text, added additional content (title page, the book/chapter headings that were in the original text, testimonies), and made the adjustments from the 2013 edition (which are small enough in relation to the whole that they don't fall under copyright, being minor typographic fixes, not anything substantial).
-The text for the Doctrine & Covenants, Pearl of Great Price, Old Testament, and New Testament comes from the 2013 version of the Mormon Documentation Project SQLite file. I exported the text, added title page information, and made the 2013 adjustments.
-The flat editions are intended for easy iteration through verses, for textual/linguistic analysis or other similar domains. Not included: title pages, testimonies, LDS.org slugs, etc.
-The reference editions are intended for easy reference in code (data['1 Nephi']['3']['7], for example). Not included: title pages, testimonies, LDS.org slugs, etc.
-Typographical note: Small caps are rendered as all caps, and italics are not distinguished. (I'm still trying to figure out the best way to handle formatting. At this point, I'm leaning toward having a formatted property with a copy of the verse text, using some kind of XML for formatting -- and it <i>came</i> to pass, saith the <smcp>Lord</smcp> God, or something like that.) Curly quotes have been straightened, though I'm already having second thoughts about that.
+--These JSON editions do not include copyrighted material (footnotes, chapter summaries, the Book of Mormon introduction, etc.).
+
+--The Book of Mormon text comes from the Mormon Documentation Project SQLite file (from December 2011, though I compared the exported text to the latest 2013 version and there were no differences). I exported the text, added additional content (title page, the book/chapter headings that were in the original text, testimonies), and made the adjustments from the 2013 edition (which are small enough in relation to the whole that they don't fall under copyright, being minor typographic fixes, not anything substantial).
+
+--The text for the Doctrine & Covenants, Pearl of Great Price, Old Testament, and New Testament comes from the 2013 version of the Mormon Documentation Project SQLite file. I exported the text, added title page information, and made the 2013 adjustments.
+
+--The flat editions are intended for easy iteration through verses, for textual/linguistic analysis or other similar domains. Not included: title pages, testimonies, LDS.org slugs, etc.
+
+--The reference editions are intended for easy reference in code (data['1 Nephi']['3']['7], for example). Not included: title pages, testimonies, LDS.org slugs, etc.
+
+--Typographical note: Small caps are rendered as all caps, and italics are not distinguished. (I'm still trying to figure out the best way to handle formatting. At this point, I'm leaning toward having a formatted property with a copy of the verse text, using some kind of XML for formatting -- and it <i>came</i> to pass, saith the <smcp>Lord</smcp> God, or something like that.) Curly quotes have been straightened, though I'm already having second thoughts about that.
+
 License
-These files are in the public domain.
+--These files are in the public domain.
 
 Changelog
-2016-10-02 (the big one)
-Book of Mormon version 4:
-Straightens curly quotes
-2 Nephi 4:23 — "night-time" -> "nighttime"
-2 Nephi 16:13 — "teiltree" -> "teil tree"
-Omni 1:25 — "comes from the Lord;" -> "comes from the Lord:"
-Mosiah 13:12 — "Thou shall not make" -> "Thou shalt not make"
-Mosiah 16:5 — "Therefore, he is" -> "Therefore he is"
-Mosiah 23:29 — "came to pass the the Lord" -> "came to pass that the Lord"
-Mosiah 24:18 — "gathering the flocks together" -> "gathering their flocks together"
-Alma 10:2 — "it was the same Aminadi" -> "it was that same Aminadi"
-Alma 12:20 — "an immortal state that the soul" -> "an immortal state, that the soul"
-Alma 12:33 — "repent and harden not" -> "repent, and harden not"
-Alma 18:5 — "in a Great Spirit they supposed" -> "in a Great Spirit, they supposed"
-Alma 19:18 — "to their astonishment they beheld" -> "to their astonishment, they beheld"
-Alma 31:32 — "and also Amulek and Zeezrom" -> "and also Amulek and Zeezrom,"
-Alma 58:39 — "and the Lord had supported them" -> "and the Lord has supported them"
-Alma 62:50 — "and from all manner of afflictions and he" -> "and from all manner of afflictions, and he"
-Helaman 6:10 — "land south was called Lehi and the land" -> "land south was called Lehi, and the land"
-Helaman 7:2 — "in the land northward and did preach" -> "in the land northward, and did preach"
-3 Nephi 3:15 — "no wise" -> "nowise"
-Mormon 5:5 — "And it came to pass" -> "But it came to pass"
-Ether 7:9 — "the city Nehor and gave" -> "the city Nehor, and gave"
-Ether 13:5 — "the house of Israel." -> "the house of Israel—"
-Moroni 3:3 — "or, if he be" -> "or if he be"
+--2016-10-02 (the big one)
+--Book of Mormon version 4:
+--Straightens curly quotes
+--2 Nephi 4:23 — "night-time" -> "nighttime"
+--2 Nephi 16:13 — "teiltree" -> "teil tree"
+--Omni 1:25 — "comes from the Lord;" -> "comes from the Lord:"
+--Mosiah 13:12 — "Thou shall not make" -> "Thou shalt not make"
+--Mosiah 16:5 — "Therefore, he is" -> "Therefore he is"
+--Mosiah 23:29 — "came to pass the the Lord" -> "came to pass that the Lord"
+--Mosiah 24:18 — "gathering the flocks together" -> "gathering their flocks together"
+--Alma 10:2 — "it was the same Aminadi" -> "it was that same Aminadi"
+--Alma 12:20 — "an immortal state that the soul" -> "an immortal state, that the soul"
+--Alma 12:33 — "repent and harden not" -> "repent, and harden not"
+--Alma 18:5 — "in a Great Spirit they supposed" -> "in a Great Spirit, they supposed"
+--Alma 19:18 — "to their astonishment they beheld" -> "to their astonishment, they beheld"
+--Alma 31:32 — "and also Amulek and Zeezrom" -> "and also Amulek and Zeezrom,"
+--Alma 58:39 — "and the Lord had supported them" -> "and the Lord has supported them"
+--Alma 62:50 — "and from all manner of afflictions and he" -> "and from all manner of afflictions, and he"
+--Helaman 6:10 — "land south was called Lehi and the land" -> "land south was called Lehi, and the land"
+--Helaman 7:2 — "in the land northward and did preach" -> "in the land northward, and did preach"
+--3 Nephi 3:15 — "no wise" -> "nowise"
+--Mormon 5:5 — "And it came to pass" -> "But it came to pass"
+--Ether 7:9 — "the city Nehor and gave" -> "the city Nehor, and gave"
+--Ether 13:5 — "the house of Israel." -> "the house of Israel—"
+--Moroni 3:3 — "or, if he be" -> "or if he be"
+
 Doctrine & Covenants version 3
 Straightens curly quotes
 D&C 11:1 — "A Great and marvelous work" -> "A great and marvelous work"
