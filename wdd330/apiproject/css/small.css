@@ -226,31 +226,6 @@ iframe {
   padding: 0;
 }
 
-#marquee-cont {
-  background: #f4f4f4;
-  margin-top: 10px;
-}
-
-/* #marquee-cont marquee {
-  margin-top: 5px;
-} */
-
-/* #marquee-news {
-  background: #1174a8;
-  padding: 5px;
-} */
-
-/* #ticker-title {
-  border: none;
-  padding: 5px 20px;
-  background: #1174a8;
-  color: white;
-} */
-
-/* #ticker-title:focus {
-  outline: none;
-} */
-
 /*----------- FOOTER --------------*/
 
 /*----- Clearfix: Force an Element not to collapse -----*/
