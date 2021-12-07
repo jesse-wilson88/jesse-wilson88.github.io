@@ -8,10 +8,10 @@ const apiKey = "a0b3d490a08e094f9b99a83f6d6220ec";
 
 function weather() {
   const city = document.getElementById("city");
-  // const state = document.getElementById("state");
-  const state = getStateName();
+  const state = document.getElementById("state");
+  // const state = getStateName();
   const country = document.getElementById("country");
-  const apiURL = `//api.openweathermap.org/data/2.5/weather?q=${city.innerHTML},${state},${country.innerHTML}&appid=${apiKey}&units=imperial`;
+  const apiURL = `//api.openweathermap.org/data/2.5/weather?q=${city.innerHTML},${state.innerHTML},${country.innerHTML}&appid=${apiKey}&units=imperial`;
 
   console.log(apiURL);
 
@@ -56,56 +56,71 @@ function getStateName() {
   console.log(state.innerHTML);
   const stateAbbreviations = [
     {
-      name: "AL",
+      name: "Alabama",
       abbreviation: "AL",
+      code: "01",
     },
     {
-      name: "AK",
+      name: "Alaska",
       abbreviation: "AK",
+      code: "02",
     },
     {
-      name: "AS",
+      name: "American Samoa",
       abbreviation: "AS",
+      code: "03",
     },
     {
-      name: "AZ",
+      name: "Arizona",
       abbreviation: "AZ",
+      code: "04",
     },
     {
-      name: "AR",
+      name: "Arkansas",
       abbreviation: "AR",
+      code: "05",
     },
     {
-      name: "CA",
+      name: "California",
       abbreviation: "CA",
+      code: "06",
     },
     {
       name: "Colorado",
       abbreviation: "CO",
+      code: "07",
     },
     {
       name: "Connecticut",
       abbreviation: "CT",
+      code: "08",
     },
     {
       name: "Delaware",
       abbreviation: "DE",
+      code: "09",
     },
     {
       name: "District Of Columbia",
       abbreviation: "DC",
+      code: "10",
     },
     {
       name: "Federated States Of Micronesia",
       abbreviation: "FM",
+      code: "11",
     },
     {
       name: "Florida",
       abbreviation: "FL",
+
+      code: "12",
     },
     {
       name: "Georgia",
       abbreviation: "GA",
+
+      code: "13",
     },
     {
       name: "Guam",
@@ -406,12 +421,12 @@ function error(err) {
 
 weather();
 
-const theUrl =
-  "https://www23.statcan.gc.ca/imdb/p3VD.pl?Function=getVD&TVD=53971";
-console.log(`The URL: ${theUrl}`);
+// const theUrl =
+//   "https://www23.statcan.gc.ca/imdb/p3VD.pl?Function=getVD&TVD=53971";
+// console.log(`The URL: ${theUrl}`);
 
-fetch(theUrl)
-  .then((response) => response.json())
-  .then((stateCode) => {
-    console.log(stateCode);
-  });
+// fetch(theUrl)
+//   .then((response) => response.json())
+//   .then((stateCode) => {
+//     console.log(stateCode);
+//   });
