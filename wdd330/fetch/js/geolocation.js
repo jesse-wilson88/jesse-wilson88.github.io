@@ -9,9 +9,11 @@ const apiKey = "a0b3d490a08e094f9b99a83f6d6220ec";
 function weather() {
   const city = document.getElementById("city");
   const state = document.getElementById("state");
+  const zip = document.getElementById("zip");
   // const state = getStateName();
   const country = document.getElementById("country");
-  const apiURL = `//api.openweathermap.org/data/2.5/weather?q=${city.innerHTML},${state.innerHTML},${country.innerHTML}&appid=${apiKey}&units=imperial`;
+  // const apiURL = `//api.openweathermap.org/data/2.5/weather?q=${city.innerHTML},${state.innerHTML},${country.innerHTML}&appid=${apiKey}&units=imperial`;
+  const apiURL = `//api.openweathermap.org/data/2.5/weather?q=${zip.innerHTML},${country.innerHTML}&appid=${apiKey}&units=imperial`;
 
   console.log(apiURL);
 
@@ -20,34 +22,34 @@ function weather() {
     .then((weatherInfo) => {
       console.log(weatherInfo);
       //Temperature variables
-      const currently = weatherInfo.weather[0].description.replace(
-        /(^\w{1})|(\s+\w{1})/g,
-        (letter) => letter.toUpperCase()
-      );
-      const current_temp = Math.round(weatherInfo.main.temp);
-      const humidity = Math.round(weatherInfo.main.humidity);
-      const windspeed = Math.round(weatherInfo.wind.speed);
+      // const currently = weatherInfo.weather[0].description.replace(
+      //   /(^\w{1})|(\s+\w{1})/g,
+      //   (letter) => letter.toUpperCase()
+      // );
+      // const current_temp = Math.round(weatherInfo.main.temp);
+      // const humidity = Math.round(weatherInfo.main.humidity);
+      // const windspeed = Math.round(weatherInfo.wind.speed);
 
-      // Displays the temperature information in the Weather Summary
-      document.getElementById("currently").innerHTML = currently;
-      document.getElementById("current-temp").innerHTML = current_temp;
-      document.getElementById("humidity").innerHTML = humidity;
-      document.getElementById("windspeed").innerHTML = windspeed;
+      // // Displays the temperature information in the Weather Summary
+      // document.getElementById("currently").innerHTML = currently;
+      // document.getElementById("current-temp").innerHTML = current_temp;
+      // document.getElementById("humidity").innerHTML = humidity;
+      // document.getElementById("windspeed").innerHTML = windspeed;
 
-      // Calculates the windchill factor if there is one
-      let windchill =
-        35.74 +
-        0.6215 * current_temp -
-        35.75 * Math.pow(windspeed, 0.16) +
-        0.4275 * current_temp * Math.pow(windspeed, 0.16);
+      // // Calculates the windchill factor if there is one
+      // let windchill =
+      //   35.74 +
+      //   0.6215 * current_temp -
+      //   35.75 * Math.pow(windspeed, 0.16) +
+      //   0.4275 * current_temp * Math.pow(windspeed, 0.16);
 
-      windchill = Math.round(windchill);
+      // windchill = Math.round(windchill);
 
-      if (current_temp <= 50 && windspeed > 3) {
-        document.getElementById("windchill").innerHTML = `${windchill}&degF`;
-      } else {
-        document.getElementById("windchill").innerHTML = "N/A";
-      }
+      // if (current_temp <= 50 && windspeed > 3) {
+      //   document.getElementById("windchill").innerHTML = `${windchill}&degF`;
+      // } else {
+      //   document.getElementById("windchill").innerHTML = "N/A";
+      // }
     });
 }
 
@@ -415,9 +417,9 @@ function getStateName() {
 //     });
 // }
 
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
+// function error(err) {
+//   console.warn(`ERROR(${err.code}): ${err.message}`);
+// }
 
 weather();
 

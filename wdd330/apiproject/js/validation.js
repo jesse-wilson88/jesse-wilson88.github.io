@@ -30,9 +30,10 @@ function letters(text, e) {
     (charCode > 64 && charCode < 91) ||
     (charCode > 96 && charCode < 123)
   ) {
-    // alert("Only Letters Allowed");
+    // Return true is the key pressed is a letter
     return true;
   } else {
+    // Return false is the key pressed is a not letter
     return false;
   }
 }
@@ -47,9 +48,10 @@ function alphaNumerical(text, e) {
     (charCode > 64 && charCode < 91) ||
     (charCode > 96 && charCode < 123)
   ) {
-    // alert("Only Letters Allowed");
+    // Returns true if the key pressed is a letter or number
     return true;
   } else {
+    // Returns false if the key pressed is not a letter or number
     return false;
   }
 }
@@ -58,12 +60,13 @@ function alphaNumerical(text, e) {
 function phoneNumber(tel, e) {
   var charCode = e.which ? e.which : e.keyCode;
   if (charCode == 46 || (charCode > 31 && (charCode < 48 || charCode > 57))) {
-    // alert("Only Numbers Allowed");
+    // Returns false if the key pressed is a letter
     return false;
   } else {
     if (tel.value.length == 3 || tel.value.length == 7) {
       //keycode to avoid response to backspace
       if (e.keyCode != 8) {
+        // Puts a + between the area code & prefix and between the prefix & number
         tel.value = tel.value + "-";
       }
     }
@@ -75,12 +78,13 @@ function phoneNumber(tel, e) {
 function date(date, e) {
   var charCode = e.which ? e.which : e.keyCode;
   if (charCode == 46 || (charCode > 31 && (charCode < 48 || charCode > 57))) {
-    // alert("Only Numbers Allowed");
+    // Returns false if the key pressed is a letter
     return false;
   } else {
     if (date.value.length == 2 || date.value.length == 5) {
       //keycode to avoid response to backspace
       if (e.keyCode != 8) {
+        // Puts a / between the day & month and between the month & year
         date.value = date.value + "/";
       }
     }
@@ -88,7 +92,7 @@ function date(date, e) {
   }
 }
 
-// If fName, lName. or company is
+// If fName, lName. or company is empty, user gets an error message
 function validateInput() {
   fName = document.getElementById("fName").value;
   lName = document.getElementById("lName").value;
@@ -97,7 +101,6 @@ function validateInput() {
   error = document.getElementById("error");
 
   // if (fName == "" && lName == "" && company == "") {
-  console.log("No entry in fName, lName, or company");
   contactInfo.style.height = "468px";
   error.classList.add("error");
   error.innerHTML = "Please enter first name, last name, or company.";

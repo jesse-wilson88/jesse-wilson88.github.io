@@ -61,7 +61,6 @@ function updateLocalContact() {
           .getElementById("fName")
           .value.trim()
           .toLowerCase();
-
         contactData[placement].lName = document
           .getElementById("lName")
           .value.trim()
@@ -92,7 +91,10 @@ function updateLocalContact() {
           .toLowerCase();
         contactData[placement].phone = document
           .getElementById("phone")
-          .value.trim();
+          .value.trim()
+          .match(/\d+/g)
+          .join("")
+          .replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "$1-$2-$3");
         contactData[placement].dob = document
           .getElementById("dob")
           .value.trim();
