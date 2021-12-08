@@ -1,10 +1,32 @@
-const apiKey = "a0b3d490a08e094f9b99a83f6d6220ec";
+// api.openweathermap.org key
+const weatherKey = "a0b3d490a08e094f9b99a83f6d6220ec";
+
+// Google map key
+const googleKey = "AIzaSyDFzPm6JNDK7h4mrUZAeYNiLeh6YEiQZLg";
 
 // var options = {
 //   enableHighAccuracy: true,
 //   timeout: 5000,
 //   maximumAge: 0,
 // };
+
+// Get contact coordinates
+function contactCoordinates() {
+  const address = document
+    .getElementById("address")
+    .innerHTML.replace(/ /g, "+");
+  const city = document.getElementById("city").innerHTML.replace(/ /g, "+");
+  const state = document.getElementById("state").innerHTML.replace(/ /g, "+");
+
+  const coordinates = `https://maps.googleapis.com/maps/api/geocode/json?address=${address},+${city},+${state}&key=${googleKey}`;
+  console.log(coordinates);
+
+  fetch(coordinates)
+    .then((response) => response.json())
+    .then((coords) => {
+      console.log(coords);
+    });
+}
 
 function weather() {
   const city = document.getElementById("city");
@@ -13,7 +35,7 @@ function weather() {
   // const state = getStateName();
   const country = document.getElementById("country");
   // const apiURL = `//api.openweathermap.org/data/2.5/weather?q=${city.innerHTML},${state.innerHTML},${country.innerHTML}&appid=${apiKey}&units=imperial`;
-  const apiURL = `//api.openweathermap.org/data/2.5/weather?q=${zip.innerHTML},${country.innerHTML}&appid=${apiKey}&units=imperial`;
+  const apiURL = `//api.openweathermap.org/data/2.5/weather?q=${zip.innerHTML},${country.innerHTML}&appid=${weatherKey}&units=imperial`;
 
   console.log(apiURL);
 
@@ -421,7 +443,8 @@ function getStateName() {
 //   console.warn(`ERROR(${err.code}): ${err.message}`);
 // }
 
-weather();
+// weather();
+contactCoordinates();
 
 // const theUrl =
 //   "https://www23.statcan.gc.ca/imdb/p3VD.pl?Function=getVD&TVD=53971";
