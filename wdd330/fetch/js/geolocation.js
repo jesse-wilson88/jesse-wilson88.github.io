@@ -28,7 +28,7 @@ function contactCoordinates() {
     });
 }
 
-// Ignore all the code below for now. Just want to get the coordinates.
+// Ignore all the code below for now. Just want to get the coordinates right now.
 
 function weather() {
   const city = document.getElementById("city");
