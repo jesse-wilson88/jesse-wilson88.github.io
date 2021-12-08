@@ -28,6 +28,8 @@ function contactCoordinates() {
     });
 }
 
+// Ignore all the code below for now. Just want to get the coordinates.
+
 function weather() {
   const city = document.getElementById("city");
   const state = document.getElementById("state");
