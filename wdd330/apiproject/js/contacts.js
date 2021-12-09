@@ -117,7 +117,8 @@ function displayData(id) {
               "+"
             );
           }
-          getMap(mapAddress);
+          // getMap(mapAddress);
+          contactCoords();
         }
       }
     }

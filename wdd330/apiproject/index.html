@@ -30,10 +30,13 @@
     <link href="css/large.css" rel="stylesheet" />
 
     <!-- JAVASCRIPTS-->
+    <script defer src="js/getCoords.js"></script>
+    <script defer src="js/weather.js"></script>
     <script defer src="js/ls.js"></script>
     <script defer src="js/contacts.js"></script>
     <script defer src="js/main.js"></script>
     <script defer src="js/validation.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <!-- HEADER HERE -->
@@ -164,7 +167,7 @@
                 placeholder="01/01/2000"
                 disabled
               />
-              <div id="map"></div>
+              <ul id="map"></ul>
           </div>
           <div id="error"></div>
           <div class="options">
