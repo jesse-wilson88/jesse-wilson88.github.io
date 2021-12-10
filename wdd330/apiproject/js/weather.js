@@ -17,7 +17,7 @@ function weather(lat, lon) {
       const humidity = Math.round(weatherInfo.main.humidity);
       const windspeed = Math.round(weatherInfo.wind.speed);
 
-      const contactWeather = `
+      let contactWeather = `
       <li id="currently">Currently: ${currently}</li>
       <li id="current_temp">Temperature: ${current_temp}&degF</li>
       <li id="humidity">Humidity: ${humidity}%</li>
@@ -33,9 +33,9 @@ function weather(lat, lon) {
       windchill = Math.round(windchill);
 
       if (current_temp <= 50 && windspeed > 3) {
-        contactWeather + `<li id="windchill">Windchill: ${windchill}&degF</li>`;
+        contactWeather += `<li id="windchill">Windchill: ${windchill}&degF</li>`;
       } else {
-        contactWeather + `<li id="windchill">Windchill: N/A</li>`;
+        contactWeather += `<li id="windchill">Windchill: N/A</li>`;
       }
 
       document.getElementById("weather").innerHTML = contactWeather;

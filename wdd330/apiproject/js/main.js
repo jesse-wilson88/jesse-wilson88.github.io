@@ -124,6 +124,7 @@ function clearData() {
   document.getElementById("form").reset();
 
   document.getElementById("map").innerHTML = "";
+  document.getElementById("weather").innerHTML = "";
 }
 
 // Enables the contact information fields so data can be entered

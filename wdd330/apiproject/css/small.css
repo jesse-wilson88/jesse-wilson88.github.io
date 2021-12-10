@@ -67,11 +67,11 @@ body {
   overflow: auto;
 }
 
-ul {
+.contacts ul {
   padding: 0;
 }
 
-li {
+.contacts ul li {
   list-style-type: none;
   width: 270px;
   height: 30px;
@@ -87,11 +87,11 @@ li {
   transition: all 0.5s ease-out;
 }
 
-li:hover {
+.contacts ul li:hover {
   background-position: left bottom;
 }
 
-li button {
+.contacts ul li button {
   float: right;
   margin: 0;
   padding: 0;
@@ -138,6 +138,28 @@ input:required {
 #state,
 #zip {
   text-transform: uppercase;
+}
+
+.weather {
+  width: 655px;
+  /* border-radius: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 4px #116466; */
+}
+
+.weather ul {
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 4px #116466;
+  list-style-type: none;
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.weather ul li {
+  padding: 0 5px;
+  margin: 0 5px;
 }
 
 .options {
@@ -214,12 +236,11 @@ button.slide_from_top::after {
   bottom: 100%;
 }
 
-/* .backGroundColor {
-  background-color: #d9b08c;
-} */
-
 iframe {
   width: 655px;
+  /* width: 327px; */
+  /* float: right; */
+  /* float: left; */
 }
 
 .error {
