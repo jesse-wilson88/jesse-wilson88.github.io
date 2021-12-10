@@ -46,7 +46,6 @@ function usersWeather(lat, lon) {
   fetch(apiURL)
     .then((response) => response.json())
     .then((weatherInfo) => {
-      console.log(weatherInfo);
       const name = `Location: ${weatherInfo.name}`;
       const currently = `Currently: ${weatherInfo.weather[0].description.replace(
         /(^\w{1})|(\s+\w{1})/g,
