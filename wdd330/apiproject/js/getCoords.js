@@ -23,8 +23,8 @@ function contactCoords() {
 
       lat = response.data.results[0].geometry.location.lat;
       lon = response.data.results[0].geometry.location.lng;
-
-      console.log(`Latitude: ${lat} -- Longitude: ${lon}`);
+      
+      getmap(lat, lon);
       weather(lat, lon);
     })
     .catch(function (error) {
@@ -54,4 +54,10 @@ function userCoords() {
   }
 
   navigator.geolocation.getCurrentPosition(success, error, options);
+}
+
+function getmap(lat, lon){
+  const mapUrl = `https://maps.google.com/maps?q=${lat},${lon}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
+  document.getElementById("map").innerHTML = `<iframe class="map" title="Google map" src="${mapUrl}" loading="lazy"></iframe>`;
 }

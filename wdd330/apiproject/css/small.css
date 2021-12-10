@@ -49,8 +49,14 @@ body {
 .contacts {
   background-color: #116466;
   color: #d1e8e2;
-  height: 500px;
+  /* height: 500px; */
+  height: 335px;
   overflow: auto;
+}
+
+.weatherContainer {
+  height: 165px;
+  background-color: #116466;
 }
 
 .contactInfo {
@@ -168,13 +174,13 @@ input:required {
   overflow: hidden;
 }
 
-button:hover {
+.options button:hover {
   color: #d9b08c;
   font-weight: bold;
   border: 1px solid #d1e8e2;
 }
 
-button::after {
+.options button::after {
   content: "";
   background: #2c3531;
   position: absolute;
@@ -183,7 +189,7 @@ button::after {
   display: block;
 }
 
-button:active {
+.options button:active {
   background-color: #116466;
   box-shadow: 0 5px #d1e8e2;
   transform: translateY(4px);
@@ -208,9 +214,9 @@ button.slide_from_top::after {
   bottom: 100%;
 }
 
-.backGroundColor {
+/* .backGroundColor {
   background-color: #d9b08c;
-}
+} */
 
 iframe {
   width: 655px;
