@@ -39,7 +39,6 @@ function weather(lat, lon) {
     });
 }
 
-// Modified from https://naishare.com/blog/how-to-create-a-simple-news-ticker-using-html,-css-and-javascript
 function usersWeather(lat, lon) {
   const apiURL = `//api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=imperial`;
 
@@ -70,7 +69,7 @@ function usersWeather(lat, lon) {
         windchill = "";
       }
 
-      //array of news
+      // Modified from https://naishare.com/blog/how-to-create-a-simple-news-ticker-using-html,-css-and-javascript
       const news = [
         `${name}`,
         `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${currently}`,
