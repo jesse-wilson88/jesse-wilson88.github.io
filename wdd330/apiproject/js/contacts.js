@@ -20,12 +20,13 @@ function addContact() {
       .join("")
       .replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "$1-$2-$3");
   }
-  let dob = document
-    .getElementById("dob")
-    .value.trim()
-    .match(/\d+/g)
-    .join("")
-    .replace(/(\d{2})\/?(\d{2})\/?(\d{4})/, "$1/$2/$3");
+  let dob = document.getElementById("dob").value.trim();
+  if (dob != "") {
+    dob = dob
+      .match(/\d+/g)
+      .join("")
+      .replace(/(\d{2})\/?(\d{2})\/?(\d{4})/, "$1/$2/$3");
+  }
 
   saveNewLocalContact(
     fName,
