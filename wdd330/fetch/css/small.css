@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 
+/*  https://naishare.com/blog/how-to-create-a-simple-news-ticker-using-html,-css-and-javascript  */
+
 /*----------- BODY --------------*/
 
 /*----------- HEADER --------------*/
@@ -12,6 +14,19 @@
 /*----------- NAVIGATION --------------*/
 
 /*----------- MAIN --------------*/
+#marquee-cont {
+  background: #f4f4f4;
+  margin-top: 10px;
+  width: 270px;
+}
+
+#marquee-cont marquee {
+  margin-top: 5px;
+}
+
+#ticker-title:focus {
+  outline: none;
+}
 
 /*----------- FOOTER --------------*/
 

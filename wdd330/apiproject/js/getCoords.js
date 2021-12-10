@@ -7,9 +7,7 @@ function contactCoords() {
   const city = document.getElementById("city");
   const state = document.getElementById("state");
 
-  // var location = "308 West Commercial Ave Gettysburg SD";
   var location = `${address.value} ${city.value} ${state.value}`;
-  console.log(location);
 
   axios
     .get("https://maps.googleapis.com/maps/api/geocode/json", {
@@ -19,11 +17,9 @@ function contactCoords() {
       },
     })
     .then(function (response) {
-      console.log(response);
-
       lat = response.data.results[0].geometry.location.lat;
       lon = response.data.results[0].geometry.location.lng;
-      
+
       getmap(lat, lon);
       weather(lat, lon);
     })
@@ -32,7 +28,6 @@ function contactCoords() {
     });
 }
 
-// Coordinates of the user's current location
 function userCoords() {
   var options = {
     enableHighAccuracy: true,
@@ -43,10 +38,7 @@ function userCoords() {
   function success(pos) {
     var crd = pos.coords;
 
-    console.log("Your current position is:");
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
+    usersWeather(crd.latitude, crd.longitude);
   }
 
   function error(err) {
@@ -56,8 +48,10 @@ function userCoords() {
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
-function getmap(lat, lon){
+function getmap(lat, lon) {
   const mapUrl = `https://maps.google.com/maps?q=${lat},${lon}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
-  document.getElementById("map").innerHTML = `<iframe class="map" title="Google map" src="${mapUrl}" loading="lazy"></iframe>`;
+  document.getElementById(
+    "map"
+  ).innerHTML = `<iframe class="map" title="Google map" src="${mapUrl}" loading="lazy"></iframe>`;
 }

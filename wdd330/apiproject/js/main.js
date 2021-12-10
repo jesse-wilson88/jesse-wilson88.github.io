@@ -142,3 +142,4 @@ function lockFields() {
 }
 
 displayContacts(getLocalContacts());
+userCoords();

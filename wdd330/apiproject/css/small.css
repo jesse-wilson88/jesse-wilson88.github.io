@@ -50,12 +50,14 @@ body {
   background-color: #116466;
   color: #d1e8e2;
   /* height: 500px; */
-  height: 335px;
+  /* height: 335px; */
+  height: 455px;
   overflow: auto;
 }
 
 .weatherContainer {
-  height: 165px;
+  height: 45px;
+  padding-top: 8px;
   background-color: #116466;
 }
 
@@ -73,12 +75,13 @@ body {
 
 .contacts ul li {
   list-style-type: none;
-  width: 270px;
+  width: 280px;
   height: 30px;
   border: 1px solid #d1e8e2;
   margin-left: 8px;
   margin-bottom: 5px;
   padding-top: 2.5px;
+  padding-bottom: 5px;
   padding-left: 5px;
   text-transform: capitalize;
   background: linear-gradient(to right, #2c3531 50%, #116466 50%);
@@ -96,6 +99,21 @@ body {
   margin: 0;
   padding: 0;
   background-color: #116466;
+}
+
+#marquee-cont {
+  background: #d1e8e2;
+  width: 280px;
+  height: 30px;
+  border: 1px solid #d1e8e2;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding: 4px;
+  font-weight: bold;
+}
+
+#ticker-title:focus {
+  outline: none;
 }
 
 label {
