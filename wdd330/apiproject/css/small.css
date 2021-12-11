@@ -14,6 +14,8 @@ body {
 /*----------- NAVIGATION --------------*/
 
 /*----------- MAIN --------------*/
+
+/** Address book setup **/
 .row {
   display: flex;
   align-items: center;
@@ -24,7 +26,7 @@ body {
 .column1,
 .column2 {
   border: solid 1px black;
-  height: 600px;
+  height: 650px;
 }
 
 .column1 {
@@ -33,6 +35,13 @@ body {
 
 .column2 {
   width: 700px;
+}
+
+/** Column 1 **/
+.weatherContainer {
+  height: 45px;
+  padding-top: 8px;
+  background-color: #116466;
 }
 
 .header {
@@ -49,18 +58,12 @@ body {
 .contacts {
   background-color: #116466;
   color: #d1e8e2;
-  height: 455px;
+  height: 505px;
   overflow: auto;
 }
 
-.weatherContainer {
-  height: 45px;
-  padding-top: 8px;
-  background-color: #116466;
-}
-
 .contactInfo {
-  height: 498px;
+  height: 548px;
   padding-top: 25px;
   padding-left: 20px;
   background-color: #d9b08c;
@@ -115,6 +118,7 @@ body {
   outline: none;
 }
 
+/** Column 2 **/
 label {
   display: inline-block;
   width: 150px;
@@ -157,7 +161,7 @@ input:required {
   text-transform: uppercase;
 }
 
-.weather {
+#weatherWrapper {
   width: 655px;
 }
 

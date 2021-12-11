@@ -33,7 +33,7 @@ newContactButton.addEventListener("click", (event) => {
     statusAction = "";
   }
   error.classList.remove("error");
-  contactInfo.style.height = "498px";
+  contactInfo.style.height = "548px";
   error.innerHTML = "";
 });
 
@@ -62,7 +62,7 @@ editContactButton.addEventListener("click", (event) => {
     requiredField();
   }
   error.classList.remove("error");
-  contactInfo.style.height = "498px";
+  contactInfo.style.height = "548px";
   error.innerHTML = "";
 });
 
@@ -89,7 +89,7 @@ saveContactButton.addEventListener("click", (event) => {
         document.getElementById("editContact").innerHTML = "Edit";
 
         error.classList.remove("error");
-        contactInfo.style.height = "498px";
+        contactInfo.style.height = "548px";
         error.innerHTML = "";
 
         addContact();
@@ -101,7 +101,7 @@ saveContactButton.addEventListener("click", (event) => {
         document.getElementById("newContact").innerHTML = "New";
 
         error.classList.remove("error");
-        contactInfo.style.height = "498px";
+        contactInfo.style.height = "548px";
         error.innerHTML = "";
 
         updateLocalContact();
@@ -120,7 +120,7 @@ function clearData() {
   document.getElementById("form").reset();
 
   document.getElementById("map").innerHTML = "";
-  document.getElementById("weather").innerHTML = "";
+  document.getElementById("weatherWrapper").innerHTML = "";
 }
 
 // Enables the contact information fields so data can be entered

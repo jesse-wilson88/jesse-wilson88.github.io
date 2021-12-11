@@ -90,7 +90,7 @@ function displayContacts(contacts) {
 // Displays the contact information on the right side of the address book
 function displayData(id) {
   document.getElementById("map").innerHTML = "";
-  document.getElementById("weather").innerHTML = "";
+  document.getElementById("weatherWrapper").innerHTML = "";
   document.getElementById("newContact").innerHTML = "New";
   document.getElementById("editContact").innerHTML = "Edit";
   const contactData = getLocalContacts();
@@ -109,36 +109,36 @@ function displayData(id) {
         document.getElementById("phone").value = c.phone;
         document.getElementById("dob").value = c.dob;
 
-        // Looks to see what is shown in google maps
-        let theAddress = document.getElementById("address").value;
-        let theCity = document.getElementById("city").value;
-        let theState = document.getElementById("state").value;
-        let mapAddress;
+        // // Looks to see what is shown in google maps
+        // let theAddress = document.getElementById("address").value;
+        // let theCity = document.getElementById("city").value;
+        // let theState = document.getElementById("state").value;
+        // let mapAddress;
 
-        if (theAddress != "" && theCity != "" && theState != "") {
-          // If the address includes a box number only the city & state are shown
-          if (theAddress.toString().toLowerCase().includes("box")) {
-            mapAddress = `${c.city}, ${c.state}`.replace(/ /g, "+");
-          } else {
-            // The address, city, and state are shown
-            mapAddress = `${c.address}, ${c.city}, ${c.state}`.replace(
-              / /g,
-              "+"
-            );
-          }
-          contactCoords();
-        }
+        // if (theAddress != "" && theCity != "" && theState != "") {
+        //   // If the address includes a box number only the city & state are shown
+        //   if (theAddress.toString().toLowerCase().includes("box")) {
+        //     mapAddress = `${c.city}, ${c.state}`.replace(/ /g, "+");
+        //   } else {
+        //     // The address, city, and state are shown
+        //     mapAddress = `${c.address}, ${c.city}, ${c.state}`.replace(
+        //       / /g,
+        //       "+"
+        //     );
+        // }
+        contactCoords();
+        // }
       }
     }
     requiredField();
   }
 }
 
-// Displays the google map based on the contact address information
-function getMap(contactAddress) {
-  let url = `https://maps.google.com/maps?q=${contactAddress}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+// // Displays the google map based on the contact address information
+// function getMap(contactAddress) {
+//   let url = `https://maps.google.com/maps?q=${contactAddress}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
-  document.getElementById(
-    "map"
-  ).innerHTML = `<iframe class="map" title="Google map" src="${url}" loading="lazy"></iframe>`;
-}
+//   document.getElementById(
+//     "map"
+//   ).innerHTML = `<iframe class="map" title="Google map" src="${url}" loading="lazy"></iframe>`;
+// }

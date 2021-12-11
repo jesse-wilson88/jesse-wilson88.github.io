@@ -37,6 +37,9 @@ function weather(lat, lon) {
         <li id="windchill">Windchill: N/A</li>`;
       }
 
+      document.getElementById(
+        "weatherWrapper"
+      ).innerHTML = `<ul id="weather"></ul>`;
       document.getElementById("weather").innerHTML = contactWeather;
     });
 }
