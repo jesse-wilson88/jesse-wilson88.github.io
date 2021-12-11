@@ -108,10 +108,6 @@ saveContactButton.addEventListener("click", (event) => {
         lockFields();
         displayData(id);
       }
-      // displayData(id);
-      // error.classList.remove("error");
-      // contactInfo.style.height = "498px";
-      // error.innerHTML = "";
     }
   } else {
     // Clears the contactData on the right column

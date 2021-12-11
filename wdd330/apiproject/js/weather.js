@@ -71,7 +71,7 @@ function usersWeather(lat, lon) {
         windchill = "N/A";
       }
 
-      // Modified from https://naishare.com/blog/how-to-create-a-simple-news-ticker-using-html,-css-and-javascript
+      // Ticker modified from https://naishare.com/blog/how-to-create-a-simple-news-ticker-using-html,-css-and-javascript
       const news = [
         `Location: ${name}`,
         `&emsp;&emsp;&emsp;Currently: ${currently}`,
