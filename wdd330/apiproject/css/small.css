@@ -26,7 +26,7 @@ body {
 .column1,
 .column2 {
   border: solid 1px black;
-  height: 650px;
+  height: 507px;
 }
 
 .column1 {
@@ -58,12 +58,12 @@ body {
 .contacts {
   background-color: #116466;
   color: #d1e8e2;
-  height: 505px;
+  height: 362px;
   overflow: auto;
 }
 
 .contactInfo {
-  height: 548px;
+  height: 405px;
   padding-top: 25px;
   padding-left: 20px;
   background-color: #d9b08c;
@@ -129,7 +129,7 @@ label {
 
 input {
   height: 40px;
-  width: 500px;
+  width: 490px;
   font-size: 30px;
   border-radius: 10px;
   outline: none; /* Good for when border-radius is used */

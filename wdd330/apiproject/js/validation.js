@@ -100,7 +100,7 @@ function validateInput() {
   contactInfo = document.getElementById("contactInfo");
   error = document.getElementById("error");
 
-  contactInfo.style.height = "518px";
+  contactInfo.style.height = "375px";
   error.classList.add("error");
   error.innerHTML = "Please enter first name, last name, or company.";
 }

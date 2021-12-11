@@ -33,7 +33,7 @@ newContactButton.addEventListener("click", (event) => {
     statusAction = "";
   }
   error.classList.remove("error");
-  contactInfo.style.height = "548px";
+  contactInfo.style.height = "405px";
   error.innerHTML = "";
 });
 
@@ -62,7 +62,7 @@ editContactButton.addEventListener("click", (event) => {
     requiredField();
   }
   error.classList.remove("error");
-  contactInfo.style.height = "548px";
+  contactInfo.style.height = "405px";
   error.innerHTML = "";
 });
 
@@ -89,7 +89,7 @@ saveContactButton.addEventListener("click", (event) => {
         document.getElementById("editContact").innerHTML = "Edit";
 
         error.classList.remove("error");
-        contactInfo.style.height = "548px";
+        contactInfo.style.height = "405px";
         error.innerHTML = "";
 
         addContact();
@@ -101,7 +101,7 @@ saveContactButton.addEventListener("click", (event) => {
         document.getElementById("newContact").innerHTML = "New";
 
         error.classList.remove("error");
-        contactInfo.style.height = "548px";
+        contactInfo.style.height = "405px";
         error.innerHTML = "";
 
         updateLocalContact();
