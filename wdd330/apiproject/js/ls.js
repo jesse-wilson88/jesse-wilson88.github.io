@@ -91,16 +91,24 @@ function updateLocalContact() {
           .toLowerCase();
         contactData[placement].phone = document
           .getElementById("phone")
-          .value.trim()
-          .match(/\d+/g)
-          .join("")
-          .replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "$1-$2-$3");
+          .value.trim();
+        if (contactData[placement].phone != "") {
+          contactData[placement].phone = contactData[placement].phone
+            .match(/\d+/g)
+            .join("")
+            .replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "$1-$2-$3");
+        }
         contactData[placement].dob = document
           .getElementById("dob")
-          .value.trim()
-          .match(/\d+/g)
-          .join("")
-          .replace(/(\d{2})\/?(\d{2})\/?(\d{4})/, "$1/$2/$3");
+          .value.trim();
+        if (contactData[placement].dob != "") {
+          contactData[placement].dob = contactData[placement].dob
+            .match(/\d+/g)
+            .join("")
+            .replace(/(\d{2})\/?(\d{2})\/?(\d{4})/, "$1/$2/$3");
+        } else {
+          contactData[placement].dob = "";
+        }
 
         window.localStorage.setItem("contacts", JSON.stringify(contactData));
       }

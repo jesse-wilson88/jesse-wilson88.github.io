@@ -49,8 +49,6 @@ body {
 .contacts {
   background-color: #116466;
   color: #d1e8e2;
-  /* height: 500px; */
-  /* height: 335px; */
   height: 455px;
   overflow: auto;
 }
@@ -110,6 +108,7 @@ body {
   margin-bottom: 5px;
   padding: 4px;
   font-weight: bold;
+  font-size: 1.3rem;
 }
 
 #ticker-title:focus {
@@ -136,7 +135,7 @@ input {
 }
 
 input:focus {
-  background-color: white;
+  background-color: #ffcb9a;
   border: 2px solid #2c3531;
 }
 
@@ -160,12 +159,9 @@ input:required {
 
 .weather {
   width: 655px;
-  /* border-radius: 10px;
-  border: 1px solid lightgray;
-  box-shadow: 2px 2px 4px #116466; */
 }
 
-.weather ul {
+#weather {
   border-radius: 10px;
   border: 1px solid lightgray;
   box-shadow: 2px 2px 4px #116466;
@@ -175,7 +171,7 @@ input:required {
   margin: 0;
 }
 
-.weather ul li {
+#weather li {
   padding: 0 5px;
   margin: 0 5px;
 }
@@ -204,7 +200,6 @@ input:required {
   color: #d9b08c;
   background-color: #116466;
   border: none;
-  /* border: 1px solid #d1e8e2; */
   border-radius: 15px;
   box-shadow: 0 9px #d1e8e2;
   cursor: pointer;
@@ -256,9 +251,6 @@ button.slide_from_top::after {
 
 iframe {
   width: 655px;
-  /* width: 327px; */
-  /* float: right; */
-  /* float: left; */
 }
 
 .error {

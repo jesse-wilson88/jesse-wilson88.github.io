@@ -15,10 +15,10 @@ function weather(lat, lon) {
       const windspeed = Math.round(weatherInfo.wind.speed);
 
       let contactWeather = `
-      <li id="currently">Currently: ${currently}</li>
-      <li id="current_temp">Temperature: ${current_temp}&degF</li>
-      <li id="humidity">Humidity: ${humidity}%</li>
-      <li id="windspeed">Wind Speed: ${windspeed} mph</li>`;
+        <li id="currently">Currently: ${currently}</li>
+        <li id="current_temp">Temperature: ${current_temp}&degF</li>
+        <li id="humidity">Humidity: ${humidity}%</li>
+        <li id="windspeed">Wind Speed: ${windspeed} mph</li>`;
 
       // Calculates the windchill factor if there is one
       let windchill =
@@ -30,9 +30,11 @@ function weather(lat, lon) {
       windchill = Math.round(windchill);
 
       if (current_temp <= 50 && windspeed > 3) {
-        contactWeather += `<li id="windchill">Windchill: ${windchill}&degF</li>`;
+        contactWeather += `
+        <li id="windchill">Windchill: ${windchill}&degF</li>`;
       } else {
-        contactWeather += `<li id="windchill">Windchill: N/A</li>`;
+        contactWeather += `
+        <li id="windchill">Windchill: N/A</li>`;
       }
 
       document.getElementById("weather").innerHTML = contactWeather;
@@ -45,14 +47,14 @@ function usersWeather(lat, lon) {
   fetch(apiURL)
     .then((response) => response.json())
     .then((weatherInfo) => {
-      const name = `Location: ${weatherInfo.name}`;
-      const currently = `Currently: ${weatherInfo.weather[0].description.replace(
+      const name = weatherInfo.name;
+      const currently = weatherInfo.weather[0].description.replace(
         /(^\w{1})|(\s+\w{1})/g,
         (letter) => letter.toUpperCase()
-      )}`;
-      const current_temp = `Temp: ${Math.round(weatherInfo.main.temp)}`;
-      const humidity = `Humidity: ${Math.round(weatherInfo.main.humidity)}`;
-      const windspeed = `Wind Speed: ${Math.round(weatherInfo.wind.speed)}`;
+      );
+      const current_temp = Math.round(weatherInfo.main.temp);
+      const humidity = Math.round(weatherInfo.main.humidity);
+      const windspeed = Math.round(weatherInfo.wind.speed);
 
       // Calculates the windchill factor if there is one
       let windchill =
@@ -64,19 +66,19 @@ function usersWeather(lat, lon) {
       windchill = Math.round(windchill);
 
       if (current_temp <= 50 && windspeed > 3) {
-        windchill = `Wind Chill: ${windchill}&degF`;
+        windchill = windchill;
       } else {
-        windchill = "";
+        windchill = "N/A";
       }
 
       // Modified from https://naishare.com/blog/how-to-create-a-simple-news-ticker-using-html,-css-and-javascript
       const news = [
-        `${name}`,
-        `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${currently}`,
-        `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${current_temp}&degF`,
-        `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${humidity}%`,
-        `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${windspeed} mph`,
-        `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${windchill}`,
+        `Location: ${name}`,
+        `&emsp;&emsp;&emsp;Currently: ${currently}`,
+        `&emsp;&emsp;&emsp;Temp: ${current_temp}&degF`,
+        `&emsp;&emsp;&emsp;Humidity: ${humidity}%`,
+        `&emsp;&emsp;&emsp;Wind Speed: ${windspeed} mph`,
+        `&emsp;&emsp;&emsp;Wind Chill: ${windchill}&degF`,
       ];
 
       let tickerText = "";

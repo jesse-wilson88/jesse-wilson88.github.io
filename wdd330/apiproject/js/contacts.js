@@ -89,6 +89,8 @@ function displayContacts(contacts) {
 
 // Displays the contact information on the right side of the address book
 function displayData(id) {
+  document.getElementById("map").innerHTML = "";
+  document.getElementById("weather").innerHTML = "";
   document.getElementById("newContact").innerHTML = "New";
   document.getElementById("editContact").innerHTML = "Edit";
   const contactData = getLocalContacts();
@@ -124,7 +126,6 @@ function displayData(id) {
               "+"
             );
           }
-          // getMap(mapAddress);
           contactCoords();
         }
       }
