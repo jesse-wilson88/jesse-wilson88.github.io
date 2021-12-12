@@ -82,7 +82,7 @@ saveContactButton.addEventListener("click", (event) => {
     // Checks to see how the contact information will be saved
     if (!locked) {
       if (fName == "" && lName == "" && company == "") {
-        validateInput();
+        validateRequired();
       } else if (id == "") {
         // The new button was clicked to add a new contact
         document.getElementById("saveContact").innerHTML = "Clear";

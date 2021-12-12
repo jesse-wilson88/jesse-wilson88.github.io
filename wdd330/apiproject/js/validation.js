@@ -93,14 +93,24 @@ function date(date, e) {
 }
 
 // If fName, lName. or company is empty, user gets an error message
-function validateInput() {
-  fName = document.getElementById("fName").value;
-  lName = document.getElementById("lName").value;
-  company = document.getElementById("company").value;
-  contactInfo = document.getElementById("contactInfo");
+function validateRequired() {
   error = document.getElementById("error");
 
   contactInfo.style.height = "375px";
   error.classList.add("error");
   error.innerHTML = "Please enter first name, last name, or company.";
+}
+
+function validateDob() {
+  const date = new Date(document.getElementById("dob").value);
+  console.log(`Date: ${date}`);
+
+  const day = date.getDay();
+  console.log(`Day: ${day + 1}`);
+
+  const month = date.getMonth();
+  console.log(`Month: ${month + 1}`);
+
+  const year = date.getFullYear();
+  console.log(`Year: ${year}`);
 }

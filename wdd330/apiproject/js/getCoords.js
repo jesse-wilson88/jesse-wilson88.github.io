@@ -7,25 +7,27 @@ function contactCoords() {
   const city = document.getElementById("city");
   const state = document.getElementById("state");
 
-  var location = `${address.value} ${city.value} ${state.value}`;
+  if (address.value != "" || (city.value != "" && state.value != "")) {
+    var location = `${address.value} ${city.value} ${state.value}`;
 
-  axios
-    .get("https://maps.googleapis.com/maps/api/geocode/json", {
-      params: {
-        address: location,
-        key: googleKey,
-      },
-    })
-    .then(function (response) {
-      lat = response.data.results[0].geometry.location.lat;
-      lon = response.data.results[0].geometry.location.lng;
+    axios
+      .get("https://maps.googleapis.com/maps/api/geocode/json", {
+        params: {
+          address: location,
+          key: googleKey,
+        },
+      })
+      .then(function (response) {
+        lat = response.data.results[0].geometry.location.lat;
+        lon = response.data.results[0].geometry.location.lng;
 
-      getmap(lat, lon);
-      weather(lat, lon);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+        getmap(lat, lon);
+        weather(lat, lon);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 }
 
 function userCoords() {
