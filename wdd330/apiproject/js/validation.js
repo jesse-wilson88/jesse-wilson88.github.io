@@ -101,16 +101,46 @@ function validateRequired() {
   error.innerHTML = "Please enter first name, last name, or company.";
 }
 
+// I am trying to validate the date entered by the user.
+// Trying to see if the dob variable is the same as the data variable.
+// If they are the same then nothing happens.
+// If thry are not the same then send error message.
 function validateDob() {
-  const date = new Date(document.getElementById("dob").value);
-  console.log(`Date: ${date}`);
+  const dob = new Date(document.getElementById("dob").value);
+  const day = dob.getDate();
+  const month = dob.getMonth() + 1;
+  const year = dob.getFullYear();
+  const isLeapYear = leapYear(year);
+  // console.log(`Day: ${day}`);
+  // console.log(`Month: ${month}`);
+  // console.log(`Year: ${year}`);
+  console.log(`Leap Year: ${isLeapYear}`);
 
-  const day = date.getDay();
-  console.log(`Day: ${day + 1}`);
+  // if (dob.getDate() < 10) {
+  //   console.log("Day is less than 10");
+  // } else {
+  //   console.log("OOPs, something went wrong");
+  // }
 
-  const month = date.getMonth();
-  console.log(`Month: ${month + 1}`);
+  const date = new Date(`${month}${day}${year}`);
+  // const data = toString(document.getElementById("dob").value);
+  console.log(`DOB typeof = ${typeof dob}`);
+  console.log(`Date typeof = ${typeof date}`);
+  // console.log(`Data typeof = ${typeof data}`);
+  console.log(`${month}/${day}/${year}`);
+  console.log(`${document.getElementById("dob").value}`);
+  // console.log(`${dob.toString()}`)
+  console.log(dob);
+  console.log(date);
 
-  const year = date.getFullYear();
-  console.log(`Year: ${year}`);
+  console.log(`Bool: 0${dob}` != `${date}`);
+
+  if (`${dob}` != `${date}`) {
+    console.log("Please look at the Birthday Date again.");
+  }
+}
+
+function leapYear(year) {
+  // console.log(year % 100 === 0 ? year % 400 === 0 : year % 4 === 0);
+  return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 }
