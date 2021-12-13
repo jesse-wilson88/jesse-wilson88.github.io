@@ -107,8 +107,19 @@ function validateRequired() {
 // If thry are not the same then send error message.
 function validateDob() {
   const dob = new Date(document.getElementById("dob").value);
-  const day = dob.getDate();
-  const month = dob.getMonth() + 1;
+  let day;
+  let month;
+  if (dob.getDate() < 10) {
+    day = `0${dob.getDate()}`;
+  } else {
+    day = `${dob.getDate()}`;
+  }
+
+  if (dob.getMonth() + 1) {
+    month = `0${dob.getMonth() + 1}`;
+  } else {
+    month = `${dob.getMonth() + 1}`;
+  }
   const year = dob.getFullYear();
   const isLeapYear = leapYear(year);
   // console.log(`Day: ${day}`);
@@ -122,25 +133,35 @@ function validateDob() {
   //   console.log("OOPs, something went wrong");
   // }
 
-  // const date = new Date(`${month}/${day}/${year}`);
-  const date = `${month}/${day}/${year}`;
+  const dobDate = `${month}/${day}/${year}`;
+  // const date = `${month}/${day}/${year}`;
   // const date = new Date(`${document.getElementById("dob").value}`);
-  // const data = toString(document.getElementById("dob").value);
-  console.log(`DOB typeof = ${typeof dob}`);
-  console.log(`Date typeof = ${typeof date}`);
+  const date = document.getElementById("dob").value;
+  const dateDay = date.slice(0, 2);
+  console.log(dateDay);
+  const dateMonth = date.slice(3, 5);
+  console.log(dateMonth);
+  const dateYear = date.slice(6, 10);
+  console.log(dateYear);
+  const dateDob = `${dateDay}/${dateMonth}/${dateYear}`;
+
+  // console.log(`DOB typeof = ${typeof dob}`);
+  // console.log(`Date typeof = ${typeof date}`);
   // console.log(`Data typeof = ${typeof data}`);
   console.log(`concatenate: ${month}/${day}/${year}`);
   console.log(`getElementByID: ${document.getElementById("dob").value}`);
   // console.log(`${dob.toString()}`)
-  console.log(dob);
-  console.log(date);
-
-  console.log(`Same: ${dob} == ${date}`);
+  console.log(dobDate);
+  console.log(dateDob);
 
   // console.log(JSON.stringify(dob));
   // console.log(JSON.stringify(date));
 
-  if (`${month}/${day}/${year}` != `${document.getElementById("dob").value}`) {
+  // if (`${month}/${day}/${year}` != `${document.getElementById("dob").value}`) {
+  //   console.log("Please look at the Birthday Date again.");
+  // }
+
+  if (dobDate != dateDob) {
     console.log("Please look at the Birthday Date again.");
   }
 }
