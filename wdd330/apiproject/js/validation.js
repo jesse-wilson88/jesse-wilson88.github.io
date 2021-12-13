@@ -122,20 +122,24 @@ function validateDob() {
   //   console.log("OOPs, something went wrong");
   // }
 
-  const date = new Date(`${month}${day}${year}`);
+  const date = new Date(`${month}/${day}/${year}`);
+  // const date = new Date(`${document.getElementById("dob").value}`);
   // const data = toString(document.getElementById("dob").value);
   console.log(`DOB typeof = ${typeof dob}`);
   console.log(`Date typeof = ${typeof date}`);
   // console.log(`Data typeof = ${typeof data}`);
-  console.log(`${month}/${day}/${year}`);
-  console.log(`${document.getElementById("dob").value}`);
+  console.log(`concatenate: ${month}/${day}/${year}`);
+  console.log(`getElementByID: ${document.getElementById("dob").value}`);
   // console.log(`${dob.toString()}`)
   console.log(dob);
   console.log(date);
 
-  console.log(`Bool: 0${dob}` != `${date}`);
+  console.log(`Same: ${dob == date}`);
 
-  if (`${dob}` != `${date}`) {
+  // console.log(JSON.stringify(dob));
+  // console.log(JSON.stringify(date));
+
+  if (`${month}/${day}/${year}` != `${document.getElementById("dob").value}`) {
     console.log("Please look at the Birthday Date again.");
   }
 }

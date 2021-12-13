@@ -1,0 +1,19 @@
+To find a German address or postal code
+White Pages postal code finder
+Postal code finder (in German)
+To find a town name with a postal code, type in the postal code number in the Postleitzahl box and click on Suchen
+To find a postal code for a given town, type in the name in the Ort / Stadt box and click on Suchen
+German Addresses
+Addresses in Germany are written in a particular way:
+
+Line 1: Form of Address (optional)
+Line 2: Recipient
+Line 3: Street name followed by property/house number
+Line 4: Postal code followed by town name
+Line 5: Country (if outside Germany)
+For example:
+
+Herrn
+Dieter Wellhausen
+Lansstraße 81
+D-11179 Berlin
