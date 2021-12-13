@@ -122,7 +122,8 @@ function validateDob() {
   //   console.log("OOPs, something went wrong");
   // }
 
-  const date = new Date(`${month}/${day}/${year}`);
+  // const date = new Date(`${month}/${day}/${year}`);
+  const date = `${month}/${day}/${year}`;
   // const date = new Date(`${document.getElementById("dob").value}`);
   // const data = toString(document.getElementById("dob").value);
   console.log(`DOB typeof = ${typeof dob}`);
@@ -134,7 +135,7 @@ function validateDob() {
   console.log(dob);
   console.log(date);
 
-  console.log(`Same: ${dob == date}`);
+  console.log(`Same: ${dob} == ${date}`);
 
   // console.log(JSON.stringify(dob));
   // console.log(JSON.stringify(date));
