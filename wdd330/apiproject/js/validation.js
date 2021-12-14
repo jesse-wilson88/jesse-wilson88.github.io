@@ -135,7 +135,7 @@ function validateDob() {
 
     // Checks to see if the New Date() is the same as the date in the input field
     if (dobDate != dateDob) {
-      const message = "Please look at the Birthday Date again.";
+      const message = "Please verify the birthdate.";
       errorMessage(message);
       return false;
     } else {
