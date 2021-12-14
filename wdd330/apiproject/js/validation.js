@@ -115,7 +115,7 @@ function validateDob() {
     day = `${dob.getDate()}`;
   }
 
-  if (dob.getMonth() + 1) {
+  if (dob.getMonth() + 1 < 10) {
     month = `0${dob.getMonth() + 1}`;
   } else {
     month = `${dob.getMonth() + 1}`;
