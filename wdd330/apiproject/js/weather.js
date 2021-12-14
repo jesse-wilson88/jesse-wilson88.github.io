@@ -33,8 +33,7 @@ function weather(lat, lon) {
         contactWeather += `
         <li id="windchill">Windchill: ${windchill}&degF</li>`;
       } else {
-        contactWeather += `
-        <li id="windchill">Windchill: N/A</li>`;
+        contactWeather += "";
       }
 
       document.getElementById(
@@ -69,9 +68,9 @@ function usersWeather(lat, lon) {
       windchill = Math.round(windchill);
 
       if (current_temp <= 50 && windspeed > 3) {
-        windchill = windchill;
+        windchill = `Wind Chill: ${windchill}`;
       } else {
-        windchill = "N/A";
+        windchill = "";
       }
 
       // Ticker modified from https://naishare.com/blog/how-to-create-a-simple-news-ticker-using-html,-css-and-javascript
@@ -81,7 +80,7 @@ function usersWeather(lat, lon) {
         `&emsp;&emsp;&emsp;Temp: ${current_temp}&degF`,
         `&emsp;&emsp;&emsp;Humidity: ${humidity}%`,
         `&emsp;&emsp;&emsp;Wind Speed: ${windspeed} mph`,
-        `&emsp;&emsp;&emsp;Wind Chill: ${windchill}&degF`,
+        `&emsp;&emsp;&emsp;${windchill}`,
       ];
 
       let tickerText = "";

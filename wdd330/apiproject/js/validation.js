@@ -93,80 +93,67 @@ function date(date, e) {
 }
 
 // If fName, lName. or company is empty, user gets an error message
-function validateRequired() {
+function errorMessage(message) {
   error = document.getElementById("error");
 
   contactInfo.style.height = "375px";
   error.classList.add("error");
-  error.innerHTML = "Please enter first name, last name, or company.";
+  error.innerHTML = message;
 }
 
-// I am trying to validate the date entered by the user.
-// Trying to see if the dob variable is the same as the data variable.
-// If they are the same then nothing happens.
-// If thry are not the same then send error message.
+// Checks to see if the Date is valid or not
 function validateDob() {
-  const dob = new Date(document.getElementById("dob").value);
-  let day;
-  let month;
-  if (dob.getDate() < 10) {
-    day = `0${dob.getDate()}`;
+  const birthday = document.getElementById("dob").value;
+  // Converts the birthday to an actual date
+  if (birthday != "") {
+    const dob = new Date(birthday);
+    let day;
+    let month;
+    // Gets the day and adds a leading zero if less than 10
+    if (dob.getDate() < 10) {
+      day = `0${dob.getDate()}`;
+    } else {
+      day = `${dob.getDate()}`;
+    }
+
+    // Gets the month and adds a leading zero if less than 10
+    if (dob.getMonth() + 1 < 10) {
+      month = `0${dob.getMonth() + 1}`;
+    } else {
+      month = `${dob.getMonth() + 1}`;
+    }
+
+    const year = dob.getFullYear();
+    const dobDate = `${month}/${day}/${year}`;
+
+    // Gets the birthday from the birthday field
+    const date = document.getElementById("dob").value;
+    const dateDay = date.slice(0, 2); // Gets the day
+    const dateMonth = date.slice(3, 5); // Gets the month
+    const dateYear = date.slice(6, 10); // Gets the year
+    const dateDob = `${dateDay}/${dateMonth}/${dateYear}`;
+
+    // Checks to see if the New Date() is the same as the date in the input field
+    if (dobDate != dateDob) {
+      const message = "Please look at the Birthday Date again.";
+      errorMessage(message);
+      return false;
+    } else {
+      error.classList.remove("error");
+      contactInfo.style.height = "405px";
+      error.innerHTML = "";
+
+      return true;
+    }
   } else {
-    day = `${dob.getDate()}`;
-  }
+    error.classList.remove("error");
+    contactInfo.style.height = "405px";
+    error.innerHTML = "";
 
-  if (dob.getMonth() + 1 < 10) {
-    month = `0${dob.getMonth() + 1}`;
-  } else {
-    month = `${dob.getMonth() + 1}`;
-  }
-  const year = dob.getFullYear();
-  const isLeapYear = leapYear(year);
-  // console.log(`Day: ${day}`);
-  // console.log(`Month: ${month}`);
-  // console.log(`Year: ${year}`);
-  console.log(`Leap Year: ${isLeapYear}`);
-
-  // if (dob.getDate() < 10) {
-  //   console.log("Day is less than 10");
-  // } else {
-  //   console.log("OOPs, something went wrong");
-  // }
-
-  const dobDate = `${month}/${day}/${year}`;
-  // const date = `${month}/${day}/${year}`;
-  // const date = new Date(`${document.getElementById("dob").value}`);
-  const date = document.getElementById("dob").value;
-  const dateDay = date.slice(0, 2);
-  console.log(dateDay);
-  const dateMonth = date.slice(3, 5);
-  console.log(dateMonth);
-  const dateYear = date.slice(6, 10);
-  console.log(dateYear);
-  const dateDob = `${dateDay}/${dateMonth}/${dateYear}`;
-
-  // console.log(`DOB typeof = ${typeof dob}`);
-  // console.log(`Date typeof = ${typeof date}`);
-  // console.log(`Data typeof = ${typeof data}`);
-  console.log(`concatenate: ${month}/${day}/${year}`);
-  console.log(`getElementByID: ${document.getElementById("dob").value}`);
-  // console.log(`${dob.toString()}`)
-  console.log(dobDate);
-  console.log(dateDob);
-
-  // console.log(JSON.stringify(dob));
-  // console.log(JSON.stringify(date));
-
-  // if (`${month}/${day}/${year}` != `${document.getElementById("dob").value}`) {
-  //   console.log("Please look at the Birthday Date again.");
-  // }
-
-  if (dobDate != dateDob) {
-    console.log("Please look at the Birthday Date again.");
+    return true;
   }
 }
 
 function leapYear(year) {
-  // console.log(year % 100 === 0 ? year % 400 === 0 : year % 4 === 0);
   return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 }

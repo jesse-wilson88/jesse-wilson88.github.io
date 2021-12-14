@@ -82,31 +82,32 @@ saveContactButton.addEventListener("click", (event) => {
     // Checks to see how the contact information will be saved
     if (!locked) {
       if (fName == "" && lName == "" && company == "") {
-        validateRequired();
+        const message = "Please enter first name, last name, or company.";
+        errorMessage(message);
       } else if (id == "") {
-        // The new button was clicked to add a new contact
-        document.getElementById("saveContact").innerHTML = "Clear";
-        document.getElementById("editContact").innerHTML = "Edit";
+        const validate = validateDob();
 
-        error.classList.remove("error");
-        contactInfo.style.height = "405px";
-        error.innerHTML = "";
+        if (validate) {
+          // The new button was clicked to add a new contact
+          document.getElementById("saveContact").innerHTML = "Clear";
+          document.getElementById("editContact").innerHTML = "Edit";
 
-        addContact();
-        lockFields();
-        displayData(id);
+          addContact();
+          lockFields();
+          displayData(id);
+        }
       } else {
-        // The edit button was clicked to edit an exsisting contact
-        document.getElementById("saveContact").innerHTML = "Clear";
-        document.getElementById("newContact").innerHTML = "New";
+        const validate = validateDob();
 
-        error.classList.remove("error");
-        contactInfo.style.height = "405px";
-        error.innerHTML = "";
+        if (validate) {
+          // The edit button was clicked to edit an exsisting contact
+          document.getElementById("saveContact").innerHTML = "Clear";
+          document.getElementById("newContact").innerHTML = "New";
 
-        updateLocalContact();
-        lockFields();
-        displayData(id);
+          updateLocalContact();
+          lockFields();
+          displayData(id);
+        }
       }
     }
   } else {
