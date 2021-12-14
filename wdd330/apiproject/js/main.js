@@ -74,8 +74,8 @@ saveContactButton.addEventListener("click", (event) => {
   const fName = document.getElementById("fName").value;
   const lName = document.getElementById("lName").value;
   const company = document.getElementById("company").value;
-  const contactInfo = document.getElementById("contactInfo");
-  const error = document.getElementById("error");
+  // const contactInfo = document.getElementById("contactInfo");
+  // const error = document.getElementById("error");
   const locked = document.getElementById("fName").hasAttribute("disabled");
 
   if (button == "Save") {
