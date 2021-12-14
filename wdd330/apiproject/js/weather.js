@@ -1,5 +1,6 @@
 const weatherKey = "a0b3d490a08e094f9b99a83f6d6220ec";
 
+// This is where the weather is pulled for the contacts
 function weather(lat, lon) {
   const apiURL = `//api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=imperial`;
 
@@ -43,6 +44,7 @@ function weather(lat, lon) {
     });
 }
 
+// This is where the aate is pulled for the ticker.
 function usersWeather(lat, lon) {
   const apiURL = `//api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=imperial`;
 

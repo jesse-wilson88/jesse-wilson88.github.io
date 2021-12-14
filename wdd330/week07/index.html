@@ -1098,40 +1098,40 @@
         arguments:
       </p>
       <pre>
-        <b>const sequence = fibonacci(1,1);</b>
+  <b>const sequence = fibonacci(1,1);</b>
 
-        // The generator object is now stored in the sequence variable. It inherits a method
-        called next(), which is then used to obtain the next value produced by the yield
-        command:
-        <b>sequence.next();</b>
-        << 2
+  // The generator object is now stored in the sequence variable. It inherits a method
+  called next(), which is then used to obtain the next value produced by the yield
+  command:
+  <b>sequence.next();</b>
+  << 2
 
-        <b>sequence.next();</b>
-        << 3
+  <b>sequence.next();</b>
+  << 3
 
-        <b>sequence.next();</b>
-        << 5
+  <b>sequence.next();</b>
+  << 5
 
-        // It will continue to add up:
-          2  +  3 = 5
-          3  +  5 = 8
-          5  +  8 = 13
-          8  + 13 = 21
-          13 + 21 = 34
+  // It will continue to add up:
+    2  +  3 = 5
+    3  +  5 = 8
+    5  +  8 = 13
+    8  + 13 = 21
+    13 + 21 = 34
 
-        // It’s also possible to iterate over the generator to invoke it multiple times:
-        <b>for (n of sequence) {
-          // stop the sequence after it reaches 100
-          if (n > 10) break;
-          console.log(n);
-        }</b>
+  // It’s also possible to iterate over the generator to invoke it multiple times:
+  <b>for (n of sequence) {
+    // stop the sequence after it reaches 100
+    if (n > 10) break;
+    console.log(n);
+  }</b>
 
-        << 8
-        << 13
-        << 21
-        << 34
-        << 55
-        << 89
+  << 8
+  << 13
+  << 21
+  << 34
+  << 55
+  << 89
       </pre>
       <u>Pure Function</u>
       <p>
