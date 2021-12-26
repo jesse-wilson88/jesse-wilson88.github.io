@@ -102,6 +102,16 @@ body {
   background-color: #116466;
 }
 
+table {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0;
+}
+
 #marquee-cont {
   background: #d1e8e2;
   width: 280px;
